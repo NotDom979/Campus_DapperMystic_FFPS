@@ -26,8 +26,6 @@ public class playerController : MonoBehaviour
 	{
 		movement();
 		StartCoroutine(shoot());
-		Destroy(bullet,3);
-
 	}
 	void movement()
 	{
