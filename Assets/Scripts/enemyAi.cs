@@ -30,6 +30,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
 	void FixedUpdate()
 	{
+		
 		if (InRadius)
 		{
 			Aggro();
@@ -81,6 +82,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		currentHealth -= dmg;
 		healthBar.SetHealth(currentHealth);
+		
 		if (currentHealth <= 0)
 		{
 			Destroy(gameObject);
