@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 207642546}
   - component: {fileID: 207642545}
   - component: {fileID: 207642544}
+  - component: {fileID: 992030825}
   m_Layer: 0
   m_Name: EnemyCanvas
   m_TagString: Untagged
@@ -101,6 +102,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &992030825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207642542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e8f0faf841bc4479c8ad4373718c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &404095487
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118047847}
   - component: {fileID: 1118047848}
+  - component: {fileID: 2048058531}
   m_Layer: 0
   m_Name: HealthBar_Overlay
   m_TagString: Untagged
@@ -260,11 +275,24 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 10
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2048058531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118047846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2577655fad8821469a8d487c4f8818d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1118047848}
 --- !u!1 &1271966543
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +545,7 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 5
   m_Height: 2
-  m_Direction: 1
+  m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1407529358967794078
 MonoBehaviour:
@@ -531,9 +559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e748dbc41dd4b49b4629c68b477afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 5
-  speed: 4
-  target: {fileID: 6981777776952555518, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+  maxHealth: 2
+  currentHealth: 0
+  healthBar: {fileID: 2048058531}
+  speed: 2
+  target: {fileID: 0}
 --- !u!54 &1738952144034087183
 Rigidbody:
   m_ObjectHideFlags: 0

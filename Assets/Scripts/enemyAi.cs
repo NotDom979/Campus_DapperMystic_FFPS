@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class enemyAi : MonoBehaviour, IDamage
 {
-	[SerializeField] int HP;
+	//health bars/health for enemy
+	public float maxHealth = 10;
+	public float currentHealth;
+	
+	public HealthBar healthBar;
+	
 	[SerializeField] int speed;
 	private bool dirRight = true;
 	public Transform target;
@@ -18,7 +23,8 @@ public class enemyAi : MonoBehaviour, IDamage
 	void Start()
 	{
 		rig = GetComponent<Rigidbody>();
-
+		currentHealth = maxHealth;
+		healthBar.SetMaxHealth(maxHealth);
 	}
 
 
@@ -71,10 +77,11 @@ public class enemyAi : MonoBehaviour, IDamage
 	//}
 
 
-	public void takeDamage(int dmg)
+	public void takeDamage(float dmg)
 	{
-		HP -= dmg;
-		if (HP <= 0)
+		currentHealth -= dmg;
+		healthBar.SetHealth(currentHealth);
+		if (currentHealth <= 0)
 		{
 			Destroy(gameObject);
 		}
