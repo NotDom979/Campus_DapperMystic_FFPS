@@ -64,6 +64,7 @@ public class playerController : MonoBehaviour
 				{
 					hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
 				}
+				
 				Destroy(bullet,2);
 			}
 			
