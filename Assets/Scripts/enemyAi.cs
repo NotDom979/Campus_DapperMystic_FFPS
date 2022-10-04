@@ -7,36 +7,70 @@ public class enemyAi : MonoBehaviour, IDamage
 	[SerializeField] int HP;
 	[SerializeField] int speed;
 	private bool dirRight = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+	public Transform target;
+	private bool InRadius;
+	Rigidbody rig;
+	Vector2 move;
+	
+	
+	
+	// Start is called before the first frame update
+	void Start()
 	{
-		//Move the enemy back and forth
-	    if (dirRight)
-	    {
-	    	transform.Translate(Vector2.right * speed * Time.deltaTime);
-	    }
-	    
-	    else
-	    {
-	    	transform.Translate(-Vector2.right * speed * Time.deltaTime);
-	    }
-	    
-	    if (transform.position.x >= 6.0f)
-	    {
-	    	dirRight = false;
-	    }
-	    
-	    if (transform.position.x <= -6.0f)
-	    {
-	    	dirRight = true;
-	    }
-    }
+		rig = GetComponent<Rigidbody>();
+
+	}
+
+
+	void FixedUpdate()
+	{
+		if (InRadius)
+		{
+			Aggro();
+		}
+
+	}
+
+
+
+	void Aggro()
+	{
+		Vector3 pos = Vector3.MoveTowards(transform.position, target.position, speed * Time.fixedDeltaTime);
+		rig.MovePosition(pos);
+		transform.LookAt(target);
+	}
+
+
+	// Update is called once per frame
+	//void Docile()
+	//{
+
+
+	//Move the enemy back and forth
+	//if (dirRight)
+	//{
+	//    transform.Translate(Vector2.right * speed * Time.deltaTime);
+	//}
+
+	//else
+	//{
+	//    transform.Translate(-Vector2.right * speed * Time.deltaTime);
+	//}
+
+	//if (transform.position.x >= 6.0f)
+	//{
+	//    dirRight = false;
+	//}
+
+	//if (transform.position.x <= -6.0f)
+	//{
+	//    dirRight = true;
+	//}
+
+
+	//}
+
+
 	public void takeDamage(int dmg)
 	{
 		HP -= dmg;
@@ -45,4 +79,21 @@ public class enemyAi : MonoBehaviour, IDamage
 			Destroy(gameObject);
 		}
 	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Player")
+		{
+			InRadius = true;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.tag == "Player")
+		{
+			InRadius = false;
+		}
+	}
+
 }
