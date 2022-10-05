@@ -7,7 +7,10 @@ public class buttonFunction : MonoBehaviour
 {
 	public void resume()
 	{
-		GameManager.instance.cursorUnLockUnPause();
+		if (GameManager.instance.isPaused == true)
+		{
+			GameManager.instance.cursorUnLockUnPause();
+		}
 	}
 	public void restart()
 	{
