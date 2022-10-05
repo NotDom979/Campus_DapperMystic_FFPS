@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+	[Header("-----PlayerStats-----")]
 	[SerializeField] CharacterController controller;
 	[SerializeField] float playerSpeed = 2.0f;
 	[SerializeField]float jumpHeight = 1.0f;
 	[SerializeField] float gravityValue = -9.81f;
-	
 	[SerializeField] int jumpsMax;
+	private Vector3 playerVelocity;
+	private int timesJumped;
+	
+	[Header("-----GunStats-----")]
 	[SerializeField] float shootRate;
 	[SerializeField] int shootDist;
 	[SerializeField] int shootDmg;
 	[SerializeField] GameObject bullet;
-	private Vector3 playerVelocity;
-	private int timesJumped;
 	bool isShooting;
+	
 
 	private void Start()
 	{
