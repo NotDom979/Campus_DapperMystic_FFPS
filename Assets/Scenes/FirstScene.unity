@@ -158,17 +158,21 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1520849459}
-    - target: {fileID: 1738952144034087183, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
+    - target: {fileID: 3664503826428035979, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
+      propertyPath: m_Height
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664503826428035979, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
+      propertyPath: m_Radius
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3664503826428035979, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_Direction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3664503826428035979, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5217842923923939002, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_IsTrigger
@@ -180,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8355871863469668103, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.796801
+      value: -8.53
       objectReference: {fileID: 0}
     - target: {fileID: 8355871863469668103, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -350,13 +354,21 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1520849459}
+    - target: {fileID: 1617231280804626125, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617231280804626125, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
+      propertyPath: m_BaseOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3664503826428035979, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_Radius
-      value: 7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3664503826428035979, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_Direction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8355871863469668103, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_RootOrder
@@ -712,6 +724,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1998067284}
+    - target: {fileID: 1271966544, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271966544, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 467174001959377861, guid: a16a13da3e1ce8f4b83f066888b3af0b, type: 3}
       propertyPath: m_Name
       value: Enemy
