@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.AI;
 public class enemyAi : MonoBehaviour, IDamage
 {
-	//health bars/health for enemy
+	[Header("-----Enemy Stats-----")]
 	public float maxHealth = 10;
 	public float currentHealth;
 	public HealthBar healthBar;
-	
-	
-	
-	private bool InRadius;
+
+	[Header("-----Components-----")]
 	[SerializeField] NavMeshAgent agent;
+	[SerializeField] Renderer model;
+
+	private bool InRadius;
 
 	
 	
@@ -41,8 +42,10 @@ public class enemyAi : MonoBehaviour, IDamage
 
 	void Aggro()
 	{
-		
-		agent.SetDestination(GameManager.instance.player.transform.position);
+        if (agent.enabled)
+        {
+			agent.SetDestination(GameManager.instance.player.transform.position);
+        }
 		
 		
 		//Vector3 pos = Vector3.MoveTowards(transform.position, target.position, speed * Time.fixedDeltaTime);
@@ -58,11 +61,21 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		currentHealth -= dmg;
 		healthBar.SetHealth(currentHealth);
-		
+		StartCoroutine(flashDamage());
 		if (currentHealth <= 0)
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	IEnumerator flashDamage()
+	{
+		model.material.color = Color.red;
+		agent.enabled = false;
+		yield return new WaitForSeconds(.01f);
+		model.material.color = Color.white;
+		agent.enabled = true;
+
 	}
 
 	private void OnTriggerEnter(Collider other)
