@@ -10,6 +10,8 @@ public class playerController : MonoBehaviour
 	[SerializeField]float jumpHeight = 1.0f;
 	[SerializeField] float gravityValue = -9.81f;
 	[SerializeField] int jumpsMax;
+	[SerializeField] int HP;
+	int HPOrigin;
 	private Vector3 playerVelocity;
 	private int timesJumped;
 	
@@ -18,11 +20,15 @@ public class playerController : MonoBehaviour
 	[SerializeField] int shootDist;
 	[SerializeField] int shootDmg;
 	[SerializeField] GameObject bullet;
+	//[SerializeField] List<gunStats> gunSt = new List<gunStats>();
+	[SerializeField] GameObject model;
 	bool isShooting;
 	
 
 	private void Start()
 	{
+		HPOrigin = HP;
+		respawn();
 	}
 
 	void Update()
@@ -76,5 +82,30 @@ public class playerController : MonoBehaviour
 			isShooting = false;
 		}
 		
+	}
+	
+	public void takeDamage(int dmg)
+	{
+		HP	-= dmg;
+		updatePLayerHud();
+		StartCoroutine(GameManager.instance.playerDamage());
+		if (HP <= 0)
+		{
+			GameManager.instance.playerDeadMenu.SetActive(true);
+			GameManager.instance.cursorLockPause();
+		}
+	}
+	public void updatePLayerHud()
+	{
+		GameManager.instance.playerHpBar.fillAmount = (float)HP/(float)HPOrigin;
+	}
+	public void respawn()
+	{
+		controller.enabled = false;
+		HP = HPOrigin;
+		updatePLayerHud();
+		transform.position = GameManager.instance.spawnPoint.transform.position;
+		GameManager.instance.playerDeadMenu.SetActive(false);
+		controller.enabled = true;
 	}
 }

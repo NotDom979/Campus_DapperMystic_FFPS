@@ -18,4 +18,9 @@ public class buttonFunction : MonoBehaviour
 	{
 		Application.Quit();
 	}
+	public void respawn()
+	{
+		GameManager.instance.playerScript.respawn();
+		GameManager.instance.cursorUnLockUnPause();
+	}
 }
