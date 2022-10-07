@@ -20,7 +20,11 @@ public class playerController : MonoBehaviour
 	[SerializeField] GameObject bullet;
 	bool isShooting;
 	
+	[SerializeField] GameObject gunModel;
+	[SerializeField] List<gunStats> gunStats = new List<gunStats>();
 
+	public int selectionGun;
+	
 	private void Start()
 	{
 	}
@@ -76,5 +80,44 @@ public class playerController : MonoBehaviour
 			isShooting = false;
 		}
 		
+	}
+	public void gunPickup(gunStats stats)
+	{
+		shootRate = stats.shootRate;
+		shootDist = stats.shootDist;
+		shootDmg = stats.shootDamage;
+		gunModel.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		gunModel.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+		gunStats.Add(stats);
+	}
+	void gunSelect()
+	{
+		if (gunStats.Count > 1)
+		{
+			if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && selectionGun < gunStats.Count -1)
+			{
+				selectionGun++;
+				changGun();
+			}
+			else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0 && selectionGun > 0)
+			{
+				selectionGun--;
+				changGun();
+			}
+		}
+
+
+
+	}
+	void changGun()
+	{
+		shootRate = gunStats[selectionGun].shootRate;
+		shootDist = gunStats[selectionGun].shootDist;
+		shootDmg = gunStats[selectionGun].shootDamage;
+
+
+		gunModel.GetComponent<MeshFilter>().sharedMesh = gunStats[selectionGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+		gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStats[selectionGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 	}
 }
