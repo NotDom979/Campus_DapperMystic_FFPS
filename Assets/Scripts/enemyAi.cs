@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 public class enemyAi : MonoBehaviour, IDamage
 {
 	[Header("-----Enemy Stats-----")]
 	public float maxHealth = 10;
-	public float currentHealth;
-	public HealthBar healthBar;
-
+	float currentHealth;
+	public Image enemyHpBar;
 	[Header("-----Components-----")]
 	[SerializeField] NavMeshAgent agent;
 	[SerializeField] Renderer model;
@@ -24,7 +24,6 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		
 		currentHealth = maxHealth;
-		healthBar.SetMaxHealth(maxHealth);
 	}
 
 
@@ -60,7 +59,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	public void takeDamage(float dmg)
 	{
 		currentHealth -= dmg;
-		healthBar.SetHealth(currentHealth);
+		enemyHpBar.fillAmount = currentHealth/maxHealth;
 		StartCoroutine(flashDamage());
 		if (currentHealth <= 0)
 		{

@@ -28,7 +28,7 @@ public class playerController : MonoBehaviour
 	private void Start()
 	{
 		HPOrigin = HP;
-		
+		respawn();
 	}
 
 	void Update()
