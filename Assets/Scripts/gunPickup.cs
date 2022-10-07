@@ -12,7 +12,7 @@ using UnityEngine;
 			if (other.CompareTag("Player"))
 			{
 				
-				GameManager.instance.playerScript.gunPickup(gunStat);
+				//GameManager.instance.playerScript.gunPickup(gunStat);
 				Destroy(gameObject);
 			}
 		}

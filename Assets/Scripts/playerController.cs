@@ -20,15 +20,15 @@ public class playerController : MonoBehaviour
 	[SerializeField] int shootDist;
 	[SerializeField] int shootDmg;
 	[SerializeField] GameObject bullet;
-	//[SerializeField] List<gunStats> gunSt = new List<gunStats>();
+	[SerializeField] List<gunStats> gunstats = new List<gunStats>();
 	[SerializeField] GameObject model;
 	bool isShooting;
-	
+	int selectGun;
 
 	private void Start()
 	{
 		HPOrigin = HP;
-		respawn();
+		
 	}
 
 	void Update()
@@ -93,6 +93,44 @@ public class playerController : MonoBehaviour
 		{
 			GameManager.instance.playerDeadMenu.SetActive(true);
 			GameManager.instance.cursorLockPause();
+		}
+	}
+	public void gunPickup(gunStats stats)
+	{
+		shootRate = stats.shootRate;
+		shootDist = stats.shootDist;
+		shootDmg = stats.shootDamage;
+		model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+		
+		gunstats.Add(stats);
+	}
+	public void gunselect()
+	{
+		if (gunstats.Count > 1)
+		{
+			if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun > gunstats.Count - 1)
+			{
+				
+				selectGun++;
+				shootRate = gunstats[selectGun].shootRate;
+				shootDist = gunstats[selectGun].shootDist;
+				shootDmg = gunstats[selectGun].shootDamage;
+				
+				model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+				model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+			}	
+			if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
+			{
+				
+				selectGun--;
+				shootRate = gunstats[selectGun].shootRate;
+				shootDist = gunstats[selectGun].shootDist;
+				shootDmg = gunstats[selectGun].shootDamage;
+				
+				model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+				model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+			}	
 		}
 	}
 	public void updatePLayerHud()
