@@ -28,14 +28,14 @@ public class playerController : MonoBehaviour
 	public int selectGun;
 
 	public int maxAmmo;
-	public int currentAmmo = 0;
+	int currentAmmo;
 	public int reloadTime;
 	
 	private void Start()
 	{
 		HPOrigin = HP;
 		respawn();
-		//currentAmmo = maxAmmo;
+		currentAmmo = maxAmmo;
 	}
 
 	void Update()
@@ -81,24 +81,25 @@ public class playerController : MonoBehaviour
 	{
 		if (Input.GetButton("Shoot") && !isShooting)
 		{
-			isShooting = true;
-			//currentAmmo--;
-			
-			RaycastHit hit;
-			if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f,0.5f)), out hit, shootDist))
+			if (currentAmmo >= 1)
 			{
-				//Instantiate(bullet, hit.point, transform.rotation);
-				if(hit.collider.GetComponent<IDamage>() != null)
-				{
-					hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
-				}
-				
-				
-			}
+				isShooting = true;
+				currentAmmo--;
 			
-			Debug.Log("ZipBang");
-			yield return new WaitForSeconds(shootRate);
-			isShooting = false;
+				RaycastHit hit;
+				if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f,0.5f)), out hit, shootDist))
+				{
+					//Instantiate(bullet, hit.point, transform.rotation);
+					if(hit.collider.GetComponent<IDamage>() != null)
+					{
+						hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
+					}
+				}
+			
+				Debug.Log("ZipBang");
+				yield return new WaitForSeconds(shootRate);
+				isShooting = false;
+			}
 		}
 		
 	}
@@ -119,7 +120,7 @@ public class playerController : MonoBehaviour
 		shootRate = stats.shootRate;
 		shootDist = stats.shootDist;
 		shootDmg = stats.shootDamage;
-		//currentAmmo = gunstats[selectGun].ammoCount;
+		currentAmmo = gunstats[selectGun].ammoCount;
 		
 		model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -132,13 +133,11 @@ public class playerController : MonoBehaviour
 		{
 			if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun > gunstats.Count - 1)
 			{
-				
 				selectGun++;
 				changeGun();
 			}	
 			else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
 			{
-				
 				selectGun--;
 				changeGun();
 			}	
