@@ -81,6 +81,7 @@ public class enemyAi : MonoBehaviour, IDamage
 		{
 			
 			Destroy(gameObject);
+			GameManager.instance.CheckEnemyTotal();
 		}
 	}
 

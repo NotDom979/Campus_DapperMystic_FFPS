@@ -22,6 +22,8 @@ public class playerController : MonoBehaviour
 	[SerializeField] GameObject bullet;
 	[SerializeField] List<gunStats> gunstats = new List<gunStats>();
 	[SerializeField] GameObject model;
+	public GameObject muzzleFlash;
+	public AudioSource gunShot;
 	
 	bool isShooting;
 	//bool isReloading = false;
@@ -37,6 +39,10 @@ public class playerController : MonoBehaviour
 		respawn();
 		currentAmmo = maxAmmo;
 		GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
+		//GameObject muzzleFl = Instantiate(muzzleFlash);
+		//muzzleFl.SetActive(false);
+		//muzzleFlash.SetActive(false);
+		muzzleFlash.gameObject.SetActive(false);
 	}
 
 	void Update()
@@ -53,10 +59,13 @@ public class playerController : MonoBehaviour
 			playerVelocity.y = 0f;
 			timesJumped = 0;
 		}
-
 		Vector3 move = (transform.right * Input.GetAxis("Horizontal")) + 
 		(transform.forward * Input.GetAxis("Vertical"));
 		controller.Move(move * Time.deltaTime * playerSpeed);
+		if (Input.GetButton("Sprint"))
+		{
+			controller.Move(move * Time.deltaTime * (playerSpeed * 1.50f));
+		}
 
 
 		// Changes the height position of the player..
@@ -76,6 +85,9 @@ public class playerController : MonoBehaviour
 			if (currentAmmo >= 1)
 			{
 				isShooting = true;
+				muzzleFlash.gameObject.SetActive(true);
+				gunShot.Play();
+				StartCoroutine(muzzleWait());
 				currentAmmo--;
 				GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 				RaycastHit hit;
@@ -91,6 +103,8 @@ public class playerController : MonoBehaviour
 				Debug.Log("ZipBang");
 				yield return new WaitForSeconds(shootRate);
 				isShooting = false;
+				gunShot.Stop();
+				//muzzleFlash.SetActive(false);
 			}
 		}
 		
@@ -114,6 +128,7 @@ public class playerController : MonoBehaviour
 		shootDmg = stats.shootDamage;
 		currentAmmo = stats.ammoCount;
 		maxAmmo = stats.maxAmmo;
+		muzzleFlash = stats.muzzleEffect;
 		
 		model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -144,6 +159,7 @@ public class playerController : MonoBehaviour
 		shootDist = gunstats[selectGun].shootDist;
 		shootDmg = gunstats[selectGun].shootDamage;
 		currentAmmo = gunstats[selectGun].ammoCount;
+		muzzleFlash = gunstats[selectGun].muzzleEffect;
 				
 		model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;	
@@ -171,5 +187,10 @@ public class playerController : MonoBehaviour
 			currentAmmo = maxAmmo;
 		}
 		
+	}
+	IEnumerator muzzleWait()
+	{
+		yield return new WaitForSeconds(0.5f);
+		muzzleFlash.SetActive(false);
 	}
 }
