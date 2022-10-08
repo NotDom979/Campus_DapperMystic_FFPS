@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 	public GameObject damageFlash;
 	public TextMeshProUGUI enemyCountText;
 	public TextMeshProUGUI flagCountText;
+	public TextMeshProUGUI AmmoCount;
 	public Image playerHpBar;
 	
 	public bool isPaused;
@@ -75,7 +76,6 @@ public class GameManager : MonoBehaviour
 	{
 		enemyNumber--;
 		enemyCountText.text = enemyNumber.ToString("F0");
-		
 	}
 	public void	WinCondition()
 	{

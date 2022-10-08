@@ -28,7 +28,7 @@ public class playerController : MonoBehaviour
 	public int selectGun;
 
 	public int maxAmmo;
-	int currentAmmo;
+	public int currentAmmo;
 	public int reloadTime;
 	
 	private void Start()
@@ -36,20 +36,12 @@ public class playerController : MonoBehaviour
 		HPOrigin = HP;
 		respawn();
 		currentAmmo = maxAmmo;
+		GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 	}
 
 	void Update()
 	{
-		//if (isReloading)
-		//{
-		//	return;
-		//}
-		//if (currentAmmo <= 0)
-		//{
-		//	StartCoroutine(reloadGun());
-		//	return;
-		//}
-		
+		StartCoroutine(reloadGun());
 		movement();
 		StartCoroutine(shoot());
 		gunselect();
@@ -85,7 +77,7 @@ public class playerController : MonoBehaviour
 			{
 				isShooting = true;
 				currentAmmo--;
-			
+				GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 				RaycastHit hit;
 				if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f,0.5f)), out hit, shootDist))
 				{
@@ -120,12 +112,14 @@ public class playerController : MonoBehaviour
 		shootRate = stats.shootRate;
 		shootDist = stats.shootDist;
 		shootDmg = stats.shootDamage;
-		currentAmmo = gunstats[selectGun].ammoCount;
+		currentAmmo = stats.ammoCount;
+		maxAmmo = stats.maxAmmo;
 		
 		model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 		
 		gunstats.Add(stats);
+		GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 	}
 	void gunselect()
 	{
@@ -136,12 +130,13 @@ public class playerController : MonoBehaviour
 				selectGun++;
 				changeGun();
 			}	
-			else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
+			if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
 			{
 				selectGun--;
 				changeGun();
 			}	
 		}
+		GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 	}
 	void changeGun()
 	{
@@ -167,12 +162,14 @@ public class playerController : MonoBehaviour
 		GameManager.instance.playerDeadMenu.SetActive(false);
 		controller.enabled = true;
 	}
-	//IEnumerator reloadGun (){
-	//	isReloading= true;
+	IEnumerator reloadGun (){
 		
-	//	Debug.Log("Reload");
-	//	yield return new WaitForSeconds(reloadTime);
-	//	currentAmmo = maxAmmo;
-	//	isReloading= false;
-	//}
+		if(Input.GetKeyDown("r"))
+		{
+			Debug.Log("Reload");
+			yield return new WaitForSeconds(reloadTime);
+			currentAmmo = maxAmmo;
+		}
+		
+	}
 }
