@@ -5,15 +5,15 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 public class enemyAi : MonoBehaviour, IDamage
 {
+	[Header("-----Components-----")]
+	[SerializeField] NavMeshAgent agent;
+	[SerializeField] Renderer model;
+
 	[Header("-----Enemy Stats-----")]
 	public float maxHealth = 10;
 	float currentHealth;
 	public Image enemyHpBar;
 	[SerializeField] int sightDistance;
-
-	[Header("-----Components-----")]
-	[SerializeField] NavMeshAgent agent;
-	[SerializeField] Renderer model;
 
 	[Header("-----Enemy Gun Stats-----")]
 	[SerializeField] float shootRate;
@@ -38,7 +38,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	}
 
 
-	void FixedUpdate()
+	void Update()
 	{
 		
 		if (InRadius)
@@ -60,6 +60,7 @@ public class enemyAi : MonoBehaviour, IDamage
         if (agent.enabled)
         {
 	        agent.SetDestination(GameManager.instance.player.transform.position);
+	        
         }
 		
 		
