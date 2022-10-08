@@ -12,11 +12,7 @@ public class playerController : MonoBehaviour
 	[SerializeField] float gravityValue = -9.81f;
 	[SerializeField] int jumpsMax;
 	
-	[Header("-----Crouching-----")]
-	[SerializeField] float crouchSpeed;
-	[SerializeField] float CrouchYScale;
-	[SerializeField] float startYScale;
-	public KeyCode crouchKey = KeyCode.LeftControl;
+
 	
 		
 	[SerializeField] int HP;
@@ -48,7 +44,7 @@ public class playerController : MonoBehaviour
 		currentAmmo = maxAmmo;
 		GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 		
-		startYScale = transform.localScale.y;
+		
 	}
 
 	void Update()
@@ -80,17 +76,7 @@ public class playerController : MonoBehaviour
 		}
 
 		
-		if (Input.GetKeyDown(crouchKey))
-		{
-			
-			transform.localScale = new Vector3 (transform.localScale.x, CrouchYScale, transform.localScale.z);
-			playerSpeed = crouchSpeed;
-		}
 		
-		if (Input.GetKeyDown(crouchKey))
-		{
-			transform.localScale = new Vector3 (transform.localScale.x, startYScale, transform.localScale.z);
-		}
 		
 		playerVelocity.y += gravityValue * Time.deltaTime;
 		controller.Move(playerVelocity * Time.deltaTime);
