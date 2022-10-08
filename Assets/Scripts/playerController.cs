@@ -22,17 +22,34 @@ public class playerController : MonoBehaviour
 	[SerializeField] GameObject bullet;
 	[SerializeField] List<gunStats> gunstats = new List<gunStats>();
 	[SerializeField] GameObject model;
+	
 	bool isShooting;
+	//bool isReloading = false;
 	public int selectGun;
 
+	public int maxAmmo;
+	public int currentAmmo = 0;
+	public int reloadTime;
+	
 	private void Start()
 	{
 		HPOrigin = HP;
 		respawn();
+		//currentAmmo = maxAmmo;
 	}
 
 	void Update()
 	{
+		//if (isReloading)
+		//{
+		//	return;
+		//}
+		//if (currentAmmo <= 0)
+		//{
+		//	StartCoroutine(reloadGun());
+		//	return;
+		//}
+		
 		movement();
 		StartCoroutine(shoot());
 		gunselect();
@@ -65,6 +82,7 @@ public class playerController : MonoBehaviour
 		if (Input.GetButton("Shoot") && !isShooting)
 		{
 			isShooting = true;
+			//currentAmmo--;
 			
 			RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f,0.5f)), out hit, shootDist))
@@ -101,6 +119,8 @@ public class playerController : MonoBehaviour
 		shootRate = stats.shootRate;
 		shootDist = stats.shootDist;
 		shootDmg = stats.shootDamage;
+		//currentAmmo = gunstats[selectGun].ammoCount;
+		
 		model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 		
@@ -129,6 +149,7 @@ public class playerController : MonoBehaviour
 		shootRate = gunstats[selectGun].shootRate;
 		shootDist = gunstats[selectGun].shootDist;
 		shootDmg = gunstats[selectGun].shootDamage;
+		currentAmmo = gunstats[selectGun].ammoCount;
 				
 		model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;	
@@ -147,4 +168,12 @@ public class playerController : MonoBehaviour
 		GameManager.instance.playerDeadMenu.SetActive(false);
 		controller.enabled = true;
 	}
+	//IEnumerator reloadGun (){
+	//	isReloading= true;
+		
+	//	Debug.Log("Reload");
+	//	yield return new WaitForSeconds(reloadTime);
+	//	currentAmmo = maxAmmo;
+	//	isReloading= false;
+	//}
 }
