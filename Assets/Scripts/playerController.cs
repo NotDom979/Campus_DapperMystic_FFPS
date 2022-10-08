@@ -6,11 +6,15 @@ public class playerController : MonoBehaviour
 {
 	[Header("-----PlayerStats-----")]
 	[SerializeField] CharacterController controller;
+	[SerializeField] CharacterController PlayerHeight;
 	[SerializeField] float playerSpeed = 2.0f;
 	[SerializeField]float jumpHeight = 1.0f;
 	[SerializeField] float gravityValue = -9.81f;
 	[SerializeField] int jumpsMax;
+	[SerializeField] int normalHeight;
+	[SerializeField] int crouchHeight;
 	[SerializeField] int HP;
+	
 	int HPOrigin;
 	private Vector3 playerVelocity;
 	private int timesJumped;
@@ -45,6 +49,7 @@ public class playerController : MonoBehaviour
 		movement();
 		StartCoroutine(shoot());
 		gunselect();
+		
 	}
 	void movement()
 	{
@@ -68,6 +73,15 @@ public class playerController : MonoBehaviour
 
 		playerVelocity.y += gravityValue * Time.deltaTime;
 		controller.Move(playerVelocity * Time.deltaTime);
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			PlayerHeight.height = crouchHeight;
+		}
+		if(Input.GetKeyUp(KeyCode.C))
+		{
+			PlayerHeight.height = normalHeight;
+		}
+		
 	}
 	IEnumerator shoot()
 	{
