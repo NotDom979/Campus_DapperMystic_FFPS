@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 public class enemyAi : MonoBehaviour, IDamage
 {
 	[Header("-----Enemy Stats-----")]
 	public float maxHealth = 10;
-	public float currentHealth;
-	public HealthBar healthBar;
+	float currentHealth;
+	public Image enemyHpBar;
+	[SerializeField] int sightDistance;
 
 	[Header("-----Components-----")]
 	[SerializeField] NavMeshAgent agent;
 	[SerializeField] Renderer model;
 
-	private bool InRadius;
-
+	[Header("-----Enemy Gun Stats-----")]
+	[SerializeField] float shootRate;
+	[SerializeField] GameObject bullet;
+	[SerializeField] GameObject shotPoint;
+	
+	
+	
+	 bool InRadius;
+	bool isShooting;
 	
 	
 	
@@ -22,9 +31,10 @@ public class enemyAi : MonoBehaviour, IDamage
 	// Start is called before the first frame update
 	void Start()
 	{
-		
+		GameManager.instance.enemyNumber++;
 		currentHealth = maxHealth;
-		healthBar.SetMaxHealth(maxHealth);
+		GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");
+		//healthBar.SetMaxHealth(maxHealth);
 	}
 
 
@@ -34,6 +44,11 @@ public class enemyAi : MonoBehaviour, IDamage
 		if (InRadius)
 		{
 			Aggro();
+			
+			if (!isShooting)
+			{
+				StartCoroutine(Shoot());
+			}
 		}
 
 	}
@@ -44,7 +59,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
         if (agent.enabled)
         {
-			agent.SetDestination(GameManager.instance.player.transform.position);
+	        agent.SetDestination(GameManager.instance.player.transform.position);
         }
 		
 		
@@ -60,10 +75,11 @@ public class enemyAi : MonoBehaviour, IDamage
 	public void takeDamage(float dmg)
 	{
 		currentHealth -= dmg;
-		healthBar.SetHealth(currentHealth);
+		enemyHpBar.fillAmount = currentHealth/maxHealth;
 		StartCoroutine(flashDamage());
 		if (currentHealth <= 0)
 		{
+			
 			Destroy(gameObject);
 		}
 	}
@@ -77,10 +93,23 @@ public class enemyAi : MonoBehaviour, IDamage
 		agent.enabled = true;
 
 	}
+	
+	IEnumerator Shoot()
+	{
+		isShooting = true;
+		
+		Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+		
+		yield return new WaitForSeconds(shootRate);
+		
+		isShooting = false;
+	}
+
+
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.CompareTag("Player"))
 		{
 			InRadius = true;
 		}
@@ -88,7 +117,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.CompareTag("Player"))
 		{
 			InRadius = false;
 		}

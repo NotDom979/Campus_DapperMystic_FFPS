@@ -28,7 +28,7 @@ public class playerController : MonoBehaviour
 	private void Start()
 	{
 		HPOrigin = HP;
-		
+		respawn();
 	}
 
 	void Update()
@@ -69,7 +69,7 @@ public class playerController : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f,0.5f)), out hit, shootDist))
 			{
-				Instantiate(bullet, hit.point, transform.rotation);
+				//Instantiate(bullet, hit.point, transform.rotation);
 				if(hit.collider.GetComponent<IDamage>() != null)
 				{
 					hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
