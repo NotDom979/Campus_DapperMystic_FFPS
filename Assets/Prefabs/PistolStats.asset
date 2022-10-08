@@ -15,7 +15,8 @@ MonoBehaviour:
   shootRate: 1
   shootDist: 14
   shootDamage: 2
-  ammoCount: 1
+  ammoCount: 20
+  maxAmmo: 20
   gunModel: {fileID: 919132149155446097, guid: 726e329e1719c8f42949342e6a5b42e3, type: 3}
   hitEffect: {fileID: 0}
   muzzleEffect: {fileID: 0}
