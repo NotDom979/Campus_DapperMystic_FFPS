@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour
 {
 	[Header("-----PlayerStats-----")]
 	[SerializeField] CharacterController controller;
-	[SerializeField] CharacterController PlayerHeight;
+	
 	[SerializeField] float playerSpeed = 2.0f;
 	[SerializeField]float jumpHeight = 1.0f;
 	[SerializeField] float gravityValue = -9.81f;
@@ -16,6 +16,7 @@ public class playerController : MonoBehaviour
 	[SerializeField] float crouchSpeed;
 	[SerializeField] float CrouchYScale;
 	[SerializeField] float startYScale;
+	public KeyCode crouchKey = KeyCode.LeftControl;
 	
 		
 	[SerializeField] int HP;
@@ -78,20 +79,21 @@ public class playerController : MonoBehaviour
 			playerVelocity.y = jumpHeight;
 		}
 
-		playerVelocity.y += gravityValue * Time.deltaTime;
-		controller.Move(playerVelocity * Time.deltaTime);
 		
-		if (Input.GetKeyDown("c"))
+		if (Input.GetKeyDown(crouchKey))
 		{
 			
-			transform.localScale = new	Vector3 (transform.localScale.x, CrouchYScale, transform.localScale.z);
+			transform.localScale = new Vector3 (transform.localScale.x, CrouchYScale, transform.localScale.z);
+			playerSpeed = crouchSpeed;
 		}
 		
-		if (Input.GetKeyDown("c"))
+		if (Input.GetKeyDown(crouchKey))
 		{
-			transform.localScale = new	Vector3 (transform.localScale.x, startYScale, transform.localScale.z);
+			transform.localScale = new Vector3 (transform.localScale.x, startYScale, transform.localScale.z);
 		}
 		
+		playerVelocity.y += gravityValue * Time.deltaTime;
+		controller.Move(playerVelocity * Time.deltaTime);
 	}
 	IEnumerator shoot()
 	{
