@@ -22,7 +22,6 @@ public class enemyAi : MonoBehaviour, IDamage
 	// Start is called before the first frame update
 	void Start()
 	{
-		
 		currentHealth = maxHealth;
 	}
 

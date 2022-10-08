@@ -6,19 +6,22 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
-	
+	[Header("-----GameGoal------")]
+	public int flag;
 	public int enemyNumber;
-	
+	[Header("-----Player Relations------")]
 	public GameObject player;
 	public playerController playerScript;
 	public GameObject spawnPoint;
-	
+	[Header("-----MENUS-----")]
 	public GameObject pauseMenu;
 	public GameObject currMenu;
 	public GameObject winMenu;
 	public GameObject playerDeadMenu;
+	[Header("-----UI-----")]
 	public GameObject damageFlash;
 	public TextMeshProUGUI enemyCountText;
+	public TextMeshProUGUI flagCountText;
 	public Image playerHpBar;
 	
 	public bool isPaused;
@@ -72,7 +75,13 @@ public class GameManager : MonoBehaviour
 	{
 		enemyNumber--;
 		enemyCountText.text = enemyNumber.ToString("F0");
-		if (enemyNumber <= 0)
+		
+	}
+	public void	WinCondition()
+	{
+		flag++;
+		flagCountText.text = flag.ToString("F0");
+		if (flag == 1)
 		{
 			winMenu.SetActive(true);
 			cursorLockPause();
