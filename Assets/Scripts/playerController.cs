@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour
 	[SerializeField] List<gunStats> gunstats = new List<gunStats>();
 	[SerializeField] GameObject model;
 	bool isShooting;
-	int selectGun;
+	public int selectGun;
 
 	private void Start()
 	{
@@ -35,6 +35,7 @@ public class playerController : MonoBehaviour
 	{
 		movement();
 		StartCoroutine(shoot());
+		gunselect();
 	}
 	void movement()
 	{
@@ -105,7 +106,7 @@ public class playerController : MonoBehaviour
 		
 		gunstats.Add(stats);
 	}
-	public void gunselect()
+	void gunselect()
 	{
 		if (gunstats.Count > 1)
 		{
@@ -113,26 +114,26 @@ public class playerController : MonoBehaviour
 			{
 				
 				selectGun++;
-				shootRate = gunstats[selectGun].shootRate;
-				shootDist = gunstats[selectGun].shootDist;
-				shootDmg = gunstats[selectGun].shootDamage;
-				
-				model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-				model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+				changeGun();
 			}	
-			if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
+			else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
 			{
 				
 				selectGun--;
-				shootRate = gunstats[selectGun].shootRate;
-				shootDist = gunstats[selectGun].shootDist;
-				shootDmg = gunstats[selectGun].shootDamage;
-				
-				model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-				model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+				changeGun();
 			}	
 		}
 	}
+	void changeGun()
+	{
+		shootRate = gunstats[selectGun].shootRate;
+		shootDist = gunstats[selectGun].shootDist;
+		shootDmg = gunstats[selectGun].shootDamage;
+				
+		model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+		model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;	
+	}
+	
 	public void updatePLayerHud()
 	{
 		GameManager.instance.playerHpBar.fillAmount = (float)HP/(float)HPOrigin;
