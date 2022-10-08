@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour
 	[SerializeField] List<gunStats> gunstats = new List<gunStats>();
 	[SerializeField] GameObject model;
 	bool isShooting;
-	int selectGun;
+	public int selectGun;
 
 	private void Start()
 	{
@@ -106,7 +106,7 @@ public class playerController : MonoBehaviour
 		
 		gunstats.Add(stats);
 	}
-	public void gunselect()
+	void gunselect()
 	{
 		if (gunstats.Count > 1)
 		{
@@ -116,7 +116,7 @@ public class playerController : MonoBehaviour
 				selectGun++;
 				changeGun();
 			}	
-			if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
+			else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
 			{
 				
 				selectGun--;
