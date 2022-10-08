@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
   m_Name: SniperStats
   m_EditorClassIdentifier: 
-  shootRate: 0
-  shootDist: 0
-  shootDamage: 0
-  ammoCount: 0
-  gunModel: {fileID: 0}
+  shootRate: 2
+  shootDist: 1000
+  shootDamage: 50
+  ammoCount: 100
+  gunModel: {fileID: 919132149155446097, guid: 60d91f925d8c1e442bb6596dfb94ffff, type: 3}
   hitEffect: {fileID: 0}
   muzzleEffect: {fileID: 0}
   sound: {fileID: 0}
