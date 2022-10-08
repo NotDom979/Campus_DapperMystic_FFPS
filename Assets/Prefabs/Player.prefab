@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 906448362}
   playerSpeed: 7.5
-  jumpHeight: 10
+  jumpHeight: 5
   gravityValue: -9.81
   jumpsMax: 2
   HP: 0
@@ -144,6 +144,9 @@ MonoBehaviour:
   gunstats: []
   model: {fileID: 7205652690045399402}
   selectGun: 0
+  maxAmmo: 0
+  currentAmmo: 0
+  reloadTime: 0
 --- !u!1 &8016116104720336100
 GameObject:
   m_ObjectHideFlags: 0
