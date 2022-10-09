@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
   m_Name: RifleStats
   m_EditorClassIdentifier: 
-  shootRate: 1
+  shootRate: 0.5
   shootDist: 50
   shootDamage: 10
   ammoCount: 30
   maxAmmo: 30
   gunModel: {fileID: 919132149155446097, guid: 33269b2b610f4c245a712795c1927939, type: 3}
   hitEffect: {fileID: 0}
-  muzzleEffect: {fileID: 0}
+  muzzleEffect: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
+  shotPoint: {fileID: 1006748618589540714, guid: 10d4fe01f075d1a469956e4a9abbd0f9, type: 3}
   sound: {fileID: 0}

@@ -17,6 +17,7 @@ public class gunStats : ScriptableObject
 	public GameObject gunModel;
 	public GameObject hitEffect;
 	public GameObject muzzleEffect;
+	public GameObject shotPoint;
 	
 	//Audio Sounds (hit markers)
 	public AudioClip sound;
