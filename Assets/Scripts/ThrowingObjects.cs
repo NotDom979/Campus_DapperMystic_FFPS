@@ -44,8 +44,17 @@ public class ThrowingObjects : MonoBehaviour
 		//we get rigidbody
 		Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 		
+		//caculate direction
+		Vector3 forceDirection = cam.transform.forward;
+		RaycastHit hit;
+		
+		if (Physics.Raycast(cam.position, cam.forward, out hit,100f))
+		{
+			forceDirection = (hit.point - attackPoint.position).normalized;
+		}
+		
 		//Add Force
-		Vector3 forceToAdd = cam.transform.forward *throwForce + transform.up * throwupwardForce;
+		Vector3 forceToAdd = forceDirection *throwForce + transform.up * throwupwardForce;
 		
 		projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 		totalThrows--;
