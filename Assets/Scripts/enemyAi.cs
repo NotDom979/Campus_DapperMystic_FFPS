@@ -54,6 +54,10 @@ public class enemyAi : MonoBehaviour, IDamage
 			if (agent.stoppingDistance > agent.remainingDistance)
 			{
 				animator.SetInteger("Status_walk", 0);
+				if (GameManager.instance.playerScript.controller.isGrounded)
+				{
+					gameObject.transform.LookAt(GameManager.instance.player.transform);
+				}
 			}
             else
             {
@@ -136,5 +140,7 @@ public class enemyAi : MonoBehaviour, IDamage
 			InRadius = false;
 		}
 	}
+	
+	
 
 }
