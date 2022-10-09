@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5484936089861527164}
   - component: {fileID: 906448362}
   - component: {fileID: 906448363}
+  - component: {fileID: 252958363}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -136,7 +137,7 @@ MonoBehaviour:
   jumpHeight: 5
   gravityValue: -9.81
   jumpsMax: 2
-  HP: 0
+  HP: 10
   shootRate: 1
   shootDist: 15
   shootDmg: 1
@@ -150,6 +151,26 @@ MonoBehaviour:
   maxAmmo: 0
   currentAmmo: 0
   reloadTime: 0
+--- !u!114 &252958363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763743122540536327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f7f632b89b4dc4185e8ed4c49f0ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 6981777776952555518}
+  attackPoint: {fileID: 6981777776952555518}
+  objectToThrow: {fileID: 6894301593597968444, guid: 97962eda4faabb24badae707a8907ac0, type: 3}
+  totalThrows: 0
+  throwCoolDown: 0
+  throwForce: 0
+  throwupwardForce: 0
+  throwKey: 108
 --- !u!1 &2851201352568397600
 GameObject:
   m_ObjectHideFlags: 0
