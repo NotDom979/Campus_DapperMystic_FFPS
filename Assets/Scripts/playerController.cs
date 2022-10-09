@@ -6,14 +6,21 @@ public class playerController : MonoBehaviour
 {
 	[Header("-----PlayerStats-----")]
 	[SerializeField] CharacterController controller;
+	CapsuleCollider playerCol;
+	public float originalHeight;
+	public float reduceHeight;
+	
 	
 	[SerializeField] float playerSpeed = 2.0f;
 	[SerializeField]float jumpHeight = 1.0f;
 	[SerializeField] float gravityValue = -9.81f;
 	[SerializeField] int jumpsMax;
 	
-
-	
+	//[SerializeField] private float crouchSpeed;
+	//[SerializeField] private float standHeight = 2f;
+	//[SerializeField] private float crouchHeight;
+	//private bool isCrouching;
+		
 		
 	[SerializeField] int HP;
 	
@@ -26,7 +33,7 @@ public class playerController : MonoBehaviour
 	[SerializeField] int shootDist;
 	[SerializeField] int shootDmg;
 	[SerializeField] GameObject bullet;
-	[SerializeField] List<gunStats> gunstats = new List<gunStats>();
+	[SerializeField] List<gunStats> gunst = new List<gunStats>();
 	[SerializeField] GameObject model;
 	
 	bool isShooting;
@@ -54,6 +61,7 @@ public class playerController : MonoBehaviour
 		StartCoroutine(shoot());
 		gunselect();
 		
+		
 	}
 	void movement()
 	{
@@ -76,11 +84,14 @@ public class playerController : MonoBehaviour
 		}
 
 		
+	
 		
 		
 		playerVelocity.y += gravityValue * Time.deltaTime;
 		controller.Move(playerVelocity * Time.deltaTime);
 	}
+	
+	
 	IEnumerator shoot()
 	{
 		if (Input.GetButton("Shoot") && !isShooting)
@@ -130,19 +141,19 @@ public class playerController : MonoBehaviour
 		model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 		
-		gunstats.Add(stats);
+		gunst.Add(stats);
 		GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 	}
 	void gunselect()
 	{
-		if (gunstats.Count > 1)
+		if (gunst.Count > 1)
 		{
-			if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun > gunstats.Count - 1)
+			if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && selectGun > gunst.Count - 1)
 			{
 				selectGun++;
 				changeGun();
 			}	
-			if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
+			if (Input.GetAxisRaw("Mouse ScrollWheel") < 0 && selectGun > 0)
 			{
 				selectGun--;
 				changeGun();
@@ -152,13 +163,13 @@ public class playerController : MonoBehaviour
 	}
 	void changeGun()
 	{
-		shootRate = gunstats[selectGun].shootRate;
-		shootDist = gunstats[selectGun].shootDist;
-		shootDmg = gunstats[selectGun].shootDamage;
-		currentAmmo = gunstats[selectGun].ammoCount;
+		shootRate = gunst[selectGun].shootRate;
+		shootDist = gunst[selectGun].shootDist;
+		shootDmg = gunst[selectGun].shootDamage;
+		currentAmmo = gunst[selectGun].ammoCount;
 				
-		model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-		model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;	
+		model.GetComponent<MeshFilter>().sharedMesh = gunst[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+		model.GetComponent<MeshRenderer>().sharedMaterial = gunst[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;	
 	}
 	
 	public void updatePLayerHud()
