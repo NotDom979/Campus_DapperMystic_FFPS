@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour
 	[SerializeField] int shootDist;
 	[SerializeField] int shootDmg;
 	[SerializeField] GameObject bullet;
-	[SerializeField] List<gunStats> gunst = new List<gunStats>();
+	[SerializeField] List<gunStats> gunstats = new List<gunStats>();
 	[SerializeField] GameObject model;
 	
 	bool isShooting;
@@ -141,19 +141,19 @@ public class playerController : MonoBehaviour
 		model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 		
-		gunst.Add(stats);
+		gunstats.Add(stats);
 		GameManager.instance.AmmoCount.text	= currentAmmo.ToString("F0");
 	}
 	void gunselect()
 	{
-		if (gunst.Count > 1)
+		if (gunstats.Count > 1)
 		{
-			if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && selectGun > gunst.Count - 1)
+			if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun > gunstats.Count - 1)
 			{
 				selectGun++;
 				changeGun();
 			}	
-			if (Input.GetAxisRaw("Mouse ScrollWheel") < 0 && selectGun > 0)
+			if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
 			{
 				selectGun--;
 				changeGun();
@@ -163,13 +163,13 @@ public class playerController : MonoBehaviour
 	}
 	void changeGun()
 	{
-		shootRate = gunst[selectGun].shootRate;
-		shootDist = gunst[selectGun].shootDist;
-		shootDmg = gunst[selectGun].shootDamage;
-		currentAmmo = gunst[selectGun].ammoCount;
+		shootRate = gunstats[selectGun].shootRate;
+		shootDist = gunstats[selectGun].shootDist;
+		shootDmg = gunstats[selectGun].shootDamage;
+		currentAmmo = gunstats[selectGun].ammoCount;
 				
-		model.GetComponent<MeshFilter>().sharedMesh = gunst[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-		model.GetComponent<MeshRenderer>().sharedMaterial = gunst[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;	
+		model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+		model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;	
 	}
 	
 	public void updatePLayerHud()

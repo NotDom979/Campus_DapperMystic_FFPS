@@ -47,6 +47,15 @@ public class ThrowingObjects : MonoBehaviour
 		//Add Force
 		Vector3 forceToAdd = cam.transform.forward *throwForce + transform.up * throwupwardForce;
 		
+		projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
+		totalThrows--;
+		
+		//cooldown
+		Invoke(nameof(ResetThrow), throwCoolDown);
 	}
 	
+	private void ResetThrow()
+	{
+		readyTothrow = true;
+	}
 }
