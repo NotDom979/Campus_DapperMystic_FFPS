@@ -5,15 +5,16 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 public class enemyAi : MonoBehaviour, IDamage
 {
+	[Header("-----Components-----")]
+	[SerializeField] NavMeshAgent agent;
+	[SerializeField] Renderer model;
+	[SerializeField] private Animator animator;
+
 	[Header("-----Enemy Stats-----")]
 	public float maxHealth = 10;
 	float currentHealth;
 	public Image enemyHpBar;
 	[SerializeField] int sightDistance;
-
-	[Header("-----Components-----")]
-	[SerializeField] NavMeshAgent agent;
-	[SerializeField] Renderer model;
 
 	[Header("-----Enemy Gun Stats-----")]
 	[SerializeField] float shootRate;
@@ -38,7 +39,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	}
 
 
-	void FixedUpdate()
+	void Update()
 	{
 		
 		if (InRadius)
@@ -49,10 +50,23 @@ public class enemyAi : MonoBehaviour, IDamage
 			{
 				StartCoroutine(Shoot());
 			}
+
+			if (agent.stoppingDistance > agent.remainingDistance)
+			{
+				animator.SetInteger("Status_walk", 0);
+				if (GameManager.instance.playerScript.controller.isGrounded)
+				{
+					gameObject.transform.LookAt(GameManager.instance.player.transform);
+				}
+			}
+            else
+            {
+				animator.SetInteger("Status_walk", 1);
+			}
+
 		}
 
 	}
-
 
 
 	void Aggro()
@@ -60,6 +74,7 @@ public class enemyAi : MonoBehaviour, IDamage
         if (agent.enabled)
         {
 	        agent.SetDestination(GameManager.instance.player.transform.position);
+	        
         }
 		
 		
@@ -110,8 +125,10 @@ public class enemyAi : MonoBehaviour, IDamage
 
 	private void OnTriggerEnter(Collider other)
 	{
+		
 		if (other.CompareTag("Player"))
 		{
+			//animator.SetInteger("Status_walk", 1);
 			InRadius = true;
 		}
 	}
@@ -120,8 +137,11 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		if (other.CompareTag("Player"))
 		{
+			//animator.SetInteger("Status_walk", 0);
 			InRadius = false;
 		}
 	}
+	
+	
 
 }
