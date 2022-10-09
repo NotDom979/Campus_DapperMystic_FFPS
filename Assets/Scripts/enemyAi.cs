@@ -8,6 +8,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	[Header("-----Components-----")]
 	[SerializeField] NavMeshAgent agent;
 	[SerializeField] Renderer model;
+	[SerializeField] private Animator animator;
 
 	[Header("-----Enemy Stats-----")]
 	public float maxHealth = 10;
@@ -49,10 +50,19 @@ public class enemyAi : MonoBehaviour, IDamage
 			{
 				StartCoroutine(Shoot());
 			}
+
+			if (agent.stoppingDistance > agent.remainingDistance)
+			{
+				animator.SetInteger("Status_walk", 0);
+			}
+            else
+            {
+				animator.SetInteger("Status_walk", 1);
+			}
+
 		}
 
 	}
-
 
 
 	void Aggro()
@@ -110,8 +120,10 @@ public class enemyAi : MonoBehaviour, IDamage
 
 	private void OnTriggerEnter(Collider other)
 	{
+		
 		if (other.CompareTag("Player"))
 		{
+			//animator.SetInteger("Status_walk", 1);
 			InRadius = true;
 		}
 	}
@@ -120,6 +132,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		if (other.CompareTag("Player"))
 		{
+			//animator.SetInteger("Status_walk", 0);
 			InRadius = false;
 		}
 	}
