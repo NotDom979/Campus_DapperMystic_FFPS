@@ -5,12 +5,12 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     [Header("-----PlayerStats-----")]
-    [SerializeField] CharacterController controller;
+    [SerializeField] public CharacterController controller;
     [SerializeField] float playerSpeed = 2.0f;
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
     [SerializeField] int jumpsMax;
-    [SerializeField] int HP;
+	[SerializeField] public int HP;
     int HPOrigin;
     private Vector3 playerVelocity;
     private int timesJumped;
@@ -119,9 +119,12 @@ public class playerController : MonoBehaviour
     public void takeDamage(int dmg)
     {
         HP -= dmg;
-        updatePLayerHud();
-        StartCoroutine(GameManager.instance.playerDamage());
-        if (HP <= 0)
+	    updatePLayerHud();
+	    if (HP >= 0)
+	    {
+		    StartCoroutine(GameManager.instance.playerDamage());
+	    }
+	    else if (HP <= 0)
         {
             GameManager.instance.playerDeadMenu.SetActive(true);
             GameManager.instance.cursorLockPause();
