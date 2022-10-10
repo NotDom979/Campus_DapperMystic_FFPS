@@ -23,9 +23,9 @@ public class enemyAi : MonoBehaviour, IDamage
 	
 	
 	
-	 bool InRadius;
+	bool InRadius;
 	bool isShooting;
-	
+	public float detectRange;
 	
 	
 	
@@ -39,8 +39,9 @@ public class enemyAi : MonoBehaviour, IDamage
 	}
 
 
-	void Update()
+	void FixedUpdate()
 	{
+		
 		
 		if (InRadius)
 		{
@@ -59,7 +60,7 @@ public class enemyAi : MonoBehaviour, IDamage
 					gameObject.transform.LookAt(GameManager.instance.player.transform);
 				}
 			}
-            else
+           else
             {
 				animator.SetInteger("Status_walk", 1);
 			}
@@ -128,7 +129,7 @@ public class enemyAi : MonoBehaviour, IDamage
 		
 		if (other.CompareTag("Player"))
 		{
-			//animator.SetInteger("Status_walk", 1);
+			animator.SetInteger("Status_walk", 1);
 			InRadius = true;
 		}
 	}
@@ -137,8 +138,25 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		if (other.CompareTag("Player"))
 		{
-			//animator.SetInteger("Status_walk", 0);
+			animator.SetInteger("Status_walk", 0);
 			InRadius = false;
+		}
+	}
+	private void detectRay()
+	{
+		RaycastHit hit;
+		
+		Ray detectHit = new Ray(transform.position, Vector3.right * detectRange);
+		
+		Debug.DrawRay(transform.position, Vector3.right * detectRange);
+		
+		
+		if (Physics.Raycast(detectHit, out hit, detectRange))
+		{
+			if (hit.collider.gameObject.tag == "Player")
+			{
+				InRadius = true;
+			}
 		}
 	}
 	

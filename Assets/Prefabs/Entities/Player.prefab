@@ -98,8 +98,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2
-  m_Height: 2
+  m_Radius: 0.57
+  m_Height: 0.57
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &906448362
@@ -137,13 +137,14 @@ MonoBehaviour:
   jumpHeight: 5
   gravityValue: -9.81
   jumpsMax: 2
-  HP: 10
+  HP: 50
   shootRate: 1
   shootDist: 15
   shootDmg: 1
   bullet: {fileID: 4754290576305499760, guid: a689f3437d599ea4c85c3f94f9735826, type: 3}
   gunstats: []
   model: {fileID: 7205652690045399402}
+  hitEffect: {fileID: 0}
   muzzleFlash: {fileID: 934470531924485597}
   gunShot: {fileID: 8279317933896984245}
   shotPoint: {fileID: 2851201352568397600}
