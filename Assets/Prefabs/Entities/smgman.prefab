@@ -3338,7 +3338,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 14
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &1315586514341940455
 CapsuleCollider:
@@ -3389,13 +3389,15 @@ MonoBehaviour:
   agent: {fileID: 1315586514341940453}
   model: {fileID: 1416116415166484724}
   animator: {fileID: 1315586514341940376}
+  gunShot: {fileID: 0}
+  footSteps: {fileID: 0}
+  grunt: {fileID: 0}
   maxHealth: 10
   enemyHpBar: {fileID: 8483499221394656342}
   sightDistance: 0
   shootRate: 0.5
   bullet: {fileID: 2756442876530181434, guid: 0a729f819a07a3747abdbd8e60d9cd08, type: 3}
   shotPoint: {fileID: 1315586514088534978}
-  detectRange: 0
 --- !u!195 &1315586514341940453
 NavMeshAgent:
   m_ObjectHideFlags: 0
