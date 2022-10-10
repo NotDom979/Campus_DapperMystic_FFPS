@@ -179,7 +179,8 @@ public class playerController : MonoBehaviour
         shootRate = gunstats[selectGun].shootRate;
         shootDist = gunstats[selectGun].shootDist;
         shootDmg = gunstats[selectGun].shootDamage;
-        currentAmmo = gunstats[selectGun].ammoCount;
+	    currentAmmo = gunstats[selectGun].ammoCount;
+	    maxAmmo = gunstats[selectGun].maxAmmo;
         muzzleFlash = gunstats[selectGun].muzzleEffect;
 	    shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
 	    hitEffect = gunstats[selectGun].hitEffect;
