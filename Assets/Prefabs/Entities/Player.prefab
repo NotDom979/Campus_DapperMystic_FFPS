@@ -137,7 +137,7 @@ MonoBehaviour:
   jumpHeight: 5
   gravityValue: -9.81
   jumpsMax: 2
-  HP: 50
+  HP: 100
   shootRate: 1
   shootDist: 15
   shootDmg: 1
@@ -165,12 +165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6981777776952555518}
-  attackPoint: {fileID: 6981777776952555518}
-  objectToThrow: {fileID: 6894301593597968444, guid: 97962eda4faabb24badae707a8907ac0, type: 3}
-  totalThrows: 0
-  throwCoolDown: 0
-  throwForce: 0
-  throwupwardForce: 0
+  attackPoint: {fileID: 7544741438673529808}
+  objectToThrow: {fileID: 7116825938010822363, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+  totalThrows: 10
+  throwCoolDown: 1
+  throwForce: 18
+  throwupwardForce: 5
   throwKey: 108
 --- !u!1 &2851201352568397600
 GameObject:
