@@ -21,7 +21,8 @@ public class playerController : MonoBehaviour
     [SerializeField] int shootDmg;
     [SerializeField] GameObject bullet;
     [SerializeField] List<gunStats> gunstats = new List<gunStats>();
-    [SerializeField] GameObject model;
+	[SerializeField] GameObject model;
+	public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
     public GameObject shotPoint;
@@ -34,7 +35,8 @@ public class playerController : MonoBehaviour
     public int currentAmmo;
     public int reloadTime;
     private GameObject mfClone;
-    private GameObject spClone;
+	private GameObject spClone;
+	private GameObject hitEffClone;
 
 
     private void Start()
@@ -43,7 +45,7 @@ public class playerController : MonoBehaviour
         HPOrigin = HP;
         respawn();
         currentAmmo = maxAmmo;
-        GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
     }
 
     void Update()
@@ -87,20 +89,27 @@ public class playerController : MonoBehaviour
             {
                 isShooting = true;
                 mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
-                mfClone.SetActive(true);
-                gunShot.Play();
+	            mfClone.SetActive(true);
+	            gunShot.Play();
+	            StartCoroutine(StartRecoil());
                 StartCoroutine(muzzleWait());
                 currentAmmo--;
                 GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
                 {
-                    //Instantiate(bullet, hit.point, transform.rotation);
+	                //Instantiate(bullet, hit.point, transform.rotation);
                     if (hit.collider.GetComponent<IDamage>() != null)
                     {
-                        hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
+    	                hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
+	                    hitEffClone.SetActive(true);
+
+	                    hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
+                        hitEffect.SetActive(false);
+                        //StartCoroutine(bloodWait());
                     }
                 }
+                
 
                 Debug.Log("ZipBang");
                 if (shootRate <= 1)
@@ -110,7 +119,8 @@ public class playerController : MonoBehaviour
                 yield return new WaitForSeconds(shootRate);
                 isShooting = false;
                 gunShot.Stop();
-                Destroy(mfClone);
+	            Destroy(mfClone);
+	            Destroy(hitEffClone);
             }
         }
 
@@ -138,7 +148,9 @@ public class playerController : MonoBehaviour
         currentAmmo = stats.ammoCount;
         maxAmmo = stats.maxAmmo;
         muzzleFlash = stats.muzzleEffect;
-        shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
+	    shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
+	    hitEffect = stats.hitEffect;
+        hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
         model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
@@ -167,10 +179,12 @@ public class playerController : MonoBehaviour
         shootRate = gunstats[selectGun].shootRate;
         shootDist = gunstats[selectGun].shootDist;
         shootDmg = gunstats[selectGun].shootDamage;
-        currentAmmo = gunstats[selectGun].ammoCount;
+	    currentAmmo = gunstats[selectGun].ammoCount;
+	    maxAmmo = gunstats[selectGun].maxAmmo;
         muzzleFlash = gunstats[selectGun].muzzleEffect;
-        shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
-
+	    shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
+	    hitEffect = gunstats[selectGun].hitEffect;
+        hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
     }
@@ -204,4 +218,15 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         mfClone.SetActive(false);
     }
+	IEnumerator bloodWait()
+	{
+		yield return new WaitForSeconds(.5f);
+		hitEffect.SetActive(false);
+	}
+	IEnumerator StartRecoil()
+	{
+		model.GetComponent<Animator>().Play("Recoil");
+		yield return new WaitForSeconds(.2f);
+		model.GetComponent<Animator>().Play("New State");
+	}
 }
