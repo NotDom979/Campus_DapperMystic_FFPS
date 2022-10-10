@@ -45,7 +45,7 @@ public class playerController : MonoBehaviour
         HPOrigin = HP;
         respawn();
         currentAmmo = maxAmmo;
-        GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
     }
 
     void Update()
@@ -98,14 +98,17 @@ public class playerController : MonoBehaviour
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
                 {
 	                //Instantiate(bullet, hit.point, transform.rotation);
-	                hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
                     if (hit.collider.GetComponent<IDamage>() != null)
                     {
+    	                hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
 	                    hitEffClone.SetActive(true);
-                        hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
+
+	                    hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
+                        hitEffect.SetActive(false);
+                        //StartCoroutine(bloodWait());
                     }
-	                hitEffClone.SetActive(false);
                 }
+                
 
                 Debug.Log("ZipBang");
                 if (shootRate <= 1)
@@ -146,6 +149,7 @@ public class playerController : MonoBehaviour
         muzzleFlash = stats.muzzleEffect;
 	    shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
 	    hitEffect = stats.hitEffect;
+        hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
         model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
@@ -178,7 +182,7 @@ public class playerController : MonoBehaviour
         muzzleFlash = gunstats[selectGun].muzzleEffect;
 	    shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
 	    hitEffect = gunstats[selectGun].hitEffect;
-
+        hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
     }
@@ -212,4 +216,9 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         mfClone.SetActive(false);
     }
+	IEnumerator bloodWait()
+	{
+		yield return new WaitForSeconds(.5f);
+		hitEffect.SetActive(false);
+	}
 }
