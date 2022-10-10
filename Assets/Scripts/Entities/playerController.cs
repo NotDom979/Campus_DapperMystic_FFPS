@@ -89,8 +89,9 @@ public class playerController : MonoBehaviour
             {
                 isShooting = true;
                 mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
-                mfClone.SetActive(true);
-                gunShot.Play();
+	            mfClone.SetActive(true);
+	            gunShot.Play();
+	            StartCoroutine(StartRecoil());
                 StartCoroutine(muzzleWait());
                 currentAmmo--;
                 GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
@@ -220,5 +221,11 @@ public class playerController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(.5f);
 		hitEffect.SetActive(false);
+	}
+	IEnumerator StartRecoil()
+	{
+		model.GetComponent<Animator>().Play("Recoil");
+		yield return new WaitForSeconds(.2f);
+		model.GetComponent<Animator>().Play("New State");
 	}
 }

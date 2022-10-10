@@ -49,7 +49,7 @@ public class enemyAi : MonoBehaviour, IDamage
 			
 			if (!isShooting)
 			{
-				StartCoroutine(Shoot());
+				StartCoroutine(Shoot()); 
 			}
 
 			if (agent.stoppingDistance > agent.remainingDistance)
