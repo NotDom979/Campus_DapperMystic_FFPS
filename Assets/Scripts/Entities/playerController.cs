@@ -53,7 +53,8 @@ public class playerController : MonoBehaviour
         StartCoroutine(reloadGun());
         movement();
         StartCoroutine(shoot());
-        gunselect();
+	    gunselect();
+	  
     }
     void movement()
     {
@@ -125,6 +126,18 @@ public class playerController : MonoBehaviour
         }
 
     }
+	public void AddHealth(int amount)
+	{
+		
+		HP += amount;
+		HP = Mathf.Min(HP,HPOrigin);
+		if (HP >= 0)
+		{
+			updatePLayerHud();
+			
+		}
+		
+	}
 
     public void takeDamage(int dmg)
     {
