@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 906448362}
   - component: {fileID: 906448363}
   - component: {fileID: 252958363}
+  - component: {fileID: 1992838641}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -172,6 +173,21 @@ MonoBehaviour:
   throwForce: 18
   throwupwardForce: 5
   throwKey: 108
+--- !u!114 &1992838641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763743122540536327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8804e716f08b93b4baa94d4d121636b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHeight: {fileID: 906448362}
+  normalHeight: 2
+  crouchHeight: 1.7
 --- !u!1 &2851201352568397600
 GameObject:
   m_ObjectHideFlags: 0
