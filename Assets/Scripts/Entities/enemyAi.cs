@@ -51,7 +51,7 @@ public class enemyAi : MonoBehaviour, IDamage
 			
 			Aggro();
 
-
+			footSteps.enabled = true;
 			if (!isShooting)
 			{
 				StartCoroutine(Shoot());
@@ -59,6 +59,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
 			if (agent.stoppingDistance > agent.remainingDistance)
 			{
+				footSteps.enabled = false;
 				animator.SetInteger("Status_walk", 0);
 				if (GameManager.instance.playerScript.controller.isGrounded)
 				{
@@ -67,13 +68,15 @@ public class enemyAi : MonoBehaviour, IDamage
 			}
             else
 			{
+	            footSteps.enabled = true;
 				animator.SetInteger("Status_walk", 1);
 			}
 
 			
 		}
         else
-        {
+		{
+        	footSteps.enabled = false;
 			animator.SetInteger("Status_walk", 0);
 		}
 

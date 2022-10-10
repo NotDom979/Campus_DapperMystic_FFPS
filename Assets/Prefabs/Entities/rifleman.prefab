@@ -70,14 +70,14 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239766082}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8beb6a965d2464242956f3798f011459, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1.5
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2035,7 +2035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6271095705815521683
 Transform:
   m_ObjectHideFlags: 0
@@ -2149,7 +2149,6 @@ MonoBehaviour:
   shootRate: 1
   bullet: {fileID: 3918676243091978572, guid: 66d26abcfb77b054eb09f7c63ff2c44a, type: 3}
   shotPoint: {fileID: 286783434}
-  detectRange: 0
 --- !u!136 &4640602176995531728
 CapsuleCollider:
   m_ObjectHideFlags: 0
