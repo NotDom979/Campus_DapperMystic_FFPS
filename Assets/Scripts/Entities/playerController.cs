@@ -11,6 +11,9 @@ public class playerController : MonoBehaviour
     [SerializeField] float gravityValue = -9.81f;
     [SerializeField] int jumpsMax;
 	[SerializeField] public int HP;
+	public AudioSource playerGrunt;
+	public AudioSource playerJumpNoise;
+	public AudioSource playerFootSteps;
     int HPOrigin;
     private Vector3 playerVelocity;
     private int timesJumped;
@@ -25,6 +28,8 @@ public class playerController : MonoBehaviour
 	public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
+	public AudioSource reloadSound;
+	public AudioSource weaponPickupSound;
     public GameObject shotPoint;
 
     bool isShooting;
@@ -40,7 +45,9 @@ public class playerController : MonoBehaviour
 
 
     private void Start()
-    {
+	{
+		playerGrunt.pitch = 2;
+		playerGrunt.volume = .598f;
         selectGun = 0;
         HPOrigin = HP;
         respawn();
@@ -51,7 +58,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         StartCoroutine(reloadGun());
-        movement();
+	    movement();
         StartCoroutine(shoot());
 	    gunselect();
 	  
@@ -68,19 +75,45 @@ public class playerController : MonoBehaviour
         controller.Move(move * Time.deltaTime * playerSpeed);
         if (Input.GetButton("Sprint"))
         {
+            playerFootSteps.pitch = 2.5f;
             controller.Move(move * Time.deltaTime * (playerSpeed * 1.50f));
         }
-
+        else
+        {
+            playerFootSteps.pitch = 1.6f;
+        }
 
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && timesJumped < jumpsMax)
         {
             timesJumped++;
-            playerVelocity.y = jumpHeight;
+	        playerVelocity.y = jumpHeight;
+	        if (timesJumped == 1)
+	        {
+		        playerJumpNoise.pitch = 1;
+		        playerJumpNoise.Play(1);
+	        }
+	        else if (timesJumped == 2)
+	        {
+	        	playerJumpNoise.pitch = 1.1f;
+	        	playerJumpNoise.Play();
+	        }
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && timesJumped == 0)
+        {
+            playerFootSteps.enabled = true;
+            
+        }
+        else
+        {
+            playerFootSteps.enabled = false;
+        }
+
     }
     IEnumerator shoot()
     {
@@ -145,16 +178,21 @@ public class playerController : MonoBehaviour
 	    updatePLayerHud();
 	    if (HP >= 0)
 	    {
+		    playerGrunt.Play(1);
 		    StartCoroutine(GameManager.instance.playerDamage());
 	    }
 	    else if (HP <= 0)
-        {
+	    {
+		    playerGrunt.volume = 1;
+		    playerGrunt.pitch = 1;
+		    playerGrunt.Play(1);
             GameManager.instance.playerDeadMenu.SetActive(true);
             GameManager.instance.cursorLockPause();
         }
     }
     public void gunPickup(gunStats stats)
     {
+	    weaponPickupSound.Play(1);
         shootRate = stats.shootRate;
         shootDist = stats.shootDist;
         shootDmg = stats.shootDamage;
@@ -189,10 +227,12 @@ public class playerController : MonoBehaviour
     }
     void changeGun()
     {
+	    weaponPickupSound.Play(1);
         shootRate = gunstats[selectGun].shootRate;
         shootDist = gunstats[selectGun].shootDist;
         shootDmg = gunstats[selectGun].shootDamage;
-        currentAmmo = gunstats[selectGun].ammoCount;
+	    currentAmmo = gunstats[selectGun].ammoCount;
+	    maxAmmo = gunstats[selectGun].maxAmmo;
         muzzleFlash = gunstats[selectGun].muzzleEffect;
 	    shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
 	    hitEffect = gunstats[selectGun].hitEffect;
@@ -219,6 +259,7 @@ public class playerController : MonoBehaviour
 
         if (Input.GetKeyDown("r"))
         {
+        	reloadSound.Play(1);
             Debug.Log("Reload");
             yield return new WaitForSeconds(reloadTime);
             currentAmmo = maxAmmo;
@@ -241,4 +282,6 @@ public class playerController : MonoBehaviour
 		yield return new WaitForSeconds(.2f);
 		model.GetComponent<Animator>().Play("New State");
 	}
+	
+	
 }
