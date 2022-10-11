@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator playerDamage()
 	{
-		if (playerScript.HP != 0)
+		if (playerScript.HP >= 2)
 		{
 			damageFlash.SetActive(true);
 			yield return new WaitForSeconds(0.1f);

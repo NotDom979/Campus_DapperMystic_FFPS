@@ -61,6 +61,10 @@ public class playerController : MonoBehaviour
 	    movement();
         StartCoroutine(shoot());
 	    gunselect();
+	    if (GameManager.instance.playerDeadMenu.activeSelf == true)
+	    {
+	    	GameManager.instance.damageFlash.SetActive(false);
+	    }
 	  
     }
     void movement()
