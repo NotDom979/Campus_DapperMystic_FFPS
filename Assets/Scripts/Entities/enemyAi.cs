@@ -50,7 +50,7 @@ public class enemyAi : MonoBehaviour, IDamage
 		{
 			
 			Aggro();
-
+			animator.SetInteger("Status_walk", 1);
 			footSteps.enabled = true;
 			if (!isShooting)
 			{
@@ -59,6 +59,8 @@ public class enemyAi : MonoBehaviour, IDamage
 
 			if (agent.stoppingDistance > agent.remainingDistance)
 			{
+				RaycastHit hit;
+				Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit);
 				footSteps.enabled = false;
 				animator.SetInteger("Status_walk", 0);
 				if (GameManager.instance.playerScript.controller.isGrounded)
