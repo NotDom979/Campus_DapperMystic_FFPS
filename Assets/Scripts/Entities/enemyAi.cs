@@ -62,7 +62,7 @@ public class enemyAi : MonoBehaviour, IDamage
 				RaycastHit hit;
 				Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit);
 				footSteps.enabled = false;
-				animator.SetInteger("Status_walk", 0);
+				animator.enabled = false;
 				if (GameManager.instance.playerScript.controller.isGrounded)
 				{
 					gameObject.transform.LookAt(GameManager.instance.player.transform);
@@ -70,6 +70,7 @@ public class enemyAi : MonoBehaviour, IDamage
 			}
             else
 			{
+	            animator.enabled = true;
 	            footSteps.enabled = true;
 				animator.SetInteger("Status_walk", 1);
 			}
