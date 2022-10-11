@@ -65,7 +65,7 @@ public class enemyAi : MonoBehaviour, IDamage
 				animator.enabled = false;
 				if (GameManager.instance.playerScript.controller.isGrounded)
 				{
-					gameObject.transform.LookAt(GameManager.instance.player.transform);
+					gameObject.transform.LookAt(new Vector3(GameManager.instance.player.transform.position.x, 0, GameManager.instance.player.transform.position.z ));
 				}
 			}
             else

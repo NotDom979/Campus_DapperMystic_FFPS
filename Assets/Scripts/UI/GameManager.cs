@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+	{
+		checkWin();
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
@@ -91,4 +92,12 @@ public class GameManager : MonoBehaviour
             cursorLockPause();
         }
     }
+	public void checkWin()
+	{
+		if (flag == 1 && enemyNumber == 0)
+		{
+			winMenu.SetActive(true);
+			cursorLockPause();
+		}
+	}
 }

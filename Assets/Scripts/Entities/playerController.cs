@@ -80,7 +80,7 @@ public class playerController : MonoBehaviour
         if (Input.GetButton("Sprint"))
         {
             playerFootSteps.pitch = 2.5f;
-            controller.Move(move * Time.deltaTime * (playerSpeed * 1.50f));
+	        controller.Move(move * Time.deltaTime * (playerSpeed * 1.10f));
         }
         else
         {
