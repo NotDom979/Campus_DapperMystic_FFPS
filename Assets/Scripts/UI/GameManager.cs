@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         flag++;
         flagCountText.text = flag.ToString("F0");
-        if (flag == 1)
+	    if (flag == 1 && enemyNumber == 0)
         {
             winMenu.SetActive(true);
             cursorLockPause();

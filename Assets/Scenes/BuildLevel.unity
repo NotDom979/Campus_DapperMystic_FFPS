@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36292675, g: 0.566185, b: 0.8437086, a: 1}
+  m_IndirectSpecularColor: {r: 0.44256675, g: 0.6803567, b: 0.83149755, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17662,14 +17662,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 540784970129368697, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -273.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 540784970129368697, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -27.7
-      objectReference: {fileID: 0}
     - target: {fileID: 2281933383835997044, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
       propertyPath: m_Name
       value: UI
@@ -17757,10 +17749,6 @@ PrefabInstance:
     - target: {fileID: 4868912987160542112, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183037347048923691, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: m_text
-      value: 'Goal: Capture the Flag'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
