@@ -60,7 +60,7 @@ public class enemyAi : MonoBehaviour, IDamage
 			if (agent.stoppingDistance > agent.remainingDistance)
 			{
 				footSteps.enabled = false;
-				animator.SetInteger("Status_walk", 0);
+				animator.enabled = false;
 				if (GameManager.instance.playerScript.controller.isGrounded)
 				{
 					gameObject.transform.LookAt(GameManager.instance.player.transform);
@@ -68,6 +68,7 @@ public class enemyAi : MonoBehaviour, IDamage
 			}
             else
 			{
+	            animator.enabled = true;
 	            footSteps.enabled = true;
 				animator.SetInteger("Status_walk", 1);
 			}
