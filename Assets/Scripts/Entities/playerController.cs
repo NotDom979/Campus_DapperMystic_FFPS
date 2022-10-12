@@ -11,10 +11,12 @@ public class playerController : MonoBehaviour
     [SerializeField] float gravityValue = -9.81f;
     [SerializeField] int jumpsMax;
 	[SerializeField] public int HP;
+	[SerializeField] public int Armor;
 	public AudioSource playerGrunt;
 	public AudioSource playerJumpNoise;
 	public AudioSource playerFootSteps;
-    int HPOrigin;
+	int HPOrigin;
+	int ArmorOrigin;
     private Vector3 playerVelocity;
     private int timesJumped;
 
@@ -49,7 +51,8 @@ public class playerController : MonoBehaviour
 		playerGrunt.pitch = 2;
 		playerGrunt.volume = .598f;
         selectGun = 0;
-        HPOrigin = HP;
+		HPOrigin = HP;
+		ArmorOrigin = Armor;
         respawn();
         currentAmmo = maxAmmo;
 	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
@@ -177,8 +180,13 @@ public class playerController : MonoBehaviour
 	}
 
     public void takeDamage(int dmg)
-    {
-        HP -= dmg;
+	{
+		if (Armor <= 0)
+		{
+			HP -= dmg;
+		}
+		else
+			Armor -= dmg;
 	    updatePLayerHud();
 	    if (HP <= 0)
 	    {
@@ -247,7 +255,8 @@ public class playerController : MonoBehaviour
 
     public void updatePLayerHud()
     {
-        GameManager.instance.playerHpBar.fillAmount = (float)HP / (float)HPOrigin;
+	    GameManager.instance.playerHpBar.fillAmount = (float)HP / (float)HPOrigin;
+	    GameManager.instance.playerArmorBar.fillAmount = (float)Armor / (float)ArmorOrigin;
     }
     public void respawn()
     {

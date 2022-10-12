@@ -21,6 +21,7 @@ public class ThrowingObjects : MonoBehaviour
 	bool readyTothrow;
 	
 	private void Start(){
+		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
 		readyTothrow = true;
 		
 	}
@@ -58,6 +59,7 @@ public class ThrowingObjects : MonoBehaviour
 		
 		projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 		totalThrows--;
+		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
 		
 		//cooldown
 		Invoke(nameof(ResetThrow), throwCoolDown);
