@@ -163,8 +163,10 @@ public class playerController : MonoBehaviour
 	{
 		
 		HP += amount;
-		HP = Mathf.Min(HP,HPOrigin);
-		if (HP >= 0)
+       /* if (HP > HPOrigin)
+            HP = HPOrigin;*/
+        HP = Mathf.Min(HP,HPOrigin);
+        if (HP >= 0)
 		{
 			updatePLayerHud();
 			
