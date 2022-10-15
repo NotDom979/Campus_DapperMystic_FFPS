@@ -22,8 +22,10 @@ public class GameManager : MonoBehaviour
     public GameObject damageFlash;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
-    public TextMeshProUGUI AmmoCount;
-    public Image playerHpBar;
+	public TextMeshProUGUI AmmoCount;
+	public TextMeshProUGUI LethalCount;
+	public Image playerHpBar;
+	public Image playerArmorBar;
 
     public bool isPaused;
     // Start is called before the first frame update
