@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 7472279680885649567}
   - component: {fileID: 4924067658057301090}
   - component: {fileID: 5281342804774032114}
+  - component: {fileID: 4697364634688618783}
   m_Layer: 7
   m_Name: smgman
   m_TagString: wehrmacht_b
@@ -940,7 +941,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: b62974c49f5299d46b0863486a23e25d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -993,6 +994,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &4697364634688618783
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529212465647581619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!1 &2825425303151995793
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ public class enemyAi : MonoBehaviour, IDamage
 		{
 			
 			Aggro();
-
+			animator.SetInteger("Status_walk", 1);
 			footSteps.enabled = true;
 			if (!isShooting)
 			{
@@ -59,15 +59,18 @@ public class enemyAi : MonoBehaviour, IDamage
 
 			if (agent.stoppingDistance > agent.remainingDistance)
 			{
+				RaycastHit hit;
+				Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit);
 				footSteps.enabled = false;
-				animator.SetInteger("Status_walk", 0);
+				animator.enabled = false;
 				if (GameManager.instance.playerScript.controller.isGrounded)
 				{
-					gameObject.transform.LookAt(GameManager.instance.player.transform);
+					gameObject.transform.LookAt(new Vector3(GameManager.instance.player.transform.position.x, 0, GameManager.instance.player.transform.position.z ));
 				}
 			}
             else
 			{
+	            animator.enabled = true;
 	            footSteps.enabled = true;
 				animator.SetInteger("Status_walk", 1);
 			}

@@ -61,6 +61,10 @@ public class playerController : MonoBehaviour
 	    movement();
         StartCoroutine(shoot());
 	    gunselect();
+	    if (GameManager.instance.playerDeadMenu.activeSelf == true)
+	    {
+	    	GameManager.instance.damageFlash.SetActive(false);
+	    }
 	  
     }
     void movement()
@@ -76,7 +80,7 @@ public class playerController : MonoBehaviour
         if (Input.GetButton("Sprint"))
         {
             playerFootSteps.pitch = 2.5f;
-            controller.Move(move * Time.deltaTime * (playerSpeed * 1.50f));
+	        controller.Move(move * Time.deltaTime * (playerSpeed * 1.10f));
         }
         else
         {
@@ -176,18 +180,18 @@ public class playerController : MonoBehaviour
     {
         HP -= dmg;
 	    updatePLayerHud();
-	    if (HP >= 0)
-	    {
-		    playerGrunt.Play(1);
-		    StartCoroutine(GameManager.instance.playerDamage());
-	    }
-	    else if (HP <= 0)
+	    if (HP <= 0)
 	    {
 		    playerGrunt.volume = 1;
 		    playerGrunt.pitch = 1;
 		    playerGrunt.Play(1);
-            GameManager.instance.playerDeadMenu.SetActive(true);
-            GameManager.instance.cursorLockPause();
+		    GameManager.instance.playerDeadMenu.SetActive(true);
+		    GameManager.instance.cursorLockPause();
+	    }
+	    else 
+	    {
+	    	playerGrunt.Play(1);
+		    StartCoroutine(GameManager.instance.playerDamage());
         }
     }
     public void gunPickup(gunStats stats)

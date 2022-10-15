@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+	{
+		checkWin();
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator playerDamage()
 	{
-		if (playerScript.HP != 0)
+		if (playerScript.HP >= 2)
 		{
 			damageFlash.SetActive(true);
 			yield return new WaitForSeconds(0.1f);
@@ -85,10 +86,18 @@ public class GameManager : MonoBehaviour
     {
         flag++;
         flagCountText.text = flag.ToString("F0");
-        if (flag == 1)
+	    if (flag == 1 && enemyNumber == 0)
         {
             winMenu.SetActive(true);
             cursorLockPause();
         }
     }
+	public void checkWin()
+	{
+		if (flag == 1 && enemyNumber == 0)
+		{
+			winMenu.SetActive(true);
+			cursorLockPause();
+		}
+	}
 }
