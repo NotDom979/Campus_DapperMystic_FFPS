@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1849256083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1849256084}
+  m_Layer: 0
+  m_Name: LaunchPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1849256084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849256083}
+  m_LocalRotation: {x: -0.97317135, y: -0.11765768, z: -0.19631606, w: 0.023540717}
+  m_LocalPosition: {x: -0.127, y: -0.014, z: 0.008}
+  m_LocalScale: {x: 0.17122623, y: 0.17122619, z: 0.17122637}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4110242864954038543}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4110242864954148457
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +538,7 @@ Transform:
   m_Children:
   - {fileID: 5685373592085381082}
   - {fileID: 5685373591738701574}
+  - {fileID: 1849256084}
   m_Father: {fileID: 4110242864954032275}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -636,7 +668,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4110242864954241103}
-  m_LocalRotation: {x: -0, y: -0.8061743, z: -0, w: 0.5916781}
+  m_LocalRotation: {x: 0, y: -0.80617625, z: 0, w: 0.5916756}
   m_LocalPosition: {x: 8.7398, y: 0.06, z: -10.89}
   m_LocalScale: {x: 1.8115494, y: 1.8115494, z: 1.8115494}
   m_ConstrainProportionsScale: 0
@@ -697,7 +729,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 25
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4110242864963612904
 MonoBehaviour:
@@ -723,8 +755,12 @@ MonoBehaviour:
   HeadPos: {fileID: 5685373591738701575}
   speedChase: 10
   FacePlayerSpeed: 8
-  AttackRate: 1
+  AttackRate: 1.5
   AttackPoint: {fileID: 5685373592085381083}
+  ShootRate: 4
+  LaunchPoint: {fileID: 1849256083}
+  Projectile1: {fileID: 3620466568887983436, guid: 6d1d90f967d2d3c4997b8f9ee298e085, type: 3}
+  Projectile2: {fileID: 6459208530078766206, guid: be0ad82228d49014390b861a7eea9d87, type: 3}
 --- !u!195 &4110242864963612885
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -734,7 +770,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4110242864954241103}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 50
   avoidancePriority: 50
@@ -1742,7 +1778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5685373592085381082
 Transform:
   m_ObjectHideFlags: 0
