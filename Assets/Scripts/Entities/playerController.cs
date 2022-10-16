@@ -19,6 +19,7 @@ public class playerController : MonoBehaviour
 	int ArmorOrigin;
     private Vector3 playerVelocity;
     private int timesJumped;
+    
 
     [Header("-----GunStats-----")]
     [SerializeField] float shootRate;
@@ -311,6 +312,7 @@ public class playerController : MonoBehaviour
 		yield return new WaitForSeconds(.2f);
 		model.GetComponent<Animator>().Play("New State");
 	}
-	
-	
+
+    
+
 }

@@ -174,6 +174,7 @@ public class enemyAi : MonoBehaviour, IDamage
                 {
                     facePlayer();
                 }
+                
             }
 
         }
@@ -203,7 +204,6 @@ public class enemyAi : MonoBehaviour, IDamage
         NavMeshPath path = new NavMeshPath();
 
         agent.CalculatePath(hit.position, path);
-
 
         agent.SetPath(path);
 
