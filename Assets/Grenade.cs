@@ -30,16 +30,19 @@ public class Grenade : MonoBehaviour
 	{
 		Instantiate(explosion,transform.position, transform.rotation);
 		//getting near by objects so when explosion goes off
-		
 		//gotta find explosion effect
 		Collider[] colliders = Physics.OverlapSphere(explosion.transform.position,blastRadius);
 		Destroy(gameObject);
 		foreach (Collider nearGrenade in colliders)
 		{
-			nearGrenade.GetComponents<CapsuleCollider>();
-			if (colliders != null)
+			//nearGrenade.GetComponents<CapsuleCollider>();
+			if (nearGrenade.tag == "Enemy" || nearGrenade.tag == "Player")
 			{
-					//add Damage
+				Debug.Log("Found enemy or a player");
+				//add Damage
+				enemyAi hp = GetComponent<enemyAi>();
+				
+				
 				
 			}
 			
