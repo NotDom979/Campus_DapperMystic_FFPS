@@ -59,7 +59,10 @@ public class playerController : MonoBehaviour
 		ArmorOrigin = Armor;
         respawn();
         currentAmmo = maxAmmo;
-	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+		GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+		anim.SetBool("ArBool", false);
+		anim.SetBool("SniperBool", false);
+		anim.SetBool("PistolBool", false);
     }
 
     void Update()
@@ -143,7 +146,8 @@ public class playerController : MonoBehaviour
 	            mfClone.SetActive(true);
 	            gunShot.Play();
 	            StartCoroutine(StartRecoil());
-                StartCoroutine(muzzleWait());
+	            StartCoroutine(muzzleWait());
+	            anim.SetBool("Recoil", false);
                 currentAmmo--;
                 GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
                 RaycastHit hit;
@@ -232,20 +236,38 @@ public class playerController : MonoBehaviour
 	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
 	    if (maxAmmo == 30)
 	    {
-	    	anim.SetBool("AR",true);
+		    anim.SetBool("SniperBool", false);
+		    anim.SetBool("PistolBool", false);
+		    anim.SetBool("ArBool", true);
 	    	Pistol.SetActive(false);
+	    	Sniper.SetActive(false);
 	    	AR.SetActive(true);
 		    AR.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		    AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 	    	
 	    }
+	    if (maxAmmo == 5)
+	    {
+		    anim.SetBool("ArBool", false);
+		    anim.SetBool("PistolBool", false);
+		    anim.SetBool("SniperBool", true);
+	    	AR.SetActive(false);
+	    	Pistol.SetActive(false);
+	    	Sniper.SetActive(true);
+		    Sniper.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		    Sniper.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    	
+	    }
 	    if (maxAmmo == 20)
 	    {
-	    	anim.SetTrigger("Pistol");
+		    anim.SetBool("ArBool", false);
+		    anim.SetBool("SniperBool", false);
+		    anim.SetBool("PistolBool", true);
+	    	AR.SetActive(false);
+	    	Sniper.SetActive(false);
 	    	Pistol.SetActive(true);
 	    	Pistol.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
 		    Pistol.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-	    	AR.SetActive(false);
 	    }
     }
     void gunselect()
@@ -323,9 +345,12 @@ public class playerController : MonoBehaviour
 	}
 	IEnumerator StartRecoil()
 	{
-		model.GetComponent<Animator>().Play("Recoil");
-		yield return new WaitForSeconds(.2f);
-		model.GetComponent<Animator>().Play("New State");
+		anim.SetBool("Recoil", true);
+		//model.GetComponent<Animator>().Play("Recoil");
+		yield return new WaitForSeconds(5.0f);
+		//model.GetComponent<Animator>().Play("New State");
+		anim.SetBool("Recoil", false);
+	
 	}
 	
 	
