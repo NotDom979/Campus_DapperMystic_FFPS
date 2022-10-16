@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 897574624969445315}
   - component: {fileID: 897574624969445325}
   - component: {fileID: 897574624969445312}
+  - component: {fileID: 1900980345}
   m_Layer: 7
   m_Name: ArmorPack
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd5d47b0b2e0fb04c928b99c8469b542, type: 2}
+  - {fileID: 2100000, guid: d44dbc9cb7e5ef64ebfd9dcfa98dff13, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1900980345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897574624969445326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed36a5d1c2524d469e6864b414e9ee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorAmount: 10
