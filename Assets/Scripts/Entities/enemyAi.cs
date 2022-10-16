@@ -158,7 +158,7 @@ public class enemyAi : MonoBehaviour, IDamage
         if (Physics.Raycast(HeadPos.transform.position, playerDirection, out hit, sightDistance))
         {
             Debug.DrawRay(HeadPos.transform.position, playerDirection);
-            Debug.Log(angle);
+	        // Debug.Log(angle);
             if (hit.collider.CompareTag("Player") && angle <= viewAngle)
             {
                 agent.speed = speedChase;
