@@ -27,7 +27,10 @@ public class playerController : MonoBehaviour
     [SerializeField] int shootDmg;
     [SerializeField] GameObject bullet;
     [SerializeField] List<gunStats> gunstats = new List<gunStats>();
+	[SerializeField] GameObject Pistol;
 	[SerializeField] GameObject model;
+	[SerializeField] GameObject AR;
+	[SerializeField] GameObject Sniper;
 	public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
@@ -136,16 +139,16 @@ public class playerController : MonoBehaviour
             if (currentAmmo >= 1)
             {
                 isShooting = true;
-                //mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
-	            //mfClone.SetActive(true);
-	           // gunShot.Play();
-	           // StartCoroutine(StartRecoil());
-               // StartCoroutine(muzzleWait());
+                mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
+	            mfClone.SetActive(true);
+	            gunShot.Play();
+	            StartCoroutine(StartRecoil());
+                StartCoroutine(muzzleWait());
                 currentAmmo--;
                 GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
-                {
+                    {
 	                //Instantiate(bullet, hit.point, transform.rotation);
                     if (hit.collider.GetComponent<IDamage>() != null)
                     {
@@ -156,6 +159,7 @@ public class playerController : MonoBehaviour
                         hitEffect.SetActive(false);
                         //StartCoroutine(bloodWait());
                     }
+               
                 }
                 
 
@@ -221,14 +225,27 @@ public class playerController : MonoBehaviour
 	    shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
 	    hitEffect = stats.hitEffect;
         hitEffect.SetActive(true);
-        model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-	    model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    //model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+	    //model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 	    //gameObject.GetComponent<MeshRenderer>().sharedMaterial =
         gunstats.Add(stats);
 	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	    if (maxAmmo == 30)
+	    {
+	    	anim.SetBool("AR",true);
+	    	Pistol.SetActive(false);
+	    	AR.SetActive(true);
+		    AR.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		    AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    	
+	    }
 	    if (maxAmmo == 20)
 	    {
 	    	anim.SetTrigger("Pistol");
+	    	Pistol.SetActive(true);
+	    	Pistol.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		    Pistol.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    	AR.SetActive(false);
 	    }
     }
     void gunselect()
