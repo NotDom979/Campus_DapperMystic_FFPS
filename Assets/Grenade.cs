@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour,IDamage
+public class Grenade : MonoBehaviour
 {
 	[SerializeField]public float delay = 4f;
 	[SerializeField]public float blastRadius= 4f;
@@ -39,7 +39,8 @@ public class Grenade : MonoBehaviour,IDamage
 			nearGrenade.GetComponents<CapsuleCollider>();
 			if (colliders != null)
 			{
-				//add Damage
+					//add Damage
+				
 			}
 			
 		}
