@@ -170,16 +170,30 @@ public class playerController : MonoBehaviour
 	{
 		
 		HP += amount;
-       /* if (HP > HPOrigin)
-            HP = HPOrigin;*/
-        HP = Mathf.Min(HP,HPOrigin);
-        if (HP >= 0)
+		if (HP > HPOrigin)
+			HP = HPOrigin;
+            
+		// HP = Mathf.Min(HP,HPOrigin);
+		if (HP >= 0 )
 		{
 			updatePLayerHud();
 			
 		}
 		
 	}
+	public void AddArmor(int armorAmount)
+	{
+		
+		
+		Armor += armorAmount;
+		if (Armor > ArmorOrigin	)
+			Armor = ArmorOrigin;
+		if (Armor >= 0)
+			updatePLayerHud();
+			
+		
+	}
+	
 
     public void takeDamage(int dmg)
 	{
