@@ -6,6 +6,7 @@ public class playerController : MonoBehaviour
 {
     [Header("-----PlayerStats-----")]
     [SerializeField] public CharacterController controller;
+	[SerializeField] public Animator anim;
     [SerializeField] float playerSpeed = 2.0f;
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
@@ -79,7 +80,11 @@ public class playerController : MonoBehaviour
         }
         Vector3 move = (transform.right * Input.GetAxis("Horizontal")) +
         (transform.forward * Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
+	    controller.Move(move * Time.deltaTime * playerSpeed);
+	    if (move != null)
+	    {
+	    	anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), move.magnitude, Time.deltaTime * 3));
+	    }
         if (Input.GetButton("Sprint"))
         {
             playerFootSteps.pitch = 2.5f;
@@ -95,6 +100,8 @@ public class playerController : MonoBehaviour
         {
             timesJumped++;
 	        playerVelocity.y = jumpHeight;
+	        anim.SetBool("Jump", true);
+	        anim.SetTrigger("Hop");
 	        if (timesJumped == 1)
 	        {
 		        playerJumpNoise.pitch = 1;
@@ -106,7 +113,7 @@ public class playerController : MonoBehaviour
 	        	playerJumpNoise.Play();
 	        }
         }
-
+	    anim.SetBool("Jump", false);
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
@@ -129,11 +136,11 @@ public class playerController : MonoBehaviour
             if (currentAmmo >= 1)
             {
                 isShooting = true;
-                mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
-	            mfClone.SetActive(true);
-	            gunShot.Play();
-	            StartCoroutine(StartRecoil());
-                StartCoroutine(muzzleWait());
+                //mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
+	            //mfClone.SetActive(true);
+	           // gunShot.Play();
+	           // StartCoroutine(StartRecoil());
+               // StartCoroutine(muzzleWait());
                 currentAmmo--;
                 GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
                 RaycastHit hit;
@@ -160,8 +167,8 @@ public class playerController : MonoBehaviour
                 yield return new WaitForSeconds(shootRate);
                 isShooting = false;
                 gunShot.Stop();
-	            Destroy(mfClone);
-	            Destroy(hitEffClone);
+	            //Destroy(mfClone);
+	            //Destroy(hitEffClone);
             }
         }
 
@@ -215,10 +222,14 @@ public class playerController : MonoBehaviour
 	    hitEffect = stats.hitEffect;
         hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-
+	    model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    //gameObject.GetComponent<MeshRenderer>().sharedMaterial =
         gunstats.Add(stats);
-        GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	    if (maxAmmo == 20)
+	    {
+	    	anim.SetTrigger("Pistol");
+	    }
     }
     void gunselect()
     {
@@ -250,7 +261,11 @@ public class playerController : MonoBehaviour
 	    hitEffect = gunstats[selectGun].hitEffect;
         hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    if (maxAmmo == 20)
+	    {
+	    	anim.SetTrigger("Pistol");
+	    }
     }
 
     public void updatePLayerHud()

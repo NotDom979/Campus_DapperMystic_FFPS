@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cameraControl : MonoBehaviour
+public class rigControl : MonoBehaviour
 {
 	[SerializeField] int sensHort;
 	[SerializeField] int sensVert;
 	[SerializeField] int lockVertMin;
 	[SerializeField] int lockVertMax;
-	[SerializeField] int lockHortMin;
-	[SerializeField] int lockHortMax;
 	[SerializeField] bool invert;
 	float xRotation;
-	float yRotation;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -24,8 +21,8 @@ public class cameraControl : MonoBehaviour
 	void LateUpdate()
 	{
 		//get input 
-		float mousex = Input.GetAxis("Mouse X") * Time.deltaTime * sensHort;
-		float mousey = Input.GetAxis("Mouse Y") * Time.deltaTime * sensVert;
+		float mousex = Input.GetAxis("Mouse Y") * Time.deltaTime * sensHort;
+		float mousey = Input.GetAxis("Mouse X") * Time.deltaTime * sensVert;
 	    
 		if(invert)
 			xRotation += mousey;
@@ -33,10 +30,9 @@ public class cameraControl : MonoBehaviour
 			xRotation -= mousey;
 		//clamp camera rotation
 		xRotation = Mathf.Clamp(xRotation,lockVertMin,lockVertMax);
-		yRotation = Mathf.Clamp(yRotation,lockHortMin,lockHortMax);
 	    
 		//rotate camera on x axis
-		transform.localRotation = Quaternion.Euler(xRotation,yRotation,0);
+		transform.localRotation = Quaternion.Euler(xRotation,0,0);
 	    
 		//rotate the player
 		transform.parent.Rotate(Vector3.up * mousex);
