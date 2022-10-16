@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour
+public class Grenade : MonoBehaviour,IDamage
 {
 	[SerializeField]public float delay = 4f;
-	[SerializeField]public float d= 4f;
-	
+	[SerializeField]public float blastRadius= 4f;
+	[SerializeField] public GameObject explosion;
 	float countDown;
 	bool didExplode = false;
 	
@@ -28,12 +28,21 @@ public class Grenade : MonoBehaviour
 	
 	void Explode()
 	{
-		GameObject explosion = Instantiate(explosion, explosion.transform.position, transform.rotation);
+		Instantiate(explosion,transform.position, transform.rotation);
 		//getting near by objects so when explosion goes off
-		//add damage and force
-		//gotta find explosion effect
-		Destroy(explosion);
 		
+		//gotta find explosion effect
+		Collider[] colliders = Physics.OverlapSphere(explosion.transform.position,blastRadius);
+		Destroy(gameObject);
+		foreach (Collider nearGrenade in colliders)
+		{
+			nearGrenade.GetComponents<CapsuleCollider>();
+			if (colliders != null)
+			{
+				//add Damage
+			}
+			
+		}
 		Debug.Log("Boom");
 	}
 }
