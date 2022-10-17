@@ -32,11 +32,7 @@ public class StatusManager : MonoBehaviour
     {
         while (burnTicks.Count > 0)
         {
-                if (GameManager.instance.playerScript.HP <= 0)
-                {
-                    burnTicks.Clear();
-                    burnTicks.Capacity = 0;
-                }
+                
             for (int i = 0; i < burnTicks.Count; i++)
             {
                 burnTicks[i]--;
