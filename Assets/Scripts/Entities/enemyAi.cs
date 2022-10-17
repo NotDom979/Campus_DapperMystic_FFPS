@@ -29,7 +29,7 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject shotPoint;
 
-
+    public bool flamer;
 
     bool InRadius;
     bool isShooting;
@@ -43,6 +43,7 @@ public class enemyAi : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+        gunShot.enabled = false;
         grunt.pitch = 2;
         grunt.volume = .598f;
         GameManager.instance.enemyNumber++;
@@ -56,7 +57,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
         speedPatrol = agent.speed;
         animator.SetInteger("Status_walk", 1);
-	    Roam();
+        Roam();
     }
 
 
@@ -64,8 +65,8 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         if (agent.enabled)
         {
-                animator.SetInteger("Status_walk", 1);
-                footSteps.enabled = true;
+            animator.SetInteger("Status_walk", 1);
+            footSteps.enabled = true;
             if (InRadius)
             {
                 playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
@@ -76,7 +77,12 @@ public class enemyAi : MonoBehaviour, IDamage
             }
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
-	            Roam();
+                
+                Roam();
+            }
+            else
+            {
+                gunShot.enabled = false;
             }
         }
     }
@@ -85,6 +91,7 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         currentHealth -= dmg;
         enemyHpBar.fillAmount = currentHealth / maxHealth;
+        animator.SetTrigger("hit");
         grunt.Play(1);
         StartCoroutine(flashDamage());
         if (currentHealth <= 0)
@@ -110,11 +117,19 @@ public class enemyAi : MonoBehaviour, IDamage
 
         Instantiate(bullet, shotPoint.transform.position, transform.rotation);
 
-        gunShot.Play();
-
+        if (flamer)
+        {
+            gunShot.enabled = true;
+        }
+        else
+            gunShot.Play();
         yield return new WaitForSeconds(shootRate);
 
-        gunShot.Stop();
+        if (!flamer)
+        {
+            gunShot.Stop();
+        }
+
         isShooting = false;
     }
 
@@ -145,6 +160,7 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         grunt.pitch = 1;
         grunt.volume = 1;
+        animator.SetBool("death", true);
         grunt.Play(1);
         yield return new WaitForSeconds(.32f);
         Destroy(gameObject);
@@ -159,23 +175,36 @@ public class enemyAi : MonoBehaviour, IDamage
         {
             Debug.DrawRay(HeadPos.transform.position, playerDirection);
             Debug.Log(angle);
-            if (hit.collider.CompareTag("Player") && angle <= viewAngle)
+            if (hit.collider.CompareTag("Player"))
             {
-                agent.speed = speedChase;
-                agent.stoppingDistance = stoppingDistOrigin;
-                agent.SetDestination(GameManager.instance.player.transform.position);
-
-                if (!isShooting)
+                if (angle <= viewAngle)
                 {
-                    StartCoroutine(Shoot());
-                }
 
-                if (agent.remainingDistance < agent.stoppingDistance)
-                {
-                    facePlayer();
+                    agent.speed = speedChase;
+                    agent.stoppingDistance = stoppingDistOrigin;
+                    agent.SetDestination(GameManager.instance.player.transform.position);
+
+
+                    if (!isShooting)
+                    {
+
+                        StartCoroutine(Shoot());
+
+                    }
+
+                    if (agent.remainingDistance < agent.stoppingDistance)
+                    {
+                        facePlayer();
+                    }
+
                 }
                 
             }
+            else
+            {
+                gunShot.Stop();
+            }
+
 
         }
 
