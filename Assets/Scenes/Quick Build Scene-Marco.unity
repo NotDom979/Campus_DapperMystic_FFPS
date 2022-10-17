@@ -1628,7 +1628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burnTicks: 
-  damage: 1
+  damage: 2
 --- !u!1001 &844180543918592414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1768,9 +1768,13 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 844180543594211722, guid: f7f1839de8c987449b4d3cdb0cbd440a, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 844180543594211724, guid: f7f1839de8c987449b4d3cdb0cbd440a, type: 3}
       propertyPath: shootRate
-      value: 0.06
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 844180543895947366, guid: f7f1839de8c987449b4d3cdb0cbd440a, type: 3}
       propertyPath: m_Layer

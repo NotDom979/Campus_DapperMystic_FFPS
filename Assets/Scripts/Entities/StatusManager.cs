@@ -11,10 +11,10 @@ public class StatusManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-   
+
     public void ApplyBurn(int ticks)
     {
         if (burnTicks.Count <= 0)
@@ -32,14 +32,26 @@ public class StatusManager : MonoBehaviour
     {
         while (burnTicks.Count > 0)
         {
+                if (GameManager.instance.playerScript.HP <= 0)
+                {
+                    burnTicks.Clear();
+                    burnTicks.Capacity = 0;
+                }
             for (int i = 0; i < burnTicks.Count; i++)
             {
                 burnTicks[i]--;
+
+
             }
-            GameManager.instance.playerScript.HP -= damage;
-            GameManager.instance.playerScript.updatePLayerHud();
-            burnTicks.RemoveAll(i => i == 0);
-            yield return new WaitForSeconds(1);
+
+            if (GameManager.instance.playerScript.HP > 0)
+            {
+
+                GameManager.instance.playerScript.HP -= damage;
+                GameManager.instance.playerScript.updatePLayerHud();
+                burnTicks.RemoveAll(i => i == 0);
+                yield return new WaitForSeconds(1);
+            }
         }
     }
 

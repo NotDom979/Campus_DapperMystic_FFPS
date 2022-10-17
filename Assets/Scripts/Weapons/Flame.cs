@@ -24,7 +24,7 @@ public class Flame : MonoBehaviour
 			GameManager.instance.playerScript.takeDamage(damage);
 		}
 
-        if (other.GetComponent<StatusManager>() != null)
+        if (other.GetComponent<StatusManager>() != null && GameManager.instance.playerScript.HP > 0)
         {
 			other.GetComponent<StatusManager>().ApplyBurn(6);
 		}

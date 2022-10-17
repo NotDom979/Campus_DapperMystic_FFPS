@@ -52,11 +52,11 @@ public class playerController : MonoBehaviour
     private GameObject mfClone;
     private GameObject spClone;
     private GameObject hitEffClone;
-    public bool isBurning;
+    public StatusManager statusManager;
     private void Start()
     {
 
-
+        statusManager = GetComponent<StatusManager>();
         playerGrunt.pitch = 2;
         playerGrunt.volume = .598f;
         selectGun = 0;
@@ -339,7 +339,10 @@ public class playerController : MonoBehaviour
     }
     public void respawn()
     {
-        isBurning = false;
+
+        statusManager.burnTicks.Clear();
+       
+
         controller.enabled = false;
         HP = HPOrigin;
         updatePLayerHud();
