@@ -56,7 +56,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
         speedPatrol = agent.speed;
         animator.SetInteger("Status_walk", 1);
-	    // Roam();
+	    Roam();
     }
 
 
@@ -76,7 +76,7 @@ public class enemyAi : MonoBehaviour, IDamage
             }
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
-	            //Roam();
+	            Roam();
             }
         }
     }

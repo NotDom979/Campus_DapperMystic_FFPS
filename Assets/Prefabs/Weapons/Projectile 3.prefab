@@ -24334,12 +24334,12 @@ GameObject:
   - component: {fileID: 8526303010129436244}
   - component: {fileID: 8431105747453595282}
   - component: {fileID: 8522214476996198916}
-  - component: {fileID: -7022976394154839513}
   - component: {fileID: 6258478713129977577}
   - component: {fileID: 9099132167193624450}
+  - component: {fileID: -1441339902812039086}
   m_Layer: 8
   m_Name: Projectile 3
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29326,22 +29326,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &-7022976394154839513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8629246915343662146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8714914729065046bf9356d658fb817, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 6258478713129977577}
-  damage: 1
-  speed: 20
-  destroyTime: 1
 --- !u!54 &6258478713129977577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29371,6 +29355,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1441339902812039086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629246915343662146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b33834054a626b409db4799ce0b991f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 6258478713129977577}
+  damage: 1
+  speed: 20
+  destroyTime: 1
 --- !u!1 &8629915264557910864
 GameObject:
   m_ObjectHideFlags: 0
