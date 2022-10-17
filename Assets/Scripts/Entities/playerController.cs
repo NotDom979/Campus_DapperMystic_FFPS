@@ -16,6 +16,9 @@ public class playerController : MonoBehaviour
 	public AudioSource playerGrunt;
 	public AudioSource playerJumpNoise;
 	public AudioSource playerFootSteps;
+	public GameObject arMuzzle;
+	public GameObject sniperMuzzle;
+	public GameObject pistolMuzzle;
 	int HPOrigin;
 	int ArmorOrigin;
     private Vector3 playerVelocity;
@@ -141,13 +144,24 @@ public class playerController : MonoBehaviour
         {
             if (currentAmmo >= 1)
             {
-                isShooting = true;
-                mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
+	            isShooting = true;
+	            if (maxAmmo == 20)
+	            {
+		            mfClone = Instantiate(pistolMuzzle, shotPoint.transform.position, transform.rotation);
+	            }
+	            if (maxAmmo == 5)
+	            {
+		            mfClone = Instantiate(sniperMuzzle, shotPoint.transform.position, transform.rotation);
+	            }
+	            if (maxAmmo == 30)
+	            {
+		            mfClone = Instantiate(arMuzzle, shotPoint.transform.position, transform.rotation);
+	            }
+	            anim.SetBool("Recoil", true);
 	            mfClone.SetActive(true);
 	            gunShot.Play();
 	            StartCoroutine(StartRecoil());
 	            StartCoroutine(muzzleWait());
-	            anim.SetBool("Recoil", false);
                 currentAmmo--;
                 GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
                 RaycastHit hit;
@@ -345,7 +359,6 @@ public class playerController : MonoBehaviour
 	}
 	IEnumerator StartRecoil()
 	{
-		anim.SetBool("Recoil", true);
 		//model.GetComponent<Animator>().Play("Recoil");
 		yield return new WaitForSeconds(5.0f);
 		//model.GetComponent<Animator>().Play("New State");
