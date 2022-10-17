@@ -175,11 +175,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7727238420709509743}
+  - component: {fileID: 1274853743}
   - component: {fileID: 7264049888898462419}
   - component: {fileID: 6421610432014930639}
   - component: {fileID: 6861410742376750830}
   - component: {fileID: 4817764870354025131}
-  - component: {fileID: 1274853743}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -205,6 +205,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1274853743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435696478574877726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7491b51a70e551c4baffde1df1286efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 10
+  blastRadius: 4
+  explosionParticle: {fileID: 0}
+  grenades: {fileID: 0}
+  dmg: 0
 --- !u!33 &7264049888898462419
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -285,21 +302,6 @@ CapsuleCollider:
   m_Height: 0.71
   m_Direction: 2
   m_Center: {x: -0.049975008, y: 0.22052997, z: -0.18264997}
---- !u!114 &1274853743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435696478574877726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7491b51a70e551c4baffde1df1286efd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 4
-  blastRadius: 4
-  explosion: {fileID: 1135581048890362, guid: 9fac195ef94109246bdeb29d75467e8d, type: 3}
 --- !u!1 &8200912709537341789
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,13 +5,18 @@ using UnityEngine;
 public class Grenade : MonoBehaviour
 {
 	[SerializeField]public float delay = 4f;
-	[SerializeField]public float blastRadius= 4f;
-	[SerializeField] public GameObject explosion;
+	[SerializeField]public float blastRadius;
+	public GameObject explosionEffect;
+	
 	float countDown;
-	bool didExplode = false;
+	bool isExplode = false;
+	bool nearGrenade = false;
+	[SerializeField] public float dmg;
+	
+	
+	
 	
 	void Start(){
-		
 		countDown = delay;
 		
 	}
@@ -19,34 +24,41 @@ public class Grenade : MonoBehaviour
 	void Update(){
 		
 		countDown-= Time.deltaTime;
-		if (countDown <= 0f && !didExplode)
+		if (countDown <= 0f && !isExplode)
 		{
 			Explode();
-			didExplode = true;
+			isExplode = true;
 		}
 	}
 	
 	void Explode()
 	{
-		Instantiate(explosion,transform.position, transform.rotation);
-		//getting near by objects so when explosion goes off
-		//gotta find explosion effect
-		Collider[] colliders = Physics.OverlapSphere(explosion.transform.position,blastRadius);
-		Destroy(gameObject);
-		foreach (Collider nearGrenade in colliders)
-		{
-			//nearGrenade.GetComponents<CapsuleCollider>();
-			if (nearGrenade.tag == "Enemy" || nearGrenade.tag == "Player")
-			{
-				Debug.Log("Found enemy or a player");
-				//add Damage
-				enemyAi hp = GetComponent<enemyAi>();
-				
-				
-				
-			}
+		Instantiate(explosionEffect, transform.position, transform.rotation);
+		
+		
+		
+	 Debug.Log("Boom");
 			
+		Destroy(gameObject);
+		
+	}
+	
+	void AreaDamageEnemies(Vector3 location, float radius, float damage)
+	{
+		Collider[] objectsInRange = Physics.OverlapSphere(location, radius);
+		foreach (Collider col in objectsInRange)
+		{
+			enemyAi enemyHit = col.GetComponent<enemyAi>();
+			if (enemyHit != null)
+			{
+				// linear falloff of effect
+				float proximity = (location - enemyHit.transform.position).magnitude;
+				float effect = 1 - (proximity / radius);
+
+
+				enemyHit.takeDamage(dmg * effect);
+			}
+		
 		}
-		Debug.Log("Boom");
 	}
 }

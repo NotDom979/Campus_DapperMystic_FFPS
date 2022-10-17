@@ -237,10 +237,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ad897317b14ad5498669c050631cee1, type: 3}
---- !u!4 &453415854 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 755425393806246828, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-  m_PrefabInstance: {fileID: 1327640961}
+--- !u!1 &429610230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5435696478574877726, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+  m_PrefabInstance: {fileID: 1741296192}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &465405500
 PrefabInstance:
@@ -703,48 +703,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
---- !u!1001 &1327640961
+--- !u!1001 &1462349815
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: throwKey
-      value: 103
-      objectReference: {fileID: 0}
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: throwForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: attackPoint
-      value: 
-      objectReference: {fileID: 453415854}
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: totalThrows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: objectToThrow
-      value: 
-      objectReference: {fileID: 7116825938010822363, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: throwCoolDown
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: throwupwardForce
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1763743122540536327, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6981777776952555518, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6981777776952555518, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -853,32 +825,80 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
-      propertyPath: delay
+      propertyPath: dmg
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: delay
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: explosion
       value: 
-      objectReference: {fileID: 2312591318274358134, guid: 77da29788f3010e4396994ea52057980, type: 3}
+      objectReference: {fileID: 8714244275622671896, guid: abf8d5b763621654486813c5c8af8234, type: 3}
+    - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: blastRadius
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 8714244275622671896, guid: abf8d5b763621654486813c5c8af8234, type: 3}
+    - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: explosionParticle
+      value: 
+      objectReference: {fileID: 429610230}
+    - target: {fileID: 4817764870354025131, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_Height
+      value: 4.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817764870354025131, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_Radius
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817764870354025131, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817764870354025131, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5435696478574877726, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_Name
       value: Grenade
       objectReference: {fileID: 0}
+    - target: {fileID: 6861410742376750830, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861410742376750830, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861410742376750830, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7727238420709509743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7727238420709509743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05556631
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 7727238420709509743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.31
+      value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 7727238420709509743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.61
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 7727238420709509743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_LocalRotation.w
