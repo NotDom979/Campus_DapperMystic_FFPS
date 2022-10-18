@@ -1,23 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ThrowingObjects : MonoBehaviour
 {
 	
-	[Header("Settings")]
+	//[Header("Settings")]
 	public Transform cam;
 	public Transform attackPoint;
 	public GameObject objectToThrow;
 	
-	[Header("Settings Part2")]
+	[Header("Settings")]
 	public int totalThrows;
 	public int throwCoolDown;
 	public float throwForce;
 	public float throwupwardForce;
 	
 	
-	public KeyCode throwKey = KeyCode.L;
+	public KeyCode throwKey = KeyCode.G;
 	
 	bool readyTothrow;
 	
@@ -50,7 +51,7 @@ public class ThrowingObjects : MonoBehaviour
 		Vector3 forceDirection = cam.transform.forward;
 		RaycastHit hit;
 		
-		if (Physics.Raycast(cam.position, cam.forward, out hit,100f))
+		if (Physics.Raycast(cam.position, cam.forward, out hit,500f))
 		{
 			forceDirection = (hit.point - attackPoint.position).normalized;
 		}
@@ -58,7 +59,7 @@ public class ThrowingObjects : MonoBehaviour
 		//Add Force
 		Vector3 forceToAdd = forceDirection *throwForce + transform.up * throwupwardForce;
 		
-		projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
+		projectileRB.AddForce(transform.forward * throwForce, ForceMode.Impulse);
 		totalThrows--;
 		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
 		

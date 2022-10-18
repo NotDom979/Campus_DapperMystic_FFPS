@@ -10,10 +10,10 @@ public class Grenade : MonoBehaviour
 	
 	float countDown;
 	bool isExplode = false;
-	bool nearGrenade = false;
+	
 	[SerializeField] public float dmg;
 	
-	
+	Vector3 pos;
 	
 	
 	void Start(){
@@ -33,11 +33,12 @@ public class Grenade : MonoBehaviour
 	
 	void Explode()
 	{
-		Instantiate(explosionEffect, transform.position, transform.rotation);
-		
-		
-		
-	 Debug.Log("Boom");
+		pos =transform.position;
+		Instantiate(explosionEffect, pos, transform.rotation);
+		AreaDamageEnemies(pos,blastRadius,dmg);
+
+
+        Debug.Log("Boom");
 			
 		Destroy(gameObject);
 		
@@ -51,12 +52,12 @@ public class Grenade : MonoBehaviour
 			enemyAi enemyHit = col.GetComponent<enemyAi>();
 			if (enemyHit != null)
 			{
-				// linear falloff of effect
-				float proximity = (location - enemyHit.transform.position).magnitude;
-				float effect = 1 - (proximity / radius);
+				//// linear falloff of effect
+				//float proximity = (location - enemyHit.transform.position).magnitude;
+				//float effect = 1 - (proximity / radius);
 
+				enemyHit.takeDamage(dmg);
 
-				enemyHit.takeDamage(dmg * effect);
 			}
 		
 		}
