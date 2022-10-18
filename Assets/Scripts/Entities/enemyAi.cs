@@ -29,11 +29,10 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject shotPoint;
 
-
+    public bool flamer;
 
     bool InRadius;
     bool isShooting;
-
     Vector3 playerDirection;
     float stoppingDistOrigin;
     Vector3 startPos;
@@ -43,6 +42,8 @@ public class enemyAi : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+
+        gunShot.enabled = false;
         grunt.pitch = 2;
         grunt.volume = .598f;
         GameManager.instance.enemyNumber++;
@@ -56,7 +57,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
         speedPatrol = agent.speed;
         animator.SetInteger("Status_walk", 1);
-	    // Roam();
+        Roam();
     }
 
 
@@ -64,8 +65,8 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         if (agent.enabled)
         {
-                animator.SetInteger("Status_walk", 1);
-                footSteps.enabled = true;
+            animator.SetInteger("Status_walk", 1);
+            footSteps.enabled = true;
             if (InRadius)
             {
                 playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
@@ -76,7 +77,12 @@ public class enemyAi : MonoBehaviour, IDamage
             }
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
-	            //Roam();
+
+                Roam();
+            }
+            else
+            {
+                gunShot.enabled = false;
             }
         }
     }
@@ -86,20 +92,22 @@ public class enemyAi : MonoBehaviour, IDamage
         currentHealth -= dmg;
         enemyHpBar.fillAmount = currentHealth / maxHealth;
         grunt.Play(1);
-        StartCoroutine(flashDamage());
         if (currentHealth <= 0)
         {
             StartCoroutine(death());
         }
+        else
+        StartCoroutine(flashDamage());
+        animator.SetTrigger("hit");
     }
 
     IEnumerator flashDamage()
     {
         model.material.color = Color.red;
-        agent.enabled = false;
-        yield return new WaitForSeconds(.01f);
+        agent.speed = 0;
+        yield return new WaitForSeconds(.5f);
         model.material.color = Color.white;
-        agent.enabled = true;
+        agent.speed = speedPatrol;
         agent.stoppingDistance = 0;
         agent.SetDestination(GameManager.instance.player.transform.position);
     }
@@ -110,11 +118,19 @@ public class enemyAi : MonoBehaviour, IDamage
 
         Instantiate(bullet, shotPoint.transform.position, transform.rotation);
 
-        gunShot.Play();
-
+        if (flamer)
+        {
+            gunShot.enabled = true;
+        }
+        else
+            gunShot.Play();
         yield return new WaitForSeconds(shootRate);
 
-        gunShot.Stop();
+        if (!flamer)
+        {
+            gunShot.Stop();
+        }
+
         isShooting = false;
     }
 
@@ -143,10 +159,18 @@ public class enemyAi : MonoBehaviour, IDamage
 
     IEnumerator death()
     {
+        animator.SetBool("death", true);
+        agent.speed = 0;
+        agent.enabled = false;
         grunt.pitch = 1;
         grunt.volume = 1;
         grunt.Play(1);
-        yield return new WaitForSeconds(.32f);
+        if (flamer)
+        {
+            yield return new WaitForSeconds(3);
+        }
+        else
+            yield return new WaitForSeconds(.35f);
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
@@ -158,24 +182,37 @@ public class enemyAi : MonoBehaviour, IDamage
         if (Physics.Raycast(HeadPos.transform.position, playerDirection, out hit, sightDistance))
         {
             Debug.DrawRay(HeadPos.transform.position, playerDirection);
-	        // Debug.Log(angle);
-            if (hit.collider.CompareTag("Player") && angle <= viewAngle)
+            Debug.Log(angle);
+            if (hit.collider.CompareTag("Player"))
             {
-                agent.speed = speedChase;
-                agent.stoppingDistance = stoppingDistOrigin;
-                agent.SetDestination(GameManager.instance.player.transform.position);
-
-                if (!isShooting)
+                if (angle <= viewAngle)
                 {
-                    StartCoroutine(Shoot());
+
+                    agent.speed = speedChase;
+                    agent.stoppingDistance = stoppingDistOrigin;
+                    agent.SetDestination(GameManager.instance.player.transform.position);
+
+
+                    if (!isShooting)
+                    {
+
+                        StartCoroutine(Shoot());
+
+                    }
+
+                    if (agent.remainingDistance < agent.stoppingDistance)
+                    {
+                        facePlayer();
+                    }
+
                 }
 
-                if (agent.remainingDistance < agent.stoppingDistance)
-                {
-                    facePlayer();
-                }
-                
             }
+            else
+            {
+                gunShot.Stop();
+            }
+
 
         }
 
