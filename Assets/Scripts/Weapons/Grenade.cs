@@ -55,7 +55,7 @@ public class Grenade : MonoBehaviour
 			if (enemyHit != null)
 			{
 
-				enemyHit.takeDamage(dmg);
+				enemyHit.takeDamage(damage);
 				
 
 			}
