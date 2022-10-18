@@ -62,7 +62,7 @@ public class playerController : MonoBehaviour
         selectGun = 0;
 		HPOrigin = HP;
 		ArmorOrigin = Armor;
-        respawn();
+		respawn();
         currentAmmo = maxAmmo;
 		GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
 		anim.SetBool("ArBool", false);
@@ -84,11 +84,15 @@ public class playerController : MonoBehaviour
     }
     void movement()
     {
-        if (controller.isGrounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-            timesJumped = 0;
-        }
+	    if (controller.isGrounded)
+	    {
+		    //Crouch();
+	    	if ( playerVelocity.y < 0)
+	    	{
+		    	playerVelocity.y = 0f;
+				timesJumped = 0;
+		    }    	
+		}
         Vector3 move = (transform.right * Input.GetAxis("Horizontal")) +
         (transform.forward * Input.GetAxis("Vertical"));
 	    controller.Move(move * Time.deltaTime * playerSpeed);
@@ -227,6 +231,7 @@ public class playerController : MonoBehaviour
         muzzleFlash = stats.muzzleEffect;
 	    // shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
 	    hitEffect = stats.hitEffect;
+	    gunShot.clip = stats.sound;
         hitEffect.SetActive(true);
 	    gunstats.Add(stats);
         
@@ -286,8 +291,8 @@ public class playerController : MonoBehaviour
         shootDmg = gunstats[selectGun].shootDamage;
 	    currentAmmo = gunstats[selectGun].ammoCount;
 	    maxAmmo = gunstats[selectGun].maxAmmo;
-        muzzleFlash = gunstats[selectGun].muzzleEffect;
-	    //  shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
+	    muzzleFlash = gunstats[selectGun].muzzleEffect;
+	    gunShot.clip = gunstats[selectGun].sound;
 	    hitEffect = gunstats[selectGun].hitEffect;
         hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -340,18 +345,26 @@ public class playerController : MonoBehaviour
     IEnumerator reloadGun()
     {
 
-        if (Input.GetKeyDown("r"))
-        {
+	    if (Input.GetKey("r") && currentAmmo < maxAmmo)
+	    {
+		    anim.SetTrigger("Reload");
+		    Reload();
+		    StartCoroutine("Wait");
         	reloadSound.Play(1);
             Debug.Log("Reload");
             yield return new WaitForSeconds(reloadTime);
-            currentAmmo = maxAmmo;
+		    currentAmmo = maxAmmo;
+		    if (currentAmmo == maxAmmo)
+		    {
+			    WeaponIdle();
+			    //anim.SetBool("PistolBool",true);
+		    }
         }
 
     }
     IEnumerator muzzleWait()
     {
-	    yield return new WaitForSeconds(0.1f);
+	    yield return new WaitForSeconds(0.05f);
         mfClone.SetActive(false);
     }
 	IEnumerator bloodWait()
@@ -362,6 +375,11 @@ public class playerController : MonoBehaviour
 	IEnumerator StartRecoil()
 	{
 		yield return new WaitForSeconds(.5f);
+	
+	}
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds(3f);
 	
 	}
 	void Recoil()
@@ -385,6 +403,39 @@ public class playerController : MonoBehaviour
 			gameObject.GetComponent<Animator>().Play("AR");
 		}
 	}
+	void Reload()
+	{
+		
+		
+			if (maxAmmo == 5)
+			{
+				gameObject.GetComponent<Animator>().Play("SniperReload");
+			}
+			if (maxAmmo == 20)
+			{
+				gameObject.GetComponent<Animator>().Play("PistolReload");
+			}
+			if (maxAmmo == 30)
+			{
+				gameObject.GetComponent<Animator>().Play("AReload");
+			}
+		
+	}
+	void WeaponIdle()
+	{
+		if (maxAmmo == 5)
+		{
+			gameObject.GetComponent<Animator>().Play("Sniper");
+		}
+		if (maxAmmo == 20)
+		{
+			gameObject.GetComponent<Animator>().Play("Pistol");
+		}
+		if (maxAmmo == 30)
+		{
+			gameObject.GetComponent<Animator>().Play("AR");
+		}
+	}
 	void Muzzle()
 	{
 		if (maxAmmo == 5)
@@ -405,6 +456,16 @@ public class playerController : MonoBehaviour
 			mfClone.SetActive(true);
 			StartCoroutine("muzzleWait");
 		}
+	}
+	void Crouch()
+	{
+		if (Input.GetKeyDown("c"))
+		{
+			//anim.SetTrigger("Crouch");
+			//gameObject.GetComponent<Animator>().Play("Crouch");
+		}
+		//	else
+		//anim.SetTrigger("Idle");
 	}
 	
 }
