@@ -83,10 +83,6 @@ public class GameManager : MonoBehaviour
     public void CheckEnemyTotal()
     {
         enemyNumber--;
-        if (enemyNumber < 0)
-        {
-            enemyNumber = 0;
-        }
         enemyCountText.text = enemyNumber.ToString("F0");
     }
     public void WinCondition()
