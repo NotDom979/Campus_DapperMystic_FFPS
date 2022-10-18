@@ -199,6 +199,8 @@ public class playerController : MonoBehaviour
     }
     public void AddHealth(int amount)
     {
+        /* if (HP > HPOrigin)
+            HP = HPOrigin;*/
 
         HP += amount;
         HP = Mathf.Min(HP, HPOrigin);
@@ -207,6 +209,18 @@ public class playerController : MonoBehaviour
             updatePLayerHud();
 
         }
+
+    }
+    public void AddArmor(int armorAmount)
+    {
+
+
+        Armor += armorAmount;
+        if (Armor > ArmorOrigin)
+            Armor = ArmorOrigin;
+        if (Armor >= 0)
+            updatePLayerHud();
+
 
     }
 
