@@ -6,6 +6,7 @@ public class playerController : MonoBehaviour
 {
     [Header("-----PlayerStats-----")]
     [SerializeField] public CharacterController controller;
+	[SerializeField] public Animator anim;
     [SerializeField] float playerSpeed = 2.0f;
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
@@ -15,6 +16,9 @@ public class playerController : MonoBehaviour
 	public AudioSource playerGrunt;
 	public AudioSource playerJumpNoise;
 	public AudioSource playerFootSteps;
+	public GameObject arMuzzle;
+	public GameObject sniperMuzzle;
+	public GameObject pistolMuzzle;
 	int HPOrigin;
 	int ArmorOrigin;
     private Vector3 playerVelocity;
@@ -27,7 +31,10 @@ public class playerController : MonoBehaviour
     [SerializeField] int shootDmg;
     [SerializeField] GameObject bullet;
     [SerializeField] List<gunStats> gunstats = new List<gunStats>();
+	[SerializeField] GameObject Pistol;
 	[SerializeField] GameObject model;
+	[SerializeField] GameObject AR;
+	[SerializeField] GameObject Sniper;
 	public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
@@ -56,7 +63,10 @@ public class playerController : MonoBehaviour
 		ArmorOrigin = Armor;
         respawn();
         currentAmmo = maxAmmo;
-	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+		GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+		anim.SetBool("ArBool", false);
+		anim.SetBool("SniperBool", false);
+		anim.SetBool("PistolBool", false);
     }
 
     void Update()
@@ -80,7 +90,11 @@ public class playerController : MonoBehaviour
         }
         Vector3 move = (transform.right * Input.GetAxis("Horizontal")) +
         (transform.forward * Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
+	    controller.Move(move * Time.deltaTime * playerSpeed);
+	    if (move != null)
+	    {
+	    	anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), move.magnitude, Time.deltaTime * 3));
+	    }
         if (Input.GetButton("Sprint"))
         {
             playerFootSteps.pitch = 2.5f;
@@ -96,6 +110,8 @@ public class playerController : MonoBehaviour
         {
             timesJumped++;
 	        playerVelocity.y = jumpHeight;
+	        anim.SetBool("Jump", true);
+	        anim.SetTrigger("Hop");
 	        if (timesJumped == 1)
 	        {
 		        playerJumpNoise.pitch = 1;
@@ -107,7 +123,7 @@ public class playerController : MonoBehaviour
 	        	playerJumpNoise.Play();
 	        }
         }
-
+	    anim.SetBool("Jump", false);
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
@@ -129,17 +145,29 @@ public class playerController : MonoBehaviour
         {
             if (currentAmmo >= 1)
             {
-                isShooting = true;
-                mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
+	            isShooting = true;
+	            if (maxAmmo == 20)
+	            {
+		            mfClone = Instantiate(pistolMuzzle, shotPoint.transform.position, transform.rotation);
+	            }
+	            if (maxAmmo == 5)
+	            {
+		            mfClone = Instantiate(sniperMuzzle, shotPoint.transform.position, transform.rotation);
+	            }
+	            if (maxAmmo == 30)
+	            {
+		            mfClone = Instantiate(arMuzzle, shotPoint.transform.position, transform.rotation);
+	            }
+	            anim.SetBool("Recoil", true);
 	            mfClone.SetActive(true);
 	            gunShot.Play();
 	            StartCoroutine(StartRecoil());
-                StartCoroutine(muzzleWait());
+	            StartCoroutine(muzzleWait());
                 currentAmmo--;
                 GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
-                {
+                    {
 	                //Instantiate(bullet, hit.point, transform.rotation);
                     if (hit.collider.GetComponent<IDamage>() != null)
                     {
@@ -150,6 +178,7 @@ public class playerController : MonoBehaviour
                         hitEffect.SetActive(false);
                         //StartCoroutine(bloodWait());
                     }
+               
                 }
                 
 
@@ -161,8 +190,8 @@ public class playerController : MonoBehaviour
                 yield return new WaitForSeconds(shootRate);
                 isShooting = false;
                 gunShot.Stop();
-	            Destroy(mfClone);
-	            Destroy(hitEffClone);
+	            //Destroy(mfClone);
+	            //Destroy(hitEffClone);
             }
         }
 
@@ -231,11 +260,46 @@ public class playerController : MonoBehaviour
 	    shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
 	    hitEffect = stats.hitEffect;
         hitEffect.SetActive(true);
-        model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-
+	    //model.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+	    //model.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    //gameObject.GetComponent<MeshRenderer>().sharedMaterial =
         gunstats.Add(stats);
-        GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	    if (maxAmmo == 30)
+	    {
+		    anim.SetBool("SniperBool", false);
+		    anim.SetBool("PistolBool", false);
+		    anim.SetBool("ArBool", true);
+	    	Pistol.SetActive(false);
+	    	Sniper.SetActive(false);
+	    	AR.SetActive(true);
+		    AR.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		    AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    	
+	    }
+	    if (maxAmmo == 5)
+	    {
+		    anim.SetBool("ArBool", false);
+		    anim.SetBool("PistolBool", false);
+		    anim.SetBool("SniperBool", true);
+	    	AR.SetActive(false);
+	    	Pistol.SetActive(false);
+	    	Sniper.SetActive(true);
+		    Sniper.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		    Sniper.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    	
+	    }
+	    if (maxAmmo == 20)
+	    {
+		    anim.SetBool("ArBool", false);
+		    anim.SetBool("SniperBool", false);
+		    anim.SetBool("PistolBool", true);
+	    	AR.SetActive(false);
+	    	Sniper.SetActive(false);
+	    	Pistol.SetActive(true);
+	    	Pistol.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		    Pistol.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    }
     }
     void gunselect()
     {
@@ -267,7 +331,11 @@ public class playerController : MonoBehaviour
 	    hitEffect = gunstats[selectGun].hitEffect;
         hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    if (maxAmmo == 20)
+	    {
+	    	anim.SetTrigger("Pistol");
+	    }
     }
 
     public void updatePLayerHud()
@@ -308,9 +376,11 @@ public class playerController : MonoBehaviour
 	}
 	IEnumerator StartRecoil()
 	{
-		model.GetComponent<Animator>().Play("Recoil");
-		yield return new WaitForSeconds(.2f);
-		model.GetComponent<Animator>().Play("New State");
+		//model.GetComponent<Animator>().Play("Recoil");
+		yield return new WaitForSeconds(5.0f);
+		//model.GetComponent<Animator>().Play("New State");
+		anim.SetBool("Recoil", false);
+	
 	}
 
     
