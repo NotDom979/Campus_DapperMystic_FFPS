@@ -97,8 +97,9 @@ public class enemyAi : MonoBehaviour, IDamage
             StartCoroutine(death());
         }
         else
-        StartCoroutine(flashDamage());
+            gameObject.GetComponent<Animator>().Play("hit");
         animator.SetTrigger("hit");
+        StartCoroutine(flashDamage());
     }
 
     IEnumerator flashDamage()
@@ -117,10 +118,10 @@ public class enemyAi : MonoBehaviour, IDamage
         isShooting = true;
 
         Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-
+        gunShot.enabled = true;
         if (flamer)
         {
-            gunShot.enabled = true;
+            gunShot.loop = true;
         }
         else
             gunShot.Play();
@@ -159,12 +160,13 @@ public class enemyAi : MonoBehaviour, IDamage
 
     IEnumerator death()
     {
+        gameObject.GetComponent<Animator>().Play("death");
         animator.SetBool("death", true);
         agent.speed = 0;
         agent.enabled = false;
         grunt.pitch = 1;
-        grunt.volume = 1;
         grunt.Play(1);
+        grunt.volume = 1;
         if (flamer)
         {
             yield return new WaitForSeconds(3);
