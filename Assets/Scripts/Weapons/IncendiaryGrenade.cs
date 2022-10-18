@@ -7,6 +7,7 @@ public class IncendiaryGrenade : MonoBehaviour
     [SerializeField] public float delay = 4f;
     [SerializeField] public float blastRadius;
     public GameObject explosionEffect;
+    public Collider sphereCollider;
 
     float countDown;
     bool isExplode = false;
@@ -18,6 +19,8 @@ public class IncendiaryGrenade : MonoBehaviour
 
     void Start()
     {
+        sphereCollider.enabled = false;
+
         countDown = delay;
 
     }
@@ -28,8 +31,10 @@ public class IncendiaryGrenade : MonoBehaviour
         countDown -= Time.deltaTime;
         if (countDown <= 0f && !isExplode)
         {
+            sphereCollider.enabled = true;
             Explode();
             isExplode = true;
+            Destroy(gameObject);
         }
     }
 
@@ -37,12 +42,11 @@ public class IncendiaryGrenade : MonoBehaviour
     {
         pos = transform.position;
         Instantiate(explosionEffect, pos, transform.rotation);
-        AreaDamageEnemies(pos, blastRadius, dmg);
 
+        AreaDamageEnemies(pos, blastRadius, dmg);
 
         Debug.Log("Boom");
 
-        Destroy(gameObject);
 
     }
 
@@ -53,7 +57,7 @@ public class IncendiaryGrenade : MonoBehaviour
         {
             enemyAi enemyHit = nearbyEntities.GetComponent<enemyAi>();
             playerController playerHit = nearbyEntities.GetComponent<playerController>();
-          
+
             if (enemyHit != null)
             {
 
@@ -64,4 +68,16 @@ public class IncendiaryGrenade : MonoBehaviour
 
         }
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<StatusManager>() != null)
+        {
+            other.GetComponent<StatusManager>().ApplyBurn(6);
+        }
+    }
+
+   
 }
+

@@ -872,14 +872,14 @@ GameObject:
   - component: {fileID: 7472279680885649567}
   - component: {fileID: 4924067658057301090}
   - component: {fileID: 5281342804774032114}
-  - component: {fileID: 4697364634688618783}
+  - component: {fileID: 8297991540402606595}
   m_Layer: 7
   m_Name: smgman
   m_TagString: wehrmacht_b
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2708322878787574436
 Transform:
   m_ObjectHideFlags: 0
@@ -978,6 +978,7 @@ MonoBehaviour:
   shootRate: 0.5
   bullet: {fileID: 5441857571821409140, guid: 0a729f819a07a3747abdbd8e60d9cd08, type: 3}
   shotPoint: {fileID: 6314107100266066699}
+  flamer: 0
 --- !u!195 &5281342804774032114
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1000,19 +1001,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &4697364634688618783
-SphereCollider:
+--- !u!114 &8297991540402606595
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2529212465647581619}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: 0, y: 1.6, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f093000af0c3641b91156a25051fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnTicks: 
+  damage: 2
+  burn: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!1 &2825425303151995793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,7 +3618,7 @@ GameObject:
   - component: {fileID: 2417222986528206142}
   - component: {fileID: 7536903574928985233}
   m_Layer: 7
-  m_Name: Wehrmacht_soilder_B
+  m_Name: macht_soilder_Ber_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
