@@ -83,6 +83,10 @@ public class GameManager : MonoBehaviour
     public void CheckEnemyTotal()
     {
         enemyNumber--;
+        if (enemyNumber < 0)
+        {
+            enemyNumber = 0;
+        }
         enemyCountText.text = enemyNumber.ToString("F0");
     }
     public void WinCondition()
@@ -97,7 +101,7 @@ public class GameManager : MonoBehaviour
     }
 	public void checkWin()
 	{
-		if (flag == 1 && enemyNumber == 0)
+		if (flag == 1 && enemyNumber <= 0)
 		{
 			winMenu.SetActive(true);
 			cursorLockPause();

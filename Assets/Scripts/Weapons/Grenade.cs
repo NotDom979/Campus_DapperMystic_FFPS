@@ -56,9 +56,14 @@ public class Grenade : MonoBehaviour
 			{
 
 				enemyHit.takeDamage(dmg);
-				GameManager.instance.playerScript.takeDamage((int)dmg);
+				
 
 			}
+            if (playerHit != null)
+            {
+				GameManager.instance.playerScript.takeDamage((int)dmg);
+
+            }
 		
 		}
 	}
