@@ -57,12 +57,19 @@ public class IncendiaryGrenade : MonoBehaviour
         {
             enemyAi enemyHit = nearbyEntities.GetComponent<enemyAi>();
             playerController playerHit = nearbyEntities.GetComponent<playerController>();
+<<<<<<< HEAD
 
+=======
+            StatusManager burn = nearbyEntities.GetComponent<StatusManager>();
+>>>>>>> PlayerMovement
             if (enemyHit != null)
             {
+                if (enemyHit.GetComponent<StatusManager>() != null)
+                {
 
-                enemyHit.takeDamage(dmg);
-                GameManager.instance.playerScript.takeDamage((int)dmg);
+                }
+                    enemyHit.takeDamage(dmg);
+                    GameManager.instance.playerScript.takeDamage((int)dmg);
 
             }
 

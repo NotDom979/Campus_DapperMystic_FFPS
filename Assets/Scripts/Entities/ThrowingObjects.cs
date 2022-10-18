@@ -12,7 +12,7 @@ public class ThrowingObjects : MonoBehaviour
 	public GameObject objectToThrow;
 	
 	[Header("Settings")]
-	public int totalThrows;
+	public int totalThrows = 5;
 	public int throwCoolDown;
 	public float throwForce;
 	public float throwupwardForce;
