@@ -8,12 +8,11 @@ public class HealthPickUp : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		playerController health = other.GetComponent<playerController>();
+		
 		if (health)
 		{
 			health.AddHealth(amount);
 			Destroy(gameObject);
 		}
-		//GameManager.instance.playerScript = other.GetComponent<CharacterController>();
-		
 	}
 }
