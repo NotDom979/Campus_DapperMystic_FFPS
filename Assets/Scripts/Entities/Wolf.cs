@@ -11,6 +11,10 @@ public class Wolf : MonoBehaviour, IDamage
     [SerializeField] private Animator animator;
     [SerializeField] public AudioSource footSteps;
     [SerializeField] public AudioSource grunt;
+    [SerializeField] public AudioSource attack;
+    [SerializeField] public AudioSource shot;
+    [SerializeField] public AudioSource shot2;
+    [SerializeField] public AudioSource Howl;
 
     [Header("-----Enemy Stats-----")]
     public float maxHealth = 10;
@@ -28,6 +32,7 @@ public class Wolf : MonoBehaviour, IDamage
     [SerializeField] GameObject LaunchPoint;
     [SerializeField] GameObject Projectile1;
     [SerializeField] GameObject Projectile2;
+    
 
 
 
@@ -49,11 +54,12 @@ public class Wolf : MonoBehaviour, IDamage
     {
         stage1 = true;
         stage2 = false;
+        footSteps.enabled = false;
 
         speedChase = 10;
         speedOrig = speedChase;
         animator.SetBool("howl", true);
-
+        Howl.Play();
         grunt.pitch = 2;
         grunt.volume = .598f;
         GameManager.instance.enemyNumber++;
@@ -68,7 +74,6 @@ public class Wolf : MonoBehaviour, IDamage
         startPos = transform.position;
 
 
-
     }
 
     void Update()
@@ -77,7 +82,6 @@ public class Wolf : MonoBehaviour, IDamage
         if (agent.enabled)
         {
 
-            footSteps.enabled = true;
             if (InRadius)
             {
                 playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
@@ -85,6 +89,7 @@ public class Wolf : MonoBehaviour, IDamage
 
                 CanSeePlayer();
                 animator.SetBool("howl", false);
+                footSteps.enabled = true;
 
             }
 
@@ -95,6 +100,7 @@ public class Wolf : MonoBehaviour, IDamage
     {
         currentHealth -= dmg;
         enemyHpBar.fillAmount = currentHealth / maxHealth;
+        grunt.pitch = 2;
         grunt.Play(1);
         if (currentHealth <= 0)
         {
@@ -124,10 +130,10 @@ public class Wolf : MonoBehaviour, IDamage
     IEnumerator flashDamage()
     {
         model.material.color = Color.red;
-        speedChase = 0;
+        agent.speed = 0;
         yield return new WaitForSeconds(.5f);
         model.material.color = Color.white;
-        speedChase = speedOrig;
+        agent.speed = speedOrig;
         agent.stoppingDistance = 0;
         agent.SetDestination(GameManager.instance.player.transform.position);
     }
@@ -138,9 +144,11 @@ public class Wolf : MonoBehaviour, IDamage
         {
             isAttacking = true;
             agent.speed = 0;
+            attack.Play();
             animator.SetBool("attack", true);
             yield return new WaitForSeconds(AttackRate);
             animator.SetBool("attack", false);
+            attack.Stop();
             agent.speed = speedOrig;
             isAttacking = false;
         }
@@ -148,9 +156,11 @@ public class Wolf : MonoBehaviour, IDamage
         {
             isAttacking = true;
             agent.speed = 0;
+            attack.Play();
             animator.SetBool("attack", true);
             yield return new WaitForSeconds(AttackRate);
             animator.SetBool("attack", false);
+            attack.Stop();
             agent.speed = 25;
             isAttacking = false;
         }
@@ -161,16 +171,17 @@ public class Wolf : MonoBehaviour, IDamage
         if (stage1)
         {
             isShooting = true;
-            
+
             for (int i = 0; i < 3; i++)
             {
-                
+                shot.Play();
                 Instantiate(Projectile1, LaunchPoint.transform.position, transform.rotation);
                 yield return new WaitForSeconds(.3f);
+                shot.Stop();
             }
-            
+
             yield return new WaitForSeconds(ShootRate);
-            
+
             isShooting = false;
         }
         else if (stage2 && !stage1)
@@ -179,11 +190,12 @@ public class Wolf : MonoBehaviour, IDamage
 
             for (int i = 0; i < 10; i++)
             {
-                
+                shot2.Play();
                 Instantiate(Projectile2, LaunchPoint.transform.position, transform.rotation);
                 yield return new WaitForSeconds(.1f);
+                shot2.Play();
             }
-            
+
             yield return new WaitForSeconds(ShootRate);
 
             isShooting = false;
@@ -222,12 +234,14 @@ public class Wolf : MonoBehaviour, IDamage
         grunt.Play(1);
         yield return new WaitForSeconds(4);
         animator.SetBool("Dead", false);
-        yield return new WaitForSeconds(1);
-        currentHealth = maxHealth;
+        yield return new WaitForSeconds(2);
+        currentHealth = 125;
+        maxHealth = 125;
         enemyHpBar.fillAmount = maxHealth;
-        agent.speed = 25;
+        agent.speed = 20;
+        speedOrig = 20;
         stage2 = true;
-        
+
         agent.SetDestination(GameManager.instance.player.transform.position);
     }
     IEnumerator death()
@@ -260,6 +274,7 @@ public class Wolf : MonoBehaviour, IDamage
 
                 agent.stoppingDistance = stoppingDistOrigin;
                 agent.SetDestination(GameManager.instance.player.transform.position);
+
 
                 if (currentHealth > 1)
                 {
