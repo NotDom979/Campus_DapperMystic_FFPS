@@ -33,7 +33,6 @@ public class enemyAi : MonoBehaviour, IDamage
 
     bool InRadius;
     bool isShooting;
-
     Vector3 playerDirection;
     float stoppingDistOrigin;
     Vector3 startPos;
@@ -43,6 +42,7 @@ public class enemyAi : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+
         gunShot.enabled = false;
         grunt.pitch = 2;
         grunt.volume = .598f;
@@ -77,7 +77,7 @@ public class enemyAi : MonoBehaviour, IDamage
             }
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
-                
+
                 Roam();
             }
             else
@@ -91,22 +91,23 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         currentHealth -= dmg;
         enemyHpBar.fillAmount = currentHealth / maxHealth;
-        animator.SetTrigger("hit");
         grunt.Play(1);
-        StartCoroutine(flashDamage());
         if (currentHealth <= 0)
         {
             StartCoroutine(death());
         }
+        else
+        StartCoroutine(flashDamage());
+        animator.SetTrigger("hit");
     }
 
     IEnumerator flashDamage()
     {
         model.material.color = Color.red;
-        agent.enabled = false;
-        yield return new WaitForSeconds(.01f);
+        agent.speed = 0;
+        yield return new WaitForSeconds(.5f);
         model.material.color = Color.white;
-        agent.enabled = true;
+        agent.speed = speedPatrol;
         agent.stoppingDistance = 0;
         agent.SetDestination(GameManager.instance.player.transform.position);
     }
@@ -158,11 +159,18 @@ public class enemyAi : MonoBehaviour, IDamage
 
     IEnumerator death()
     {
+        animator.SetBool("death", true);
+        agent.speed = 0;
+        agent.enabled = false;
         grunt.pitch = 1;
         grunt.volume = 1;
-        animator.SetBool("death", true);
         grunt.Play(1);
-        yield return new WaitForSeconds(.32f);
+        if (flamer)
+        {
+            yield return new WaitForSeconds(3);
+        }
+        else
+            yield return new WaitForSeconds(.35f);
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
@@ -198,7 +206,7 @@ public class enemyAi : MonoBehaviour, IDamage
                     }
 
                 }
-                
+
             }
             else
             {
