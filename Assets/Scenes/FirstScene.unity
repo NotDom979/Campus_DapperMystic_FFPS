@@ -426,10 +426,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-      propertyPath: attackPoint
+    - target: {fileID: -1056252821248963889, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+      propertyPath: PlayerCamera
       value: 
-      objectReference: {fileID: 695296809}
+      objectReference: {fileID: 1332307044}
+    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+      propertyPath: throwForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+      propertyPath: throwCoolDown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+      propertyPath: throwupwardForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1763743122540536327, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -480,11 +492,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
---- !u!4 &695296809 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3435737643567446359, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
-  m_PrefabInstance: {fileID: 561736783}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +742,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d00786917c5877428a3fc1d63a2c475, type: 3}
+--- !u!4 &1332307044 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6981777776952555518, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+  m_PrefabInstance: {fileID: 561736783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1402909814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -964,20 +976,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
-      propertyPath: dmg
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: delay
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1274853743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: blastRadius
-      value: 18
+      value: 15.8
       objectReference: {fileID: 0}
     - target: {fileID: 5435696478574877726, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_Name
       value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861410742376750830, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861410742376750830, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861410742376750830, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7727238420709509743, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
       propertyPath: m_RootOrder

@@ -765,7 +765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618570935014433245}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08227134, y: 1.2730002, z: 0.08699989}
+  m_LocalPosition: {x: 0.08227134, y: 1.433, z: 0.253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -946,12 +946,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6981777776952555518}
-  attackPoint: {fileID: 7544741438673529808}
+  attackPoint: {fileID: 3435737643567446359}
   objectToThrow: {fileID: 5435696478574877726, guid: 37dfb5f96ec4e844fbd0d35885dc05f4, type: 3}
-  totalThrows: 2
+  totalThrows: 10
   throwCoolDown: 2
-  throwForce: 20
-  throwupwardForce: 3
+  throwForce: 19
+  throwupwardForce: 6
   throwKey: 103
 --- !u!114 &-1056252821248963889
 MonoBehaviour:
@@ -966,8 +966,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHeight: {fileID: 906448362}
+  PlayerCamera: {fileID: 0}
   normalHeight: 2
   crouchHeight: 0.5
+  _speed: 0
 --- !u!95 &1629966358
 Animator:
   serializedVersion: 4
