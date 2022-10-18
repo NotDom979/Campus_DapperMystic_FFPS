@@ -42,6 +42,7 @@ public class playerController : MonoBehaviour
 	public GameObject pistolSp;
 	public GameObject rifleSp;
 	public GameObject SniperSp;
+	public AudioClip emptyMag;
 
     bool isShooting;
     //bool isReloading = false;
@@ -53,6 +54,7 @@ public class playerController : MonoBehaviour
     private GameObject mfClone;
 	private GameObject spClone;
 	private GameObject hitEffClone;
+	AudioClip stored;
 
 
     private void Start()
@@ -63,7 +65,8 @@ public class playerController : MonoBehaviour
 		HPOrigin = HP;
 		ArmorOrigin = Armor;
 		respawn();
-        currentAmmo = maxAmmo;
+		currentAmmo = maxAmmo;
+		stored = gunShot.clip;
 		GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
 		anim.SetBool("ArBool", false);
 		anim.SetBool("SniperBool", false);
@@ -151,11 +154,13 @@ public class playerController : MonoBehaviour
     {
         if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot")) && !isShooting)
         {
+        	
             if (currentAmmo >= 1)
             {
             	Recoil();
 	           	isShooting = true;
 	           	Muzzle();
+	           	gunShot.clip = stored;
 	           	gunShot.Play();
 	           	currentAmmo--;
 	           	GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
@@ -184,6 +189,11 @@ public class playerController : MonoBehaviour
 	            Destroy(mfClone);
 	            Destroy(hitEffClone);
             }
+	        else
+	        {
+	        	gunShot.clip = emptyMag;
+	        	gunShot.Play();
+	        }
         }
 
     }
@@ -237,7 +247,7 @@ public class playerController : MonoBehaviour
 	    gunShot.clip = stats.sound;
         hitEffect.SetActive(true);
 	    gunstats.Add(stats);
-        
+	    stored = gunShot.clip;
 	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
 	    if (maxAmmo == 30)
 	    {
@@ -300,6 +310,7 @@ public class playerController : MonoBehaviour
         hitEffect.SetActive(true);
         model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
 	    model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	    stored = gunShot.clip;
 	    if (maxAmmo == 30)
 	    {
 		    gameObject.GetComponent<Animator>().Play("AR");
@@ -352,15 +363,15 @@ public class playerController : MonoBehaviour
 	    {
 		    anim.SetTrigger("Reload");
 		    Reload();
-		    StartCoroutine("Wait");
         	reloadSound.Play(1);
             Debug.Log("Reload");
             yield return new WaitForSeconds(reloadTime);
 		    currentAmmo = maxAmmo;
 		    if (currentAmmo == maxAmmo)
 		    {
+		    	StartCoroutine("Wait");
+		    	anim.SetTrigger("Idle");
 			    WeaponIdle();
-			    //anim.SetBool("PistolBool",true);
 		    }
         }
 
