@@ -115,8 +115,8 @@ public class playerController : MonoBehaviour
         {
             timesJumped++;
 	        playerVelocity.y = jumpHeight;
-	        anim.SetBool("Jump", true);
-	        anim.SetTrigger("Hop");
+	        anim.SetTrigger("Jump");
+	        //gameObject.GetComponent<Animator>().Play("Jump");
 	        if (timesJumped == 1)
 	        {
 		        playerJumpNoise.pitch = 1;
@@ -127,8 +127,11 @@ public class playerController : MonoBehaviour
 	        	playerJumpNoise.pitch = 1.1f;
 	        	playerJumpNoise.Play();
 	        }
+	        StartCoroutine("Wait");
+	        anim.SetTrigger("Idle");
+	        // gameObject.GetComponent<Animator>().Play("Idle");
         }
-	    anim.SetBool("Jump", false);
+	    //anim.ResetTrigger("Jump");
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
