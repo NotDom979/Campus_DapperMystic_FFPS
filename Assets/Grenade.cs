@@ -33,7 +33,7 @@ public class Grenade : MonoBehaviour
 	
 	void Explode()
 	{
-		pos =transform.position;
+		pos = transform.position;
 		Instantiate(explosionEffect, pos, transform.rotation);
 		AreaDamageEnemies(pos,blastRadius,dmg);
 
@@ -44,19 +44,19 @@ public class Grenade : MonoBehaviour
 		
 	}
 	
-	void AreaDamageEnemies(Vector3 location, float radius, float damage)
+	void AreaDamageEnemies(Vector3 location, float radiusofEntity, float damage)
 	{
-		Collider[] objectsInRange = Physics.OverlapSphere(location, radius);
-		foreach (Collider col in objectsInRange)
+		Collider[] objectsInRange = Physics.OverlapSphere(location, radiusofEntity);
+		foreach (Collider nearbyEntities in objectsInRange)
 		{
-			enemyAi enemyHit = col.GetComponent<enemyAi>();
+			enemyAi enemyHit = nearbyEntities.GetComponent<enemyAi>();
+			playerController playerHit = nearbyEntities.GetComponent<playerController>();
+
 			if (enemyHit != null)
 			{
-				//// linear falloff of effect
-				//float proximity = (location - enemyHit.transform.position).magnitude;
-				//float effect = 1 - (proximity / radius);
 
 				enemyHit.takeDamage(dmg);
+				GameManager.instance.playerScript.takeDamage((int)dmg);
 
 			}
 		

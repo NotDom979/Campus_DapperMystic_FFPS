@@ -51,7 +51,7 @@ public class ThrowingObjects : MonoBehaviour
 		Vector3 forceDirection = cam.transform.forward;
 		RaycastHit hit;
 		
-		if (Physics.Raycast(cam.position, cam.forward, out hit,500f))
+		if (Physics.Raycast(cam.position, cam.transform.forward, out hit,500f))
 		{
 			forceDirection = (hit.point - attackPoint.position).normalized;
 		}
