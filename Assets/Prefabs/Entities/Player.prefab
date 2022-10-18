@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 1264702469}
   - component: {fileID: 1264702468}
   m_Layer: 5
-  m_Name: Particle
+  m_Name: BazookEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,7 +637,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690415085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.009, y: 0.114, z: 0.495}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1011,16 +1011,19 @@ MonoBehaviour:
   playerFootSteps: {fileID: 1000543855}
   arMuzzle: {fileID: 1547029955682645437}
   sniperMuzzle: {fileID: 3306493024138174298}
+  bazookaMuzzle: {fileID: 1264702466}
   pistolMuzzle: {fileID: 934470531924485597}
   shootRate: 1
   shootDist: 15
   shootDmg: 1
   bullet: {fileID: 4754290576305499760, guid: a689f3437d599ea4c85c3f94f9735826, type: 3}
+  missile: {fileID: 6650354949653798602, guid: 0009107b79a9e6747a4f8a67491567c2, type: 3}
   gunstats: []
   Pistol: {fileID: 7205652690045399402}
   model: {fileID: 7205652690045399402}
   AR: {fileID: 507148381249612974}
   Sniper: {fileID: 145233931350043804}
+  Bazooka: {fileID: 919132147900415643}
   hitEffect: {fileID: 0}
   muzzleFlash: {fileID: 934470531924485597}
   gunShot: {fileID: 8279317933896984245}
@@ -1029,6 +1032,7 @@ MonoBehaviour:
   pistolSp: {fileID: 2851201352568397600}
   rifleSp: {fileID: 8841021537018677166}
   SniperSp: {fileID: 4014201287637698245}
+  bazookaSp: {fileID: 1690415085}
   emptyMag: {fileID: 8300000, guid: acb857dc806d6dd49bd63fc983c9249a, type: 3}
   selectGun: 0
   maxAmmo: 0
@@ -1441,7 +1445,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.2
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -4041,6 +4045,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426499557714507367, guid: ef0d0257c79a98d479d0abd54a2186d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141293584241092891, guid: ef0d0257c79a98d479d0abd54a2186d0, type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5141293584241092891, guid: ef0d0257c79a98d479d0abd54a2186d0, type: 3}
