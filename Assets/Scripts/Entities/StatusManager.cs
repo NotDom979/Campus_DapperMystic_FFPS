@@ -8,10 +8,11 @@ public class StatusManager : MonoBehaviour
     public List<int> burnTicks = new List<int>();
     [SerializeField] int damage;
     public AudioSource burn;
+    public enemyAi enemy;
     // Start is called before the first frame update
     void Start()
     {
-
+        enemy = GetComponent<enemyAi>();
     }
 
 
@@ -32,20 +33,28 @@ public class StatusManager : MonoBehaviour
     {
         while (burnTicks.Count > 0)
         {
-                
+
             for (int i = 0; i < burnTicks.Count; i++)
             {
                 burnTicks[i]--;
 
 
             }
+            if (gameObject.CompareTag("Player"))
+            {
+
                 GameManager.instance.playerScript.HP -= damage;
-            burn.Play();
-            GameManager.instance.playerScript.playerGrunt.Play();
+                burn.Play();
+                GameManager.instance.playerScript.playerGrunt.Play();
                 GameManager.instance.playerScript.updatePLayerHud();
-                burnTicks.RemoveAll(i => i == 0);
-                yield return new WaitForSeconds(1);
-            
+            }
+            else
+            {
+                enemy.takeDamage(damage);
+            }
+            burnTicks.RemoveAll(i => i == 0);
+            yield return new WaitForSeconds(1);
+
         }
         if (burnTicks.Count == 0)
         {
