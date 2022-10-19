@@ -565,11 +565,13 @@ public class playerController : MonoBehaviour
 		isShooting = true;
 
 		Instantiate(missile, bazookaSp.transform.position, transform.rotation);
+		
 
 		gunShot.Play();
 
 
 		gunShot.Stop();
+		Destroy(missile);
 		isShooting = false;
 	}
 }
