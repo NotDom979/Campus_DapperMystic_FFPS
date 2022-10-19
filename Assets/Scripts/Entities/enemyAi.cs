@@ -37,7 +37,8 @@ public class enemyAi : MonoBehaviour, IDamage
     float stoppingDistOrigin;
     Vector3 startPos;
     float angle;
-    float speedPatrol;
+	float speedPatrol;
+	RaycastHit rayHit;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +67,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	    
         if (agent.enabled)
         {
+            rayHit = new RaycastHit();
         	animator.SetInteger("Status_walk", 1);
             footSteps.enabled = true;
             if (InRadius)
@@ -73,12 +75,11 @@ public class enemyAi : MonoBehaviour, IDamage
                 playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
                 angle = Vector3.Angle(playerDirection, transform.forward);
 
-                CanSeePlayer();
+               CanSeePlayer();
 
             }
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
-
                 Roam();
             }
             else
@@ -98,8 +99,10 @@ public class enemyAi : MonoBehaviour, IDamage
             StartCoroutine(death());
         }
         else
-            gameObject.GetComponent<Animator>().Play("hit");
+	        gameObject.GetComponent<Animator>().Play("hit");
+            
         animator.SetTrigger("hit");
+	    agent.SetDestination(GameManager.instance.player.transform.position);
         StartCoroutine(flashDamage());
     }
 
@@ -111,14 +114,13 @@ public class enemyAi : MonoBehaviour, IDamage
         model.material.color = Color.white;
         agent.speed = speedPatrol;
         agent.stoppingDistance = 0;
-        agent.SetDestination(GameManager.instance.player.transform.position);
     }
 
     IEnumerator Shoot()
     {
         isShooting = true;
 
-        Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
         gunShot.enabled = true;
         if (flamer)
         {
@@ -146,6 +148,13 @@ public class enemyAi : MonoBehaviour, IDamage
             //animator.SetInteger("Status_walk", 1);
             InRadius = true;
         }
+	    if (other.CompareTag("Sound"))
+	    {
+	    	//animator.SetInteger("Status_walk", 1);
+	    	InRadius = true;
+	    	facePlayer();
+	    	agent.SetDestination(GameManager.instance.player.transform.position);
+	    }
     }
 
     private void OnTriggerExit(Collider other)
@@ -157,6 +166,12 @@ public class enemyAi : MonoBehaviour, IDamage
             agent.stoppingDistance = 0;
 
         }
+	    if (other.CompareTag("Sound"))
+	    {
+	    	//animator.SetInteger("Status_walk", 0);
+	    	agent.stoppingDistance = 0;
+	    	InRadius = false;
+	    }
     }
 
     IEnumerator death()
@@ -182,11 +197,11 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(HeadPos.transform.position, playerDirection, out hit, sightDistance))
+	    if (Physics.Raycast(HeadPos.transform.position, playerDirection, out rayHit, sightDistance))
         {
             Debug.DrawRay(HeadPos.transform.position, playerDirection);
             Debug.Log(angle);
-            if (hit.collider.CompareTag("Player"))
+		    if (rayHit.collider.CompareTag("Player"))
             {
                 if (angle <= viewAngle)
                 {
@@ -213,6 +228,7 @@ public class enemyAi : MonoBehaviour, IDamage
             }
             else
             {
+            	agent.stoppingDistance = 0;
                 gunShot.Stop();
             }
 
@@ -234,18 +250,23 @@ public class enemyAi : MonoBehaviour, IDamage
     void Roam()
 	{
 		animator.SetInteger("Status_walk", 1);
-        agent.stoppingDistance = 0;
-        agent.speed = speedPatrol;
-        Vector3 randomDir = Random.insideUnitSphere * roamDist;
 
+		agent.stoppingDistance = 0;
+		agent.speed = speedPatrol;
+        
+        Vector3 randomDir = Random.insideUnitSphere * roamDist;
         randomDir += startPos;
 
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomDir, out hit, 1, 1);
+		NavMesh.SamplePosition(randomDir, out hit, .5f, 1);
         NavMeshPath path = new NavMeshPath();
-
-        agent.CalculatePath(hit.position, path);
-
+        if (hit.hit == true)
+        {
+		    if (hit.position != null)
+		    {
+			    agent.CalculatePath(hit.position, path);
+		    }
+        }
         agent.SetPath(path);
 
     }

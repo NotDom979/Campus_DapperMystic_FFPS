@@ -23,9 +23,9 @@ public class ThrowingObjects : MonoBehaviour
 	bool readyTothrow;
 	
 	private void Start(){
+		totalThrows++;
 		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
 		readyTothrow = true;
-		
 	}
 	
 	private void Update(){
