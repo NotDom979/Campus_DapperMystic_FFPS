@@ -227,19 +227,19 @@ public class playerController : MonoBehaviour
 		}
 		
 	}
-	public void AddArmor(int armorAmount)
-	{
-
-		
-		Armor += armorAmount;
-		if (Armor > ArmorOrigin)
-			Armor = ArmorOrigin;
-		if (Armor >= 0)
-			updatePLayerHud();
+    public void AddArmor(int armorAmount)
+    {
 
 
-	}
-	public void takeDamage(int dmg)
+        Armor += armorAmount;
+        if (Armor > ArmorOrigin)
+            Armor = ArmorOrigin;
+        if (Armor >= 0)
+            updatePLayerHud();
+
+
+    }
+    public void takeDamage(int dmg)
 	{
 		if (Armor <= 0)
 		{
@@ -565,11 +565,13 @@ public class playerController : MonoBehaviour
 		isShooting = true;
 
 		Instantiate(missile, bazookaSp.transform.position, transform.rotation);
+		
 
 		gunShot.Play();
 
 
 		gunShot.Stop();
+		Destroy(missile);
 		isShooting = false;
 	}
 }
