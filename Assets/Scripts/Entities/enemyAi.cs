@@ -46,7 +46,7 @@ public class enemyAi : MonoBehaviour, IDamage
         gunShot.enabled = false;
         grunt.pitch = 2;
         grunt.volume = .598f;
-        GameManager.instance.enemyNumber++;
+	    //GameManager.instance.enemyNumber++;
         currentHealth = maxHealth;
         GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");
 
@@ -56,16 +56,17 @@ public class enemyAi : MonoBehaviour, IDamage
         startPos = transform.position;
 
         speedPatrol = agent.speed;
-        animator.SetInteger("Status_walk", 1);
+	    animator.SetInteger("Status_walk", 1);
         Roam();
     }
 
 
     void Update()
     {
+	    
         if (agent.enabled)
         {
-            animator.SetInteger("Status_walk", 1);
+        	animator.SetInteger("Status_walk", 1);
             footSteps.enabled = true;
             if (InRadius)
             {
@@ -231,7 +232,8 @@ public class enemyAi : MonoBehaviour, IDamage
 
 
     void Roam()
-    {
+	{
+		animator.SetInteger("Status_walk", 1);
         agent.stoppingDistance = 0;
         agent.speed = speedPatrol;
         Vector3 randomDir = Random.insideUnitSphere * roamDist;

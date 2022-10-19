@@ -12,7 +12,7 @@ public class ThrowingObjects : MonoBehaviour
 	public GameObject objectToThrow;
 	
 	[Header("Settings")]
-	public int totalThrows = 5;
+	public int totalThrows;
 	public int throwCoolDown;
 	public float throwForce;
 	public float throwupwardForce;
@@ -30,7 +30,7 @@ public class ThrowingObjects : MonoBehaviour
 	
 	private void Update(){
 		
-		if (Input.GetKeyDown(throwKey) && readyTothrow && totalThrows > 0	)
+		if (Input.GetKeyDown(throwKey) && !readyTothrow && totalThrows > 0	)
 		{
 			Throw();
 		}
