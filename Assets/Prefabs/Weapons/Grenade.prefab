@@ -217,10 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7491b51a70e551c4baffde1df1286efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 4
-  blastRadius: 6
+  delay: 1
+  blastRadius: 20
   explosionEffect: {fileID: 8714244275622671896, guid: abf8d5b763621654486813c5c8af8234, type: 3}
-  dmg: 30
+  dmg: 100
 --- !u!33 &7264049888898462419
 MeshFilter:
   m_ObjectHideFlags: 0

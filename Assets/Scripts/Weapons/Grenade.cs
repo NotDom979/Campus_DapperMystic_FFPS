@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-	[SerializeField]public float delay = 4f;
+	[SerializeField]float delay;
 	[SerializeField]public float blastRadius;
 	public GameObject explosionEffect;
 	
@@ -55,7 +55,7 @@ public class Grenade : MonoBehaviour
 			if (enemyHit != null)
 			{
 
-				enemyHit.takeDamage(damage);
+				enemyHit.takeDamage(dmg);
 				
 
 			}
