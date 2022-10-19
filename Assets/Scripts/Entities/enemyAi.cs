@@ -37,7 +37,8 @@ public class enemyAi : MonoBehaviour, IDamage
     float stoppingDistOrigin;
     Vector3 startPos;
     float angle;
-    float speedPatrol;
+	float speedPatrol;
+	RaycastHit rayHit;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class enemyAi : MonoBehaviour, IDamage
         gunShot.enabled = false;
         grunt.pitch = 2;
         grunt.volume = .598f;
-        GameManager.instance.enemyNumber++;
+	    //GameManager.instance.enemyNumber++;
         currentHealth = maxHealth;
         GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");
 
@@ -56,28 +57,29 @@ public class enemyAi : MonoBehaviour, IDamage
         startPos = transform.position;
 
         speedPatrol = agent.speed;
-        animator.SetInteger("Status_walk", 1);
+	    animator.SetInteger("Status_walk", 1);
         Roam();
     }
 
 
     void Update()
     {
+	    
         if (agent.enabled)
         {
-            animator.SetInteger("Status_walk", 1);
+            rayHit = new RaycastHit();
+        	animator.SetInteger("Status_walk", 1);
             footSteps.enabled = true;
             if (InRadius)
             {
                 playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
                 angle = Vector3.Angle(playerDirection, transform.forward);
 
-                CanSeePlayer();
+               CanSeePlayer();
 
             }
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
-
                 Roam();
             }
             else
@@ -97,8 +99,11 @@ public class enemyAi : MonoBehaviour, IDamage
             StartCoroutine(death());
         }
         else
-        StartCoroutine(flashDamage());
+	        gameObject.GetComponent<Animator>().Play("hit");
+            
         animator.SetTrigger("hit");
+	    agent.SetDestination(GameManager.instance.player.transform.position);
+        StartCoroutine(flashDamage());
     }
 
     IEnumerator flashDamage()
@@ -109,18 +114,17 @@ public class enemyAi : MonoBehaviour, IDamage
         model.material.color = Color.white;
         agent.speed = speedPatrol;
         agent.stoppingDistance = 0;
-        agent.SetDestination(GameManager.instance.player.transform.position);
     }
 
     IEnumerator Shoot()
     {
         isShooting = true;
 
-        Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-
+	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+        gunShot.enabled = true;
         if (flamer)
         {
-            gunShot.enabled = true;
+            gunShot.loop = true;
         }
         else
             gunShot.Play();
@@ -144,6 +148,13 @@ public class enemyAi : MonoBehaviour, IDamage
             //animator.SetInteger("Status_walk", 1);
             InRadius = true;
         }
+	    if (other.CompareTag("Sound"))
+	    {
+	    	//animator.SetInteger("Status_walk", 1);
+	    	InRadius = true;
+	    	facePlayer();
+	    	agent.SetDestination(GameManager.instance.player.transform.position);
+	    }
     }
 
     private void OnTriggerExit(Collider other)
@@ -155,16 +166,23 @@ public class enemyAi : MonoBehaviour, IDamage
             agent.stoppingDistance = 0;
 
         }
+	    if (other.CompareTag("Sound"))
+	    {
+	    	//animator.SetInteger("Status_walk", 0);
+	    	agent.stoppingDistance = 0;
+	    	InRadius = false;
+	    }
     }
 
     IEnumerator death()
     {
+        gameObject.GetComponent<Animator>().Play("death");
         animator.SetBool("death", true);
         agent.speed = 0;
         agent.enabled = false;
         grunt.pitch = 1;
-        grunt.volume = 1;
         grunt.Play(1);
+        grunt.volume = 1;
         if (flamer)
         {
             yield return new WaitForSeconds(3);
@@ -179,11 +197,11 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(HeadPos.transform.position, playerDirection, out hit, sightDistance))
+	    if (Physics.Raycast(HeadPos.transform.position, playerDirection, out rayHit, sightDistance))
         {
             Debug.DrawRay(HeadPos.transform.position, playerDirection);
             Debug.Log(angle);
-            if (hit.collider.CompareTag("Player"))
+		    if (rayHit.collider.CompareTag("Player"))
             {
                 if (angle <= viewAngle)
                 {
@@ -210,6 +228,7 @@ public class enemyAi : MonoBehaviour, IDamage
             }
             else
             {
+            	agent.stoppingDistance = 0;
                 gunShot.Stop();
             }
 
@@ -229,19 +248,25 @@ public class enemyAi : MonoBehaviour, IDamage
 
 
     void Roam()
-    {
-        agent.stoppingDistance = 0;
-        agent.speed = speedPatrol;
-        Vector3 randomDir = Random.insideUnitSphere * roamDist;
+	{
+		animator.SetInteger("Status_walk", 1);
 
+		agent.stoppingDistance = 0;
+		agent.speed = speedPatrol;
+        
+        Vector3 randomDir = Random.insideUnitSphere * roamDist;
         randomDir += startPos;
 
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomDir, out hit, 1, 1);
+		NavMesh.SamplePosition(randomDir, out hit, .5f, 1);
         NavMeshPath path = new NavMeshPath();
-
-        agent.CalculatePath(hit.position, path);
-
+        if (hit.hit == true)
+        {
+		    if (hit.position != null)
+		    {
+			    agent.CalculatePath(hit.position, path);
+		    }
+        }
         agent.SetPath(path);
 
     }

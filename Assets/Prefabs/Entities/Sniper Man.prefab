@@ -1989,14 +1989,14 @@ GameObject:
   - component: {fileID: -4111664308603760609}
   - component: {fileID: 1610555037704668051}
   - component: {fileID: 1610555037704668054}
-  - component: {fileID: 5870076305588530142}
+  - component: {fileID: 7819376689081923580}
   m_Layer: 7
   m_Name: Sniper Man
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4726433461609222311
 Transform:
   m_ObjectHideFlags: 0
@@ -2116,19 +2116,23 @@ MonoBehaviour:
   shootRate: 3
   bullet: {fileID: 6894301593597968444, guid: 97962eda4faabb24badae707a8907ac0, type: 3}
   shotPoint: {fileID: 7357410209536905737}
---- !u!135 &5870076305588530142
-SphereCollider:
+  flamer: 0
+--- !u!114 &7819376689081923580
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4720650048961336657}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: 0, y: 1.7, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f093000af0c3641b91156a25051fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnTicks: 
+  damage: 2
+  burn: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!1 &4720651291857509769
 GameObject:
   m_ObjectHideFlags: 0

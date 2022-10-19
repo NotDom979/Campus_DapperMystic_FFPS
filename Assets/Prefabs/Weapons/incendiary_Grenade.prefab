@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771493008027089581}
-  - component: {fileID: 1771493008027089578}
   - component: {fileID: 1771493008027089579}
   - component: {fileID: 1771493008027089580}
+  - component: {fileID: -5316444639407565246}
   m_Layer: 0
   m_Name: incendiary_Grenade
   m_TagString: Untagged
@@ -37,22 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1771493008027089578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3372846861241813182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7491b51a70e551c4baffde1df1286efd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 4
-  blastRadius: 6
-  explosionEffect: {fileID: 8714244275622671896, guid: abf8d5b763621654486813c5c8af8234, type: 3}
-  dmg: 1
 --- !u!54 &1771493008027089579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83,6 +67,22 @@ CapsuleCollider:
   m_Height: 4.95
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &-5316444639407565246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372846861241813182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b62ab088c4c6446bf8257b5cb1b616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 4
+  blastRadius: 10
+  explosionEffect: {fileID: 8714244275622671896, guid: abf8d5b763621654486813c5c8af8234, type: 3}
+  dmg: 1
 --- !u!1 &5111547635864336823
 GameObject:
   m_ObjectHideFlags: 0
