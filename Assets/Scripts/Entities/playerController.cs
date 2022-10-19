@@ -227,8 +227,19 @@ public class playerController : MonoBehaviour
 		}
 		
 	}
+	public void AddArmor(int armorAmount)
+	{
 
-    public void takeDamage(int dmg)
+		
+		Armor += armorAmount;
+		if (Armor > ArmorOrigin)
+			Armor = ArmorOrigin;
+		if (Armor >= 0)
+			updatePLayerHud();
+
+
+	}
+	public void takeDamage(int dmg)
 	{
 		if (Armor <= 0)
 		{
