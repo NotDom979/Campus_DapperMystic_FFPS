@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Bazooka
   m_EditorClassIdentifier: 
   shootRate: 10
-  shootDist: 50
-  shootDamage: 75
-  ammoCount: 3
-  maxAmmo: 3
+  shootDist: 60
+  shootDamage: 80
+  ammoCount: 1
+  maxAmmo: 1
   gunModel: {fileID: 8861492348188936993, guid: a8da46cb49614ab4a89d4496ddfb36d3, type: 3}
-  hitEffect: {fileID: 1535640691960112, guid: d79f03dd3c9b07c41a430faecdcdf500, type: 3}
+  hitEffect: {fileID: 1535640691960112, guid: df5ec65546bfebb4f80e6e39feae4aca, type: 3}
   muzzleEffect: {fileID: 8799386810924340885, guid: d38cd5256281cce408cdf2075a4c18da, type: 3}
   shotPoint: {fileID: 5448161114806800011, guid: 3d5ddc842fdfd734a9a4b0ae801de88a, type: 3}
   sound: {fileID: 8300000, guid: 2e52a7254e98f554490bf9a612cd4bb2, type: 3}
