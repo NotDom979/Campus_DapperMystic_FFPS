@@ -57,7 +57,7 @@ public class enemyAi : MonoBehaviour, IDamage
         startPos = transform.position;
 
         speedPatrol = agent.speed;
-	    animator.SetInteger("Status_walk", 1);
+	    //animator.SetInteger("Status_walk", 1);
         Roam();
     }
 
@@ -68,7 +68,8 @@ public class enemyAi : MonoBehaviour, IDamage
         if (agent.enabled)
         {
             rayHit = new RaycastHit();
-        	animator.SetInteger("Status_walk", 1);
+        	//animator.SetInteger("Status_walk", 1);
+        	animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
             footSteps.enabled = true;
             if (InRadius)
             {
@@ -99,9 +100,9 @@ public class enemyAi : MonoBehaviour, IDamage
             StartCoroutine(death());
         }
         else
-	        gameObject.GetComponent<Animator>().Play("hit");
+	        gameObject.GetComponent<Animator>().Play("Hit");
             
-        animator.SetTrigger("hit");
+	    animator.SetTrigger("Hit");
 	    agent.SetDestination(GameManager.instance.player.transform.position);
         StartCoroutine(flashDamage());
     }
@@ -119,7 +120,7 @@ public class enemyAi : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-
+	    gameObject.GetComponent<Animator>().Play("Shoot");
 	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
         gunShot.enabled = true;
         if (flamer)
@@ -135,7 +136,8 @@ public class enemyAi : MonoBehaviour, IDamage
             gunShot.Stop();
         }
 
-        isShooting = false;
+	    isShooting = false;
+	    gameObject.GetComponent<Animator>().Play("Idle");
     }
 
 
@@ -176,8 +178,8 @@ public class enemyAi : MonoBehaviour, IDamage
 
     IEnumerator death()
     {
-        gameObject.GetComponent<Animator>().Play("death");
-        animator.SetBool("death", true);
+	    gameObject.GetComponent<Animator>().Play("Dead");
+	    animator.SetBool("Dead", true);
         agent.speed = 0;
         agent.enabled = false;
         grunt.pitch = 1;
@@ -188,7 +190,7 @@ public class enemyAi : MonoBehaviour, IDamage
             yield return new WaitForSeconds(3);
         }
         else
-            yield return new WaitForSeconds(.35f);
+	        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
@@ -249,7 +251,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
     void Roam()
 	{
-		animator.SetInteger("Status_walk", 1);
+		//animator.SetInteger("Status_walk", 1);
 
 		agent.stoppingDistance = 0;
 		agent.speed = speedPatrol;
