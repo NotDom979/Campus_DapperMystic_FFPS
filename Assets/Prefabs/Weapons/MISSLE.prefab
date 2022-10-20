@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8403319799897722478}
   - component: {fileID: 123480504598351169}
-  - component: {fileID: 5129169386042896578}
   - component: {fileID: 360808306023413494}
+  - component: {fileID: 5129169386042896578}
   m_Layer: 9
   m_Name: MISSLE
   m_TagString: Untagged
@@ -45,10 +45,28 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.12
-  m_Height: 0.57
+  m_Radius: 0.06
+  m_Height: 0.27
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.07}
+  m_Center: {x: 0, y: 0, z: 0.13}
+--- !u!114 &360808306023413494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8400592835561974082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a2b5b917f360145b9a3554cb1d1e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5129169386042896578}
+  damage: 80
+  speed: 10
+  destroyTime: 3
+  blastRadius: 5
+  explosionEffect: {fileID: 1535640691960112, guid: df5ec65546bfebb4f80e6e39feae4aca, type: 3}
 --- !u!54 &5129169386042896578
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65,22 +83,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &360808306023413494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8400592835561974082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a2b5b917f360145b9a3554cb1d1e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 5129169386042896578}
-  damage: 100
-  speed: 20
-  destroyTime: 3
 --- !u!1 &8400990027829500426
 GameObject:
   m_ObjectHideFlags: 0
