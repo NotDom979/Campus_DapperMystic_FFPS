@@ -24,6 +24,8 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] int speedChase;
 	[SerializeField] int FacePlayerSpeed;
 	[SerializeField] public GameObject muzzleFlash;
+	[SerializeField] public ParticleSystem muzzle;
+	ParticleSystem mf;
 
     [Header("-----Enemy Gun Stats-----")]
     [SerializeField] float shootRate;
@@ -283,9 +285,12 @@ public class enemyAi : MonoBehaviour, IDamage
 	}
 	void Muzzle()
 	{
+		mf = Instantiate(muzzle, shotPoint.transform.position, transform.rotation);
 		muzzleFlash.SetActive(true);
+		mf.Play();
 		StartCoroutine(Wait());
 		muzzleFlash.SetActive(false);
+		mf.Stop();
 	}
 	IEnumerator Wait()
 	{
