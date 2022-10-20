@@ -2566,7 +2566,7 @@ Transform:
   m_GameObject: {fileID: 6258300651389825841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.2, y: 3.2, z: 3.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6879271936252741055}
@@ -2627,6 +2627,7 @@ MonoBehaviour:
   HeadPos: {fileID: 5490820751833303403}
   speedChase: 10
   FacePlayerSpeed: 25
+  muzzleFlash: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
   shootRate: 5
   bullet: {fileID: 6894301593597968444, guid: 97962eda4faabb24badae707a8907ac0, type: 3}
   shotPoint: {fileID: 858828655069139267}

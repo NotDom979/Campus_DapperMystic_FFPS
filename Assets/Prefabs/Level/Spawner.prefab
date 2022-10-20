@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -58,6 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258282fa29e410245931ab059430555a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1
-  maxEnemies: 3
-  enemy: {fileID: 6272976093524740095, guid: c183b76e1ba3e084a9be64d4fe681633, type: 3}
+  timer: 2
+  maxEnemies: 2
+  enemy: {fileID: 3587277423659650105, guid: d5e04a3dbfb2f7c4daa5a2532b00b474, type: 3}
