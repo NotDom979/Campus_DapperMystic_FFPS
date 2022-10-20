@@ -100,9 +100,9 @@ public class enemyAi : MonoBehaviour, IDamage
             StartCoroutine(death());
         }
         else
-	        gameObject.GetComponent<Animator>().Play("hit");
+	        gameObject.GetComponent<Animator>().Play("Hit");
             
-	    // animator.SetTrigger("hit");
+	    animator.SetTrigger("Hit");
 	    agent.SetDestination(GameManager.instance.player.transform.position);
         StartCoroutine(flashDamage());
     }
@@ -120,7 +120,7 @@ public class enemyAi : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-
+	    gameObject.GetComponent<Animator>().Play("Shoot");
 	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
         gunShot.enabled = true;
         if (flamer)
@@ -136,7 +136,8 @@ public class enemyAi : MonoBehaviour, IDamage
             gunShot.Stop();
         }
 
-        isShooting = false;
+	    isShooting = false;
+	    gameObject.GetComponent<Animator>().Play("Idle");
     }
 
 
@@ -189,7 +190,7 @@ public class enemyAi : MonoBehaviour, IDamage
             yield return new WaitForSeconds(3);
         }
         else
-            yield return new WaitForSeconds(.35f);
+	        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
