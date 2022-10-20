@@ -85,9 +85,11 @@ public class enemyAi : MonoBehaviour, IDamage
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
                 Roam();
+                gameObject.GetComponent<Animator>().Play("Idle");
             }
             else
             {
+                gameObject.GetComponent<Animator>().Play("Idle");
                 gunShot.enabled = false;
             }
         }
@@ -125,6 +127,7 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         isShooting = true;
 	    gameObject.GetComponent<Animator>().Play("Shoot");
+        yield return new WaitForSeconds(.25f);
 	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
 	    gunShot.enabled = true;
 	    Muzzle();
@@ -142,7 +145,7 @@ public class enemyAi : MonoBehaviour, IDamage
         }
 
 	    isShooting = false;
-	    gameObject.GetComponent<Animator>().Play("Idle");
+	    
     }
 
 
