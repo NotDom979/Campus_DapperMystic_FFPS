@@ -24,6 +24,8 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] int speedChase;
 	[SerializeField] int FacePlayerSpeed;
 	[SerializeField] public GameObject muzzleFlash;
+	[SerializeField] public ParticleSystem muzzle;
+	ParticleSystem mf;
 
     [Header("-----Enemy Gun Stats-----")]
     [SerializeField] float shootRate;
@@ -39,8 +41,7 @@ public class enemyAi : MonoBehaviour, IDamage
     Vector3 startPos;
     float angle;
 	float speedPatrol;
-	RaycastHit rayHit;
-
+	bool playerSeen;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +49,10 @@ public class enemyAi : MonoBehaviour, IDamage
         gunShot.enabled = false;
         grunt.pitch = 2;
         grunt.volume = .598f;
-	    //GameManager.instance.enemyNumber++;
+	    GameManager.instance.enemyNumber++;
         currentHealth = maxHealth;
         GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");
-
+	    playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
         agent.stoppingDistance = 0;
 
@@ -68,7 +69,6 @@ public class enemyAi : MonoBehaviour, IDamage
 	    
         if (agent.enabled)
         {
-            rayHit = new RaycastHit();
         	animator.SetInteger("Status_walk", 1);
         	animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
             footSteps.enabled = true;
@@ -80,12 +80,18 @@ public class enemyAi : MonoBehaviour, IDamage
                CanSeePlayer();
 
             }
+	        if (playerSeen == true)
+	        {
+	        	facePlayer();
+	        }
             else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
             {
                 Roam();
+                gameObject.GetComponent<Animator>().Play("Idle");
             }
             else
             {
+                gameObject.GetComponent<Animator>().Play("Idle");
                 gunShot.enabled = false;
             }
         }
@@ -103,7 +109,7 @@ public class enemyAi : MonoBehaviour, IDamage
         else
 	        gameObject.GetComponent<Animator>().Play("Hit");
             
-	    animator.SetTrigger("Hit");
+	    animator.SetBool("Hit",true);
 	    agent.SetDestination(GameManager.instance.player.transform.position);
         StartCoroutine(flashDamage());
     }
@@ -115,13 +121,15 @@ public class enemyAi : MonoBehaviour, IDamage
         yield return new WaitForSeconds(.5f);
         model.material.color = Color.white;
         agent.speed = speedPatrol;
-        agent.stoppingDistance = 0;
+	    agent.stoppingDistance = 0;
+	    animator.SetBool("Hit",false);
     }
 
     IEnumerator Shoot()
     {
         isShooting = true;
 	    gameObject.GetComponent<Animator>().Play("Shoot");
+        yield return new WaitForSeconds(.25f);
 	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
 	    gunShot.enabled = true;
 	    Muzzle();
@@ -139,7 +147,7 @@ public class enemyAi : MonoBehaviour, IDamage
         }
 
 	    isShooting = false;
-	    gameObject.GetComponent<Animator>().Play("Idle");
+	    
     }
 
 
@@ -201,12 +209,13 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         RaycastHit hit;
 
-	    if (Physics.Raycast(HeadPos.transform.position, playerDirection, out rayHit, sightDistance))
+	    if (Physics.Raycast(HeadPos.transform.position, playerDirection, out hit, sightDistance))
         {
             Debug.DrawRay(HeadPos.transform.position, playerDirection);
             Debug.Log(angle);
-		    if (rayHit.collider.CompareTag("Player"))
-            {
+		    if (hit.collider.CompareTag("Player"))
+		    {
+			    playerSeen = true;
                 if (angle <= viewAngle)
                 {
 
@@ -276,9 +285,12 @@ public class enemyAi : MonoBehaviour, IDamage
 	}
 	void Muzzle()
 	{
+		mf = Instantiate(muzzle, shotPoint.transform.position, transform.rotation);
 		muzzleFlash.SetActive(true);
+		mf.Play();
 		StartCoroutine(Wait());
 		muzzleFlash.SetActive(false);
+		mf.Stop();
 	}
 	IEnumerator Wait()
 	{
