@@ -60,9 +60,11 @@ public class playerController : MonoBehaviour
 	private GameObject hitEffClone;
 	AudioClip stored;
 
+	public StatusManager statusManager;
 
     private void Start()
 	{
+		statusManager = GetComponent<StatusManager>();
 		playerGrunt.pitch = 2;
 		playerGrunt.volume = .598f;
         selectGun = 0;
@@ -263,7 +265,7 @@ public class playerController : MonoBehaviour
 	    {
 	    	playerGrunt.Play(1);
 		    StartCoroutine(GameManager.instance.playerDamage());
-        }
+	    }
     }
     public void gunPickup(gunStats stats)
     {
@@ -408,7 +410,10 @@ public class playerController : MonoBehaviour
 	    GameManager.instance.playerArmorBar.fillAmount = (float)Armor / (float)ArmorOrigin;
     }
     public void respawn()
-    {
+	{
+    	
+		statusManager.burnTicks.Clear();
+    	
         controller.enabled = false;
         HP = HPOrigin;
 	    updatePLayerHud();
@@ -420,7 +425,7 @@ public class playerController : MonoBehaviour
 		    transform.position = GameManager.instance.spawnPoint.transform.position;
         	
         GameManager.instance.playerDeadMenu.SetActive(false);
-        controller.enabled = true;
+	    controller.enabled = true;
     }
     IEnumerator reloadGun()
     {
