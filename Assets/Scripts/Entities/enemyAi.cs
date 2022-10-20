@@ -57,7 +57,7 @@ public class enemyAi : MonoBehaviour, IDamage
         startPos = transform.position;
 
         speedPatrol = agent.speed;
-	    animator.SetInteger("Status_walk", 1);
+	    //animator.SetInteger("Status_walk", 1);
         Roam();
     }
 
@@ -68,7 +68,8 @@ public class enemyAi : MonoBehaviour, IDamage
         if (agent.enabled)
         {
             rayHit = new RaycastHit();
-        	animator.SetInteger("Status_walk", 1);
+        	//animator.SetInteger("Status_walk", 1);
+        	animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
             footSteps.enabled = true;
             if (InRadius)
             {
@@ -101,7 +102,7 @@ public class enemyAi : MonoBehaviour, IDamage
         else
 	        gameObject.GetComponent<Animator>().Play("hit");
             
-        animator.SetTrigger("hit");
+	    // animator.SetTrigger("hit");
 	    agent.SetDestination(GameManager.instance.player.transform.position);
         StartCoroutine(flashDamage());
     }
@@ -176,8 +177,8 @@ public class enemyAi : MonoBehaviour, IDamage
 
     IEnumerator death()
     {
-        gameObject.GetComponent<Animator>().Play("death");
-        animator.SetBool("death", true);
+	    gameObject.GetComponent<Animator>().Play("Dead");
+	    animator.SetBool("Dead", true);
         agent.speed = 0;
         agent.enabled = false;
         grunt.pitch = 1;
@@ -249,7 +250,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
     void Roam()
 	{
-		animator.SetInteger("Status_walk", 1);
+		//animator.SetInteger("Status_walk", 1);
 
 		agent.stoppingDistance = 0;
 		agent.speed = speedPatrol;
