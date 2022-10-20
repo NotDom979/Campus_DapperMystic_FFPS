@@ -411,8 +411,14 @@ public class playerController : MonoBehaviour
     {
         controller.enabled = false;
         HP = HPOrigin;
-        updatePLayerHud();
-        transform.position = GameManager.instance.spawnPoint.transform.position;
+	    updatePLayerHud();
+	    if (GameManager.instance.checkPoint != null)
+	    {
+		    transform.position = GameManager.instance.checkPoint.transform.position;
+	    }
+	    else
+		    transform.position = GameManager.instance.spawnPoint.transform.position;
+        	
         GameManager.instance.playerDeadMenu.SetActive(false);
         controller.enabled = true;
     }

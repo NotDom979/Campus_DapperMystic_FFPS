@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("-----Player Relations------")]
     public GameObject player;
     public playerController playerScript;
-    public GameObject spawnPoint;
+	public GameObject spawnPoint;
+	public GameObject checkPoint;
     [Header("-----MENUS-----")]
     public GameObject pauseMenu;
     public GameObject currMenu;

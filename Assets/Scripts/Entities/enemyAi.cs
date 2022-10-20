@@ -58,7 +58,7 @@ public class enemyAi : MonoBehaviour, IDamage
         startPos = transform.position;
 
         speedPatrol = agent.speed;
-	    //animator.SetInteger("Status_walk", 1);
+	    // animator.SetInteger("Status_walk", 1);
         Roam();
     }
 
@@ -69,7 +69,7 @@ public class enemyAi : MonoBehaviour, IDamage
         if (agent.enabled)
         {
             rayHit = new RaycastHit();
-        	//animator.SetInteger("Status_walk", 1);
+        	animator.SetInteger("Status_walk", 1);
         	animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
             footSteps.enabled = true;
             if (InRadius)
@@ -165,7 +165,7 @@ public class enemyAi : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
-            //animator.SetInteger("Status_walk", 0);
+	        //animator.SetInteger("Status_walk", 0);
             InRadius = false;
             agent.stoppingDistance = 0;
 
@@ -276,10 +276,9 @@ public class enemyAi : MonoBehaviour, IDamage
 	}
 	void Muzzle()
 	{
-		GameObject mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
-		mfClone.SetActive(true);
+		muzzleFlash.SetActive(true);
 		StartCoroutine(Wait());
-		mfClone.SetActive(false);
+		muzzleFlash.SetActive(false);
 	}
 	IEnumerator Wait()
 	{
