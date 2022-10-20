@@ -165,10 +165,13 @@ public class playerController : MonoBehaviour
         	
             if (currentAmmo >= 1)
             {
-            	if (maxAmmo == 3)
+            	if (maxAmmo == 1)
             	{
-            		currentAmmo--;
-            		BazookaShoot();
+                   
+            		 currentAmmo--;
+            		 BazookaShoot();
+
+                    
             	}
             	else {
             		
@@ -226,24 +229,19 @@ public class playerController : MonoBehaviour
 			
 		}
 		
-		
 	}
-	public void AddArmor(int armorAmount)
-	{
+    public void AddArmor(int armorAmount)
+    {
 
 
-		Armor += armorAmount;
-		if (Armor > ArmorOrigin)
-			Armor = ArmorOrigin;
-		if (Armor >= 0)
-			updatePLayerHud();
+        Armor += armorAmount;
+        if (Armor > ArmorOrigin)
+            Armor = ArmorOrigin;
+        if (Armor >= 0)
+            updatePLayerHud();
 
 
-	}
-
-
-
-
+    }
     public void takeDamage(int dmg)
 	{
 		if (Armor <= 0)
@@ -294,7 +292,7 @@ public class playerController : MonoBehaviour
 		    AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 	    	
 	    }
-	    if (maxAmmo == 3)
+	    if (maxAmmo == 1)
 	    {
 		    gameObject.GetComponent<Animator>().Play("Bazooka");
 	    	Pistol.SetActive(false);
@@ -370,7 +368,7 @@ public class playerController : MonoBehaviour
 		    AR.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 	    	
 	    }
-	    if (maxAmmo == 3)
+	    if (maxAmmo == 1)
 	    {
 		    gameObject.GetComponent<Animator>().Play("Bazooka");
 	    	Pistol.SetActive(false);
@@ -462,7 +460,7 @@ public class playerController : MonoBehaviour
 	void Recoil()
 	{
 		
-		if (maxAmmo == 3)
+		if (maxAmmo == 1)
 		{
 			gameObject.GetComponent<Animator>().Play("BaShoot");
 			StartCoroutine("StartRecoil");
@@ -495,7 +493,7 @@ public class playerController : MonoBehaviour
 			{
 				gameObject.GetComponent<Animator>().Play("SniperReload");
 			}
-			if (maxAmmo == 3)
+			if (maxAmmo == 1)
 			{
 				gameObject.GetComponent<Animator>().Play("BaReload");
 			}
@@ -515,7 +513,7 @@ public class playerController : MonoBehaviour
 		{
 			gameObject.GetComponent<Animator>().Play("Sniper");
 		}
-		if (maxAmmo == 3)
+		if (maxAmmo == 1)
 		{
 			gameObject.GetComponent<Animator>().Play("Bazooka");
 		}
@@ -536,7 +534,7 @@ public class playerController : MonoBehaviour
 			mfClone.SetActive(true);
 			StartCoroutine("muzzleWait");
 		}
-		if (maxAmmo == 3)
+		if (maxAmmo == 1)
 		{
 			mfClone = Instantiate(bazookaMuzzle, bazookaSp.transform.position, transform.rotation);
 			mfClone.SetActive(true);
@@ -570,11 +568,12 @@ public class playerController : MonoBehaviour
 		isShooting = true;
 
 		Instantiate(missile, bazookaSp.transform.position, transform.rotation);
+		
 
 		gunShot.Play();
 
-
 		gunShot.Stop();
+		//Destroy(missile);
 		isShooting = false;
 	}
 }
