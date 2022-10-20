@@ -415,7 +415,8 @@ public class playerController : MonoBehaviour
 		statusManager.burnTicks.Clear();
     	
         controller.enabled = false;
-        HP = HPOrigin;
+		HP = HPOrigin;
+		Armor = ArmorOrigin;
 	    updatePLayerHud();
 	    if (GameManager.instance.checkPoint != null)
 	    {

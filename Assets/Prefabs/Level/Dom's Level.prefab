@@ -4952,9 +4952,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3385340586410384066}
     m_Modifications:
+    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+      propertyPath: throwCoolDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252958363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+      propertyPath: throwupwardForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 906448362, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
       propertyPath: m_Radius
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 906448363, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+      propertyPath: playerSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1881938851, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
       propertyPath: damage
@@ -12106,6 +12118,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3385340586410384066}
     m_Modifications:
+    - target: {fileID: 2113665919, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
+      propertyPath: LethalCount
+      value: 
+      objectReference: {fileID: 6148015074071739783}
+    - target: {fileID: 540784970129368697, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -336.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2281933383835997044, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
       propertyPath: m_Name
       value: UI
@@ -12198,12 +12218,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5183037347048923691, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
+      propertyPath: m_text
+      value: 'Goal: Take out the Nazis
+
+        Capture their flags'
+      objectReference: {fileID: 0}
     - target: {fileID: 6885639379806053009, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
       propertyPath: m_text
       value: Flags Captured   /3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
+--- !u!114 &6148015074071739783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8910660420687154853, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
+  m_PrefabInstance: {fileID: 3385340586582749986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7884395312579037314 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4868912987160542112, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
