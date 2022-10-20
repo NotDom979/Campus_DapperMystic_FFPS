@@ -536,7 +536,7 @@ public class playerController : MonoBehaviour
 			mfClone.SetActive(true);
 			StartCoroutine("muzzleWait");
 		}
-		if (maxAmmo == 5)
+		if (maxAmmo == 3)
 		{
 			mfClone = Instantiate(bazookaMuzzle, bazookaSp.transform.position, transform.rotation);
 			mfClone.SetActive(true);

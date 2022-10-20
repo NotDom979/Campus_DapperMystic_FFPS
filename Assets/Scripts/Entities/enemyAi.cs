@@ -22,7 +22,8 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] int viewAngle;
     [SerializeField] GameObject HeadPos;
     [SerializeField] int speedChase;
-    [SerializeField] int FacePlayerSpeed;
+	[SerializeField] int FacePlayerSpeed;
+	[SerializeField] public GameObject muzzleFlash;
 
     [Header("-----Enemy Gun Stats-----")]
     [SerializeField] float shootRate;
@@ -122,7 +123,8 @@ public class enemyAi : MonoBehaviour, IDamage
         isShooting = true;
 	    gameObject.GetComponent<Animator>().Play("Shoot");
 	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-        gunShot.enabled = true;
+	    gunShot.enabled = true;
+	    Muzzle();
         if (flamer)
         {
             gunShot.loop = true;
@@ -271,6 +273,17 @@ public class enemyAi : MonoBehaviour, IDamage
         }
         agent.SetPath(path);
 
-    }
+	}
+	void Muzzle()
+	{
+		GameObject mfClone = Instantiate(muzzleFlash, shotPoint.transform.position, transform.rotation);
+		mfClone.SetActive(true);
+		StartCoroutine(Wait());
+		mfClone.SetActive(false);
+	}
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds(.6f);
+	}
 
 }
