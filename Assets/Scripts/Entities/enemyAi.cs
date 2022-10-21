@@ -38,7 +38,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
     bool InRadius;
     bool isShooting;
-    Vector3 playerDirection;
+	Vector3 playerDirection;
     float stoppingDistOrigin;
     Vector3 startPos;
     float angle;
@@ -68,37 +68,43 @@ public class enemyAi : MonoBehaviour, IDamage
 
 
     void Update()
-    {
-	    
-        if (agent.enabled)
-        {
-        	//animator.SetInteger("Status_walk", 1);
-        	animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
-            footSteps.enabled = true;
-            if (InRadius)
-            {
-            	footSteps.enabled = true;
-                playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
-                angle = Vector3.Angle(playerDirection, transform.forward);
+	{
+		if (GameManager.instance.pauseMenu.activeSelf == false)
+		{
+			if (agent.enabled)
+			{
+				//animator.SetInteger("Status_walk", 1);
+				animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
+				footSteps.enabled = true;
+				if (InRadius)
+				{
+					footSteps.enabled = true;
+					playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
+					angle = Vector3.Angle(playerDirection, transform.forward);
 
-               CanSeePlayer();
+					CanSeePlayer();
 
-            }
-	        if (playerSeen == true)
-	        {
-	        	facePlayer();
-	        }
-            else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
-            {
-                Roam();
-	            animator.Play("Idle");
-            }
-            else
-            {
-	            animator.Play("Idle");
-                gunShot.enabled = false;
-            }
-        }
+				}
+				if (playerSeen == true)
+				{
+					facePlayer();
+				}
+				else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
+				{
+					Roam();
+					animator.Play("Idle");
+				}
+				else
+				{
+					animator.Play("Idle");
+					gunShot.enabled = false;
+				}
+			}
+		}
+		else
+		{
+			footSteps.enabled = false;
+		}
     }
 
     public void takeDamage(float dmg)

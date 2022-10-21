@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+	    spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+	    
     }
 
     // Update is called once per frame
