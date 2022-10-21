@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
 	public TextMeshProUGUI LethalCount;
 	public Image playerHpBar;
 	public Image playerArmorBar;
-
     public bool isPaused;
     // Start is called before the first frame update
     void Awake()
@@ -61,7 +60,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+	    Cursor.lockState = CursorLockMode.Confined;
+	    
     }
     public void cursorUnLockUnPause()
     {
