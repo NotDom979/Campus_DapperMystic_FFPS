@@ -196,7 +196,6 @@ public class enemyAi : MonoBehaviour, IDamage
 	    animator.SetBool("Dead", true);
 	    EnemyCanvas.SetActive(false);
         agent.speed = 0;
-        agent.enabled = false;
         grunt.pitch = 1;
         grunt.Play(1);
         grunt.volume = 1;
@@ -205,6 +204,7 @@ public class enemyAi : MonoBehaviour, IDamage
             yield return new WaitForSeconds(3);
         }
         else
+	        agent.enabled = false;
 	        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();

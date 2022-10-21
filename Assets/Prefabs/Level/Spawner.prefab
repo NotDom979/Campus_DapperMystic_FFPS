@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 881892545507510025}
   - component: {fileID: 881892545507510024}
   - component: {fileID: 881892545507510027}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 50
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &881892545507510027
 MonoBehaviour:
@@ -59,5 +59,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
-  maxEnemies: 2
-  enemy: {fileID: 3587277423659650105, guid: d5e04a3dbfb2f7c4daa5a2532b00b474, type: 3}
+  maxEnemies: 1
+  enemy: {fileID: 8964299387516005134, guid: 89369661cebd4ea4795f7ae110099197, type: 3}

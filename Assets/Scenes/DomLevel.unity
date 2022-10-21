@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36292675, g: 0.566185, b: 0.8437086, a: 1}
+  m_IndirectSpecularColor: {r: 0.36302876, g: 0.5662286, b: 0.8437057, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -692,6 +692,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 744f03e147163e0499f122af31dcf389, type: 3}
+--- !u!1 &1065226610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3386077831797274557, guid: b44e14b484fe41c46a0e07d1bc71bd1f, type: 3}
+  m_PrefabInstance: {fileID: 3385340587399346272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1065226614
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065226610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c394a55e497a61f4cb10879c14d017e9, type: 3}
 --- !u!1001 &1109654185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -760,10 +779,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 881892545507510024, guid: 17984bb807a75cb48a305a5a6567be33, type: 3}
-      propertyPath: m_Radius
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 881892545507510025, guid: 17984bb807a75cb48a305a5a6567be33, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -811,14 +826,6 @@ PrefabInstance:
     - target: {fileID: 881892545507510026, guid: 17984bb807a75cb48a305a5a6567be33, type: 3}
       propertyPath: m_Name
       value: Spawner (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 881892545507510027, guid: 17984bb807a75cb48a305a5a6567be33, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 8964299387516005134, guid: 89369661cebd4ea4795f7ae110099197, type: 3}
-    - target: {fileID: 881892545507510027, guid: 17984bb807a75cb48a305a5a6567be33, type: 3}
-      propertyPath: maxEnemies
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17984bb807a75cb48a305a5a6567be33, type: 3}
