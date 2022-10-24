@@ -243,9 +243,10 @@ GameObject:
   - component: {fileID: 6875504655393093264}
   - component: {fileID: 6875504655393093265}
   - component: {fileID: 6875504655648856392}
+  - component: {fileID: 4504282907470382970}
   m_Layer: 0
   m_Name: EnemyCanvas
-  m_TagString: Untagged
+  m_TagString: EnemyCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,3 +346,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+--- !u!114 &4504282907470382970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875504655393093263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b67c56d38f0c343a25cbf8994a3638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FacePlayerSpeed: 15

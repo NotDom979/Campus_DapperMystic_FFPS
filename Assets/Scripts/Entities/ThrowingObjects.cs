@@ -24,15 +24,21 @@ public class ThrowingObjects : MonoBehaviour
 	
 	private void Start(){
 		totalThrows++;
-		//GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
+		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
 		readyTothrow = true;
 	}
 	
 	private void Update(){
 		
-		if (Input.GetKeyDown(throwKey) && !readyTothrow && totalThrows > 0	)
+		if (totalThrows > 0	)
 		{
-			Throw();
+            if (readyTothrow == true)
+            {
+                if (Input.GetKeyDown(throwKey))
+                {
+					Throw();
+                }
+            }
 		}
 	}
 	

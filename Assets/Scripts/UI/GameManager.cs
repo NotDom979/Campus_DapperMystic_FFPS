@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
 	public TextMeshProUGUI LethalCount;
 	public Image playerHpBar;
 	public Image playerArmorBar;
-
     public bool isPaused;
     // Start is called before the first frame update
     void Awake()
@@ -36,7 +35,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+	    spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+	    
     }
 
     // Update is called once per frame
@@ -61,7 +61,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+	    Cursor.lockState = CursorLockMode.Confined;
+	    
     }
     public void cursorUnLockUnPause()
     {

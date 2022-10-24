@@ -11,7 +11,8 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] private Animator animator;
     [SerializeField] public AudioSource gunShot;
     [SerializeField] public AudioSource footSteps;
-    [SerializeField] public AudioSource grunt;
+	[SerializeField] public AudioSource grunt;
+	[SerializeField] public GameObject EnemyCanvas;
 
     [Header("-----Enemy Stats-----")]
     public float maxHealth = 10;
@@ -26,6 +27,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	[SerializeField] public GameObject muzzleFlash;
 	[SerializeField] public ParticleSystem muzzle;
 	ParticleSystem mf;
+	
 
     [Header("-----Enemy Gun Stats-----")]
     [SerializeField] float shootRate;
@@ -36,7 +38,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
     bool InRadius;
     bool isShooting;
-    Vector3 playerDirection;
+	Vector3 playerDirection;
     float stoppingDistOrigin;
     Vector3 startPos;
     float angle;
@@ -44,8 +46,9 @@ public class enemyAi : MonoBehaviour, IDamage
 	bool playerSeen;
     // Start is called before the first frame update
     void Start()
-    {
-
+	{
+		EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+	    footSteps.enabled = false;
         gunShot.enabled = false;
         grunt.pitch = 2;
         grunt.volume = .598f;
@@ -65,36 +68,43 @@ public class enemyAi : MonoBehaviour, IDamage
 
 
     void Update()
-    {
-	    
-        if (agent.enabled)
-        {
-        	animator.SetInteger("Status_walk", 1);
-        	animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
-            footSteps.enabled = true;
-            if (InRadius)
-            {
-                playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
-                angle = Vector3.Angle(playerDirection, transform.forward);
+	{
+		if (GameManager.instance.pauseMenu.activeSelf == false)
+		{
+			if (agent.enabled)
+			{
+				//animator.SetInteger("Status_walk", 1);
+				animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
+				footSteps.enabled = true;
+				if (InRadius)
+				{
+					footSteps.enabled = true;
+					playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
+					angle = Vector3.Angle(playerDirection, transform.forward);
 
-               CanSeePlayer();
+					CanSeePlayer();
 
-            }
-	        if (playerSeen == true)
-	        {
-	        	facePlayer();
-	        }
-            else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
-            {
-                Roam();
-                gameObject.GetComponent<Animator>().Play("Idle");
-            }
-            else
-            {
-                gameObject.GetComponent<Animator>().Play("Idle");
-                gunShot.enabled = false;
-            }
-        }
+				}
+				if (playerSeen == true)
+				{
+					facePlayer();
+				}
+				else if (agent.remainingDistance < 0.1f && agent.destination != GameManager.instance.player.transform.position)
+				{
+					Roam();
+					animator.Play("Idle");
+				}
+				else
+				{
+					animator.Play("Idle");
+					gunShot.enabled = false;
+				}
+			}
+		}
+		else
+		{
+			footSteps.enabled = false;
+		}
     }
 
     public void takeDamage(float dmg)
@@ -128,7 +138,7 @@ public class enemyAi : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-	    gameObject.GetComponent<Animator>().Play("Shoot");
+	    animator.Play("Shoot");
         yield return new WaitForSeconds(.25f);
 	    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
 	    gunShot.enabled = true;
@@ -188,10 +198,10 @@ public class enemyAi : MonoBehaviour, IDamage
 
     IEnumerator death()
     {
-	    gameObject.GetComponent<Animator>().Play("Dead");
+	    animator.Play("Dead");
 	    animator.SetBool("Dead", true);
+	    EnemyCanvas.SetActive(false);
         agent.speed = 0;
-        agent.enabled = false;
         grunt.pitch = 1;
         grunt.Play(1);
         grunt.volume = 1;
@@ -200,7 +210,8 @@ public class enemyAi : MonoBehaviour, IDamage
             yield return new WaitForSeconds(3);
         }
         else
-	        yield return new WaitForSeconds(5f);
+	        agent.enabled = false;
+	        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
