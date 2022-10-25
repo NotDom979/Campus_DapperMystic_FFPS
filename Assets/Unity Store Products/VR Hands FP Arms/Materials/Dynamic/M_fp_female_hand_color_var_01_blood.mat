@@ -2,222 +2,127 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: M_fp_female_hand_color_var_01_blood
   m_Shader: {fileID: 4800000, guid: 141f4fbff69632440af04db114bffcd9, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _Albedo
-      second:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: b900ea42a059f6a46bb85f89a21640f9, type: 3}
+        m_Scale: {x: 0, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoRGB:
         m_Texture: {fileID: 2800000, guid: b900ea42a059f6a46bb85f89a21640f9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _AlbedoRGB
-      second:
-        m_Texture: {fileID: 2800000, guid: b900ea42a059f6a46bb85f89a21640f9, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _AmbientOcclusion
-      second:
+    - _AmbientOcclusion:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _AmbientOcclusionG
-      second:
+    - _AmbientOcclusionG:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Depth
-      second:
+    - _Depth:
         m_Texture: {fileID: 2800000, guid: 0052cb4e2625fcb4984c00dd267caca0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _DynamicMask
-      second:
+    - _DynamicMask:
         m_Texture: {fileID: 2800000, guid: d0a8858cbaddc7e47a9d407c5fa5e8a7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Metalic
-      second:
+    - _Metalic:
         m_Texture: {fileID: 2800000, guid: f77fbaded7052b64faf532ab5aa7c0ba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _MetalicRAOG
-      second:
+    - _MetalicRAOG:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Netalic
-      second:
+    - _Netalic:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Normal
-      second:
+    - _Normal:
         m_Texture: {fileID: 2800000, guid: 52f7b99cd67648e4c822cccb50a98ba9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Ramp
-      second:
+    - _Ramp:
         m_Texture: {fileID: 2800000, guid: a71198a867c73fc4192598691b5fe294, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _RampRGB
-      second:
+    - _RampRGB:
         m_Texture: {fileID: 2800000, guid: a71198a867c73fc4192598691b5fe294, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Smothness
-      second:
+    - _Smothness:
         m_Texture: {fileID: 2800000, guid: d7e319bf3cb61f6418d421df50b1d1fc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _SmothnessA
-      second:
+    - _SmothnessA:
         m_Texture: {fileID: 2800000, guid: d7e319bf3cb61f6418d421df50b1d1fc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _TextureSample0
-      second:
+    - _TextureSample0:
         m_Texture: {fileID: 2800000, guid: 24b7ed9293c712a4bb5e0e66badcc3e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _Transluency
-      second:
+    - _Transluency:
         m_Texture: {fileID: 2800000, guid: c94f34990537a724990b4bca0362c722, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _TransluencyRGB
-      second:
+    - _TransluencyRGB:
         m_Texture: {fileID: 2800000, guid: c94f34990537a724990b4bca0362c722, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
-    - first:
-        name: _AmbientOcclusionPower
-      second: 1
-    - first:
-        name: _DynamicMetalic
-      second: 1.4
-    - first:
-        name: _DynamicSmoothness
-      second: 0.39
-    - first:
-        name: _DynamicTexturePower
-      second: 1
-    - first:
-        name: _Float0
-      second: 1
-    - first:
-        name: _Float1
-      second: 0
-    - first:
-        name: _Metalic
-      second: 0
-    - first:
-        name: _MetalicStrenght
-      second: 0.43
-    - first:
-        name: _NormalStrenght
-      second: 1
-    - first:
-        name: _Offset
-      second: 0.5
-    - first:
-        name: _RampPower
-      second: 0.9
-    - first:
-        name: _RimPower
-      second: 3.4
-    - first:
-        name: _SMothness
-      second: 1
-    - first:
-        name: _ScatteringPower
-      second: 1
-    - first:
-        name: _Shininess
-      second: 0.01
-    - first:
-        name: _Smoothness
-      second: 0.6
-    - first:
-        name: _Specular
-      second: 0.204
-    - first:
-        name: _Test
-      second: 0.1
-    - first:
-        name: _TransAmbient
-      second: 0.243
-    - first:
-        name: _TransDirect
-      second: 0.586
-    - first:
-        name: _TransNormalDistortion
-      second: 0.059
-    - first:
-        name: _TransScattering
-      second: 11.3
-    - first:
-        name: _TransShadow
-      second: 0.226
-    - first:
-        name: _Translucency
-      second: 9.8
-    - first:
-        name: __dirty
-      second: 0
+    - _AmbientOcclusionPower: 1
+    - _DynamicMetalic: 1.4
+    - _DynamicSmoothness: 0.39
+    - _DynamicTexturePower: 1
+    - _Float0: 1
+    - _Float1: 0
+    - _Metalic: 0
+    - _MetalicStrenght: 0.43
+    - _NormalStrenght: 1
+    - _Offset: 0.5
+    - _RampPower: 0.9
+    - _RimPower: 3.4
+    - _SMothness: 1
+    - _ScatteringPower: 1
+    - _Shininess: 0.01
+    - _Smoothness: 0.6
+    - _Specular: 0.204
+    - _Test: 0.1
+    - _TransAmbient: 0.243
+    - _TransDirect: 0.586
+    - _TransNormalDistortion: 0.059
+    - _TransScattering: 11.3
+    - _TransShadow: 0.226
+    - _Translucency: 9.8
+    - __dirty: 0
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
-    - first:
-        name: _Color0
-      second: {r: 0.8235294, g: 0.01703852, b: 0, a: 0}
-    - first:
-        name: _Color1
-      second: {r: 0, g: 0, b: 0, a: 0}
-    - first:
-        name: _DynamicColor
-      second: {r: 0.52205884, g: 0.11132135, b: 0.11132135, a: 0}
-    - first:
-        name: _RimColor
-      second: {r: 0.35686275, g: 0.35686275, b: 0.35686275, a: 0}
-    - first:
-        name: _Tint
-      second: {r: 0.8308283, g: 0.8613716, b: 0.9338235, a: 0}
-    - first:
-        name: _TransluencyColor
-      second: {r: 1, g: 1, b: 1, a: 0}
-    - first:
-        name: _TransmissionParams
-      second: {r: 0.1, g: 6, b: -2.03, a: 16.95}
-    - first:
-        name: _Vector0
-      second: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.8235294, g: 0.01703852, b: 0, a: 0}
+    - _Color1: {r: 0, g: 0, b: 0, a: 0}
+    - _DynamicColor: {r: 0.52205884, g: 0.11132135, b: 0.11132135, a: 0}
+    - _RimColor: {r: 0.35686275, g: 0.35686275, b: 0.35686275, a: 0}
+    - _Tint: {r: 0.8308283, g: 0.8613716, b: 0.9338235, a: 0}
+    - _TransluencyColor: {r: 1, g: 1, b: 1, a: 0}
+    - _TransmissionParams: {r: 0.1, g: 6, b: -2.03, a: 16.95}
+    - _Vector0: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
