@@ -47,6 +47,7 @@ public class playerController : MonoBehaviour
 	public GameObject SniperSp;
 	public GameObject bazookaSp;
 	public AudioClip emptyMag;
+	public GameObject shotPoint;
 
     bool isShooting;
     //bool isReloading = false;
@@ -177,27 +178,23 @@ public class playerController : MonoBehaviour
 
                     
             	}
-            	else {
-            	Recoil();
-	           	Muzzle();
-	           	isShooting = true;
-	           	gunShot.clip = stored;
-	           	gunShot.Play();
-	           	currentAmmo--;
-	           	GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
-	           	RaycastHit hit;
-	           	if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
-	            {
-		           	//Instantiate(bullet, hit.point, transform.rotation);
-		           	if (hit.collider.GetComponent<IDamage>() != null)
-		            {
-			           	hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
-			            hitEffClone.SetActive(true);
-		            	hit.collider.GetComponent<IDamage>().takeDamage(shootDmg);
-			           	hitEffect.SetActive(false);
-		           	}
-              
-	           	}
+            	else
+            	{
+            		Recoil();
+	           		Muzzle();
+	            	Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+	        		isShooting = true;
+	           		gunShot.clip = stored;
+	        		gunShot.Play();
+	           		currentAmmo--;
+	           		GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	            	RaycastHit hit;
+	            		if ((Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist)))
+		            	{
+			            	hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
+			            	hitEffClone.SetActive(true);
+			            	hitEffect.SetActive(false);
+		            	}
             	}
 	           	Debug.Log("ZipBang");
 	           	if (shootRate <= 1)
@@ -280,7 +277,6 @@ public class playerController : MonoBehaviour
         currentAmmo = stats.ammoCount;
         maxAmmo = stats.maxAmmo;
         muzzleFlash = stats.muzzleEffect;
-	    // shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
 	    hitEffect = stats.hitEffect;
 	    gunShot.clip = stats.sound;
         hitEffect.SetActive(true);
@@ -288,6 +284,7 @@ public class playerController : MonoBehaviour
 	    stored = gunShot.clip;
 	    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
 	    WeaponPickup(stats);
+		shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
     }
     void gunselect()
     {
@@ -322,6 +319,7 @@ public class playerController : MonoBehaviour
 	    model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 	    stored = gunShot.clip;
 	    changeWeapon();
+	    shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
     }
 
     public void updatePLayerHud()

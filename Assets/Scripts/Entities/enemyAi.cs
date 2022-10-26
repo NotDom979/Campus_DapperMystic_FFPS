@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class enemyAi : MonoBehaviour, IDamage
 {
     [Header("-----Components-----")]
-    [SerializeField] NavMeshAgent agent;
+    [SerializeField] public NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] private Animator animator;
     [SerializeField] public AudioSource gunShot;
@@ -27,7 +27,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	[SerializeField] public GameObject muzzleFlash;
 	[SerializeField] public ParticleSystem muzzle;
 	ParticleSystem mf;
-	
+	[SerializeField] GameObject radius;
 
     [Header("-----Enemy Gun Stats-----")]
     [SerializeField] float shootRate;
@@ -36,7 +36,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
     public bool flamer;
 
-    bool InRadius;
+	public bool InRadius;
     bool isShooting;
 	Vector3 playerDirection;
     float stoppingDistOrigin;
@@ -44,6 +44,7 @@ public class enemyAi : MonoBehaviour, IDamage
     float angle;
 	float speedPatrol;
 	bool playerSeen;
+	GameObject Dector;
     // Start is called before the first frame update
     void Start()
 	{
@@ -58,7 +59,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	    playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
         agent.stoppingDistance = 0;
-
+		
         startPos = transform.position;
 
         speedPatrol = agent.speed;
@@ -71,6 +72,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		if (GameManager.instance.pauseMenu.activeSelf == false)
 		{
+			Detection();
 			if (agent.enabled)
 			{
 				//animator.SetInteger("Status_walk", 1);
@@ -162,40 +164,52 @@ public class enemyAi : MonoBehaviour, IDamage
 
 
 
-    private void OnTriggerEnter(Collider other)
-    {
+	//  private void OnTriggerEnter(Collider other)
+	//  {
 
-        if (other.CompareTag("Player"))
-        {
+	//     if (other.CompareTag("Player"))
+	//    {
             //animator.SetInteger("Status_walk", 1);
-            InRadius = true;
-        }
-	    if (other.CompareTag("Sound"))
-	    {
-	    	//animator.SetInteger("Status_walk", 1);
-	    	InRadius = true;
-	    	facePlayer();
-	    	agent.SetDestination(GameManager.instance.player.transform.position);
-	    }
-    }
+	//        InRadius = true;
+	//     }
+	//    if (other.CompareTag("Sound"))
+	//    {
+	//    	//animator.SetInteger("Status_walk", 1);
+	//	    	InRadius = true;
+	//    	facePlayer();
+	//    	agent.SetDestination(GameManager.instance.player.transform.position);
+	//    }
+	// }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
+	//private void OnTriggerExit(Collider other)
+	// {
+	// if (other.CompareTag("Player"))
+       // {
 	        //animator.SetInteger("Status_walk", 0);
-            InRadius = false;
-            agent.stoppingDistance = 0;
+	//  InRadius = false;
+	//            agent.stoppingDistance = 0;
 
-        }
-	    if (other.CompareTag("Sound"))
-	    {
+	//  }
+	// if (other.CompareTag("Sound"))
+	//  {
 	    	//animator.SetInteger("Status_walk", 0);
-	    	agent.stoppingDistance = 0;
-	    	InRadius = false;
-	    }
-    }
-
+	// 	agent.stoppingDistance = 0;
+	//   	InRadius = false;
+	//  }
+	// }
+	private void Detection()
+	{
+		if (gameObject.GetComponent<DetectionRadius>().inRadius == true)
+		{
+			InRadius = true;
+			facePlayer();
+		}
+		else
+		{
+			InRadius = false;
+			agent.stoppingDistance = 0;
+		}
+	}
     IEnumerator death()
     {
 	    animator.Play("Dead");
@@ -263,7 +277,7 @@ public class enemyAi : MonoBehaviour, IDamage
     }
 
 
-    void facePlayer()
+	public void facePlayer()
     {
         playerDirection.y = 0;
         Quaternion rotation = Quaternion.LookRotation(playerDirection);
