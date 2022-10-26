@@ -24,6 +24,8 @@ public class playerController : MonoBehaviour
 	int ArmorOrigin;
     private Vector3 playerVelocity;
     private int timesJumped;
+	[Header("Regen health")]
+	public bool regain = false;
 
     [Header("-----GunStats-----")]
     [SerializeField] float shootRate;
@@ -232,6 +234,19 @@ public class playerController : MonoBehaviour
 		}
 		
 	}
+	/*ublic void replenishHealth(int amount)
+	{
+		
+		HP = Mathf.Min(HP,HPOrigin);
+		if (HP > 0)
+		{
+		HP += amount;
+			updatePLayerHud();
+		
+			 
+		}
+		
+	}*/
     public void AddArmor(int armorAmount)
     {
 
@@ -377,7 +392,7 @@ public class playerController : MonoBehaviour
 		yield return new WaitForSeconds(.5f);
 		hitEffect.SetActive(false);
 	}
-	IEnumerator StartRecoil()
+IEnumerator StartRecoil()
 	{
 		yield return new WaitForSeconds(2f);
 		anim.SetBool("Recoil", false);
@@ -387,6 +402,25 @@ public class playerController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(3f);
 	
+	}
+	public IEnumerable HealthRegen()
+    {
+		regain = true;
+
+		HP = Mathf.Min(HP, HPOrigin);
+		if (HP > 0)
+		{
+			HP += 100;
+			updatePLayerHud();
+
+		yield return new WaitForSeconds(0.5f);
+
+		}
+		else
+		{
+			yield return null;
+		}
+		regain = false;
 	}
     #region WeaponAnimTriggers
     void Recoil()
