@@ -16,7 +16,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
     [Header("-----Enemy Stats-----")]
     public float maxHealth = 10;
-    float currentHealth;
+   public float currentHealth;
     public Image enemyHpBar;
     [SerializeField] int sightDistance;
     [SerializeField] int roamDist;

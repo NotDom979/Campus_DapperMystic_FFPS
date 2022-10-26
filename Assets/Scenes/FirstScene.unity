@@ -825,6 +825,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &720331917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8964299387516005134, guid: 89369661cebd4ea4795f7ae110099197, type: 3}
+  m_PrefabInstance: {fileID: 1816317440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &720331924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720331917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3299274c9787415439a63e0de3f57479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsDrops:
+  - {fileID: 0}
+  - {fileID: 897574624969445326, guid: 40ec123080f5ffd44ada3afefed402a1, type: 3}
+  - {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
+  - {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
+  randItem: 2
+  grabItem: 0
+  enemy: {fileID: 720331917}
 --- !u!1 &837191696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4720650048961336657, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
@@ -868,8 +893,9 @@ MonoBehaviour:
   - {fileID: 897574624969445326, guid: 40ec123080f5ffd44ada3afefed402a1, type: 3}
   - {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
   - {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
-  randItem: 0
+  randItem: 1
   grabItem: 0
+  enemy: {fileID: 886679797}
 --- !u!1001 &1023445081
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("-----GameGoal------")]
     public int flag;
     public int enemyNumber;
-    [Header("-----Player Relations------")]
+    [Header("-----Player Relations------")] 
     public GameObject player;
     public playerController playerScript;
 	public GameObject spawnPoint;
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        
 	    spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
 	    
     }
