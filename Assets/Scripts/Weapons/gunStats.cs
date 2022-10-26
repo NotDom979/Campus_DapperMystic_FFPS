@@ -12,6 +12,7 @@ public class gunStats : ScriptableObject
 	public int shootDamage;
 	public int ammoCount;
 	public int maxAmmo;
+	public string Tag;
 	
 	//FeedBack for the gun
 	public GameObject gunModel;
