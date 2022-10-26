@@ -321,23 +321,21 @@ public class enemyAi : MonoBehaviour, IDamage
 
         if (randItem == 2)
         {
-            grabItem = 2;
-            Instantiate(itemsDrops[grabItem], transform.position, Quaternion.identity);
+            
+            Instantiate(itemsDrops[2], transform.position, Quaternion.identity);
 
 
         }
         else if (randItem == 1)
         {
-            grabItem = 1;
-            Instantiate(itemsDrops[grabItem], transform.position, Quaternion.identity);
+            Instantiate(itemsDrops[1], transform.position, Quaternion.identity);
 
 
         }
         else if (randItem == 3)
         {
 
-            grabItem = 3;
-            Instantiate(itemsDrops[grabItem], transform.position, Quaternion.identity);
+            Instantiate(itemsDrops[3], transform.position, Quaternion.identity);
 
 
         }
