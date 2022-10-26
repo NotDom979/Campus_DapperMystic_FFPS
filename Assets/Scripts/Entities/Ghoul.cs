@@ -120,6 +120,10 @@ public class Ghoul : MonoBehaviour, IDamage
         StartCoroutine(flashDamage());
     }
 
+    public void payDay(int currency)
+    {
+        GameManager.instance.bankTotal += currency;
+    }
 
     IEnumerator flashDamage()
     {
@@ -138,6 +142,7 @@ public class Ghoul : MonoBehaviour, IDamage
         agent.speed = 0;
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+        payDay(15);
         GameManager.instance.CheckEnemyTotal();
     }
     #endregion

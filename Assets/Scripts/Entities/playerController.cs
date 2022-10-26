@@ -244,6 +244,19 @@ public class playerController : MonoBehaviour
 
 
     }
+
+
+
+	public void payDay(int currency)
+    {
+        if (GameManager.instance.playerDeadMenu == true)
+        {
+			currency = GameManager.instance.bankTotal;
+		  GameManager.instance.bankTotal = currency/2;
+        }
+    }
+
+
     public void takeDamage(int dmg)
 	{
 		if (Armor <= 0)
@@ -260,6 +273,7 @@ public class playerController : MonoBehaviour
 		    playerGrunt.Play(1);
 		    GameManager.instance.playerDeadMenu.SetActive(true);
 		    GameManager.instance.cursorLockPause();
+			payDay(0);
 	    }
 	    else 
 	    {

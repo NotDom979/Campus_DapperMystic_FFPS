@@ -259,6 +259,11 @@ public class Wolf : MonoBehaviour, IDamage
         GameManager.instance.CheckEnemyTotal();
     }
 
+    public void payDay(int currency)
+    {
+
+    }
+
     void CanSeePlayer()
     {
 

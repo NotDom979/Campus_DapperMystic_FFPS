@@ -107,6 +107,11 @@ public class enemyAi : MonoBehaviour, IDamage
 		}
     }
 
+    public void payDay(int currency)
+    {
+
+    }
+
     public void takeDamage(float dmg)
     {
         currentHealth -= dmg;
