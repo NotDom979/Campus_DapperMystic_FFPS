@@ -39,6 +39,7 @@ public class Ghoul : MonoBehaviour, IDamage
 
     Vector3 startPos;
     Vector3 playerDirection;
+    Vector3 targetDirection;
 
     float angle;
     float stoppingDistOrigin;
@@ -74,7 +75,7 @@ public class Ghoul : MonoBehaviour, IDamage
     {
         if (GameManager.instance.pauseMenu.activeSelf == false)
         {
-            if (!isDead)
+            if (agent.enabled)
             {
                 if (inRadius)
                 {
@@ -84,15 +85,17 @@ public class Ghoul : MonoBehaviour, IDamage
 
                     CanSeePlayer();
                 }
-                else if (playerSeen)
-                {
-                    facePlayer();
-                }
                 else 
                 {
+                    agent.stoppingDistance = stoppingDistOrigin;
+                    faceTarget();
                     agent.SetDestination(target.transform.position);
                     anim.Play("Walk");
                 }
+                //else if (playerSeen)
+                //{
+                //    facePlayer();
+                //}
             }
         }
 
@@ -179,6 +182,13 @@ public class Ghoul : MonoBehaviour, IDamage
         playerDirection.y = 0;
         Quaternion rotation = Quaternion.LookRotation(playerDirection);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * FacePlayerSpeed);
+    }
+
+    void faceTarget()
+    {
+        Quaternion rotation = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * FacePlayerSpeed);
+
     }
     #endregion
 

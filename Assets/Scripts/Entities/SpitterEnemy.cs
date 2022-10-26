@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-public class SpitterEnenmy : MonoBehaviour, IDamage
+public class SpitterEnemy : MonoBehaviour, IDamage
 {
     [Header("-----Health-----")]
     public Image enemyHpBar;
@@ -37,9 +37,11 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
 
     Vector3 startPos;
     Vector3 playerDirection;
+    Vector3 targetDirection;
 
     float angle;
     float stoppingDistOrigin;
+    float newAnimSpeed;
 
     bool playerSeen;
     bool isShooting;
@@ -48,12 +50,10 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-
-        animator.Play("Walk");
-
-
         // attack.enabled = false;
         playerSeen = false;
+
+
 
         currentHealth = maxHealth;
 
@@ -72,8 +72,9 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
     {
         if (GameManager.instance.pauseMenu.activeSelf == false)
         {
-            if (!isDead)
+            if (agent.enabled)
             {
+
                 if (inRadius)
                 {
 
@@ -81,19 +82,17 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
                     angle = Vector3.Angle(playerDirection, transform.forward);
 
                     CanSeePlayer();
-                }
-                else if (playerSeen)
-                {
-                    facePlayer();
+
                 }
                 else
                 {
+                    agent.stoppingDistance = stoppingDistOrigin;
+                    faceTarget();
                     agent.SetDestination(target.transform.position);
-                    animator.Play("Walk");
                 }
+                
             }
         }
-
     }
 
     #region //Damage info
@@ -108,7 +107,7 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
             StartCoroutine(death());
         }
         else
-            gameObject.GetComponent<Animator>().Play("Hit");
+            animator.SetTrigger("hurt");
 
 
         agent.SetDestination(GameManager.instance.player.transform.position);
@@ -131,6 +130,7 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
     {
 
         agent.speed = 0;
+        animator.SetBool("death", true);
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
@@ -153,20 +153,23 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
                 {
                     agent.speed = speedChase;
                     agent.stoppingDistance = stoppingDistOrigin;
-                    facePlayer();
-                    anim.Play("Run");
                     agent.SetDestination(GameManager.instance.player.transform.position);
+
+                    if (isShooting)
+                    {
+                        StartCoroutine(Shoot());
+                    }
 
                     if (agent.remainingDistance < agent.stoppingDistance)
                     {
                         facePlayer();
-                        if (!isAttacking)
-                        {
-                            anim.Stop("Run");
-                            StartCoroutine(Attack());
-                        }
                     }
+
                 }
+            }
+            else
+            {
+                playerSeen = false;
             }
 
         }
@@ -178,6 +181,14 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
         Quaternion rotation = Quaternion.LookRotation(playerDirection);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * FacePlayerSpeed);
     }
+
+
+    void faceTarget()
+    {
+        Quaternion rotation = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * FacePlayerSpeed);
+
+    }
     #endregion
 
     #region //OnTriggers
@@ -188,6 +199,8 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
         {
             //animator.SetInteger("Status_walk", 1);
             inRadius = true;
+            //facePlayer();
+            //agent.SetDestination(GameManager.instance.player.transform.position);
         }
         if (other.CompareTag("Sound"))
         {
@@ -204,16 +217,18 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
         {
             //animator.SetInteger("Status_walk", 0);
             inRadius = false;
-            anim.Play("Walk");
+            animator.speed = newAnimSpeed;
             agent.stoppingDistance = 0;
+            faceTarget();
             agent.SetDestination(target.transform.position);
         }
         if (other.CompareTag("Sound"))
         {
             //animator.SetInteger("Status_walk", 0);
             inRadius = false;
-            anim.Play("Walk");
+            animator.speed = newAnimSpeed;
             agent.stoppingDistance = 0;
+            faceTarget();
             agent.SetDestination(target.transform.position);
         }
     }
@@ -223,13 +238,15 @@ public class SpitterEnenmy : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-        animator.Play("Shoot");
-       //Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-       //gunShot.enabled = true;
-       //Muzzle();     
-       //gunShot.Play();
-       yield return new WaitForSeconds(shotRate);
-       //gunShot.Stop();
+        agent.speed = 0;
+        animator.SetTrigger("attack");
+        //Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+        //gunShot.enabled = true;
+        //Muzzle();     
+        //gunShot.Play();
+        yield return new WaitForSeconds(shotRate);
+        //gunShot.Stop();
+        agent.speed = speedChase;
         isShooting = false;
 
     }
