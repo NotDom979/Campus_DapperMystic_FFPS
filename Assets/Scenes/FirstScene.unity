@@ -360,6 +360,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &718821707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4325329645465193679, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+  m_PrefabInstance: {fileID: 1619602183665241317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &718821710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718821707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52d5362de3d3034ea7c5e3eed9de7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &718821711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718821707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56366d0e687ab604fb1dd4430a7b7278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensHort: 500
+  sensVert: 500
+  lockVertMin: -75
+  lockVertMax: 75
+  lockHortMin: -75
+  lockHortMax: 75
+  invert: 0
+--- !u!4 &807820540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7851337527949392141, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+  m_PrefabInstance: {fileID: 1619602183665241317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &837191696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4720650048961336657, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
@@ -2785,6 +2826,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mason
       objectReference: {fileID: 0}
+    - target: {fileID: 1619602183027657604, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+      propertyPath: playerArms
+      value: 
+      objectReference: {fileID: 807820540}
     - target: {fileID: 8547192723019370767, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
       propertyPath: m_RootOrder
       value: 1
