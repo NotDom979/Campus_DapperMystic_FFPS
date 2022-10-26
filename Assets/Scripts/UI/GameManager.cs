@@ -9,11 +9,12 @@ public class GameManager : MonoBehaviour
     [Header("-----GameGoal------")]
     public int flag;
     public int enemyNumber;
-    [Header("-----Player Relations------")] 
+    public int bankTotal;
+    [Header("-----Player Relations------")]
     public GameObject player;
     public playerController playerScript;
-	public GameObject spawnPoint;
-	public GameObject checkPoint;
+    public GameObject spawnPoint;
+    public GameObject checkPoint;
     [Header("-----MENUS-----")]
     public GameObject pauseMenu;
     public GameObject currMenu;
@@ -23,27 +24,27 @@ public class GameManager : MonoBehaviour
     public GameObject damageFlash;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
-	public TextMeshProUGUI AmmoCount;
-	public TextMeshProUGUI LethalCount;
-	public Image playerHpBar;
-	public Image playerArmorBar;
+    public TextMeshProUGUI AmmoCount;
+    public TextMeshProUGUI bankAccount;
+    public TextMeshProUGUI LethalCount;
+    public Image playerHpBar;
+    public Image playerArmorBar;
     public bool isPaused;
     // Start is called before the first frame update
     void Awake()
     {
-        
+
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-        
-	    spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
-	    
+        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+
     }
 
     // Update is called once per frame
     void Update()
-	{
-		checkWin();
+    {
+        checkWin();
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
@@ -62,8 +63,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-	    Cursor.lockState = CursorLockMode.Confined;
-	    
+        Cursor.lockState = CursorLockMode.Confined;
+
     }
     public void cursorUnLockUnPause()
     {
@@ -74,13 +75,24 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(isPaused);
     }
     public IEnumerator playerDamage()
-	{
-		if (playerScript.HP >= 2)
-		{
-			damageFlash.SetActive(true);
-			yield return new WaitForSeconds(0.1f);
-			damageFlash.SetActive(false);
-		}
+    {
+        if (playerScript.HP >= 2)
+        {
+            damageFlash.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            damageFlash.SetActive(false);
+        }
+
+    }
+
+    public void CheckBankTotal()
+    {
+        if (bankTotal < 0)
+        {
+            bankTotal = 0;
+        }
+
+        bankAccount.text = bankTotal.ToString("F0");
 
     }
     public void CheckEnemyTotal()
@@ -92,18 +104,18 @@ public class GameManager : MonoBehaviour
     {
         flag++;
         flagCountText.text = flag.ToString("F0");
-	    if (flag == 3 && enemyNumber == 0)
+        if (flag == 3 && enemyNumber == 0)
         {
             winMenu.SetActive(true);
             cursorLockPause();
         }
     }
-	public void checkWin()
-	{
-		if (flag == 1 && enemyNumber == 0)
-		{
-			winMenu.SetActive(true);
-			cursorLockPause();
-		}
-	}
+    public void checkWin()
+    {
+        if (flag == 1 && enemyNumber == 0)
+        {
+            winMenu.SetActive(true);
+            cursorLockPause();
+        }
+    }
 }
