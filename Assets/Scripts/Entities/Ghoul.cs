@@ -112,9 +112,6 @@ public class Ghoul : MonoBehaviour, IDamage
         {
             StartCoroutine(death());
         }
-        else
-            gameObject.GetComponent<Animator>().Play("Hit");
-
 
         agent.SetDestination(GameManager.instance.player.transform.position);
         StartCoroutine(flashDamage());
