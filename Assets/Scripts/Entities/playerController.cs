@@ -251,8 +251,8 @@ public class playerController : MonoBehaviour
     {
         if (GameManager.instance.playerDeadMenu == true)
         {
-			currency = GameManager.instance.bankTotal;
-		  GameManager.instance.bankTotal = currency/2;
+			
+		  GameManager.instance.bankTotal *= 0;
         }
     }
 
@@ -274,7 +274,8 @@ public class playerController : MonoBehaviour
 		    GameManager.instance.playerDeadMenu.SetActive(true);
 		    GameManager.instance.cursorLockPause();
 			payDay(0);
-	    }
+			GameManager.instance.CheckBankTotal();
+		}
 	    else 
 	    {
 	    	playerGrunt.Play(1);

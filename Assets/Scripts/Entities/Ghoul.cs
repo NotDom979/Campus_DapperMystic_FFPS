@@ -143,6 +143,7 @@ public class Ghoul : MonoBehaviour, IDamage
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
         payDay(15);
+        GameManager.instance.CheckBankTotal();
         GameManager.instance.CheckEnemyTotal();
     }
     #endregion

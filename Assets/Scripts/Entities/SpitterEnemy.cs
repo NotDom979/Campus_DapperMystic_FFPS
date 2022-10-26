@@ -138,6 +138,7 @@ public class SpitterEnemy : MonoBehaviour, IDamage
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
         payDay(10);
+        GameManager.instance.CheckBankTotal();
         GameManager.instance.CheckEnemyTotal();
     }
     #endregion

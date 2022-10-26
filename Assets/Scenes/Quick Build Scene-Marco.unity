@@ -1033,6 +1033,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2113665919, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
+      propertyPath: bankAccount
+      value: 
+      objectReference: {fileID: 1424413851}
     - target: {fileID: 540784970129368697, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -27.700195
@@ -2285,6 +2289,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
+--- !u!114 &1424413851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 654998164134164693, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
+  m_PrefabInstance: {fileID: 718023861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1430932077
 PrefabInstance:
   m_ObjectHideFlags: 0
