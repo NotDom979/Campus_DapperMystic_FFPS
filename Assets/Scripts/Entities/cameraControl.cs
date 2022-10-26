@@ -13,6 +13,7 @@ public class cameraControl : MonoBehaviour
 	[SerializeField] bool invert;
 	float xRotation;
 	float yRotation;
+	//[SerializeField] Transform playerArms;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -40,6 +41,14 @@ public class cameraControl : MonoBehaviour
 	    
 		//rotate the player
 		transform.parent.Rotate(Vector3.up * mousex);
+		//	Vector3 rotArms = playerArms.transform.rotation.eulerAngles;
+		//rotArms.x -= rotArms.y;
+		//rotArms.z = 0;
+		//rotArms.y += xRotation;
+		
+		//playerArms.rotation = Quaternion.Euler(rotArms);
+		
+		
 	    
 	}
 }
