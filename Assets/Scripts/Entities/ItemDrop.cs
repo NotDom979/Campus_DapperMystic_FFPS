@@ -11,8 +11,8 @@ public class ItemDrop : MonoBehaviour
 
     private void Start()
     {
-             randItem = Random.Range(0, 5);
         enemy = GameObject.FindGameObjectWithTag("enemy");
+        randItem = Random.Range(0, 5);
         Debug.Log(itemsDrops);
     }
 
@@ -20,44 +20,15 @@ public class ItemDrop : MonoBehaviour
     void Update()
     {
 
-        RandomItem();
+      
     }
 
-    public void RandomItem()
-    {
- 
-        
+   
 
 
-            if (randItem == 2)
-            {
-                grabItem = 2;
-                Instantiate(itemsDrops[grabItem], transform.position, Quaternion.identity);
-             
-                
-            }
-            else if (randItem == 1)
-            {
-                grabItem = 1;
-                Instantiate(itemsDrops[grabItem], transform.position, Quaternion.identity);
-               
-
-            }
-            else if (randItem == 3)
-            {
-
-                grabItem = 3;
-                Instantiate(itemsDrops[grabItem], transform.position, Quaternion.identity);
-                
-
-            }
-        
-        
     }
-        
 
 
 
 
 
-}

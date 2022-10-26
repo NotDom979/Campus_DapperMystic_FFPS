@@ -2325,6 +2325,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1610555037704668054, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
+      propertyPath: itemsDrops.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610555037704668054, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
+      propertyPath: itemsDrops.Array.data[0]
+      value: 
+      objectReference: {fileID: 897574624969445326, guid: 40ec123080f5ffd44ada3afefed402a1, type: 3}
+    - target: {fileID: 1610555037704668054, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
+      propertyPath: itemsDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
+    - target: {fileID: 1610555037704668054, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
+      propertyPath: itemsDrops.Array.data[2]
+      value: 
+      objectReference: {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
+    - target: {fileID: 1610555037704668054, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
+      propertyPath: itemsDrops.Array.data[3]
+      value: 
+      objectReference: {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
     - target: {fileID: 4720650048961336657, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
       propertyPath: m_Name
       value: Sniper Man (1)
@@ -2400,30 +2420,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5870076305588530142, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
---- !u!1 &1687955128 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6258300651389825841, guid: 6909ba4bc90ff624b836d472cef33ef0, type: 3}
-  m_PrefabInstance: {fileID: 7375198817520276818}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1687955135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687955128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3299274c9787415439a63e0de3f57479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemsDrops:
-  - {fileID: 0}
-  - {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
-  - {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
-  - {fileID: 897574624969445326, guid: 40ec123080f5ffd44ada3afefed402a1, type: 3}
-  randItem: 0
-  enemy: {fileID: 1687955128}
 --- !u!1001 &1709048691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3215,6 +3211,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4555877079621272224, guid: 6909ba4bc90ff624b836d472cef33ef0, type: 3}
+      propertyPath: itemsDrops.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555877079621272224, guid: 6909ba4bc90ff624b836d472cef33ef0, type: 3}
+      propertyPath: itemsDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
+    - target: {fileID: 4555877079621272224, guid: 6909ba4bc90ff624b836d472cef33ef0, type: 3}
+      propertyPath: itemsDrops.Array.data[2]
+      value: 
+      objectReference: {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
+    - target: {fileID: 4555877079621272224, guid: 6909ba4bc90ff624b836d472cef33ef0, type: 3}
+      propertyPath: itemsDrops.Array.data[3]
+      value: 
+      objectReference: {fileID: 897574624969445326, guid: 40ec123080f5ffd44ada3afefed402a1, type: 3}
     - target: {fileID: 6258300651389333121, guid: 6909ba4bc90ff624b836d472cef33ef0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0400777
