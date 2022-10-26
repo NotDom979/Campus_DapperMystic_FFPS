@@ -268,7 +268,11 @@ public class playerController : MonoBehaviour
 	    }
     }
     public void gunPickup(gunStats stats)
-    {
+	{
+		if (gunstats.Count == 2)
+		{
+			gunstats.RemoveAt(selectGun);
+		}
 	    weaponPickupSound.Play(1);
         shootRate = stats.shootRate;
         shootDist = stats.shootDist;
