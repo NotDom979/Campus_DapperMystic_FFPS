@@ -13,6 +13,7 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] public AudioSource footSteps;
 	[SerializeField] public AudioSource grunt;
 	[SerializeField] public GameObject EnemyCanvas;
+	[SerializeField] public GameObject Detector;
 
     [Header("-----Enemy Stats-----")]
     public float maxHealth = 10;
@@ -27,8 +28,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	[SerializeField] public GameObject muzzleFlash;
 	[SerializeField] public ParticleSystem muzzle;
 	ParticleSystem mf;
-	[SerializeField] GameObject radius;
-
+	
     [Header("-----Enemy Gun Stats-----")]
     [SerializeField] float shootRate;
     [SerializeField] GameObject bullet;
@@ -44,7 +44,6 @@ public class enemyAi : MonoBehaviour, IDamage
     float angle;
 	float speedPatrol;
 	bool playerSeen;
-	GameObject Dector;
     // Start is called before the first frame update
     void Start()
 	{
@@ -162,44 +161,9 @@ public class enemyAi : MonoBehaviour, IDamage
 	    
     }
 
-
-
-	//  private void OnTriggerEnter(Collider other)
-	//  {
-
-	//     if (other.CompareTag("Player"))
-	//    {
-            //animator.SetInteger("Status_walk", 1);
-	//        InRadius = true;
-	//     }
-	//    if (other.CompareTag("Sound"))
-	//    {
-	//    	//animator.SetInteger("Status_walk", 1);
-	//	    	InRadius = true;
-	//    	facePlayer();
-	//    	agent.SetDestination(GameManager.instance.player.transform.position);
-	//    }
-	// }
-
-	//private void OnTriggerExit(Collider other)
-	// {
-	// if (other.CompareTag("Player"))
-       // {
-	        //animator.SetInteger("Status_walk", 0);
-	//  InRadius = false;
-	//            agent.stoppingDistance = 0;
-
-	//  }
-	// if (other.CompareTag("Sound"))
-	//  {
-	    	//animator.SetInteger("Status_walk", 0);
-	// 	agent.stoppingDistance = 0;
-	//   	InRadius = false;
-	//  }
-	// }
 	private void Detection()
 	{
-		if (gameObject.GetComponent<DetectionRadius>().inRadius == true)
+		if (gameObject.GetComponentInChildren<DetectionRadius>().inRadius == true)
 		{
 			InRadius = true;
 			facePlayer();

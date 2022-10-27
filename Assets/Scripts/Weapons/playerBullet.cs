@@ -25,7 +25,7 @@ public class playerBullet : MonoBehaviour
 			other.gameObject.GetComponent<IDamage>().takeDamage(damage);
 			//other.GetComponent<IDamage>().takeDamage(damage);
 		}
-		Destroy(gameObject);
+		Destroy(gameObject,destroyTime);
 	}
    
 }

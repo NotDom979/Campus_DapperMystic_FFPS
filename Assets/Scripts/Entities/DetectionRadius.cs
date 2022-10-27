@@ -19,29 +19,26 @@ public class DetectionRadius : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			//animator.SetInteger("Status_walk", 1);
+			enemy.GetComponent<enemyAi>().InRadius = true;
 			inRadius = true;
 		}
 		if (other.CompareTag("Sound"))
 		{
-			//animator.SetInteger("Status_walk", 1);
-			//	gameObject.GetComponent<enemyAi>().InRadius = true;
-			//gameObject.GetComponent<enemyAi>().facePlayer();
-			//gameObject.GetComponent<enemyAi>().agent.SetDestination(GameManager.instance.player.transform.position);
+			
 		}
 	}
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.CompareTag("Player"))
 		{
-			//animator.SetInteger("Status_walk", 0);
+	
 			inRadius = false;
-			//agent.stoppingDistance = 0;
+		
 			
 		}
 		if (other.CompareTag("Sound"))
 		{
-			//animator.SetInteger("Status_walk", 0);
-			//agent.stoppingDistance = 0;
+			
 			inRadius = false;
 		}
 	}
