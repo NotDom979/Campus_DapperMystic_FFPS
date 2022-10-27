@@ -435,6 +435,7 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
     }
+    //Working on getting this functional 
     /*public IEnumerable HealingZone()
     {
 		regeneration = true;
