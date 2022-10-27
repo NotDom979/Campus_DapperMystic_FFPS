@@ -235,6 +235,19 @@ public class playerController : MonoBehaviour
         }
 
     }
+    public void replenishHealth(int amount)
+    {
+
+        HP += amount;
+        HP = Mathf.Min(HP, HPOrigin);
+        if (HP > 0)
+        {
+            updatePLayerHud();
+
+
+        }
+
+    }
     public void AddArmor(int armorAmount)
     {
 
@@ -422,6 +435,25 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
     }
+    /*public IEnumerable HealingZone()
+    {
+		regeneration = true;
+
+		HP = Mathf.Min(HP, HPOrigin);
+		if (HP > 0)
+		{
+			HP += 100;
+			updatePLayerHud();
+
+		yield return new WaitForSeconds(0.5f);
+
+		}
+		else
+		{
+			yield return null;
+		}
+		regeneration = false;
+	}*/
     #region WeaponAnimTriggers
     void Recoil()
     {
