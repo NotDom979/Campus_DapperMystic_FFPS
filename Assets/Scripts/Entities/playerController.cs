@@ -294,7 +294,7 @@ public class playerController : MonoBehaviour
     }
     public void GunPickup(gunStats stats)
     {
-        if (GameManager.instance.bankTotal >= stats.weaponCost)
+        if (GameManager.instance.bankTotal >= stats.weaponCost && Input.GetKey("f"))
         {
             if (gunstats.Count == 2)
             {
