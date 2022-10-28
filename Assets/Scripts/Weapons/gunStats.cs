@@ -11,7 +11,7 @@ public class gunStats : ScriptableObject
 	public int shootDist;
 	public int shootDamage;
 	public int ammoCount;
-	public int maxAmmo;
+	public int maxAmmo;	
 	public string Tag;
 	public int weaponCost;
 	

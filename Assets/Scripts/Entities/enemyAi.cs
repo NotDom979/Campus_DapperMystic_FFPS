@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class enemyAi : MonoBehaviour, IDamage
 {
     [Header("-----Components-----")]
-    [SerializeField] NavMeshAgent agent;
+    [SerializeField] public NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] private Animator animator;
     [SerializeField] public AudioSource gunShot;
     [SerializeField] public AudioSource footSteps;
 	[SerializeField] public AudioSource grunt;
 	[SerializeField] public GameObject EnemyCanvas;
+	[SerializeField] public GameObject Detector;
 
     [Header("-----Enemy Stats-----")]
     public float maxHealth = 10;
@@ -28,7 +29,6 @@ public class enemyAi : MonoBehaviour, IDamage
 	[SerializeField] public ParticleSystem muzzle;
 	ParticleSystem mf;
 	
-
     [Header("-----Enemy Gun Stats-----")]
     [SerializeField] float shootRate;
     [SerializeField] GameObject bullet;
@@ -36,7 +36,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
     public bool flamer;
 
-    bool InRadius;
+	public bool InRadius;
     bool isShooting;
 	Vector3 playerDirection;
     float stoppingDistOrigin;
@@ -58,7 +58,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	    playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
         agent.stoppingDistance = 0;
-
+		
         startPos = transform.position;
 
         speedPatrol = agent.speed;
@@ -71,6 +71,7 @@ public class enemyAi : MonoBehaviour, IDamage
 	{
 		if (GameManager.instance.pauseMenu.activeSelf == false)
 		{
+			Detection();
 			if (agent.enabled)
 			{
 				//animator.SetInteger("Status_walk", 1);
@@ -165,42 +166,19 @@ public class enemyAi : MonoBehaviour, IDamage
 	    
     }
 
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.CompareTag("Player"))
-        {
-            //animator.SetInteger("Status_walk", 1);
-            InRadius = true;
-        }
-	    if (other.CompareTag("Sound"))
-	    {
-	    	//animator.SetInteger("Status_walk", 1);
-	    	InRadius = true;
-	    	facePlayer();
-	    	agent.SetDestination(GameManager.instance.player.transform.position);
-	    }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-	        //animator.SetInteger("Status_walk", 0);
-            InRadius = false;
-            agent.stoppingDistance = 0;
-
-        }
-	    if (other.CompareTag("Sound"))
-	    {
-	    	//animator.SetInteger("Status_walk", 0);
-	    	agent.stoppingDistance = 0;
-	    	InRadius = false;
-	    }
-    }
-
+	private void Detection()
+	{
+		if (gameObject.GetComponentInChildren<DetectionRadius>().inRadius == true)
+		{
+			InRadius = true;
+			facePlayer();
+		}
+		else
+		{
+			InRadius = false;
+			agent.stoppingDistance = 0;
+		}
+	}
     IEnumerator death()
     {
 	    animator.Play("Dead");
@@ -268,7 +246,7 @@ public class enemyAi : MonoBehaviour, IDamage
     }
 
 
-    void facePlayer()
+	public void facePlayer()
     {
         playerDirection.y = 0;
         Quaternion rotation = Quaternion.LookRotation(playerDirection);
