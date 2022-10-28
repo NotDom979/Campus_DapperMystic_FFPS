@@ -27,13 +27,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI AmmoCount;
     public TextMeshProUGUI bankAccount;
     public TextMeshProUGUI LethalCount;
+    public TextMeshProUGUI bankRupt;
     public Image playerHpBar;
     public Image playerArmorBar;
     public bool isPaused;
     // Start is called before the first frame update
     void Awake()
     {
-
+        bankRupt.enabled = false;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();

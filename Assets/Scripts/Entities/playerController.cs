@@ -312,6 +312,10 @@ public class playerController : MonoBehaviour
             purchased = true;
 
         }
+        else if (GameManager.instance.bankTotal < stats.weaponCost)
+        {
+            StartCoroutine(GetMoney());
+        }
         //else if (stats.purchased)
         //{
         //    currentAmmo += stats.maxAmmo;
@@ -421,6 +425,13 @@ public class playerController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
+    }
+
+    IEnumerator GetMoney()
+    {
+        GameManager.instance.bankRupt.enabled = true;
+        yield return new WaitForSeconds(1.5f);
+        GameManager.instance.bankRupt.enabled = false;
     }
     #region WeaponAnimTriggers
     void Recoil()
