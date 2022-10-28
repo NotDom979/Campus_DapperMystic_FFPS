@@ -6,9 +6,12 @@ public class StatusManager : MonoBehaviour
 {
 
     public List<int> burnTicks = new List<int>();
+    public List<int> poisonTicks = new List<int>();
+    public List<int> bleedTicks = new List<int>();
+
     [SerializeField] int damage;
-    public AudioSource burn;
-    public enemyAi enemy;
+    AudioSource burn;
+    enemyAi enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,27 +19,41 @@ public class StatusManager : MonoBehaviour
     }
 
 
-    public void ApplyBurn(int ticks)
+    public void ApplyAffect(int ticks, List<int> TickCount)
     {
-        if (burnTicks.Count <= 0)
+        if (TickCount.Count <= 0)
         {
-            burnTicks.Add(ticks);
-            StartCoroutine(Burn());
+            TickCount.Add(ticks);
+            StartCoroutine(StatusAffect(TickCount));
         }
         else
         {
-            burnTicks.Add(ticks);
+            TickCount.Add(ticks);
         }
     }
 
-    IEnumerator Burn()
+    IEnumerator StatusAffect(List<int> TickCount)
     {
-        while (burnTicks.Count > 0)
+
+        if (TickCount == burnTicks)
+        {
+            damage = 5;
+        }
+        else if (TickCount == poisonTicks)
+        {
+            damage = 1;
+        }
+        else if (TickCount == bleedTicks)
+        {
+            damage = 2;
+        }
+
+        while (TickCount.Count > 0)
         {
 
-            for (int i = 0; i < burnTicks.Count; i++)
+            for (int i = 0; i < TickCount.Count; i++)
             {
-                burnTicks[i]--;
+                TickCount[i]--;
 
 
             }
@@ -44,7 +61,6 @@ public class StatusManager : MonoBehaviour
             {
 
                 GameManager.instance.playerScript.HP -= damage;
-                burn.Play();
                 GameManager.instance.playerScript.playerGrunt.Play();
                 GameManager.instance.playerScript.updatePLayerHud();
             }
@@ -52,14 +68,14 @@ public class StatusManager : MonoBehaviour
             {
                 enemy.takeDamage(damage);
             }
-            burnTicks.RemoveAll(i => i == 0);
+            TickCount.RemoveAll(i => i == 0);
             yield return new WaitForSeconds(1);
 
         }
-        if (burnTicks.Count == 0)
+        if (TickCount.Count == 0)
         {
             GameManager.instance.playerScript.playerGrunt.Stop();
-            burn.Stop();
+            //burn.Stop();
         }
     }
 

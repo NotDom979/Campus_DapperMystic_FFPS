@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  statusManager: {fileID: 1968968478}
 --- !u!135 &269072739
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1334,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  statusManager: {fileID: 0}
 --- !u!135 &912033768
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3249,14 +3251,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burnTicks: 
+  poisonTicks: 
+  bleedTicks: 
   damage: 2
-  burn: {fileID: 1508451370}
-  enemy: {fileID: 0}
 --- !u!4 &1968968476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6981777776952555518, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
   m_PrefabInstance: {fileID: 1687255588}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1968968478 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1881938851, guid: 20247c0854ae8494bb347e97f2b4989b, type: 3}
+  m_PrefabInstance: {fileID: 1687255588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968968450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f093000af0c3641b91156a25051fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2044147534
 PrefabInstance:
   m_ObjectHideFlags: 0

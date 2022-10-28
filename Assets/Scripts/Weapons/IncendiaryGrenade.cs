@@ -9,6 +9,7 @@ public class IncendiaryGrenade : MonoBehaviour
     public GameObject explosionEffect;
     public Collider sphereCollider;
 
+    StatusManager status;
     float countDown;
     bool isExplode = false;
 
@@ -19,6 +20,8 @@ public class IncendiaryGrenade : MonoBehaviour
 
     void Start()
     {
+        status = GetComponent<StatusManager>();
+
         sphereCollider.enabled = false;
 
         countDown = delay;
@@ -81,7 +84,7 @@ public class IncendiaryGrenade : MonoBehaviour
     {
         if (other.GetComponent<StatusManager>() != null)
         {
-            other.GetComponent<StatusManager>().ApplyBurn(6);
+            other.GetComponent<StatusManager>().ApplyAffect(6, status.burnTicks);
         }
     }
 
