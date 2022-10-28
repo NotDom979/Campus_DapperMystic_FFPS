@@ -15,6 +15,7 @@ public class MineTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject == true)
         Explode();
     }
 
@@ -31,6 +32,7 @@ public class MineTrigger : MonoBehaviour
         Debug.Log("Boom");
 
         Destroy(gameObject);
+        Destroy(explosionEffect);
 
     }
 

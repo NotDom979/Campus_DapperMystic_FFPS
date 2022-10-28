@@ -57,6 +57,9 @@ public class playerController : MonoBehaviour
     public int maxAmmo;
     public int currentAmmo;
     public int reloadTime;
+    public int currentAmmoReserved;
+    public int ammountOfAmmoGunHas;
+
     private GameObject mfClone;
     private GameObject spClone;
     private GameObject hitEffClone;
@@ -309,8 +312,13 @@ public class playerController : MonoBehaviour
             shootRate = stats.shootRate;
             shootDist = stats.shootDist;
             shootDmg = stats.shootDamage;
+
             currentAmmo = stats.ammoCount;
             maxAmmo = stats.maxAmmo;
+            currentAmmoReserved = stats.currentAmmoleft;
+            ammountOfAmmoGunHas = stats.maxAmmoSizeForGun;
+
+
             muzzleFlash = stats.muzzleEffect;
             // shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
             hitEffect = stats.hitEffect;
@@ -355,8 +363,12 @@ public class playerController : MonoBehaviour
         shootRate = gunstats[selectGun].shootRate;
         shootDist = gunstats[selectGun].shootDist;
         shootDmg = gunstats[selectGun].shootDamage;
+
         currentAmmo = gunstats[selectGun].ammoCount;
         maxAmmo = gunstats[selectGun].maxAmmo;
+        currentAmmoReserved = gunstats[selectGun].currentAmmoleft;
+        ammountOfAmmoGunHas = gunstats[selectGun].maxAmmoSizeForGun;
+
         muzzleFlash = gunstats[selectGun].muzzleEffect;
         gunShot.clip = gunstats[selectGun].sound;
         hitEffect = gunstats[selectGun].hitEffect;
@@ -393,6 +405,14 @@ public class playerController : MonoBehaviour
         anim.SetBool("Idle", true);
         controller.enabled = true;
     }
+
+    public void ammoReload() {
+        int reload = maxAmmo - currentAmmo;
+        reload = (currentAmmo - reload) >= 0 ? reload : currentAmmo;
+        currentAmmo += reload;
+        currentAmmoReserved -= reload;
+
+    }
     IEnumerator reloadGun()
     {
 
@@ -403,13 +423,11 @@ public class playerController : MonoBehaviour
             reloadSound.Play(1);
             Debug.Log("Reload");
             yield return new WaitForSeconds(reloadTime);
-            currentAmmo = maxAmmo;
-            if (currentAmmo == maxAmmo)
-            {
+                ammoReload();
                 StartCoroutine("Wait");
                 anim.SetBool("Idle", true);
                 WeaponIdle();
-            }
+          
         }
 
     }
