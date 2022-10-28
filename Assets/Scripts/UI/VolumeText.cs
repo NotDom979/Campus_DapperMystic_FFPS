@@ -19,8 +19,8 @@ public class VolumeText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-	    MasterVol.text = audioMix.GetFloat("MasterVol").ToString("F0");
-	    SFXVol.text = audioMix.GetFloat("SFXVol").ToString("F0");
-	    MusicVol.text = audioMix.GetFloat("MusicVol").ToString("F0");
+	    //    MasterVol.text = audioMix.GetFloat("MasterVol").ToString("F0");
+	    //   SFXVol.text = audioMix.GetFloat("SFXVol").ToString("F0");
+	    // MusicVol.text = audioMix.GetFloat("MusicVol").ToString("F0");
     }
 }
