@@ -59,6 +59,7 @@ public class playerController : MonoBehaviour
     public int reloadTime;
     public int currentAmmoReserved;
     public int ammountOfAmmoGunHas;
+    private int swap;
 
     private GameObject mfClone;
     private GameObject spClone;
@@ -77,7 +78,7 @@ public class playerController : MonoBehaviour
         HPOrigin = HP;
         ArmorOrigin = Armor;
         respawn();
-        currentAmmo = maxAmmo;
+        //currentAmmo = maxAmmo;
         stored = gunShot.clip;
         GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
         arMuzzle.SetActive(false);
@@ -406,11 +407,18 @@ public class playerController : MonoBehaviour
         controller.enabled = true;
     }
 
-    public void ammoReload() {
-        int reload = maxAmmo - currentAmmo;
-        reload = (currentAmmo - reload) >= 0 ? reload : currentAmmo;
+    public int AmmoReload(int reload) {
+
+        reload = maxAmmo - currentAmmo;
         currentAmmo += reload;
         currentAmmoReserved -= reload;
+        
+        if (currentAmmo - reload >= 0) 
+            return reload;
+       else
+            return currentAmmo;
+       
+     
 
     }
     IEnumerator reloadGun()
@@ -423,7 +431,7 @@ public class playerController : MonoBehaviour
             reloadSound.Play(1);
             Debug.Log("Reload");
             yield return new WaitForSeconds(reloadTime);
-                ammoReload();
+                AmmoReload(swap);
                 StartCoroutine("Wait");
                 anim.SetBool("Idle", true);
                 WeaponIdle();
