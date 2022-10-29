@@ -18,20 +18,18 @@ public class SpeedBoost : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			player.playerSpeed *= 2;
-			Destroy(gameObject);
 			StartCoroutine(Wait());
 			
 			
 		}
 	}
 	IEnumerator Wait(){
-		if (player.playerSpeed != 2.5f)
-		{
-
+		
 		yield return new WaitForSeconds(3f);
 		player.playerSpeed = speed;	
+			Destroy(gameObject);
 		 
-		}
+		
 	}
 	
 }
