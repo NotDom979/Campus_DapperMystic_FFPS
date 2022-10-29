@@ -267,7 +267,6 @@ public class NormalZombie : enemyBase
         {
             if (!isAttacking)
             {
-
                 StartCoroutine(Attack());
             }
         }
