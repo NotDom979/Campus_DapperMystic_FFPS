@@ -407,35 +407,53 @@ public class playerController : MonoBehaviour
         controller.enabled = true;
     }
 
-    public int AmmoReload(int reload) {
-
+    public int AmmoReload(int reload)
+    {
         reload = maxAmmo - currentAmmo;
-        currentAmmo += reload;
-        currentAmmoReserved -= reload;
-        
-        if (currentAmmo - reload >= 0) 
-            return reload;
-       else
-            return currentAmmo;
-       
-     
+
+        if (currentAmmoReserved > 0)
+        {
+
+            currentAmmo += currentAmmoReserved;
+            currentAmmoReserved -= reload;
+            if (currentAmmo > maxAmmo)
+            {
+                currentAmmo = maxAmmo;
+            }
+
+            if (currentAmmo - reload >= 0)
+                return reload;
+            if (reload > currentAmmoReserved || currentAmmoReserved < 0)
+            {
+                currentAmmoReserved = 0;
+            }
+        }
+        return currentAmmo;
+
+
+
+
+
 
     }
     IEnumerator reloadGun()
     {
-
-        if (Input.GetKey("r") && currentAmmo < maxAmmo)
+        if (currentAmmoReserved != 0)
         {
-            anim.SetTrigger("Reload");
-            Reload();
-            reloadSound.Play(1);
-            Debug.Log("Reload");
-            yield return new WaitForSeconds(reloadTime);
+
+            if (Input.GetKey("r") && currentAmmo < maxAmmo)
+            {
+                anim.SetTrigger("Reload");
+                Reload();
+                reloadSound.Play(1);
+                Debug.Log("Reload");
+                yield return new WaitForSeconds(reloadTime);
                 AmmoReload(swap);
                 StartCoroutine("Wait");
                 anim.SetBool("Idle", true);
                 WeaponIdle();
-          
+
+            }
         }
 
     }
