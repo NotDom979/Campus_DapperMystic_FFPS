@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour
     [Header("-----PlayerStats-----")]
     [SerializeField] public CharacterController controller;
 	[SerializeField] public Animator anim;
-    [SerializeField] float playerSpeed = 2.0f;
+    [SerializeField] public float playerSpeed = 2.0f;
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
     [SerializeField] int jumpsMax;
