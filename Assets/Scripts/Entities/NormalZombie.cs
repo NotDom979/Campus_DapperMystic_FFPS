@@ -278,7 +278,7 @@ public class NormalZombie : enemyBase
     {
         isAttacking = true;
         agent.speed = 0;
-        animator.SetTrigger("attack");
+       animator.SetTrigger("attack");
         yield return new WaitForSeconds(1);
         agent.speed = speedPatrol;
         isAttacking = false;

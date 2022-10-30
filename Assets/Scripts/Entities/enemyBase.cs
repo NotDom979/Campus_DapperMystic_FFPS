@@ -13,7 +13,7 @@ public class enemyBase : MonoBehaviour
 
     [SerializeField] int sightDistance;
     [SerializeField] int roamDist;
-    [SerializeField] int viewAngle;
+    [SerializeField] public int viewAngle;
     [SerializeField] public int speedChase;
     [SerializeField] int FacePlayerSpeed;
 
@@ -29,7 +29,7 @@ public class enemyBase : MonoBehaviour
     Vector3 playerDirection;
 
     float stoppingDistOrigin;
-    float angle;
+    public float angle;
     public float speedPatrol;
 
     public bool InRadius;
@@ -55,22 +55,21 @@ public class enemyBase : MonoBehaviour
     {
         if (GameManager.instance.pauseMenu.activeSelf == false)
         {
-            Detection();
             if (agent.enabled)
             {
+                Detection();
                 //animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
                 if (InRadius)
                 {
                     playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;
                     angle = Vector3.Angle(playerDirection, transform.forward);
 
-                   CanSeePlayer();
+                    CanSeePlayer();
 
                 }
                 else
                 {
                     agent.stoppingDistance = stoppingDistOrigin;
-                    faceTarget();
                     agent.SetDestination(target.transform.position);
                 }
 
@@ -83,7 +82,7 @@ public class enemyBase : MonoBehaviour
         if (gameObject.GetComponentInChildren<DetectionRadius>().inRadius == true)
         {
             InRadius = true;
-            facePlayer();
+            //facePlayer();
         }
         else
         {
@@ -164,10 +163,9 @@ public class enemyBase : MonoBehaviour
                     agent.stoppingDistance = stoppingDistOrigin;
                     agent.SetDestination(GameManager.instance.player.transform.position);
 
-                    if (agent.remainingDistance < agent.stoppingDistance)
-                    {
-                        facePlayer();
-                    }
+
+
+
 
                 }
 

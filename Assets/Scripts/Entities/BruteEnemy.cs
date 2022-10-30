@@ -14,12 +14,18 @@ public class BruteEnemy : enemyBase
 
     protected override void CanSeePlayer()
     {
-        if (agent.stoppingDistance > agent.remainingDistance)
+        if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
         {
+            animator.SetBool("fightStance", true);
             if (!isAttacking)
             {
-                StartCoroutine(Attack());
+               StartCoroutine(Attack());
             }
+        }
+        else
+        {
+            animator.SetBool("fighStance", false);
+
         }
         base.CanSeePlayer();
 
