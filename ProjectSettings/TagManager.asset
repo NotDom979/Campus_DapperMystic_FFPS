@@ -13,13 +13,17 @@ TagManager:
   - Pistol
   - Rifle
   - Sniper
-  - Undefined
-  - Neck
   - Helmet
   - Head
   - enemy
   - Fire
   - Sound
+  - EnemyCanvas
+  - AR
+  - Bazooka
+  - Shotgun
+  - DamageBuff
+  - Music
   layers:
   - Default
   - TransparentFX
@@ -31,11 +35,11 @@ TagManager:
   - Enemy
   - EnemyBullet
   - DIEDIEMISSLEBARRAGE
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Level
+  - Flag
+  - Target
+  - PlayerBullet
+  - Radius
   - 
   - 
   - 

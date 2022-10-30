@@ -1,0 +1,2463 @@
+fileFormatVersion: 2
+guid: 424b894ac83fdc04485f7ae61406c076
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: amrature_fp_hand
+  - first:
+      1: 100002
+    second: arm_down_deform
+  - first:
+      1: 100004
+    second: arm_up_deform
+  - first:
+      1: 100006
+    second: forearm_ down_deform
+  - first:
+      1: 100008
+    second: forearm_up_deform
+  - first:
+      1: 100010
+    second: //RootNode
+  - first:
+      1: 100012
+    second: fp_male_hand
+  - first:
+      1: 100014
+    second: hand_joint
+  - first:
+      1: 100016
+    second: index_bone
+  - first:
+      1: 100018
+    second: index_dist
+  - first:
+      1: 100020
+    second: index_dist_end
+  - first:
+      1: 100022
+    second: index_inter
+  - first:
+      1: 100024
+    second: index_prox
+  - first:
+      1: 100026
+    second: little_bone
+  - first:
+      1: 100028
+    second: little_dist
+  - first:
+      1: 100030
+    second: little_dist_end
+  - first:
+      1: 100032
+    second: little_inter
+  - first:
+      1: 100034
+    second: little_prox
+  - first:
+      1: 100036
+    second: middle_bone
+  - first:
+      1: 100038
+    second: middle_dist
+  - first:
+      1: 100040
+    second: middle_dist_end
+  - first:
+      1: 100042
+    second: middle_inter
+  - first:
+      1: 100044
+    second: middle_prox
+  - first:
+      1: 100046
+    second: ring_bone
+  - first:
+      1: 100048
+    second: ring_dist
+  - first:
+      1: 100050
+    second: ring_dist_end
+  - first:
+      1: 100052
+    second: ring_inter
+  - first:
+      1: 100054
+    second: ring_prox
+  - first:
+      1: 100056
+    second: shoulder
+  - first:
+      1: 100058
+    second: thumb_dist
+  - first:
+      1: 100060
+    second: thumb_dist_end
+  - first:
+      1: 100062
+    second: thumb_inter
+  - first:
+      1: 100064
+    second: thumb_prox
+  - first:
+      4: 400000
+    second: amrature_fp_hand
+  - first:
+      4: 400002
+    second: arm_down_deform
+  - first:
+      4: 400004
+    second: arm_up_deform
+  - first:
+      4: 400006
+    second: forearm_ down_deform
+  - first:
+      4: 400008
+    second: forearm_up_deform
+  - first:
+      4: 400010
+    second: //RootNode
+  - first:
+      4: 400012
+    second: fp_male_hand
+  - first:
+      4: 400014
+    second: hand_joint
+  - first:
+      4: 400016
+    second: index_bone
+  - first:
+      4: 400018
+    second: index_dist
+  - first:
+      4: 400020
+    second: index_dist_end
+  - first:
+      4: 400022
+    second: index_inter
+  - first:
+      4: 400024
+    second: index_prox
+  - first:
+      4: 400026
+    second: little_bone
+  - first:
+      4: 400028
+    second: little_dist
+  - first:
+      4: 400030
+    second: little_dist_end
+  - first:
+      4: 400032
+    second: little_inter
+  - first:
+      4: 400034
+    second: little_prox
+  - first:
+      4: 400036
+    second: middle_bone
+  - first:
+      4: 400038
+    second: middle_dist
+  - first:
+      4: 400040
+    second: middle_dist_end
+  - first:
+      4: 400042
+    second: middle_inter
+  - first:
+      4: 400044
+    second: middle_prox
+  - first:
+      4: 400046
+    second: ring_bone
+  - first:
+      4: 400048
+    second: ring_dist
+  - first:
+      4: 400050
+    second: ring_dist_end
+  - first:
+      4: 400052
+    second: ring_inter
+  - first:
+      4: 400054
+    second: ring_prox
+  - first:
+      4: 400056
+    second: shoulder
+  - first:
+      4: 400058
+    second: thumb_dist
+  - first:
+      4: 400060
+    second: thumb_dist_end
+  - first:
+      4: 400062
+    second: thumb_inter
+  - first:
+      4: 400064
+    second: thumb_prox
+  - first:
+      43: 4300000
+    second: fp_male_hand
+  - first:
+      74: 7400000
+    second: amrature_fp_hand|catch
+  - first:
+      74: 7400002
+    second: amrature_fp_hand|fist_clenching
+  - first:
+      74: 7400004
+    second: amrature_fp_hand|fist_opening
+  - first:
+      74: 7400006
+    second: amrature_fp_hand|fist_pose
+  - first:
+      74: 7400008
+    second: amrature_fp_hand|magic_shot_01
+  - first:
+      74: 7400010
+    second: amrature_fp_hand|magic_shot_expressive_01
+  - first:
+      74: 7400012
+    second: amrature_fp_hand|neutral_pose
+  - first:
+      74: 7400014
+    second: amrature_fp_hand|neutral_pose_anim_01
+  - first:
+      74: 7400016
+    second: amrature_fp_hand|neutral_pose_anim_02
+  - first:
+      74: 7400018
+    second: amrature_fp_hand|pistol_holding_pose
+  - first:
+      74: 7400020
+    second: amrature_fp_hand|pistol_shoot
+  - first:
+      74: 7400022
+    second: amrature_fp_hand|punch
+  - first:
+      74: 7400024
+    second: amrature_fp_hand|self_magic_shoot_01
+  - first:
+      74: 7400026
+    second: amrature_fp_hand|sword_holding_pose
+  - first:
+      74: 7400028
+    second: amrature_fp_hand|sword_holding_pose_anim_01
+  - first:
+      74: 7400030
+    second: amrature_fp_hand|sword_slash_01
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: fp_male_hand
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: amrature_fp_hand|catch
+      takeName: amrature_fp_hand|catch
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|fist_clenching
+      takeName: amrature_fp_hand|fist_clenching
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|fist_opening
+      takeName: amrature_fp_hand|fist_opening
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 11
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|fist_pose
+      takeName: amrature_fp_hand|fist_pose
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|magic_shot_01
+      takeName: amrature_fp_hand|magic_shot_01
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|magic_shot_expressive_01
+      takeName: amrature_fp_hand|magic_shot_expressive_01
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 18
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|neutral_pose
+      takeName: amrature_fp_hand|neutral_pose
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|neutral_pose_anim_01
+      takeName: amrature_fp_hand|neutral_pose_anim_01
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|neutral_pose_anim_02
+      takeName: amrature_fp_hand|neutral_pose_anim_02
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 96
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|pistol_holding_pose
+      takeName: amrature_fp_hand|pistol_holding_pose
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|pistol_shoot
+      takeName: amrature_fp_hand|pistol_shoot
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|punch
+      takeName: amrature_fp_hand|punch
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|self_magic_shoot_01
+      takeName: amrature_fp_hand|self_magic_shoot_01
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|sword_holding_pose
+      takeName: amrature_fp_hand|sword_holding_pose
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|sword_holding_pose_anim_01
+      takeName: amrature_fp_hand|sword_holding_pose_anim_01
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: amrature_fp_hand|sword_slash_01
+      takeName: amrature_fp_hand|sword_slash_01
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: amrature_fp_hand
+        weight: 1
+      - path: amrature_fp_hand/shoulder
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/index_bone/index_prox/index_inter/index_dist/index_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/little_bone/little_prox/little_inter/little_dist/little_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/middle_bone/middle_prox/middle_inter/middle_dist/middle_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/ring_bone/ring_prox/ring_inter/ring_dist/ring_dist_end
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist
+        weight: 1
+      - path: amrature_fp_hand/shoulder/arm_up_deform/arm_down_deform/forearm_up_deform/forearm_
+          down_deform/hand_joint/thumb_prox/thumb_inter/thumb_dist/thumb_dist_end
+        weight: 1
+      - path: fp_male_hand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: fp_male_hand(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: amrature_fp_hand
+      parentName: fp_male_hand(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: shoulder
+      parentName: amrature_fp_hand
+      position: {x: 0.00092232745, y: 0.00006455451, z: 0.00012731442}
+      rotation: {x: -0.06011651, y: -0.08780707, z: 0.7229507, w: 0.6826553}
+      scale: {x: 0.9999996, y: 0.99999964, z: 0.99999994}
+    - name: arm_up_deform
+      parentName: shoulder
+      position: {x: 6.984919e-12, y: 0.001131793, z: 5.0386006e-12}
+      rotation: {x: -0.32982695, y: 0.040158313, z: -0.3276793, w: 0.8844364}
+      scale: {x: 0.99999934, y: 0.9999996, z: 0.9999999}
+    - name: arm_down_deform
+      parentName: arm_up_deform
+      position: {x: 6.519258e-11, y: 0.0017570391, z: -4.1909514e-11}
+      rotation: {x: 0.6609047, y: -0.12566496, z: -0.49060997, w: 0.55381876}
+      scale: {x: 0.9999997, y: 0.9999999, z: 0.99999976}
+    - name: forearm_up_deform
+      parentName: arm_down_deform
+      position: {x: 2.3283064e-10, y: 0.0016781052, z: -6.0535965e-11}
+      rotation: {x: 0.10430006, y: -0.008532634, z: -0.37877628, w: 0.9195527}
+      scale: {x: 0.9999997, y: 1, z: 0.9999998}
+    - name: forearm_ down_deform
+      parentName: forearm_up_deform
+      position: {x: 7.4505804e-11, y: 0.0013541058, z: -3.7252902e-11}
+      rotation: {x: -0.0046816412, y: 0.19935465, z: 0.04327892, w: 0.97896004}
+      scale: {x: 0.9999998, y: 1, z: 0.9999998}
+    - name: hand_joint
+      parentName: forearm_ down_deform
+      position: {x: -1.4901161e-10, y: 0.0013933573, z: -7.4505804e-11}
+      rotation: {x: -0.09934386, y: 0.1423985, z: 0.11808854, w: 0.9777058}
+      scale: {x: 0.9999994, y: 0.9999998, z: 0.9999999}
+    - name: little_bone
+      parentName: hand_joint
+      position: {x: -1.05064825e-10, y: 0.000281628, z: 2.9802322e-10}
+      rotation: {x: 0.021656195, y: -0.1672592, z: 0.2809846, w: 0.9447767}
+      scale: {x: 0.9999998, y: 0.99999994, z: 1}
+    - name: little_prox
+      parentName: little_bone
+      position: {x: -7.4505804e-11, y: 0.00071143423, z: -2.2351741e-10}
+      rotation: {x: -0.11938731, y: 0.03586684, z: -0.19265719, w: 0.9733157}
+      scale: {x: 0.9999997, y: 1.000001, z: 1.0000005}
+    - name: little_inter
+      parentName: little_prox
+      position: {x: -3.7252902e-11, y: 0.00046785167, z: -7.4505804e-11}
+      rotation: {x: -0.076231495, y: -0.009981121, z: 0.0041267686, w: 0.9970317}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: little_dist
+      parentName: little_inter
+      position: {x: 1.862645e-10, y: 0.00026931704, z: -1.8626451e-11}
+      rotation: {x: -0.14314565, y: 0.004626888, z: 0.014715033, w: 0.98958147}
+      scale: {x: 1, y: 0.99999964, z: 0.9999997}
+    - name: little_dist_end
+      parentName: little_dist
+      position: {x: -0, y: 0.00026058403, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ring_bone
+      parentName: hand_joint
+      position: {x: -1.05064825e-10, y: 0.000281628, z: 2.9802322e-10}
+      rotation: {x: -0.15600047, y: -0.13175401, z: 0.6187213, w: 0.7586098}
+      scale: {x: 1, y: 0.9999996, z: 0.99999994}
+    - name: ring_prox
+      parentName: ring_bone
+      position: {x: 2.7939676e-10, y: 0.0006637746, z: -3.7252902e-11}
+      rotation: {x: -0.051342666, y: 0.010442122, z: 0.10244812, w: 0.99335766}
+      scale: {x: 0.99999994, y: 1, z: 1.0000004}
+    - name: ring_inter
+      parentName: ring_prox
+      position: {x: -1.7462298e-10, y: 0.00059730734, z: -7.4505804e-11}
+      rotation: {x: -0.018787734, y: 0.0052992045, z: 0.028671548, w: 0.99939835}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: ring_dist
+      parentName: ring_inter
+      position: {x: -1.8626451e-11, y: 0.00029332936, z: 3.7252902e-11}
+      rotation: {x: -0.12836705, y: -0.021046055, z: 0.0141178435, w: 0.99140286}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
+    - name: ring_dist_end
+      parentName: ring_dist
+      position: {x: -0, y: 0.00030311494, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: middle_bone
+      parentName: hand_joint
+      position: {x: -1.05064825e-10, y: 0.000281628, z: 2.9802322e-10}
+      rotation: {x: 0.08520177, y: -0.060229417, z: -0.08541506, w: 0.990867}
+      scale: {x: 0.99999994, y: 0.99999964, z: 1}
+    - name: middle_prox
+      parentName: middle_bone
+      position: {x: -1.8626451e-11, y: 0.0007078126, z: -4.4703483e-10}
+      rotation: {x: -0.18682513, y: -0.0151550835, z: 0.06462823, w: 0.9801479}
+      scale: {x: 0.9999994, y: 0.9999998, z: 0.99999964}
+    - name: middle_inter
+      parentName: middle_prox
+      position: {x: -1.0244548e-10, y: 0.0006104954, z: 1.11758706e-10}
+      rotation: {x: -0.20095922, y: -0.0011111079, z: 0.025465393, w: 0.97926795}
+      scale: {x: 1, y: 0.99999976, z: 0.99999976}
+    - name: middle_dist
+      parentName: middle_inter
+      position: {x: -4.2840836e-10, y: 0.00030500934, z: -1.11758706e-10}
+      rotation: {x: -0.115272224, y: -0.005877778, z: 0.004939423, w: 0.9933043}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: middle_dist_end
+      parentName: middle_dist
+      position: {x: -0, y: 0.00029521855, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: index_bone
+      parentName: hand_joint
+      position: {x: -1.05064825e-10, y: 0.000281628, z: 2.9802322e-10}
+      rotation: {x: 0.20877752, y: -0.023064634, z: -0.52088594, w: 0.8273801}
+      scale: {x: 0.99999964, y: 0.99999994, z: 1}
+    - name: index_prox
+      parentName: index_bone
+      position: {x: -4.7439244e-11, y: 0.00076592976, z: -3.1664968e-10}
+      rotation: {x: 0.061517455, y: -0.026792401, z: -0.11213073, w: 0.99142545}
+      scale: {x: 0.9999996, y: 0.9999998, z: 0.99999994}
+    - name: index_inter
+      parentName: index_prox
+      position: {x: 8.381903e-11, y: 0.0005453247, z: 1.8626451e-11}
+      rotation: {x: -0.021347733, y: -0.005734217, z: -0.019094665, w: 0.9995733}
+      scale: {x: 0.9999998, y: 1, z: 0.99999994}
+    - name: index_dist
+      parentName: index_inter
+      position: {x: -1.7695129e-10, y: 0.00031762413, z: -8.381903e-11}
+      rotation: {x: -0.24394108, y: 0.004082116, z: -0.00767435, w: 0.9697511}
+      scale: {x: 1, y: 0.9999993, z: 0.9999993}
+    - name: index_dist_end
+      parentName: index_dist
+      position: {x: -0, y: 0.00028103762, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thumb_prox
+      parentName: hand_joint
+      position: {x: 0.00033284203, y: 0.00026136503, z: -0.000075199154}
+      rotation: {x: -0.27456945, y: -0.18886882, z: -0.5052726, w: 0.79601496}
+      scale: {x: 0.9999998, y: 0.9999997, z: 0.9999999}
+    - name: thumb_inter
+      parentName: thumb_prox
+      position: {x: 2.7939676e-10, y: 0.0003456125, z: -1.8626451e-11}
+      rotation: {x: 0.13390115, y: -0.0032574248, z: 0.29667145, w: 0.9455401}
+      scale: {x: 0.99999976, y: 0.9999999, z: 0.9999998}
+    - name: thumb_dist
+      parentName: thumb_inter
+      position: {x: -1.862645e-10, y: 0.0004514897, z: 1.3038516e-10}
+      rotation: {x: -0.016308634, y: -0.011734874, z: 0.41156378, w: 0.91115946}
+      scale: {x: 0.99999934, y: 0.9999993, z: 0.99999994}
+    - name: thumb_dist_end
+      parentName: thumb_dist
+      position: {x: -0, y: 0.00032331081, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fp_male_hand
+      parentName: fp_male_hand(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

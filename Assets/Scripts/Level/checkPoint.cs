@@ -8,7 +8,7 @@ public class checkPoint : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			GameManager.instance.spawnPoint = GameObject.FindGameObjectWithTag("CheckPoint");
+			GameManager.instance.checkPoint = gameObject;
 		}
 	}
 }
