@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -258,7 +258,7 @@ public class NormalZombie : enemyBase
     #endregion
 
     bool isAttacking;
-    public Animator animator;
+	//public Animator animator;
 
 
     protected override void CanSeePlayer()
@@ -278,7 +278,7 @@ public class NormalZombie : enemyBase
     {
         isAttacking = true;
         agent.speed = 0;
-       animator.SetTrigger("attack");
+	    animator.SetTrigger("attack");
         yield return new WaitForSeconds(1);
         agent.speed = speedPatrol;
         isAttacking = false;

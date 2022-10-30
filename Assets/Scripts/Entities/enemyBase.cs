@@ -10,7 +10,7 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public GameObject Detector;
     [SerializeField] GameObject HeadPos;
     [SerializeField] public GameObject target;
-
+	[SerializeField] public Animator animator;
     [SerializeField] int sightDistance;
     [SerializeField] int roamDist;
     [SerializeField] public int viewAngle;
@@ -58,7 +58,7 @@ public class enemyBase : MonoBehaviour
             if (agent.enabled)
             {
                 Detection();
-                //animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
+                animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
                 if (InRadius)
                 {
                     playerDirection = GameManager.instance.player.transform.position - HeadPos.transform.position;

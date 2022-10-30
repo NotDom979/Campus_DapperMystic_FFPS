@@ -1,13 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BruteEnemy : enemyBase
+public class BruteEnemy : enemyBase, IDamage
 {
 
     bool isAttacking;
 
-    public Animator animator;
+	// public Animator animator;
 
     public int i;
     public int j;
@@ -43,15 +43,21 @@ public class BruteEnemy : enemyBase
 
         if (i == 0)
         {
-            animator.SetTrigger("attack1");
+	        animator.SetTrigger("attack1");
+	        animator.SetBool("fighStance", false);
+	        animator.Play("Attack");
         }
         else if (i == 1)
         {
-            animator.SetTrigger("attack2");
+	        animator.SetTrigger("attack2");
+	        animator.SetBool("fighStance", false);
+	        animator.Play("Attack_2");
         }
         else if (i ==2)
         {
-            animator.SetTrigger("attack3");
+	        animator.SetTrigger("attack3");
+	        animator.SetBool("fighStance", false);
+	        animator.Play("Attack_3");
         }
         yield return new WaitForSeconds(2);
         i++;
