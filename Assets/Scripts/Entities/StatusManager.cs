@@ -67,11 +67,15 @@ public class StatusManager : MonoBehaviour
                     GameManager.instance.playerScript.playerGrunt.Play();
                     GameManager.instance.playerScript.updatePLayerHud();
                 }
-                else if (TickCount == bleedTicks && GameManager.instance.playerScript.HP > 0)
+                else if (TickCount == bleedTicks && GameManager.instance.playerScript.HP > 1)
                 {
-                    GameManager.instance.playerScript.HP -= damage;
-                    GameManager.instance.playerScript.playerGrunt.Play();
-                    GameManager.instance.playerScript.updatePLayerHud();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        GameManager.instance.playerScript.HP -= damage;
+                        GameManager.instance.playerScript.playerGrunt.Play();
+                        GameManager.instance.playerScript.updatePLayerHud();
+                        yield return new WaitForSeconds(.1f);
+                    }
                 }
                 else if (GameManager.instance.playerScript.HP <= 0)
                 {
