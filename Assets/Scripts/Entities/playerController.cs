@@ -242,7 +242,7 @@ public class playerController : MonoBehaviour
         }
 
     }
-    public void replenishHealth(int amount)
+     public void replenishHealth(int amount)
     {
 
         HP += amount;
