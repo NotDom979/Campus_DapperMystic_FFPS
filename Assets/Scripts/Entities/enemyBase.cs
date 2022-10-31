@@ -35,11 +35,12 @@ public class enemyBase : MonoBehaviour
     public bool InRadius;
     bool playerSeen;
     // Start is called before the first frame update
-    virtual protected void Start()
+	virtual protected void Awake()
     {
-        EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-        GameManager.instance.enemyNumber++;
-        GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");
+	    // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+	    //GameManager.instance.enemyNumber++;
+	    // GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
+	    currentHealth = maxHealth;
         playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
         agent.stoppingDistance = 0;

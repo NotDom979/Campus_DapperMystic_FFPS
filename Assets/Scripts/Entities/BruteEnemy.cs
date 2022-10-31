@@ -16,7 +16,7 @@ public class BruteEnemy : enemyBase, IDamage
     {
         if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
         {
-            animator.SetBool("fightStance", true);
+	        //animator.SetBool("fightStance", true);
             if (!isAttacking)
             {
                StartCoroutine(Attack());
@@ -35,6 +35,7 @@ public class BruteEnemy : enemyBase, IDamage
     public IEnumerator Attack()
     {
         isAttacking = true;
+	    animator.SetBool("fightStance", false);
         agent.speed = 0;
         if (i == 3)
         {
@@ -43,23 +44,24 @@ public class BruteEnemy : enemyBase, IDamage
 
         if (i == 0)
         {
-	        animator.SetTrigger("attack1");
-	        animator.SetBool("fighStance", false);
 	        animator.Play("Attack");
+	        //animator.SetBool("fightStance", false);
+	         animator.SetTrigger("attack1");
         }
         else if (i == 1)
         {
 	        animator.SetTrigger("attack2");
-	        animator.SetBool("fighStance", false);
+	        //animator.SetBool("fightStance", false);
 	        animator.Play("Attack_2");
         }
-        else if (i ==2)
-        {
-	        animator.SetTrigger("attack3");
-	        animator.SetBool("fighStance", false);
-	        animator.Play("Attack_3");
-        }
-        yield return new WaitForSeconds(2);
+	    // else if (i ==2)
+     //   {
+	        // animator.SetTrigger("attack3");
+	        //animator.SetBool("fightStance", false);
+	    //       animator.Play("Attack_3");
+	    //   }
+	    yield return new WaitForSeconds(2);
+	    animator.Play("Blend Tree");
         i++;
         agent.speed = speedPatrol;
         isAttacking = false;
@@ -67,7 +69,7 @@ public class BruteEnemy : enemyBase, IDamage
 
     protected override IEnumerator death()
     {
-        animator.SetBool("Dead", true);
+	    animator.Play("Dead");
         return base.death();
     }
 
@@ -80,11 +82,11 @@ public class BruteEnemy : enemyBase, IDamage
 
         if (i == 0)
         {
-            animator.SetTrigger("hurt1");
+	        animator.Play("Hit");
         }
         else if (i == 1)
         {
-            animator.SetTrigger("hurt2");
+	        animator.Play("Hit 2");
         }
         return base.flashDamage();
     }
