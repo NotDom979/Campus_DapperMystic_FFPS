@@ -2869,8 +2869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensHort: 500
   sensVert: 500
-  lockVertMin: -75
-  lockVertMax: 75
+  lockVertMin: -50
+  lockVertMax: 50
   lockHortMin: -75
   lockHortMax: 75
   invert: 0
@@ -4568,7 +4568,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738967598185734677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002998352, y: 1.527, z: -0.11600113}
+  m_LocalPosition: {x: 0.002998352, y: 1.526, z: 0.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4640,8 +4640,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensHort: 500
   sensVert: 500
-  lockVertMin: -75
-  lockVertMax: 75
+  lockVertMin: -50
+  lockVertMax: 50
   lockHortMin: -75
   lockHortMax: 75
   invert: 0

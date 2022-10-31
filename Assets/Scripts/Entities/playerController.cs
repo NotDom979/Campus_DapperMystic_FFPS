@@ -89,15 +89,18 @@ public class playerController : MonoBehaviour
     }
 
     void Update()
-    {
-        StartCoroutine(reloadGun());
-	    movement();
-        StartCoroutine(shoot());
-	    gunselect();
-	    if (GameManager.instance.playerDeadMenu.activeSelf == true)
-	    {
-	    	GameManager.instance.damageFlash.SetActive(false);
-	    }
+	{
+		if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false)
+		{
+			StartCoroutine(reloadGun());
+			movement();
+			StartCoroutine(shoot());
+			gunselect();
+			if (GameManager.instance.playerDeadMenu.activeSelf == true)
+			{
+				GameManager.instance.damageFlash.SetActive(false);
+			}
+		}
 	  
     }
     void movement()

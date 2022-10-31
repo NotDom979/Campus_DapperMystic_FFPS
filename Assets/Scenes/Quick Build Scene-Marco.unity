@@ -649,10 +649,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1370400592331109396, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: audioMixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 74f8f07dea5364146954de262c951394, type: 2}
     - target: {fileID: 1549287128036570269, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -753,25 +749,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5814018364800162327, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6563701157577508826, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: audioMixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 74f8f07dea5364146954de262c951394, type: 2}
     - target: {fileID: 7170594576921983877, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262034722355826596, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: audioMixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 74f8f07dea5364146954de262c951394, type: 2}
-    - target: {fileID: 8703225255703578650, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7588f7f4883815746a295daa30cd8879, type: 3}
@@ -908,29 +888,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 718821711, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-      propertyPath: lockHortMax
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 718821711, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-      propertyPath: lockVertMax
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 718821711, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-      propertyPath: lockVertMin
-      value: -50
-      objectReference: {fileID: 0}
     - target: {fileID: 1009906502262555894, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
       propertyPath: m_Name
       value: Mason
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619602183027657604, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-      propertyPath: lockVertMax
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619602183027657604, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-      propertyPath: lockVertMin
-      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 8547192723019370767, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
       propertyPath: m_RootOrder
@@ -975,10 +935,6 @@ PrefabInstance:
     - target: {fileID: 8547192723019370767, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8738967598185734672, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}

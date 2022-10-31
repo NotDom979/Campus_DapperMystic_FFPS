@@ -1901,7 +1901,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd611c7de6180f4d92050648035e1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 74f8f07dea5364146954de262c951394, type: 2}
+  Text: {fileID: 535714681573611866}
+  slider: {fileID: 7709935054285513253}
 --- !u!1 &2697522877206043955
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,7 +3004,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd611c7de6180f4d92050648035e1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 74f8f07dea5364146954de262c951394, type: 2}
+  Text: {fileID: 6887585291763419947}
+  slider: {fileID: 7689534165960502094}
 --- !u!1 &4082779677913550757
 GameObject:
   m_ObjectHideFlags: 0
@@ -6635,7 +6639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd611c7de6180f4d92050648035e1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 74f8f07dea5364146954de262c951394, type: 2}
+  Text: {fileID: 2477291469474837690}
+  slider: {fileID: 6875633116304079754}
 --- !u!1 &7525066903543430270
 GameObject:
   m_ObjectHideFlags: 0
@@ -8827,7 +8833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2419031575704228880
 RectTransform:
   m_ObjectHideFlags: 0
