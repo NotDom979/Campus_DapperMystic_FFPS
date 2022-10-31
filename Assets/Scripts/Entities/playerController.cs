@@ -53,7 +53,7 @@ public class playerController : MonoBehaviour
     bool isShooting;
     //bool isReloading = false;
     public int selectGun;
-
+	public int damage;
     public int maxAmmo;
     public int currentAmmo;
     public int reloadTime;
@@ -74,6 +74,7 @@ public class playerController : MonoBehaviour
 		HPOrigin = HP;
 		ArmorOrigin = Armor;
 		respawn();
+		damage = 1;
 		currentAmmo = maxAmmo;
 		stored = gunShot.clip;
 		GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
