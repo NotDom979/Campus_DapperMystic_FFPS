@@ -25,7 +25,7 @@ public class ThrowingObjects : MonoBehaviour
 	private void Start(){
 		totalThrows++;
 		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
-		readyTothrow = false;
+		readyTothrow = true;
 	}
 	
 	private void Update(){
@@ -45,7 +45,7 @@ public class ThrowingObjects : MonoBehaviour
 	private void Throw()
 	{
 		
-		readyTothrow = true;
+		readyTothrow = false;
 		
 		// We are instantiate object throw
 		GameObject projectile = Instantiate(objectToThrow, attackPoint.position,cam.rotation);
@@ -56,13 +56,13 @@ public class ThrowingObjects : MonoBehaviour
 		//caculate direction
 		Vector3 forceDirection = cam.transform.forward;
 
-		//RaycastHit hit;
+		RaycastHit hit;
 
-        /*if (Physics.Raycast(cam.position, cam.transform.forward, out hit, 500f))
+        if (Physics.Raycast(cam.position, cam.transform.forward, out hit, 500f))
         {
             forceDirection = (hit.point - attackPoint.position).normalized;
         }
-*/
+
         //Add Force
         Vector3 force = forceDirection *throwForce + transform.up * throwupwardForce;
 		

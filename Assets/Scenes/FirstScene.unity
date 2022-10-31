@@ -250,6 +250,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6875504655770023395, guid: d5e04a3dbfb2f7c4daa5a2532b00b474, type: 3}
   m_PrefabInstance: {fileID: 1397616743}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &347029732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4168022856743051174, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+  m_PrefabInstance: {fileID: 1619602183665241317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &374676890 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4720650048961336657, guid: a63abb715de9a444d8c89ad05f125c46, type: 3}
@@ -3147,6 +3152,14 @@ PrefabInstance:
     - target: {fileID: 1009906502262555894, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
       propertyPath: m_Name
       value: Mason
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619602182187085930, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 347029732}
+    - target: {fileID: 1619602182187085930, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+      propertyPath: throwupwardForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8547192723019370767, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
       propertyPath: m_RootOrder
