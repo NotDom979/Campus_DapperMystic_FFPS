@@ -20,6 +20,13 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public NavMeshAgent agent;
     [SerializeField] Renderer model;
 
+
+    [Header("-----Item Drop-----")]
+    [SerializeField] GameObject[] itemsDrops;
+    [SerializeField] public int randItem;
+    private int grabItem;
+
+
     public Image enemyHpBar;
     public float maxHealth;
     public float currentHealth;
@@ -123,6 +130,7 @@ public class enemyBase : MonoBehaviour
         agent.speed = 0;
         agent.enabled = false;
         yield return new WaitForSeconds(2f);
+        RandomItem();
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
@@ -174,6 +182,32 @@ public class enemyBase : MonoBehaviour
         }
 
 
+    }
+
+    public void RandomItem()
+    {
+        randItem = Random.Range(0, 4);
+
+
+        if (randItem == 2)
+        {
+
+            Instantiate(itemsDrops[2], transform.position, Quaternion.identity);
+        }
+        else if (randItem == 1)
+        {
+            Instantiate(itemsDrops[1], transform.position, Quaternion.identity);
+
+
+        }
+        else if (randItem == 3)
+        {
+
+            Instantiate(itemsDrops[3], transform.position, Quaternion.identity);
+
+
+        }
+        Debug.Log(itemsDrops);
     }
 
     virtual protected IEnumerator flashDamage()

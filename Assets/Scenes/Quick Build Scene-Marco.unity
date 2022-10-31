@@ -964,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1342959200176554030, guid: 71c2b86e4d7bc49b894c67d7b7a7b83f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c2b86e4d7bc49b894c67d7b7a7b83f, type: 3}
@@ -1470,6 +1470,22 @@ PrefabInstance:
       propertyPath: EnemyCanvas
       value: 
       objectReference: {fileID: 399567961}
+    - target: {fileID: 647254900, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
+      propertyPath: itemsDrops.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 647254900, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
+      propertyPath: itemsDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
+    - target: {fileID: 647254900, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
+      propertyPath: itemsDrops.Array.data[2]
+      value: 
+      objectReference: {fileID: 897574624969445326, guid: 40ec123080f5ffd44ada3afefed402a1, type: 3}
+    - target: {fileID: 647254900, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
+      propertyPath: itemsDrops.Array.data[3]
+      value: 
+      objectReference: {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
     - target: {fileID: 1309486516299566, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
       propertyPath: m_Name
       value: Ghoul
@@ -1524,6 +1540,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
+--- !u!1001 &1199573035
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1343504842343394, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_Name
+      value: Projectile 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634660366729292, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df7af1a2f7d29504aaa8286f9ddf60dd, type: 3}
 --- !u!1001 &1411793043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1963,6 +2036,10 @@ PrefabInstance:
     - target: {fileID: 1544940345062412700, guid: dc08cca96d8ce5f4c902f85337735e54, type: 3}
       propertyPath: m_Name
       value: Zombie3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544940345062412700, guid: dc08cca96d8ce5f4c902f85337735e54, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2534368624564216719, guid: dc08cca96d8ce5f4c902f85337735e54, type: 3}
       propertyPath: m_RootOrder
