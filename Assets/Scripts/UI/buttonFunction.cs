@@ -26,4 +26,5 @@ public class buttonFunction : MonoBehaviour
 		GameManager.instance.playerScript.respawn();
 		GameManager.instance.cursorUnLockUnPause();
 	}
+	
 }
