@@ -38,6 +38,7 @@ public class playerController : MonoBehaviour
     [SerializeField] GameObject Sniper;
     [SerializeField] GameObject Bazooka;
     [SerializeField] GameObject Shotgun;
+	[SerializeField] GameObject SMG;
     public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
@@ -90,15 +91,18 @@ public class playerController : MonoBehaviour
     }
 
     void Update()
-    {
-        StartCoroutine(reloadGun());
-        movement();
-        StartCoroutine(shoot());
-        gunselect();
-        if (GameManager.instance.playerDeadMenu.activeSelf == true)
-        {
-            GameManager.instance.damageFlash.SetActive(false);
-        }
+	{
+		if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false)
+		{
+        	StartCoroutine(reloadGun());
+        	movement();
+        	StartCoroutine(shoot());
+        	gunselect();
+        	if (GameManager.instance.playerDeadMenu.activeSelf == true)
+        	{
+            	GameManager.instance.damageFlash.SetActive(false);
+        	}
+		}
 
     }
     void movement()
@@ -509,37 +513,30 @@ public class playerController : MonoBehaviour
         if (WeaponDetection() == 1)
         {
             anim.Play("Pistol");
-            anim.SetBool("SniperBool", false);
+	        AllBoolFalse();
             anim.SetBool("PistolBool", true);
-            anim.SetBool("ArBool", false);
-            anim.SetBool("BaBool", false);
             anim.SetBool("Idle", true);
 
         }
-        else if (WeaponDetection() == 2)
+        else if (WeaponDetection() == 2  || WeaponDetection() == 5 || WeaponDetection() == 6)
         {
             anim.Play("AR");
-            anim.SetBool("SniperBool", false);
-            anim.SetBool("PistolBool", false);
+	        AllBoolFalse();
             anim.SetBool("ArBool", true);
-            anim.SetBool("BaBool", false);
             anim.SetBool("Idle", true);
         }
-        else if (WeaponDetection() == 3 || WeaponDetection() == 5)
+        else if (WeaponDetection() == 3)
         {
-            anim.Play("Sniper");
+	        anim.Play("Sniper");
+	        AllBoolFalse();
             anim.SetBool("SniperBool", true);
-            anim.SetBool("BaBool", false);
-            anim.SetBool("PistolBool", false);
-            anim.SetBool("ArBool", false);
             anim.SetBool("Idle", true);
         }
         else if (WeaponDetection() == 4)
         {
-            anim.Play("Bazooka");
+	        anim.Play("Bazooka");
+	        AllBoolFalse();
             anim.SetBool("BaBool", true);
-            anim.SetBool("PistolBool", false);
-            anim.SetBool("ArBool", false);
             anim.SetBool("Idle", true);
         }
     }
@@ -551,7 +548,7 @@ public class playerController : MonoBehaviour
             mfClone.SetActive(true);
             StartCoroutine("muzzleWait");
         }
-        else if (WeaponDetection() == 2 || WeaponDetection() == 5)
+        else if (WeaponDetection() == 2 || WeaponDetection() == 5 || WeaponDetection() == 6)
         {
             mfClone = Instantiate(arMuzzle, rifleSp.transform.position, transform.rotation);
             mfClone.SetActive(true);
@@ -615,6 +612,10 @@ public class playerController : MonoBehaviour
         {
             return 5;
         }
+        else if (SMG.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("SMG"))
+        {
+        	return 6;
+        }
 
         return 0;
     }
@@ -623,42 +624,42 @@ public class playerController : MonoBehaviour
         if (gameObject.GetComponent<Collider>().CompareTag("Pistol") || maxAmmo == 20)
         {
             anim.Play("Pistol");
-            anim.SetBool("ArBool", false);
+	        AllFalse();
             anim.SetBool("PistolBool", true);
-            anim.SetBool("SniperBool", false);
-            anim.SetBool("BaBool", false);
-            AR.SetActive(false);
-            Sniper.SetActive(false);
-            Bazooka.SetActive(false);
             Pistol.SetActive(true);
             Pistol.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
             Pistol.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
         }
-        else if (gameObject.GetComponent<Collider>().CompareTag("Rifle") || stats.Tag == "Rifle" || stats.Tag == "Shotgun" || maxAmmo == 30)
+        else if (gameObject.GetComponent<Collider>().CompareTag("Rifle") || stats.Tag == "Rifle" || stats.Tag == "Shotgun" || stats.Tag == "SMG")
         {
             anim.Play("AR");
-            anim.SetBool("ArBool", true);
-            anim.SetBool("PistolBool", false);
-            anim.SetBool("SniperBool", false);
-            anim.SetBool("BaBool", false);
-            Pistol.SetActive(false);
-            Sniper.SetActive(false);
-            Bazooka.SetActive(false);
-            AR.SetActive(true);
-            AR.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-            //AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	        AllFalse();
+	        anim.SetBool("ArBool", true);
+	        if (stats.Tag == "SMG")
+	        {
+	        	SMG.SetActive(true);
+		        SMG.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		        SMG.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	        }
+	        else if (stats.Tag == "Shotgun")
+	        {
+	        	Shotgun.SetActive(true);
+	        	Shotgun.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		        Shotgun.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	        }
+	        else
+	        {     
+            	AR.SetActive(true);
+	        	AR.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+		        AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+	        }
 
         }
         else if (gameObject.GetComponent<Collider>().CompareTag("Sniper") || maxAmmo == 5)
         {
-            anim.Play("Sniper");
-            anim.SetBool("ArBool", false);
-            anim.SetBool("PistolBool", false);
+	        anim.Play("Sniper");
+	        AllFalse();
             anim.SetBool("SniperBool", true);
-            anim.SetBool("BaBool", false);
-            AR.SetActive(false);
-            Pistol.SetActive(false);
-            Bazooka.SetActive(false);
             Sniper.SetActive(true);
             Sniper.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
             Sniper.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -667,12 +668,7 @@ public class playerController : MonoBehaviour
         else if (gameObject.GetComponent<Collider>().CompareTag("Bazooka") || maxAmmo == 1)
         {
             anim.Play("Bazooka");
-            Pistol.SetActive(false);
-            Sniper.SetActive(false);
-            AR.SetActive(false);
-            anim.SetBool("ArBool", false);
-            anim.SetBool("PistolBool", false);
-            anim.SetBool("SniperBool", false);
+	        AllFalse();
             anim.SetBool("BaBool", true);
             Bazooka.SetActive(true);
             Bazooka.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -683,21 +679,21 @@ public class playerController : MonoBehaviour
     }
     void changeWeapon()
     {
-        if (gunstats[selectGun].Tag == "Rifle" || gunstats[selectGun].Tag == "Shotgun")
+	    if (gunstats[selectGun].Tag == "Rifle" || gunstats[selectGun].Tag == "Shotgun" || gunstats[selectGun].Tag == "SMG" )
         {
-            anim.Play("AR");
+	        anim.Play("AR");
+	        AllFalse();
             anim.SetBool("ArBool", true);
-            anim.SetBool("PistolBool", false);
-            anim.SetBool("SniperBool", false);
-            anim.SetBool("BaBool", false);
-            Pistol.SetActive(false);
-            Sniper.SetActive(false);
-            Bazooka.SetActive(false);
             AR.SetActive(true);
             if (gunstats[selectGun].Tag == "Shotgun")
             {
                 Shotgun.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
                 Shotgun.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+            }
+            else if (gunstats[selectGun].Tag == "SMG")
+            {
+	            SMG.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+	            SMG.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
             }
             else
             {
@@ -709,13 +705,8 @@ public class playerController : MonoBehaviour
         }
         else if (gunstats[selectGun].Tag == "Bazooka")
         {
-            anim.Play("Bazooka");
-            Pistol.SetActive(false);
-            Sniper.SetActive(false);
-            AR.SetActive(false);
-            anim.SetBool("ArBool", false);
-            anim.SetBool("PistolBool", false);
-            anim.SetBool("SniperBool", false);
+	        anim.Play("Bazooka");
+	        AllFalse();
             anim.SetBool("BaBool", true);
             Bazooka.SetActive(true);
             Bazooka.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -724,14 +715,9 @@ public class playerController : MonoBehaviour
         }
         else if (gunstats[selectGun].Tag == "Sniper")
         {
-            anim.Play("Sniper");
-            anim.SetBool("ArBool", false);
-            anim.SetBool("PistolBool", false);
+	        anim.Play("Sniper");
+	        AllFalse();
             anim.SetBool("SniperBool", true);
-            anim.SetBool("BaBool", false);
-            AR.SetActive(false);
-            Pistol.SetActive(false);
-            Bazooka.SetActive(false);
             Sniper.SetActive(true);
             Sniper.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
             Sniper.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -739,14 +725,9 @@ public class playerController : MonoBehaviour
         }
         else if (gunstats[selectGun].Tag == "Pistol")
         {
+        	AllFalse();
             anim.Play("Pistol");
-            anim.SetBool("ArBool", false);
             anim.SetBool("PistolBool", true);
-            anim.SetBool("SniperBool", false);
-            anim.SetBool("BaBool", false);
-            AR.SetActive(false);
-            Sniper.SetActive(false);
-            Bazooka.SetActive(false);
             Pistol.SetActive(true);
             Pistol.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
             Pistol.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -771,5 +752,25 @@ public class playerController : MonoBehaviour
             Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
         }
     }
+	void AllFalse()
+	{
+		anim.SetBool("SniperBool", false);
+		anim.SetBool("ArBool", false);
+		anim.SetBool("PistolBool", false);
+		anim.SetBool("BaBool", false);
+		Pistol.SetActive(false);
+		AR.SetActive(false);
+		Sniper.SetActive(false);
+		Bazooka.SetActive(false);
+		SMG.SetActive(false);
+		Shotgun.SetActive(false);
+	}
+	void AllBoolFalse()
+	{
+		anim.SetBool("SniperBool", false);
+		anim.SetBool("ArBool", false);
+		anim.SetBool("PistolBool", false);
+		anim.SetBool("BaBool", false);
+	}
     
 }

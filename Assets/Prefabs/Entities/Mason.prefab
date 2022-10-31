@@ -638,6 +638,7 @@ MonoBehaviour:
   Sniper: {fileID: 1925449692199814384}
   Bazooka: {fileID: 1925449692711469474}
   Shotgun: {fileID: 0}
+  SMG: {fileID: 0}
   hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
   muzzleFlash: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
   gunShot: {fileID: 2838401463279979295}
@@ -649,6 +650,7 @@ MonoBehaviour:
   bazookaSp: {fileID: 7534064058327450488}
   emptyMag: {fileID: 8300000, guid: acb857dc806d6dd49bd63fc983c9249a, type: 3}
   shotPoint: {fileID: 5473453000725762007}
+  purchased: 0
   selectGun: 0
   damage: 0
   maxAmmo: 0
@@ -688,7 +690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHeight: {fileID: 1619602182873672475}
-  PlayerCamera: {fileID: 8738967598185734672}
   normalHeight: 2
   crouchHeight: 0.5
   _speed: 0
@@ -6315,6 +6316,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4322811957338371076, guid: e09747d11084c0044bd18139128a8daf, type: 3}
       propertyPath: m_Name
+      value: SMG
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322811957338371076, guid: e09747d11084c0044bd18139128a8daf, type: 3}
+      propertyPath: m_TagString
       value: SMG
       objectReference: {fileID: 0}
     m_RemovedComponents: []
