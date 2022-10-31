@@ -52,20 +52,21 @@ public class ThrowingObjects : MonoBehaviour
 		
 		//we get rigidbody
 		Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
-		
+
 		//caculate direction
 		Vector3 forceDirection = cam.transform.forward;
-		RaycastHit hit;
+
+		//RaycastHit hit;
+
+        /*if (Physics.Raycast(cam.position, cam.transform.forward, out hit, 500f))
+        {
+            forceDirection = (hit.point - attackPoint.position).normalized;
+        }
+*/
+        //Add Force
+        Vector3 force = forceDirection *throwForce + transform.up * throwupwardForce;
 		
-		if (Physics.Raycast(cam.position, cam.transform.forward, out hit,500f))
-		{
-			forceDirection = (hit.point - attackPoint.position).normalized;
-		}
-		
-		//Add Force
-		Vector3 forceToAdd = forceDirection *throwForce + transform.up * throwupwardForce;
-		
-		projectileRB.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+		projectileRB.AddForce(force, ForceMode.Impulse);
 		totalThrows--;
 		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
 		
