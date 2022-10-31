@@ -637,8 +637,8 @@ MonoBehaviour:
   AR: {fileID: 1925449693552796853}
   Sniper: {fileID: 1925449692199814384}
   Bazooka: {fileID: 1925449692711469474}
-  Shotgun: {fileID: 0}
-  SMG: {fileID: 0}
+  Shotgun: {fileID: 1925449693029648017}
+  SMG: {fileID: 1129566662316245969}
   hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
   muzzleFlash: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
   gunShot: {fileID: 2838401463279979295}
@@ -6327,5 +6327,10 @@ PrefabInstance:
 --- !u!4 &353205232295713131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3510105380103827134, guid: e09747d11084c0044bd18139128a8daf, type: 3}
+  m_PrefabInstance: {fileID: 3769706914910123989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1129566662316245969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4322811957338371076, guid: e09747d11084c0044bd18139128a8daf, type: 3}
   m_PrefabInstance: {fileID: 3769706914910123989}
   m_PrefabAsset: {fileID: 0}
