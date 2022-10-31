@@ -41,6 +41,7 @@ public class StatusManager : MonoBehaviour
         }
         else if (TickCount == poisonTicks)
         {
+
             damage = 1;
         }
         else if (TickCount == bleedTicks)
@@ -53,16 +54,34 @@ public class StatusManager : MonoBehaviour
 
             for (int i = 0; i < TickCount.Count; i++)
             {
+
                 TickCount[i]--;
-
-
             }
             if (gameObject.CompareTag("Player"))
             {
 
-                GameManager.instance.playerScript.HP -= damage;
-                GameManager.instance.playerScript.playerGrunt.Play();
-                GameManager.instance.playerScript.updatePLayerHud();
+                if (TickCount == poisonTicks && GameManager.instance.playerScript.HP > 5)
+                {
+
+                    GameManager.instance.playerScript.HP -= damage;
+                    GameManager.instance.playerScript.playerGrunt.Play();
+                    GameManager.instance.playerScript.updatePLayerHud();
+                }
+                else if (TickCount == bleedTicks && GameManager.instance.playerScript.HP > 0)
+                {
+                    GameManager.instance.playerScript.HP -= damage;
+                    GameManager.instance.playerScript.playerGrunt.Play();
+                    GameManager.instance.playerScript.updatePLayerHud();
+                }
+                else if (GameManager.instance.playerScript.HP <= 0)
+                {
+                    TickCount.Clear();
+                    GameManager.instance.playerScript.playerGrunt.volume = 1;
+                    GameManager.instance.playerScript.playerGrunt.pitch = 1;
+                    GameManager.instance.playerScript.playerGrunt.Play();
+                    GameManager.instance.playerDeadMenu.SetActive(true);
+                    GameManager.instance.cursorLockPause();
+                }
             }
             else
             {
