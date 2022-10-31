@@ -25,7 +25,7 @@ public class ThrowingObjects : MonoBehaviour
 	private void Start(){
 		totalThrows++;
 		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
-		readyTothrow = true;
+		readyTothrow = false;
 	}
 	
 	private void Update(){
@@ -45,7 +45,7 @@ public class ThrowingObjects : MonoBehaviour
 	private void Throw()
 	{
 		
-		readyTothrow = false;
+		readyTothrow = true;
 		
 		// We are instantiate object throw
 		GameObject projectile = Instantiate(objectToThrow, attackPoint.position,cam.rotation);

@@ -112,14 +112,15 @@ public class Ghoul : MonoBehaviour, IDamage
         {
             StartCoroutine(death());
         }
-        else
-            gameObject.GetComponent<Animator>().Play("Hit");
-
 
         agent.SetDestination(GameManager.instance.player.transform.position);
         StartCoroutine(flashDamage());
     }
 
+    public void payDay(int currency)
+    {
+        GameManager.instance.bankTotal += currency;
+    }
 
     IEnumerator flashDamage()
     {
@@ -138,6 +139,8 @@ public class Ghoul : MonoBehaviour, IDamage
         agent.speed = 0;
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+        payDay(15);
+        GameManager.instance.CheckBankTotal();
         GameManager.instance.CheckEnemyTotal();
     }
     #endregion

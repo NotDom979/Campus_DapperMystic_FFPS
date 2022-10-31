@@ -114,6 +114,10 @@ public class SpitterEnemy : MonoBehaviour, IDamage
         StartCoroutine(flashDamage());
     }
 
+    public void payDay(int currency)
+    {
+        GameManager.instance.bankTotal += currency;
+    }
 
     IEnumerator flashDamage()
     {
@@ -133,6 +137,8 @@ public class SpitterEnemy : MonoBehaviour, IDamage
         animator.SetBool("death", true);
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+        payDay(10);
+        GameManager.instance.CheckBankTotal();
         GameManager.instance.CheckEnemyTotal();
     }
     #endregion

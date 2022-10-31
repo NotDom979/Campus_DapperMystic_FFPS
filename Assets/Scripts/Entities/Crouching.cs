@@ -7,7 +7,8 @@ public class Crouching : MonoBehaviour
 {
 	public CharacterController PlayerHeight;
 	//makes camera move with the whole body - for dom :)
-	[SerializeField] private Transform PlayerCamera = null;
+
+
 
 	[Range(0f, 3f)]
     [SerializeField] private float normalHeight;

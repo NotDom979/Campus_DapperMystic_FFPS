@@ -11,14 +11,22 @@ public class gunStats : ScriptableObject
 	public int shootDist;
 	public int shootDamage;
 	public int ammoCount;
-	public int maxAmmo;	
+	public int maxAmmo;
+
+	public int currentAmmoleft;
+	public int maxAmmoSizeForGun;
+	
 	public string Tag;
+	public int weaponCost;
 	
 	//FeedBack for the gun
 	public GameObject gunModel;
 	public GameObject hitEffect;
 	public GameObject muzzleEffect;
 	public GameObject shotPoint;
+	
+	//Item was/wasn't picked up
+	public bool purchased;
 	
 	//Audio Sounds (hit markers)
 	public AudioClip sound;
