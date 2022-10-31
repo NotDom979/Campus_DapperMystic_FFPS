@@ -159,17 +159,11 @@ public class enemyBase : MonoBehaviour
                 playerSeen = true;
                 if (angle <= viewAngle)
                 {
-
                     agent.speed = speedChase;
                     agent.stoppingDistance = stoppingDistOrigin;
                     agent.SetDestination(GameManager.instance.player.transform.position);
 
-
-
-
-
                 }
-
             }
             else
             {
