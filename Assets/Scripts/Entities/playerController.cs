@@ -242,6 +242,19 @@ public class playerController : MonoBehaviour
         }
 
     }
+    public void replenishHealth(int amount)
+    {
+
+        HP += amount;
+        HP = Mathf.Min(HP, HPOrigin);
+        if (HP > 0)
+        {
+            updatePLayerHud();
+
+
+        }
+
+    }
 
     public void payDay(int currency)
     {
@@ -758,4 +771,5 @@ public class playerController : MonoBehaviour
             Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
         }
     }
+    
 }

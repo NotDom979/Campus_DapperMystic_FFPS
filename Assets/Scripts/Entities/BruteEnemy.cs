@@ -90,4 +90,8 @@ public class BruteEnemy : enemyBase, IDamage
         }
         return base.flashDamage();
     }
+    public void payDay(int currency)
+    {
+
+    }
 }

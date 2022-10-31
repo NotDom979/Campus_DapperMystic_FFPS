@@ -42,6 +42,9 @@ public class Zombie : enemyBase, IDamage
 		return base.death();
 	}
 
+    public void payDay(int currency)
+    {
 
+    }
 
 }
