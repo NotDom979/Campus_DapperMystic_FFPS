@@ -28,13 +28,16 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI AmmoCount;
     public TextMeshProUGUI bankAccount;
     public TextMeshProUGUI LethalCount;
+    public TextMeshProUGUI bankRupt;
+    public TextMeshProUGUI pressFtoInteract;
     public Image playerHpBar;
     public Image playerArmorBar;
     public bool isPaused;
     // Start is called before the first frame update
     void Awake()
     {
-
+        StartCoroutine(pressF());
+        bankRupt.enabled = false;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
@@ -119,4 +122,13 @@ public class GameManager : MonoBehaviour
             cursorLockPause();
         }
     }
+
+    IEnumerator pressF()
+    {
+
+        pressFtoInteract.enabled = true;
+        yield return new WaitForSeconds(2);
+        pressFtoInteract.enabled = false;
+    }
+
 }
