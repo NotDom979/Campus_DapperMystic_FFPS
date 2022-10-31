@@ -58,7 +58,7 @@ MonoBehaviour:
   enemyCountText: {fileID: 7336532434529574028}
   flagCountText: {fileID: 8228650113921733464}
   AmmoCount: {fileID: 1148040579576509743}
-  LethalCount: {fileID: 0}
+  LethalCount: {fileID: 8910660420687154853}
   playerHpBar: {fileID: 8007513819646716836}
   playerArmorBar: {fileID: 3045704271441598233}
   isPaused: 0
@@ -1035,7 +1035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7650993673553744536
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2184,7 +2184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130.3, y: -34.900024}
+  m_AnchoredPosition: {x: 130.3, y: -34.899902}
   m_SizeDelta: {x: 222.3228, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8539976110805227325
@@ -3678,7 +3678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -390, y: -32}
+  m_AnchoredPosition: {x: -390, y: -27.700195}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7262508606059813021
@@ -4025,7 +4025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 172.4, y: -75.399994}
+  m_AnchoredPosition: {x: 172.4, y: -75.3999}
   m_SizeDelta: {x: 307.3096, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3365804227712516380

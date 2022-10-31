@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,7 +8,7 @@ public class Ghoul : MonoBehaviour, IDamage
     [Header("-----Health-----")]
     public Image enemyHpBar;
     public float maxHealth;
-    public float currentHealth;
+    public float currentHealth; 
 
     //[Header("-----Sounds-----")]
     //[SerializeField] public AudioSource grunt;

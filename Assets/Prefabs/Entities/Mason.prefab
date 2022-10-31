@@ -654,7 +654,7 @@ MonoBehaviour:
   maxAmmo: 0
   currentAmmo: 0
   reloadTime: 0
-  statusManager: {fileID: 0}
+  statusManager: {fileID: 1619602183979449682}
 --- !u!114 &1619602182187085930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3764,7 +3764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7534064058947896613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.008, y: 0.367, z: 0.815}
+  m_LocalPosition: {x: -0, y: 0.303, z: 0.811}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4795,15 +4795,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426499557714507367, guid: ef0d0257c79a98d479d0abd54a2186d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -962.7977
+      value: -962.797
       objectReference: {fileID: 0}
     - target: {fileID: 4426499557714507367, guid: ef0d0257c79a98d479d0abd54a2186d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -536.8675
+      value: -536.876
       objectReference: {fileID: 0}
     - target: {fileID: 4426499557714507367, guid: ef0d0257c79a98d479d0abd54a2186d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.1482
+      value: -8.149
       objectReference: {fileID: 0}
     - target: {fileID: 4426499557714507367, guid: ef0d0257c79a98d479d0abd54a2186d0, type: 3}
       propertyPath: m_LocalRotation.w
