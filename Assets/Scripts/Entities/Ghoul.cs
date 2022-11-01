@@ -306,7 +306,13 @@ public class Ghoul : enemyBase, IDamage
     protected override IEnumerator death()
     {
         anim.Play("Death");
+        payDay(25);
         return base.death();
+    }
+
+    public void payDay(int currency)
+    {
+        GameManager.instance.bankTotal += currency;
     }
 
     protected override IEnumerator flashDamage()

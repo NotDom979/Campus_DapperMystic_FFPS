@@ -36,7 +36,12 @@ public class Zombie : enemyBase, IDamage
     protected override IEnumerator death()
     {
         animator.Play("Dead");
+        payDay(10);
         return base.death();
     }
 
+    public void payDay(int currency)
+    {
+        GameManager.instance.bankTotal += currency;
+    }
 }

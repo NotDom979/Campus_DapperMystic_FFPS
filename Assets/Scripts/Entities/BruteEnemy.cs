@@ -66,6 +66,7 @@ public class BruteEnemy : enemyBase, IDamage
     {
         animator.SetBool("Dead",true);
 	    animator.Play("Dead");
+        payDay(30);
         return base.death();
     }
 
@@ -88,6 +89,6 @@ public class BruteEnemy : enemyBase, IDamage
     }
     public void payDay(int currency)
     {
-
+        GameManager.instance.bankTotal += currency;
     }
 }

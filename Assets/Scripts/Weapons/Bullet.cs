@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
-    StatusManager statusManager;
+    public StatusManager statusManager;
     public List<string> ignoreTags;
     // Start is called before the first frame update
     void Start()
@@ -21,11 +21,17 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        { 
-                GameManager.instance.playerScript.takeDamage(damage);
-                
+        {
+            GameManager.instance.playerScript.takeDamage(damage);
         }
-                Destroy(gameObject);  
+        if (other.GetComponent<StatusManager>() != null)
+        {
+            if (statusManager != null)
+            {
+                other.GetComponent<StatusManager>().ApplyAffect(6, statusManager.poisonTicks);
+            }
+        }
+        Destroy(gameObject);
     }
 
 }
