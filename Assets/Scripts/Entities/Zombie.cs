@@ -29,6 +29,7 @@ public class Zombie : enemyBase, IDamage
         isAttacking = true;
         agent.speed = 1;
         animator.Play("Attack");
+        attackSound.Play();
         yield return new WaitForSeconds(1);
         agent.speed = speedPatrol;
         isAttacking = false;

@@ -45,14 +45,14 @@ public class BruteEnemy : enemyBase, IDamage
         if (i == 0)
         {
 	        animator.Play("Attack");
-	        
 	         animator.SetTrigger("attack1");
+	        attackSound.Play();
         }
         else if (i == 1)
         {
 	        animator.SetTrigger("attack2");
-	      
-	        animator.Play("Attack_2");
+            animator.Play("Attack_2");
+            attackSound.Play();
         }
 	   
 	    yield return new WaitForSeconds(2);

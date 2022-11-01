@@ -291,10 +291,12 @@ public class Ghoul : enemyBase, IDamage
         if (i == 0)
         {
             anim.Play("Attack1");
+            attackSound.Play();
         }
         else if (i == 1)
         {
             anim.Play("Attack2");
+            attackSound.Play();
         }
 
         yield return new WaitForSeconds(2);

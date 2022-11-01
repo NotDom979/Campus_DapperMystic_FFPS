@@ -26,7 +26,15 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public int randItem;
     private int grabItem;
 
+    [Header("-----Audios-----")]
+    [SerializeField] public AudioSource footSteps;
+    [SerializeField] public AudioSource attackSound;
+    [SerializeField] public AudioSource hitSounds;
+    [SerializeField] public AudioSource deathSound;
+    [SerializeField] public AudioSource growling;
 
+
+    [Header("-----Extras-----")]
     public Image enemyHpBar;
     public float maxHealth;
     public float currentHealth;
@@ -65,6 +73,8 @@ public class enemyBase : MonoBehaviour
         {
             if (agent.enabled)
             {
+                footSteps.enabled = true;
+                growling.enabled = true;
                 Detection();
                 animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
                 if (InRadius)
@@ -81,6 +91,11 @@ public class enemyBase : MonoBehaviour
                     agent.SetDestination(target.transform.position);
                 }
 
+            }
+            else
+            {
+                footSteps.enabled = false;
+                growling.enabled = false;
             }
         }
 
@@ -116,6 +131,7 @@ public class enemyBase : MonoBehaviour
     {
         currentHealth -= dmg;
         enemyHpBar.fillAmount = currentHealth / maxHealth;
+        hitSounds.Play();
         if (currentHealth <= 0)
         {
             StartCoroutine(death());
@@ -132,6 +148,7 @@ public class enemyBase : MonoBehaviour
         EnemyCanvas.SetActive(false);
         agent.speed = 0;
         agent.enabled = false;
+        deathSound.Play();
         yield return new WaitForSeconds(1);
         RandomItem();
         Destroy(gameObject);
