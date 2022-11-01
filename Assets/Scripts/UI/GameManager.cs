@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pressFtoInteract;
     public Image playerHpBar;
     public Image playerArmorBar;
-    public bool isPaused;
+	public bool isPaused;
+	public int WaveCounter;
     // Start is called before the first frame update
     void Awake()
     {

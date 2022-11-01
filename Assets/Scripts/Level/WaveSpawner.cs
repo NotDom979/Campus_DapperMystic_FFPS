@@ -10,6 +10,8 @@ public class WaveSpawner : MonoBehaviour
 	public enum SpawnState	{SPAWNING, WAITING, COUNTING}
 	int WaveCounter;
 	public TextMeshProUGUI WaveTracker;
+	public TextMeshProUGUI Timer;
+	public GameObject shop;
 	[System.Serializable]
 	public class Wave
 	{
@@ -31,17 +33,19 @@ public class WaveSpawner : MonoBehaviour
 	
 	void Start()
 	{
-		WaveCounter++;
-		WaveTracker.text = WaveCounter.ToString("F0");
+		GameManager.instance.WaveCounter++;
+		WaveTracker.text = (GameManager.instance.WaveCounter/4).ToString("F0");
 		waveCountdown = timeBetween;
 	}
 	void Update()
 	{
+		Timer.text = waveCountdown.ToString("F0");
 		if (state == SpawnState.WAITING)
 		{
 			if (!EnemyIsAlive())
 			{
 				WaveComplete();
+				shop.SetActive(true);
 			}
 			else
 			{
@@ -52,6 +56,7 @@ public class WaveSpawner : MonoBehaviour
 		{
 			if (state != SpawnState.SPAWNING)
 			{
+				shop.SetActive(false);
 				StartCoroutine(SpawnWave(waves[nextWave]));
 			}
 		}
@@ -76,6 +81,7 @@ public class WaveSpawner : MonoBehaviour
 	}
 	IEnumerator SpawnWave(Wave _wave)
 	{
+		WaveTracker.text = (WaveCounter/4).ToString("F0");
 		state = SpawnState.SPAWNING;
 		
 		for (int i = 0; i < _wave.count; i++) {

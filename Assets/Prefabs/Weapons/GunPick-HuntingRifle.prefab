@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4487425079768902825}
   - component: {fileID: 4487425079768902824}
   m_Layer: 0
-  m_Name: GunPick-Sniper (1)
+  m_Name: GunPick-HuntingRifle
   m_TagString: Sniper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,6 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunStat: {fileID: 11400000, guid: 6af203b4f5dc5b54f9a605fe2c835a97, type: 2}
+  playerController: {fileID: 0}
+  weaponPrice: {fileID: 0}
 --- !u!33 &4487425079768902826
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -141,5 +143,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 3
   m_Center: {x: 0, y: 0.2, z: 0}

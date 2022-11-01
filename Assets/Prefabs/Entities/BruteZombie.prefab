@@ -2121,7 +2121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6335064762516873681
 Transform:
   m_ObjectHideFlags: 0
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   EnemyCanvas: {fileID: 121941456483553079}
   Detector: {fileID: 3916223860541310476}
   HeadPos: {fileID: 6835208686378544336}
-  target: {fileID: 0}
+  target: {fileID: 7184592202707081044, guid: 45dc8021a89efcf499c74952a5277704, type: 3}
   animator: {fileID: 3623409633243941740}
   sightDistance: 500
   roamDist: 50

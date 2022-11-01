@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunStat: {fileID: 11400000, guid: 70e50bfbcef20ed4a8af151e59d2b1c1, type: 2}
+  playerController: {fileID: 0}
+  weaponPrice: {fileID: 0}
 --- !u!33 &1280767206873856411
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,7 +112,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 4
   m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1001 &1798889881685242944
 PrefabInstance:
