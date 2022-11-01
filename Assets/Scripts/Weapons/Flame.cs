@@ -9,9 +9,12 @@ public class Flame : MonoBehaviour
 	[SerializeField] int speed;
 	[SerializeField] int destroyTime;
 	
+	StatusManager status;
+	
 	// Start is called before the first frame update
 	void Start()
 	{
+		status = GetComponent<StatusManager>();
 		rb.velocity = transform.forward * speed;
 		Destroy(gameObject, destroyTime);
 	}
@@ -26,7 +29,7 @@ public class Flame : MonoBehaviour
 
         if (other.GetComponent<StatusManager>() != null)
         {
-			other.GetComponent<StatusManager>().ApplyBurn(6);
+	        other.GetComponent<StatusManager>().ApplyAffect(6, status.burnTicks);
 		}
 		Destroy(gameObject);
 	}

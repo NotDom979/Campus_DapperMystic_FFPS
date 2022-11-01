@@ -8,13 +8,13 @@ public class Missile : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
-	[SerializeField] public float blastRadius;
-	public GameObject explosionEffect;
-	// Start is called before the first frame update
+    [SerializeField] public float blastRadius;
+    public GameObject explosionEffect;
+    // Start is called before the first frame update
 
-	enemyAi enemy;
-	Vector3 pos;
-	void Start()
+    enemyAi enemy;
+    Vector3 pos;
+    void Start()
     {
         rb.velocity = transform.forward * speed;
     }
@@ -24,46 +24,48 @@ public class Missile : MonoBehaviour
     {
         if (other.CompareTag("enemy"))
         {
-			Explode();
-        Destroy(gameObject, destroyTime);
-          
+            Explode();
+            Destroy(gameObject, destroyTime);
+
         }
     }
-	void Explode()
-	{
-		pos = transform.position;
-		Instantiate(explosionEffect, pos, transform.rotation);
-		AreaDamageForObjects(pos, blastRadius,damage);
+    void Explode()
+    {
+        pos = transform.position;
+        Instantiate(explosionEffect, pos, transform.rotation);
+        AreaDamageForObjects(pos, blastRadius, damage);
 
 
 
-		Debug.Log("Boom");
+        Debug.Log("Boom");
 
-		Destroy(gameObject);
+        Destroy(gameObject);
+        Destroy(explosionEffect,destroyTime);
 
-	}
+    }
 
-	void AreaDamageForObjects(Vector3 location, float radiusofEntity, float damage)
-	{
-		Collider[] objectsInRange = Physics.OverlapSphere(location, radiusofEntity);
-		foreach (Collider nearbyEntities in objectsInRange)
-		{
-			enemyAi enemyHit = nearbyEntities.GetComponent<enemyAi>();
-			playerController playerHit = nearbyEntities.GetComponent<playerController>();
+    void AreaDamageForObjects(Vector3 location, float radiusofEntity, float damage)
+    {
+        Collider[] objectsInRange = Physics.OverlapSphere(location, radiusofEntity);
+        foreach (Collider nearbyEntities in objectsInRange)
+        {
+            enemyAi enemyHit = nearbyEntities.GetComponent<enemyAi>();
+            playerController playerHit = nearbyEntities.GetComponent<playerController>();
 
-			if (enemyHit != null)
-			{
+            if (enemyHit != null)
+            {
 
-				enemyHit.takeDamage(damage);
+                enemyHit.takeDamage(damage);
+               
 
 
-			}
-			if (playerHit != null)
-			{
-				GameManager.instance.playerScript.takeDamage((int)damage);
+            }
+            if (playerHit != null)
+            {
+                GameManager.instance.playerScript.takeDamage((int)damage);
 
-			}
+            }
 
-		}
-	}
+        }
+    }
 }

@@ -637,7 +637,8 @@ MonoBehaviour:
   AR: {fileID: 1925449693552796853}
   Sniper: {fileID: 1925449692199814384}
   Bazooka: {fileID: 1925449692711469474}
-  Shotgun: {fileID: 0}
+  Shotgun: {fileID: 1925449693029648017}
+  SMG: {fileID: 1129566662316245969}
   hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
   muzzleFlash: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
   gunShot: {fileID: 2838401463279979295}
@@ -649,6 +650,7 @@ MonoBehaviour:
   bazookaSp: {fileID: 7534064058327450488}
   emptyMag: {fileID: 8300000, guid: acb857dc806d6dd49bd63fc983c9249a, type: 3}
   shotPoint: {fileID: 5473453000725762007}
+  purchased: 0
   selectGun: 0
   damage: 0
   maxAmmo: 0
@@ -688,7 +690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHeight: {fileID: 1619602182873672475}
-  PlayerCamera: {fileID: 8738967598185734672}
   normalHeight: 2
   crouchHeight: 0.5
   _speed: 0
@@ -2869,8 +2870,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensHort: 500
   sensVert: 500
-  lockVertMin: -75
-  lockVertMax: 75
+  lockVertMin: -50
+  lockVertMax: 50
   lockHortMin: -75
   lockHortMax: 75
   invert: 0
@@ -4568,7 +4569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738967598185734677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002998352, y: 1.527, z: -0.11600113}
+  m_LocalPosition: {x: 0.002998352, y: 1.526, z: 0.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4640,8 +4641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensHort: 500
   sensVert: 500
-  lockVertMin: -75
-  lockVertMax: 75
+  lockVertMin: -50
+  lockVertMax: 50
   lockHortMin: -75
   lockHortMax: 75
   invert: 0
@@ -6317,10 +6318,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: SMG
       objectReference: {fileID: 0}
+    - target: {fileID: 4322811957338371076, guid: e09747d11084c0044bd18139128a8daf, type: 3}
+      propertyPath: m_TagString
+      value: SMG
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e09747d11084c0044bd18139128a8daf, type: 3}
 --- !u!4 &353205232295713131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3510105380103827134, guid: e09747d11084c0044bd18139128a8daf, type: 3}
+  m_PrefabInstance: {fileID: 3769706914910123989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1129566662316245969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4322811957338371076, guid: e09747d11084c0044bd18139128a8daf, type: 3}
   m_PrefabInstance: {fileID: 3769706914910123989}
   m_PrefabAsset: {fileID: 0}

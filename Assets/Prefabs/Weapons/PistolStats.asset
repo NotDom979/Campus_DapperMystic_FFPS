@@ -17,9 +17,13 @@ MonoBehaviour:
   shootDamage: 3
   ammoCount: 20
   maxAmmo: 20
+  currentAmmoleft: 40
+  maxAmmoSizeForGun: 40
   Tag: Pistol
+  weaponCost: 0
   gunModel: {fileID: 919132149155446097, guid: 726e329e1719c8f42949342e6a5b42e3, type: 3}
   hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
   muzzleEffect: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
   shotPoint: {fileID: 8086654807953096104, guid: 268ef7579162efa429e8c34f904e5618, type: 3}
+  purchased: 0
   sound: {fileID: 8300000, guid: e1694f66760ca85418567e2dcbd66a0a, type: 3}
