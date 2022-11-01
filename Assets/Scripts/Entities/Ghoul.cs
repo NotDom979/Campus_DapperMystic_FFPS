@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-public class Ghoul : enemyBase , IDamage
+public class Ghoul : enemyBase, IDamage
 {
     #region //previous code
     //[Header("-----Health-----")]
@@ -263,13 +263,18 @@ public class Ghoul : enemyBase , IDamage
     {
         if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
         {
-           
+
             if (!isAttacking)
             {
                 StartCoroutine(Attack());
+
             }
         }
-       
+        if (angle > viewAngle)
+        {
+            anim.Play("Run");
+            agent.SetDestination(target.transform.position);
+        }
         base.CanSeePlayer();
     }
 
@@ -291,9 +296,8 @@ public class Ghoul : enemyBase , IDamage
         {
             anim.Play("Attack2");
         }
-      
+
         yield return new WaitForSeconds(2);
-        anim.Play("Run");
         i++;
         agent.speed = speedPatrol;
         isAttacking = false;
@@ -307,7 +311,8 @@ public class Ghoul : enemyBase , IDamage
 
     protected override IEnumerator flashDamage()
     {
-       
+
         return base.flashDamage();
     }
+
 }

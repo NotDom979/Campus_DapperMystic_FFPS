@@ -10,7 +10,7 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public GameObject Detector;
     [SerializeField] GameObject HeadPos;
     [SerializeField] public GameObject target;
-	[SerializeField] public Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] int sightDistance;
     [SerializeField] int roamDist;
     [SerializeField] public int viewAngle;
@@ -42,12 +42,12 @@ public class enemyBase : MonoBehaviour
     public bool InRadius;
     bool playerSeen;
     // Start is called before the first frame update
-	virtual protected void Awake()
+    virtual protected void Awake()
     {
-	    // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-	    //GameManager.instance.enemyNumber++;
-	    // GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
-	    currentHealth = maxHealth;
+        // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        //GameManager.instance.enemyNumber++;
+        // GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
+        currentHealth = maxHealth;
         playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
         agent.stoppingDistance = 0;
@@ -120,16 +120,19 @@ public class enemyBase : MonoBehaviour
         {
             StartCoroutine(death());
         }
+        else
+        {
 
-        agent.SetDestination(GameManager.instance.player.transform.position);
-        StartCoroutine(flashDamage());
+            agent.SetDestination(GameManager.instance.player.transform.position);
+            StartCoroutine(flashDamage());
+        }
     }
     virtual protected IEnumerator death()
     {
         EnemyCanvas.SetActive(false);
         agent.speed = 0;
         agent.enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1);
         RandomItem();
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
