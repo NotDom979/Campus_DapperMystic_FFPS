@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
+  m_Name: BurstRifleStats
+  m_EditorClassIdentifier: 
+  shootRate: 1
+  shootDist: 20
+  shootDamage: 1
+  ammoCount: 25
+  maxAmmo: 25
+  currentAmmoleft: 50
+  maxAmmoSizeForGun: 0
+  Tag: Burst
+  weaponCost: 0
+  gunModel: {fileID: 2383915408334356313, guid: c6701f0536e527d478c9812170290a65, type: 3}
+  hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
+  muzzleEffect: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
+  shotPoint: {fileID: 1200164421792127283, guid: f9ce710f531ff6044a9172c94fa6b83d, type: 3}
+  purchased: 0
+  sound: {fileID: 8300000, guid: eea904033193c0c41a784dc49aad9611, type: 3}

@@ -23,7 +23,8 @@ public class Bullet : MonoBehaviour
         {
             GameManager.instance.playerScript.takeDamage(damage);
         }
-      if (other.GetComponent<StatusManager>() != null)
+
+        if (other.GetComponent<StatusManager>() != null)
         {
             if (statusManager != null)
             {

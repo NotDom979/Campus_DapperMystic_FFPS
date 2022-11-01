@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
+  m_Name: DeagleStats
+  m_EditorClassIdentifier: 
+  shootRate: 2
+  shootDist: 30
+  shootDamage: 8
+  ammoCount: 5
+  maxAmmo: 5
+  currentAmmoleft: 10
+  maxAmmoSizeForGun: 10
+  Tag: Pistol
+  weaponCost: 0
+  gunModel: {fileID: 5925977504765217659, guid: ec4bc05d040285a4abefefc927992a37, type: 3}
+  hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
+  muzzleEffect: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
+  shotPoint: {fileID: 7610795726279129897, guid: 0e7b97b5fa276e644be97181fe1635bb, type: 3}
+  purchased: 0
+  sound: {fileID: 8300000, guid: e1694f66760ca85418567e2dcbd66a0a, type: 3}
