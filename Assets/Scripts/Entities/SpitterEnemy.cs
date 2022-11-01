@@ -31,6 +31,7 @@ public class SpitterEnemy : enemyBase, IDamage
         agent.speed = 0;
         animator.Play("Attack");
         Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+        attackSound.Play();
         yield return new WaitForSeconds(1.5f);
         agent.speed = speedPatrol;
         isAttacking = false;
