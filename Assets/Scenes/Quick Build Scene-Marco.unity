@@ -925,6 +925,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8a5a3986cfcb6c4ea012217ddb75f06, type: 3}
+--- !u!114 &1056048582 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1619602183979449682, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+  m_PrefabInstance: {fileID: 892514921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f093000af0c3641b91156a25051fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1080410628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -989,6 +1000,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 269072738, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
+      propertyPath: statusManager
+      value: 
+      objectReference: {fileID: 1056048582}
     - target: {fileID: 647254899, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
       propertyPath: m_StoppingDistance
       value: 2
@@ -1041,6 +1056,10 @@ PrefabInstance:
       propertyPath: itemsDrops.Array.data[3]
       value: 
       objectReference: {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
+    - target: {fileID: 912033767, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
+      propertyPath: statusManager
+      value: 
+      objectReference: {fileID: 1056048582}
     - target: {fileID: 1309486516299566, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
       propertyPath: m_Name
       value: Ghoul

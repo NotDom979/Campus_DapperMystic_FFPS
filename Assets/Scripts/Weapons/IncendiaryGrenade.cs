@@ -84,7 +84,7 @@ public class IncendiaryGrenade : MonoBehaviour
     {
         if (other.GetComponent<StatusManager>() != null)
         {
-            other.GetComponent<StatusManager>().ApplyAffect(6, status.burnTicks);
+            other.GetComponent<StatusManager>().ApplyBurn(6);
         }
     }
 
