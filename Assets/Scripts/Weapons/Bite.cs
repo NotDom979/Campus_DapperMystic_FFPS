@@ -28,7 +28,7 @@ public class Bite : MonoBehaviour
             if (statusManager != null)
             {
 
-                other.GetComponent<StatusManager>().ApplyAffect(6, statusManager.bleedTicks);
+                other.GetComponent<StatusManager>().ApplyBleed(6);
             }
         }
     }

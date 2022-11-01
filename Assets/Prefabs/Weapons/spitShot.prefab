@@ -5001,12 +5001,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5714806543712274258}
-  damage: 15
+  damage: 5
   speed: 15
   destroyTime: 5
-  ignoreTags:
-  - ignoreColliders
-  - enemy
+  statusManager: {fileID: 1619602183979449682, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
+  ignoreTags: []
 --- !u!54 &5714806543712274258
 Rigidbody:
   m_ObjectHideFlags: 0

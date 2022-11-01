@@ -309,7 +309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &662347745478704761
 Transform:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -406,13 +406,15 @@ MonoBehaviour:
   animator: {fileID: 7823708891515688132}
   sightDistance: 500
   roamDist: 50
-  viewAngle: 90
+  viewAngle: 75
   speedChase: 5
   FacePlayerSpeed: 7
   agent: {fileID: 835718625}
   model: {fileID: 2684157576005227176}
+  itemsDrops: []
+  randItem: 0
   enemyHpBar: {fileID: 7492467431727215303}
-  maxHealth: 20
+  maxHealth: 25
   currentHealth: 20
   angle: 45
   speedPatrol: 5
@@ -1839,7 +1841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7059910492206056732
 Transform:
   m_ObjectHideFlags: 0
@@ -1869,7 +1871,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.005
+  m_Radius: 0.007
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &254270595
 MonoBehaviour:
@@ -1884,6 +1886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  statusManager: {fileID: 0}
 --- !u!1 &7740817826166004986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,6 +1949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  statusManager: {fileID: 0}
 --- !u!1 &7844127039711966452
 GameObject:
   m_ObjectHideFlags: 0
