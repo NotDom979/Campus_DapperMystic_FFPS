@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4921507568758886}
   - component: {fileID: 182662161432101074}
-  - component: {fileID: 114884370178579900}
+  - component: {fileID: 841926469}
   m_Layer: 0
   m_Name: Prefab_Wind
   m_TagString: Untagged
@@ -46,7 +46,7 @@ WindZone:
   m_WindTurbulence: 1
   m_WindPulseMagnitude: 0.5
   m_WindPulseFrequency: 0.01
---- !u!114 &114884370178579900
+--- !u!114 &841926469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,12 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f500f5ef081dec548b5e12f1809fd242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WindSpeed: 45
-  Turbulence: 0.4
+  WindSpeed: 20
+  Turbulence: 0.25
   NoiseTexture: {fileID: 2800000, guid: eb58c36f965ff024cb94d9bba46e33e7, type: 3}
-  FlexNoiseWorldSize: 150
-  ShiverNoiseWorldSize: 60
+  FlexNoiseWorldSize: 175
+  ShiverNoiseWorldSize: 20
   GustMaskTexture: {fileID: 2800000, guid: adabe9ddbe5480a4191c8823f4785a22, type: 3}
   GustWorldSize: 600
   GustSpeed: 20
-  GustScale: 0.35
+  GustScale: 1.6
