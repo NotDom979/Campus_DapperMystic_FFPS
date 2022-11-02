@@ -650,6 +650,7 @@ MonoBehaviour:
   bazookaSp: {fileID: 7534064058327450488}
   emptyMag: {fileID: 8300000, guid: acb857dc806d6dd49bd63fc983c9249a, type: 3}
   shotPoint: {fileID: 5473453000725762007}
+  katana: {fileID: 0}
   purchased: 0
   selectGun: 0
   damage: 0
@@ -726,9 +727,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burnTicks: 
+  poisonTicks: 
+  bleedTicks: 
+  started: 0
   damage: 15
-  burn: {fileID: 8712125102512073164}
-  enemy: {fileID: 0}
 --- !u!136 &1619602182861749153
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4569,7 +4571,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738967598185734677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002998352, y: 1.526, z: 0.045}
+  m_LocalPosition: {x: 0.002998352, y: 1.526, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

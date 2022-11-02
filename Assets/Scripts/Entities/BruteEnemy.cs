@@ -45,23 +45,18 @@ public class BruteEnemy : enemyBase, IDamage
         if (i == 0)
         {
 	        animator.Play("Attack");
-	        //animator.SetBool("fightStance", false);
 	         animator.SetTrigger("attack1");
+	        attackSound.Play();
         }
         else if (i == 1)
         {
 	        animator.SetTrigger("attack2");
-	        //animator.SetBool("fightStance", false);
-	        animator.Play("Attack_2");
+            animator.Play("Attack_2");
+            attackSound.Play();
         }
-	    // else if (i ==2)
-     //   {
-	        // animator.SetTrigger("attack3");
-	        //animator.SetBool("fightStance", false);
-	    //       animator.Play("Attack_3");
-	    //   }
+	   
 	    yield return new WaitForSeconds(2);
-	    animator.Play("Blend Tree");
+	    //animator.Play("Blend Tree");
         i++;
         agent.speed = speedPatrol;
         isAttacking = false;
@@ -69,7 +64,9 @@ public class BruteEnemy : enemyBase, IDamage
 
     protected override IEnumerator death()
     {
+        animator.SetBool("Dead",true);
 	    animator.Play("Dead");
+        payDay(30);
         return base.death();
     }
 
@@ -92,6 +89,6 @@ public class BruteEnemy : enemyBase, IDamage
     }
     public void payDay(int currency)
     {
-
+        GameManager.instance.bankTotal += currency;
     }
 }

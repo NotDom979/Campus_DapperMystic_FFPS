@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
 	
 	
 	public enum SpawnState	{SPAWNING, WAITING, COUNTING}
-	
+	int WaveCounter;
+	public TextMeshProUGUI WaveTracker;
 	[System.Serializable]
 	public class Wave
 	{
@@ -29,6 +31,8 @@ public class WaveSpawner : MonoBehaviour
 	
 	void Start()
 	{
+		WaveCounter++;
+		WaveTracker.text = WaveCounter.ToString("F0");
 		waveCountdown = timeBetween;
 	}
 	void Update()

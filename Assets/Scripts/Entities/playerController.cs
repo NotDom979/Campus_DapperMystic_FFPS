@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour
     [Header("-----PlayerStats-----")]
     [SerializeField] public CharacterController controller;
     [SerializeField] public Animator anim;
-    [SerializeField] float playerSpeed = 2.0f;
+    [SerializeField] public float playerSpeed = 2.0f;
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
     [SerializeField] int jumpsMax;
@@ -50,6 +50,7 @@ public class playerController : MonoBehaviour
     public GameObject bazookaSp;
     public AudioClip emptyMag;
     public GameObject shotPoint;
+    public GameObject katana;
 
     bool isShooting;
     public bool purchased;
@@ -553,7 +554,7 @@ public class playerController : MonoBehaviour
             mfClone = Instantiate(arMuzzle, rifleSp.transform.position, transform.rotation);
             mfClone.SetActive(true);
             StartCoroutine("muzzleWait");
-        }
+        } 
         else if (WeaponDetection() == 3)
         {
             mfClone = Instantiate(sniperMuzzle, SniperSp.transform.position, transform.rotation);
@@ -747,9 +748,15 @@ public class playerController : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 1; i++)
         {
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
+	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
+	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 2)), transform.rotation);
+	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
+	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 3)), transform.rotation);
+	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 3)), transform.rotation);
+	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(2, 3)), transform.rotation);
+	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
         }
     }
 	void AllFalse()

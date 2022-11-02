@@ -10,7 +10,7 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public GameObject Detector;
     [SerializeField] GameObject HeadPos;
     [SerializeField] public GameObject target;
-	[SerializeField] public Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] int sightDistance;
     [SerializeField] int roamDist;
     [SerializeField] public int viewAngle;
@@ -20,6 +20,21 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public NavMeshAgent agent;
     [SerializeField] Renderer model;
 
+
+    [Header("-----Item Drop-----")]
+    [SerializeField] GameObject[] itemsDrops;
+    [SerializeField] public int randItem;
+    private int grabItem;
+
+    [Header("-----Audios-----")]
+    [SerializeField] public AudioSource footSteps;
+    [SerializeField] public AudioSource attackSound;
+    [SerializeField] public AudioSource hitSounds;
+    [SerializeField] public AudioSource deathSound;
+    [SerializeField] public AudioSource growling;
+
+
+    [Header("-----Extras-----")]
     public Image enemyHpBar;
     public float maxHealth;
     public float currentHealth;
@@ -35,12 +50,12 @@ public class enemyBase : MonoBehaviour
     public bool InRadius;
     bool playerSeen;
     // Start is called before the first frame update
-	virtual protected void Awake()
+    virtual protected void Awake()
     {
-	    // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-	    //GameManager.instance.enemyNumber++;
-	    // GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
-	    currentHealth = maxHealth;
+        // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
+        GameManager.instance.enemyNumber++;
+	    //GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
+        currentHealth = maxHealth;
         playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
         agent.stoppingDistance = 0;
@@ -58,6 +73,8 @@ public class enemyBase : MonoBehaviour
         {
             if (agent.enabled)
             {
+                footSteps.enabled = true;
+                growling.enabled = true;
                 Detection();
                 animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * 3));
                 if (InRadius)
@@ -74,6 +91,11 @@ public class enemyBase : MonoBehaviour
                     agent.SetDestination(target.transform.position);
                 }
 
+            }
+            else
+            {
+                footSteps.enabled = false;
+                growling.enabled = false;
             }
         }
 
@@ -109,20 +131,26 @@ public class enemyBase : MonoBehaviour
     {
         currentHealth -= dmg;
         enemyHpBar.fillAmount = currentHealth / maxHealth;
+        hitSounds.Play();
         if (currentHealth <= 0)
         {
             StartCoroutine(death());
         }
+        else
+        {
 
-        agent.SetDestination(GameManager.instance.player.transform.position);
-        StartCoroutine(flashDamage());
+            agent.SetDestination(GameManager.instance.player.transform.position);
+            StartCoroutine(flashDamage());
+        }
     }
     virtual protected IEnumerator death()
     {
         EnemyCanvas.SetActive(false);
         agent.speed = 0;
         agent.enabled = false;
-        yield return new WaitForSeconds(2f);
+        deathSound.Play();
+        yield return new WaitForSeconds(1);
+        RandomItem();
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
@@ -159,17 +187,11 @@ public class enemyBase : MonoBehaviour
                 playerSeen = true;
                 if (angle <= viewAngle)
                 {
-
                     agent.speed = speedChase;
                     agent.stoppingDistance = stoppingDistOrigin;
                     agent.SetDestination(GameManager.instance.player.transform.position);
 
-
-
-
-
                 }
-
             }
             else
             {
@@ -180,6 +202,32 @@ public class enemyBase : MonoBehaviour
         }
 
 
+    }
+
+    public void RandomItem()
+    {
+        randItem = Random.Range(0, 4);
+
+
+        if (randItem == 2)
+        {
+
+            Instantiate(itemsDrops[2], transform.position, Quaternion.identity);
+        }
+        else if (randItem == 1)
+        {
+            Instantiate(itemsDrops[1], transform.position, Quaternion.identity);
+
+
+        }
+        else if (randItem == 3)
+        {
+
+            Instantiate(itemsDrops[3], transform.position, Quaternion.identity);
+
+
+        }
+        Debug.Log(itemsDrops);
     }
 
     virtual protected IEnumerator flashDamage()
