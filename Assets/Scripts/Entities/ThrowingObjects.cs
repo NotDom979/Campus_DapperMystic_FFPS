@@ -6,8 +6,8 @@ using UnityEngine;
 public class ThrowingObjects : MonoBehaviour
 {
 	
-	//[Header("Settings")]
-	public Transform cam;
+	[Header("Settings")]
+	
 	public Transform attackPoint;
 	public GameObject objectToThrow;
 	
@@ -25,14 +25,14 @@ public class ThrowingObjects : MonoBehaviour
 	private void Start(){
 		totalThrows++;
 		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
-		readyTothrow = false;
+		readyTothrow = true;
 	}
 	
 	private void Update(){
 		
 		if (totalThrows > 0	)
 		{
-            if (readyTothrow == true)
+			if (readyTothrow == true)
             {
                 if (Input.GetKeyDown(throwKey))
                 {
@@ -45,27 +45,21 @@ public class ThrowingObjects : MonoBehaviour
 	private void Throw()
 	{
 		
-		readyTothrow = true;
+		readyTothrow = false;
 		
 		// We are instantiate object throw
-		GameObject projectile = Instantiate(objectToThrow, attackPoint.position,cam.rotation);
+		GameObject projectile = Instantiate(objectToThrow, attackPoint.position,transform.rotation);
 		
 		//we get rigidbody
 		Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 		
 		//caculate direction
-		Vector3 forceDirection = cam.transform.forward;
-		RaycastHit hit;
-		
-		if (Physics.Raycast(cam.position, cam.transform.forward, out hit,500f))
-		{
-			forceDirection = (hit.point - attackPoint.position).normalized;
-		}
+		Vector3 forceDirection = transform.forward;
 		
 		//Add Force
 		Vector3 forceToAdd = forceDirection *throwForce + transform.up * throwupwardForce;
 		
-		projectileRB.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+		projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 		totalThrows--;
 		GameManager.instance.LethalCount.text = totalThrows.ToString("F0");
 		
