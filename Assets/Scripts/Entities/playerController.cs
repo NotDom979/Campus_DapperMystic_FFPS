@@ -863,7 +863,15 @@ public class playerController : MonoBehaviour
 
 
 
+    public void AddAmmoToReserved(int ammo)
+    {
+        currentAmmoReserved += ammo;
+        if (currentAmmoReserved < maxAmmo)
+        {
 
+            updatePLayerHud();
+        }
+    }
 
 
 }
