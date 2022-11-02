@@ -53,7 +53,7 @@ public class enemyBase : MonoBehaviour
     virtual protected void Awake()
     {
         // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-        GameManager.instance.enemyNumber++;
+       // GameManager.instance.enemyNumber++;
 	    //GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
         currentHealth = maxHealth;
         playerSeen = false;
