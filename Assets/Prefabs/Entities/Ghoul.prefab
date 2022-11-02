@@ -1509,7 +1509,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 4
+  m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
 --- !u!195 &3066865265597874588
@@ -2063,8 +2063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  statusManager: {fileID: 1619602183979449682, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-  targetStats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
+  statusManager: {fileID: 9175178119588982930, guid: 9d842f94070734242818770797902100, type: 3}
+  targetStats: {fileID: 1358685063641779614, guid: 5b322b764ac628b44bb6aa2e3f4a240c, type: 3}
 --- !u!1 &3065726723690993701
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,8 +2547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  statusManager: {fileID: 1619602183979449682, guid: a58a32378e8537d4f96bf316f8c23485, type: 3}
-  targetStats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
+  statusManager: {fileID: 9175178119588982930, guid: 9d842f94070734242818770797902100, type: 3}
+  targetStats: {fileID: 1358685063641779614, guid: 5b322b764ac628b44bb6aa2e3f4a240c, type: 3}
 --- !u!1 &3065910497246939115
 GameObject:
   m_ObjectHideFlags: 0

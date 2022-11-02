@@ -21,11 +21,13 @@ public class GameManager : MonoBehaviour
 	public GameObject optionMenu;
     public GameObject winMenu;
     public GameObject playerDeadMenu;
+	public GameObject playerLoseMenu;
     [Header("-----UI-----")]
     public GameObject damageFlash;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
     public TextMeshProUGUI AmmoCount;
+	public TextMeshProUGUI AmmoClip;
     public TextMeshProUGUI bankAccount;
     public TextMeshProUGUI LethalCount;
     public TextMeshProUGUI bankRupt;
@@ -42,7 +44,9 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+	    spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+	    bankTotal = 50;
+	    
 
     }
 

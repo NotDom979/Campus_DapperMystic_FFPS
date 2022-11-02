@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class playerController : MonoBehaviour
 {
     [Header("-----PlayerStats-----")]
@@ -92,12 +93,14 @@ public class playerController : MonoBehaviour
         anim.SetBool("ArBool", false);
         anim.SetBool("SniperBool", false);
         anim.SetBool("PistolBool", false);
-        anim.enabled = true;
+	    anim.enabled = true;
+	    GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
 
     void Update()
-    {
-        if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false)
+	{
+		GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+	    if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
         {
             StartCoroutine(reloadGun());
             movement();
@@ -202,9 +205,9 @@ public class playerController : MonoBehaviour
                     }
                     else
                     {
-                        Vector3 mousePos = Input.mousePosition;
+	                    Vector3 mousePos = Input.mousePosition;
                         mousePos.z = 2.0f;
-                        Instantiate(bullet, Camera.main.ScreenToWorldPoint(mousePos), transform.rotation);
+	                    Instantiate(bullet, Camera.main.ScreenToWorldPoint(mousePos), transform.rotation);
                     }
                     Recoil();
                     Muzzle();
@@ -289,14 +292,18 @@ public class playerController : MonoBehaviour
                 currentAmmoReserved = 0;
             }
         }
+	    GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
         return currentAmmo;
     }
 
 
     public void payDay(int currency)
     {
-
-        GameManager.instance.bankTotal -= currency;
+        if (purchased == true)
+        {
+	        GameManager.instance.bankTotal -= currency;
+	        GameManager.instance.CheckBankTotal();
+        }
     }
     public void AddArmor(int armorAmount)
     {
@@ -359,9 +366,8 @@ public class playerController : MonoBehaviour
             GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
             WeaponPickup(stats);
             shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
-            payDay(stats.weaponCost);
-            GameManager.instance.CheckBankTotal();
             purchased = true;
+            payDay(stats.weaponCost);
         }
         else if (GameManager.instance.bankTotal < stats.weaponCost)
         {
@@ -408,7 +414,8 @@ public class playerController : MonoBehaviour
     }
 
     public void updatePLayerHud()
-    {
+	{
+		GameManager.instance.CheckBankTotal();
         GameManager.instance.playerHpBar.fillAmount = (float)HP / (float)HPOrigin;
         GameManager.instance.playerArmorBar.fillAmount = (float)Armor / (float)ArmorOrigin;
     }

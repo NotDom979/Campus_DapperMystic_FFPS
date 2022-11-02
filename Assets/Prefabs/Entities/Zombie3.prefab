@@ -953,8 +953,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  statusManager: {fileID: 0}
-  targetStats: {fileID: 0}
+  statusManager: {fileID: 9175178119588982930, guid: 9d842f94070734242818770797902100, type: 3}
+  targetStats: {fileID: 1358685063641779614, guid: 5b322b764ac628b44bb6aa2e3f4a240c, type: 3}
 --- !u!1 &1117112900670311923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2534368624564216719
 Transform:
   m_ObjectHideFlags: 0
@@ -1296,6 +1296,7 @@ MonoBehaviour:
   target: {fileID: 0}
   animator: {fileID: 7372768728349228127}
   sightDistance: 50
+  TargetsightDistance: 0
   roamDist: 45
   viewAngle: 90
   speedChase: 7
@@ -1319,7 +1320,6 @@ MonoBehaviour:
   angle: 0
   speedPatrol: 10
   InRadius: 0
-  targetstats: {fileID: 0}
 --- !u!136 &8429865232413240914
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2794,8 +2794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  statusManager: {fileID: 0}
-  targetStats: {fileID: 0}
+  statusManager: {fileID: 9175178119588982930, guid: 9d842f94070734242818770797902100, type: 3}
+  targetStats: {fileID: 1358685063641779614, guid: 5b322b764ac628b44bb6aa2e3f4a240c, type: 3}
 --- !u!1 &8754226479350500872
 GameObject:
   m_ObjectHideFlags: 0

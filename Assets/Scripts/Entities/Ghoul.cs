@@ -327,7 +327,8 @@ public class Ghoul : enemyBase, IDamage
 
     public void payDay(int currency)
     {
-        GameManager.instance.bankTotal += currency;
+	    GameManager.instance.bankTotal += currency;
+	    //GameManager.instance.bankAccount.text = GameManager.instance.bankTotal.ToString("F0");
     }
 
 }

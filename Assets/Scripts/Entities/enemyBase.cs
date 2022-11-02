@@ -138,7 +138,6 @@ public class enemyBase : MonoBehaviour
         }
         else
         {
-
             agent.SetDestination(GameManager.instance.player.transform.position);
             StartCoroutine(flashDamage());
         }

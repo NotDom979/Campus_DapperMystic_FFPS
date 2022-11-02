@@ -38,10 +38,14 @@ public class WaveSpawner : MonoBehaviour
 		GameManager.instance.WaveCounter++;
 		WaveTracker.text = (GameManager.instance.WaveCounter/4).ToString("F0");
 		waveCountdown = timeBetween;
-		shop = gameObject.GetComponent<Shop>().gameObject;
+		//shop = gameObject.GetComponent<Shop>().gameObject;
 	}
 	void Update()
 	{
+		if (WaveCounter > waves.Length && !EnemyIsAlive())
+		{
+			GameManager.instance.winMenu.SetActive(true);
+		}
 		Timer.text = waveCountdown.ToString("F0");
 		if (state == SpawnState.WAITING)
 		{

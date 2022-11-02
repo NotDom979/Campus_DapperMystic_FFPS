@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class TargetStats : MonoBehaviour, IDamage
 {
+	public TextMeshProUGUI towerHealth;
     public Image enemyHpBar;
     [SerializeField]float currentHP;
 	[SerializeField]float MaxHP;
@@ -12,7 +14,8 @@ public class TargetStats : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        currentHP = MaxHP;
+	    currentHP = MaxHP;
+	    towerHealth.text = currentHP.ToString("F0");
     }
 
 
@@ -32,14 +35,16 @@ public class TargetStats : MonoBehaviour, IDamage
     }
 
     public void takeDamage(float damage)
-    {
-        currentHP -= damage;
+	{
+		currentHP -= damage;
+		towerHealth.text = currentHP.ToString("F0");
         enemyHpBar.fillAmount = currentHP / MaxHP;
         if (currentHP <= 0)
         {
 
            Destroy(gameObject);
-            destroyed = true;
+	        destroyed = true;
+	        GameManager.instance.playerLoseMenu.SetActive(true);
         }
     }
 
