@@ -207,7 +207,8 @@ public class playerController : MonoBehaviour
                     {
 	                    Vector3 mousePos = Input.mousePosition;
                         mousePos.z = 2.0f;
-	                    Instantiate(bullet, Camera.main.ScreenToWorldPoint(mousePos), transform.rotation);
+	                    // Instantiate(bullet, Camera.main.ScreenToWorldPoint(mousePos), transform.rotation);
+	                    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
                     }
                     Recoil();
                     Muzzle();
@@ -219,9 +220,12 @@ public class playerController : MonoBehaviour
                     RaycastHit hit;
                     if ((Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist)))
                     {
-                        hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
-                        hitEffClone.SetActive(true);
-                        hitEffect.SetActive(false);
+                    	if (hit.collider.CompareTag("enemy"))
+                    	{
+	                    	hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
+	                    	hitEffClone.SetActive(true);
+	                    	hitEffect.SetActive(false);
+                    	}
                     }
                 }
                 Debug.Log("ZipBang");

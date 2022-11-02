@@ -107,7 +107,11 @@ public class GameManager : MonoBehaviour
     public void CheckEnemyTotal()
     {
         enemyNumber--;
-        enemyCountText.text = enemyNumber.ToString("F0");
+	    enemyCountText.text = enemyNumber.ToString("F0");
+	    if (enemyNumber < 0)
+	    {
+	    	enemyNumber = 0;
+	    }
     }
     public void WinCondition()
     {

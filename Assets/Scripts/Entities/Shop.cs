@@ -50,7 +50,7 @@ public class Shop : MonoBehaviour
     }
 	IEnumerator Despawn()
     {
-		yield return new WaitForSeconds(26f);
+	    yield return new WaitForSeconds(25f);
 		gun1.SetActive(false);
 		gun2.SetActive(false);
 		gun3.SetActive(false);

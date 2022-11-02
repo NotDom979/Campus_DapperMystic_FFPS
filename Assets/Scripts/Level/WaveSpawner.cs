@@ -35,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
 	
 	void Start()
 	{
-		GameManager.instance.WaveCounter++;
+		GameManager.instance.WaveCounter = 4;
 		WaveTracker.text = (GameManager.instance.WaveCounter/4).ToString("F0");
 		waveCountdown = timeBetween;
 		//shop = gameObject.GetComponent<Shop>().gameObject;
@@ -45,12 +45,14 @@ public class WaveSpawner : MonoBehaviour
 		if (WaveCounter > waves.Length && !EnemyIsAlive())
 		{
 			GameManager.instance.winMenu.SetActive(true);
+			
 		}
 		Timer.text = waveCountdown.ToString("F0");
 		if (state == SpawnState.WAITING)
 		{
 			if (!EnemyIsAlive())
 			{
+				WaveCounter++;
 				WaveComplete();
 				shop.SetActive(true);
 				StartCoroutine(Shop());
