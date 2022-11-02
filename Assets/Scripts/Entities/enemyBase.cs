@@ -53,15 +53,15 @@ public class enemyBase : MonoBehaviour
     virtual protected void Awake()
     {
         // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
-       // GameManager.instance.enemyNumber++;
-	    //GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
+        // GameManager.instance.enemyNumber++;
+        //GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
         currentHealth = maxHealth;
         playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
-        agent.stoppingDistance = 0;
+        
 
         startPos = transform.position;
-
+        agent.SetDestination(target.transform.position);
         speedPatrol = agent.speed;
         //Roam();
     }
@@ -87,18 +87,16 @@ public class enemyBase : MonoBehaviour
                 }
                 else
                 {
-                    agent.stoppingDistance = stoppingDistOrigin;
-                    agent.SetDestination(target.transform.position);
-                    Roam();
+                   FindTarget();
                 }
 
             }
         }
-            else
-            {
-                footSteps.enabled = false;
-                growling.enabled = false;
-            }
+        else
+        {
+            footSteps.enabled = false;
+            growling.enabled = false;
+        }
 
     }
     virtual protected void Detection()
@@ -111,7 +109,7 @@ public class enemyBase : MonoBehaviour
         else
         {
             InRadius = false;
-            agent.stoppingDistance = 0;
+            agent.stoppingDistance = stoppingDistOrigin;
         }
     }
 
@@ -196,6 +194,7 @@ public class enemyBase : MonoBehaviour
             }
             else
             {
+
                 playerSeen = false;
             }
 
@@ -205,6 +204,30 @@ public class enemyBase : MonoBehaviour
 
     }
 
+    virtual protected void FindTarget()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(HeadPos.transform.position, targetDirection, out hit, sightDistance))
+        {
+            Debug.DrawRay(HeadPos.transform.position, targetDirection);
+            Debug.Log(angle);
+            if (hit.collider.CompareTag("Target"))
+            {
+               
+                
+                    agent.speed = speedChase;
+                    agent.stoppingDistance = stoppingDistOrigin;
+                    agent.SetDestination(target.transform.position);
+
+                
+            }
+          
+
+        }
+
+
+    }
 
     public void RandomItem()
     {

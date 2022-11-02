@@ -248,7 +248,7 @@ public class Ghoul : enemyBase, IDamage
 
     public Animation anim;
     bool isAttacking;
-
+   
     int i;
     // public Animator animator;
 
@@ -258,6 +258,22 @@ public class Ghoul : enemyBase, IDamage
         base.Awake();
     }
 
+
+
+    protected override void Update()
+    {
+
+        if (agent.SetDestination(target.transform.position))
+        {
+            if (agent.stoppingDistance > agent.remainingDistance)
+            {
+                StartCoroutine(Attack());
+            }
+
+          
+        }
+        base.Update();
+    }
 
     protected override void CanSeePlayer()
     {

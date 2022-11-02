@@ -12,6 +12,23 @@ public class BruteEnemy : enemyBase, IDamage
     public int i;
     public int j;
 
+  
+
+    protected override void Update()
+    {
+
+        if (agent.SetDestination(target.transform.position))
+        {
+            if (agent.stoppingDistance > agent.remainingDistance)
+            {
+                StartCoroutine(Attack());
+            }
+
+           
+        }
+        base.Update();
+    }
+
     protected override void CanSeePlayer()
     {
         if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)

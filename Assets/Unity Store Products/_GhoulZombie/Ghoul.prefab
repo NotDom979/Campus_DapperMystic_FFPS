@@ -831,6 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   statusManager: {fileID: 0}
+  targetStats: {fileID: 0}
 --- !u!1 &1038003111770074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   statusManager: {fileID: 0}
+  targetStats: {fileID: 0}
 --- !u!1 &1188442823913820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4467757482891228
 Transform:
   m_ObjectHideFlags: 0
@@ -1835,7 +1837,7 @@ MonoBehaviour:
   EnemyCanvas: {fileID: 6816020209473937195}
   Detector: {fileID: 7530778132754068756}
   HeadPos: {fileID: 881943240}
-  target: {fileID: 0}
+  target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 357306572}
   sightDistance: 70
   roamDist: 50
@@ -3581,6 +3583,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4467757482891228}
     m_Modifications:
+    - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
+      propertyPath: m_Radius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name
       value: Detector

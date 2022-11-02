@@ -9,6 +9,11 @@ public class Zombie : enemyBase, IDamage
     bool isAttacking;
     //public Animator animator;
 
+    protected override void Awake()
+    {
+        agent.SetDestination(target.transform.position);
+        base.Awake();
+    }
 
     protected override void Update()
     {
@@ -17,7 +22,10 @@ public class Zombie : enemyBase, IDamage
         {
             if (agent.stoppingDistance > agent.remainingDistance)
             {
-                StartCoroutine(Attack());
+                if (!isAttacking)
+                {
+                    StartCoroutine(Attack());
+                }
             }
         }
         base.Update();

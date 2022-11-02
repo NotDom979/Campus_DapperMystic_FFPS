@@ -8,6 +8,7 @@ public class TargetStats : MonoBehaviour, IDamage
     [SerializeField]float currentHP;
 	[SerializeField]float MaxHP;
 
+    public bool destroyed;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class TargetStats : MonoBehaviour, IDamage
         {
 
            Destroy(gameObject);
+            destroyed = true;
         }
     }
 

@@ -292,10 +292,11 @@ public class playerController : MonoBehaviour
         return currentAmmo;
     }
 
+
     public void payDay(int currency)
     {
 
-            GameManager.instance.bankTotal -= currency;   
+        GameManager.instance.bankTotal -= currency;
     }
     public void AddArmor(int armorAmount)
     {

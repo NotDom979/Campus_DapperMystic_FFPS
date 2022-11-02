@@ -14,7 +14,7 @@ public class Bite : MonoBehaviour
 
     void Start()
     {
-        targetStats = GetComponent<TargetStats>();
+        
     }
 
 
@@ -29,7 +29,7 @@ public class Bite : MonoBehaviour
         {
             if (targetStats != null)
             {
-                targetStats.takeDamage(damage);
+                other.GetComponent<TargetStats>().takeDamage(damage);
             }
         }
         if (other.GetComponent<StatusManager>() != null)
