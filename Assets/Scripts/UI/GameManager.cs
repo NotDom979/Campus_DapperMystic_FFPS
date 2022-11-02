@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int flag;
     public int enemyNumber;
     public int bankTotal;
+	public GameObject shop;
+	public Shop shopScript;
     [Header("-----Player Relations------")]
     public GameObject player;
     public playerController playerScript;
@@ -46,6 +48,10 @@ public class GameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
 	    spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
 	    bankTotal = 50;
+	    shop = GameObject.FindGameObjectWithTag("Shop");
+	    shopScript = shop.GetComponent<Shop>();
+	    shop.SetActive(false);
+	    
 	    
 
     }

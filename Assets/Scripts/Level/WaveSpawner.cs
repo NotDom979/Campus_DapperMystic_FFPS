@@ -67,7 +67,7 @@ public class WaveSpawner : MonoBehaviour
 		{
 			if (state != SpawnState.SPAWNING)
 			{
-				shop.SetActive(false);
+				ShopDeactivate();
 				StartCoroutine(SpawnWave(waves[nextWave]));
 			}
 		}
@@ -131,6 +131,17 @@ public class WaveSpawner : MonoBehaviour
 		WaveAlert.SetActive(true);
 		yield return new WaitForSeconds(3);
 		WaveAlert.SetActive(false);
+	}
+	void ShopDeactivate()
+	{
+		if (GameManager.instance.shopScript.isSpawned == true)
+		{
+			shop.SetActive(false);
+			GameManager.instance.shopScript.isSpawned = false;
+			GameManager.instance.shopScript.gun1.SetActive(false);
+			GameManager.instance.shopScript.gun2.SetActive(false);
+			GameManager.instance.shopScript.gun3.SetActive(false);
+		}
 	}
 	
 	
