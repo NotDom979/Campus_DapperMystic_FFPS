@@ -39,7 +39,8 @@ public class playerController : MonoBehaviour
     [SerializeField] GameObject Bazooka;
     [SerializeField] GameObject Shotgun;
     [SerializeField] GameObject SMG;
-    [SerializeField] GameObject Burst;
+	[SerializeField] GameObject Burst;
+	[SerializeField] public List<GameObject> SGpoints;
     public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
@@ -782,15 +783,11 @@ public class playerController : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-        for (int i = 0; i < 1; i++)
-        {
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 2)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(2, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
+	    for (int i = 0; i < SGpoints.Count; i++)
+	    {
+		   
+		    Instantiate(bullet, SGpoints[i].transform.position * Random.Range(1,2), transform.rotation);
+
         }
     }
 
@@ -800,7 +797,7 @@ public class playerController : MonoBehaviour
         mousePos.z = 2.0f;
         for (int i = 0; i < 3; i++)
         {
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos)), transform.rotation);
 	        yield return new WaitForSeconds(.2f);
 	        gunShot.Play();
         }

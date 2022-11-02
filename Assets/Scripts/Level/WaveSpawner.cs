@@ -38,6 +38,7 @@ public class WaveSpawner : MonoBehaviour
 		GameManager.instance.WaveCounter++;
 		WaveTracker.text = (GameManager.instance.WaveCounter/4).ToString("F0");
 		waveCountdown = timeBetween;
+		shop = gameObject.GetComponent<Shop>().gameObject;
 	}
 	void Update()
 	{
@@ -49,6 +50,7 @@ public class WaveSpawner : MonoBehaviour
 				WaveComplete();
 				shop.SetActive(true);
 				StartCoroutine(Shop());
+				
 			}
 			else
 			{
