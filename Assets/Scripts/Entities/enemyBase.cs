@@ -89,15 +89,16 @@ public class enemyBase : MonoBehaviour
                 {
                     agent.stoppingDistance = stoppingDistOrigin;
                     agent.SetDestination(target.transform.position);
+                    Roam();
                 }
 
             }
+        }
             else
             {
                 footSteps.enabled = false;
                 growling.enabled = false;
             }
-        }
 
     }
     virtual protected void Detection()
