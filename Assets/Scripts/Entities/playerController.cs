@@ -207,8 +207,8 @@ public class playerController : MonoBehaviour
                     {
 	                    Vector3 mousePos = Input.mousePosition;
                         mousePos.z = 2.0f;
-	                    // Instantiate(bullet, Camera.main.ScreenToWorldPoint(mousePos), transform.rotation);
-	                    Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+	                    Instantiate(bullet, Camera.main.ScreenToWorldPoint(mousePos), transform.rotation);
+	                    //Instantiate(bullet, shotPoint.transform.position, transform.rotation);
                     }
                     Recoil();
                     Muzzle();
