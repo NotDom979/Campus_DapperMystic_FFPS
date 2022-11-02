@@ -204,6 +204,7 @@ public class enemyBase : MonoBehaviour
 
     }
 
+
     public void RandomItem()
     {
         randItem = Random.Range(0, 4);

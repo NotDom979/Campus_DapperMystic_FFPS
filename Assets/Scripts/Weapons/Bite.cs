@@ -8,11 +8,13 @@ public class Bite : MonoBehaviour
 
     [SerializeField] int damage;
     public StatusManager statusManager;
+
+    public TargetStats targetStats;
     //[SerializeField] float knockBackStrength;
 
     void Start()
     {
-
+        targetStats = GetComponent<TargetStats>();
     }
 
 
@@ -22,6 +24,13 @@ public class Bite : MonoBehaviour
         {
             GameManager.instance.playerScript.takeDamage(damage);
 
+        }
+        else if (other.CompareTag("Target"))
+        {
+            if (targetStats != null)
+            {
+                targetStats.takeDamage(damage);
+            }
         }
         if (other.GetComponent<StatusManager>() != null)
         {

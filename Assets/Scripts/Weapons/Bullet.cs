@@ -9,9 +9,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
     public StatusManager statusManager;
+
+    TargetStats targetStats;
     // Start is called before the first frame update
     void Start()
     {
+        targetStats = GetComponent<TargetStats>();
         rb.velocity = transform.forward * speed;
         Destroy(gameObject, destroyTime);
     }
@@ -22,6 +25,10 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.instance.playerScript.takeDamage(damage);
+        }
+        else if (other.CompareTag("Target"))
+        {
+            targetStats.takeDamage(damage);
         }
         if (other.GetComponent<StatusManager>() != null)
         {
