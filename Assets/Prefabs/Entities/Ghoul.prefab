@@ -1509,7 +1509,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 3
+  m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
 --- !u!195 &3066865265597874588
@@ -1552,6 +1552,7 @@ MonoBehaviour:
   target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 3066865266406867491}
   sightDistance: 70
+  TargetsightDistance: 1000
   roamDist: 50
   viewAngle: 75
   speedChase: 7
@@ -1576,7 +1577,6 @@ MonoBehaviour:
   speedPatrol: 3
   InRadius: 0
   anim: {fileID: 3099332961073714583}
-  targetstats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!95 &3066865266406867491
 Animator:
   serializedVersion: 4

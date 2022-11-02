@@ -248,21 +248,22 @@ public class Ghoul : enemyBase, IDamage
 
     public Animation anim;
     bool isAttacking;
-   
+    
     int i;
     // public Animator animator;
 
+
     protected override void Awake()
     {
+       
+         agent.SetDestination(target.transform.position);
         anim.Play("Run");
         base.Awake();
     }
 
 
-
     protected override void Update()
     {
-
         if (agent.SetDestination(target.transform.position))
         {
             if (agent.stoppingDistance > agent.remainingDistance)
@@ -286,11 +287,7 @@ public class Ghoul : enemyBase, IDamage
 
             }
         }
-        if (angle > viewAngle)
-        {
-            anim.Play("Run");
-            agent.SetDestination(target.transform.position);
-        }
+       
         base.CanSeePlayer();
     }
 
@@ -331,12 +328,6 @@ public class Ghoul : enemyBase, IDamage
     public void payDay(int currency)
     {
         GameManager.instance.bankTotal += currency;
-    }
-
-    protected override IEnumerator flashDamage()
-    {
-
-        return base.flashDamage();
     }
 
 }

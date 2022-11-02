@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class TargetStats : MonoBehaviour, IDamage
 {
-
+    public Image enemyHpBar;
     [SerializeField]float currentHP;
 	[SerializeField]float MaxHP;
 
@@ -34,7 +34,7 @@ public class TargetStats : MonoBehaviour, IDamage
     public void takeDamage(float damage)
     {
         currentHP -= damage;
-
+        enemyHpBar.fillAmount = currentHP / MaxHP;
         if (currentHP <= 0)
         {
 

@@ -2168,7 +2168,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
-  m_Height: 2
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7342219194560569888
@@ -2189,6 +2189,7 @@ MonoBehaviour:
   target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 245447167274003307}
   sightDistance: 50
+  TargetsightDistance: 1000
   roamDist: 45
   viewAngle: 45
   speedChase: 5
@@ -2214,7 +2215,6 @@ MonoBehaviour:
   InRadius: 0
   bullet: {fileID: 975654784690683675, guid: ab3c6abda3492a843894f6a4201ce0af, type: 3}
   shotPoint: {fileID: 7342219194403545998}
-  targetstats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!195 &7342219194560569889
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2229,7 +2229,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 2
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

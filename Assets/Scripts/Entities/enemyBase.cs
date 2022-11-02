@@ -12,6 +12,7 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public GameObject target;
     [SerializeField] public Animator animator;
     [SerializeField] int sightDistance;
+    [SerializeField] int TargetsightDistance;
     [SerializeField] int roamDist;
     [SerializeField] public int viewAngle;
     [SerializeField] public int speedChase;
@@ -58,7 +59,7 @@ public class enemyBase : MonoBehaviour
         currentHealth = maxHealth;
         playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
-        
+        target = GameObject.FindGameObjectWithTag("Target");
 
         startPos = transform.position;
         agent.SetDestination(target.transform.position);
@@ -87,7 +88,7 @@ public class enemyBase : MonoBehaviour
                 }
                 else
                 {
-                   FindTarget();
+                    FindTarget();
                 }
 
             }
@@ -153,26 +154,26 @@ public class enemyBase : MonoBehaviour
         Destroy(gameObject);
         GameManager.instance.CheckEnemyTotal();
     }
-    virtual protected void Roam()
-    {
-        agent.stoppingDistance = 0;
-        agent.speed = speedPatrol;
+    //virtual protected void Roam()
+    //{
+    //    agent.stoppingDistance = 0;
+    //    agent.speed = speedPatrol;
 
-        Vector3 randomDir = Random.insideUnitSphere * roamDist;
-        randomDir += startPos;
+    //    Vector3 randomDir = Random.insideUnitSphere * roamDist;
+    //    randomDir += startPos;
 
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDir, out hit, .5f, 1);
-        NavMeshPath path = new NavMeshPath();
-        if (hit.hit == true)
-        {
-            if (hit.position != null)
-            {
-                agent.CalculatePath(hit.position, path);
-            }
-        }
-        agent.SetPath(path);
-    }
+    //    NavMeshHit hit;
+    //    NavMesh.SamplePosition(randomDir, out hit, .5f, 1);
+    //    NavMeshPath path = new NavMeshPath();
+    //    if (hit.hit == true)
+    //    {
+    //        if (hit.position != null)
+    //        {
+    //            agent.CalculatePath(hit.position, path);
+    //        }
+    //    }
+    //    agent.SetPath(path);
+    //}
     virtual protected void CanSeePlayer()
     {
         RaycastHit hit;
@@ -206,9 +207,10 @@ public class enemyBase : MonoBehaviour
 
     virtual protected void FindTarget()
     {
+        int i = 0;
         RaycastHit hit;
 
-        if (Physics.Raycast(HeadPos.transform.position, targetDirection, out hit, sightDistance))
+        if (Physics.Raycast(HeadPos.transform.position, targetDirection, out hit, TargetsightDistance))
         {
             Debug.DrawRay(HeadPos.transform.position, targetDirection);
             Debug.Log(angle);
@@ -226,7 +228,7 @@ public class enemyBase : MonoBehaviour
 
         }
 
-
+        agent.SetDestination(target.transform.position);
     }
 
     public void RandomItem()

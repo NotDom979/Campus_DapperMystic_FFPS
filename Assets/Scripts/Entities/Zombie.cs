@@ -18,6 +18,13 @@ public class Zombie : enemyBase, IDamage
     protected override void Update()
     {
 
+        FindTarget();
+        base.Update();
+    }
+
+    protected override void FindTarget()
+    {
+        base.FindTarget();
         if (agent.SetDestination(target.transform.position))
         {
             if (agent.stoppingDistance > agent.remainingDistance)
@@ -28,9 +35,7 @@ public class Zombie : enemyBase, IDamage
                 }
             }
         }
-        base.Update();
     }
-
     protected override void CanSeePlayer()
     {
         if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
