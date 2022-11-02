@@ -11,6 +11,8 @@ public class WaveSpawner : MonoBehaviour
 	int WaveCounter;
 	public TextMeshProUGUI WaveTracker;
 	public TextMeshProUGUI Timer;
+	public GameObject WaveAlert;
+	public GameObject ShopAlert;
 	public GameObject shop;
 	[System.Serializable]
 	public class Wave
@@ -46,6 +48,7 @@ public class WaveSpawner : MonoBehaviour
 			{
 				WaveComplete();
 				shop.SetActive(true);
+				StartCoroutine(Shop());
 			}
 			else
 			{
@@ -81,6 +84,7 @@ public class WaveSpawner : MonoBehaviour
 	}
 	IEnumerator SpawnWave(Wave _wave)
 	{
+		StartCoroutine(WaveA());
 		WaveTracker.text = (WaveCounter/4).ToString("F0");
 		state = SpawnState.SPAWNING;
 		
@@ -107,6 +111,18 @@ public class WaveSpawner : MonoBehaviour
 			nextWave++;
 			
 		
+	}
+	IEnumerator Shop()
+	{
+		ShopAlert.SetActive(true);
+		yield return new WaitForSeconds(3);
+		ShopAlert.SetActive(false);
+	}
+	IEnumerator WaveA()
+	{
+		WaveAlert.SetActive(true);
+		yield return new WaitForSeconds(3);
+		WaveAlert.SetActive(false);
 	}
 	
 	
