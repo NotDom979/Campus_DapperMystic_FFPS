@@ -13,7 +13,6 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-	    gun1.SetActive(true);
 		isSpawned = false;
     }
 
@@ -36,15 +35,6 @@ public class Shop : MonoBehaviour
 	    		}
 
             }
-		    //  gun2 = Instantiate(Guns[Random.Range(0,Guns.Count)], spawners[1].transform.position, spawners[1].transform.rotation);
-		    //  gun3 = Instantiate(Guns[Random.Range(0,Guns.Count)], spawners[2].transform.position, spawners[2].transform.rotation);
-		    // gun2.SetActive(true);
-		    // gun3.SetActive(true);
-	    }
-	    else
-	    {
-	    	gun1.SetActive(false);
-			isSpawned = false;
 	    }
 	    
     }

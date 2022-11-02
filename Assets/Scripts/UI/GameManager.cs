@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
 	    if (enemyNumber < 0)
 	    {
 	    	enemyNumber = 0;
+		    enemyNumber++;
 	    }
     }
     public void WinCondition()
