@@ -9,14 +9,17 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-	    for (int i = 0; i < spawners.Count; i++) {
-	    	Instantiate(Guns[Random.Range(0,Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
-	    }
+	    
     }
 
 	// Update is called once per frame.
     void Update()
     {
-        
+	    if (gameObject.activeSelf == true)
+	    {
+	    	for (int i = 0; i < spawners.Count; i++) {
+		    	Instantiate(Guns[Random.Range(0,Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
+	    	}
+	    }
     }
 }

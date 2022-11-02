@@ -25,7 +25,7 @@ public class meleePickup : MonoBehaviour
         if (other.CompareTag("Player") && purchased)
         {
 
-	        GameManager.instance.playerScript.GunPickup(meleeStat);
+	        //GameManager.instance.playerScript.GunPickup(meleeStat);
             if (playerController != null)
             {
                 if (playerController.purchased)

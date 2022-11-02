@@ -345,6 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   statusManager: {fileID: 0}
+  targetStats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!1 &1731156833883908015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,6 +2453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   statusManager: {fileID: 0}
+  targetStats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!1 &7965412529974284995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,7 +2713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4778580579608758824
 Transform:
   m_ObjectHideFlags: 0
@@ -2790,7 +2792,7 @@ MonoBehaviour:
   EnemyCanvas: {fileID: 1996624147313838625}
   Detector: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
   HeadPos: {fileID: 6188916926180421293}
-  target: {fileID: 0}
+  target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 516323473035859448}
   sightDistance: 50
   roamDist: 45
@@ -2816,6 +2818,7 @@ MonoBehaviour:
   angle: 0
   speedPatrol: 10
   InRadius: 0
+  targetstats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!136 &1551466629652187125
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2900,6 +2903,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4778580579608758824}
     m_Modifications:
+    - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
+      propertyPath: m_Radius
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name
       value: Detector

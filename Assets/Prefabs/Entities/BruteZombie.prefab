@@ -1499,6 +1499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   statusManager: {fileID: 0}
+  targetStats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!1 &3959803278338383631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,7 +1517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4549300990584462004
 Transform:
   m_ObjectHideFlags: 0
@@ -1562,6 +1563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   statusManager: {fileID: 0}
+  targetStats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!1 &4107118042121817765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6335064762516873681
 Transform:
   m_ObjectHideFlags: 0
@@ -2215,7 +2217,7 @@ MonoBehaviour:
   EnemyCanvas: {fileID: 121941456483553079}
   Detector: {fileID: 3916223860541310476}
   HeadPos: {fileID: 6835208686378544336}
-  target: {fileID: 0}
+  target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 3623409633243941740}
   sightDistance: 500
   roamDist: 50
@@ -2243,6 +2245,7 @@ MonoBehaviour:
   InRadius: 0
   i: 0
   j: 0
+  targetstats: {fileID: 1358685063641779614, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
 --- !u!1 &5535191680351983189
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,6 +3390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6335064762516873681}
     m_Modifications:
+    - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
+      propertyPath: m_Radius
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name
       value: Detector

@@ -9,11 +9,33 @@ public class Zombie : enemyBase, IDamage
     bool isAttacking;
     //public Animator animator;
 
+    protected override void Awake()
+    {
+        agent.SetDestination(target.transform.position);
+        base.Awake();
+    }
+
+    protected override void Update()
+    {
+
+        if (agent.SetDestination(target.transform.position))
+        {
+            if (agent.stoppingDistance > agent.remainingDistance)
+            {
+                if (!isAttacking)
+                {
+                    StartCoroutine(Attack());
+                }
+            }
+        }
+        base.Update();
+    }
+
     protected override void CanSeePlayer()
     {
         if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
         {
-          
+
             if (!isAttacking)
             {
 

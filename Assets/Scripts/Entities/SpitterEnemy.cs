@@ -11,6 +11,31 @@ public class SpitterEnemy : enemyBase, IDamage
     [SerializeField] GameObject shotPoint;
     //public Animator animator;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        agent.stoppingDistance = 10;
+    }
+
+
+    protected override void Update()
+    {
+
+        if (agent.SetDestination(target.transform.position))
+        {
+            if (agent.stoppingDistance > agent.remainingDistance)
+            {
+                if (!isAttacking)
+                {
+                    StartCoroutine(Attack());
+                }
+            }
+        }
+        base.Update();
+    }
+
+
     protected override void CanSeePlayer()
     {
         if (agent.stoppingDistance < agent.remainingDistance)

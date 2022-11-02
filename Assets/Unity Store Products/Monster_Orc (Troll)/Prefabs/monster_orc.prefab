@@ -309,7 +309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &662347745478704761
 Transform:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
   EnemyCanvas: {fileID: 6875504654197248159}
   Detector: {fileID: 7530778133299534244}
   HeadPos: {fileID: 748794744}
-  target: {fileID: 0}
+  target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 7823708891515688132}
   sightDistance: 500
   roamDist: 50
@@ -2564,6 +2564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   statusManager: {fileID: 0}
+  targetStats: {fileID: 0}
 --- !u!1 &7740817826166004986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,6 +2628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   statusManager: {fileID: 0}
+  targetStats: {fileID: 0}
 --- !u!1 &7844127039711966452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,6 +3389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 662347745478704761}
     m_Modifications:
+    - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
+      propertyPath: m_Radius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name
       value: Detector

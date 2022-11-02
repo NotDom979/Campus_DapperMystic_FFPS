@@ -954,6 +954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   statusManager: {fileID: 0}
+  targetStats: {fileID: 0}
 --- !u!1 &1117112900670311923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1319,7 @@ MonoBehaviour:
   angle: 0
   speedPatrol: 10
   InRadius: 0
+  targetstats: {fileID: 0}
 --- !u!136 &8429865232413240914
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2793,6 +2795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   statusManager: {fileID: 0}
+  targetStats: {fileID: 0}
 --- !u!1 &8754226479350500872
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,6 +3029,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2534368624564216719}
     m_Modifications:
+    - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
+      propertyPath: m_Radius
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name
       value: Detector

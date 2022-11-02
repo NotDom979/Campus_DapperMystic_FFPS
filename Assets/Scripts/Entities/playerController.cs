@@ -38,7 +38,8 @@ public class playerController : MonoBehaviour
     [SerializeField] GameObject Sniper;
     [SerializeField] GameObject Bazooka;
     [SerializeField] GameObject Shotgun;
-	[SerializeField] GameObject SMG;
+    [SerializeField] GameObject SMG;
+    [SerializeField] GameObject Burst;
     public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
@@ -59,6 +60,9 @@ public class playerController : MonoBehaviour
     public int damage;
     public int maxAmmo;
     public int currentAmmo;
+    public int currentAmmoReserved;
+    public int ammountOfAmmoGunHas;
+    private int swap;
     public int reloadTime;
     private GameObject mfClone;
     private GameObject spClone;
@@ -92,18 +96,18 @@ public class playerController : MonoBehaviour
     }
 
     void Update()
-	{
-		if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false)
-		{
-        	StartCoroutine(reloadGun());
-        	movement();
-        	StartCoroutine(shoot());
-        	gunselect();
-        	if (GameManager.instance.playerDeadMenu.activeSelf == true)
-        	{
-            	GameManager.instance.damageFlash.SetActive(false);
-        	}
-		}
+    {
+        if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false)
+        {
+            StartCoroutine(reloadGun());
+            movement();
+            StartCoroutine(shoot());
+            gunselect();
+            if (GameManager.instance.playerDeadMenu.activeSelf == true)
+            {
+                GameManager.instance.damageFlash.SetActive(false);
+            }
+        }
 
     }
     void movement()
@@ -192,6 +196,10 @@ public class playerController : MonoBehaviour
                     {
                         shotgunShoot();
                     }
+                    else if (WeaponDetection() == 7)
+                    {
+                        StartCoroutine(BurstShot());
+                    }
                     else
                     {
                         Vector3 mousePos = Input.mousePosition;
@@ -208,7 +216,7 @@ public class playerController : MonoBehaviour
                     RaycastHit hit;
                     if ((Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist)))
                     {
-                        hitEffClone = Instantiate(hitEffect, bullet.transform.position, transform.rotation);
+                        hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
                         hitEffClone.SetActive(true);
                         hitEffect.SetActive(false);
                     }
@@ -223,8 +231,8 @@ public class playerController : MonoBehaviour
                 isShooting = false;
                 gunShot.Stop();
                 mfClone.SetActive(false);
-
-                //Destroy(hitEffClone);
+                Destroy(mfClone);
+                Destroy(hitEffClone);
 
             }
             else
@@ -247,7 +255,7 @@ public class playerController : MonoBehaviour
         }
 
     }
-     public void replenishHealth(int amount)
+    public void replenishHealth(int amount)
     {
 
         HP += amount;
@@ -261,19 +269,34 @@ public class playerController : MonoBehaviour
 
     }
 
+    public int AmmoReload(int reload)
+    {
+        reload = maxAmmo - currentAmmo;
+        if (currentAmmoReserved > 0)
+        {
+
+            currentAmmo += currentAmmoReserved;
+            currentAmmoReserved -= reload;
+            if (currentAmmo > maxAmmo)
+            {
+                currentAmmo = maxAmmo;
+            }
+
+            if (currentAmmo - reload >= 0)
+                return reload;
+            if (reload > currentAmmoReserved || currentAmmoReserved < 0)
+            {
+                currentAmmoReserved = 0;
+            }
+        }
+        return currentAmmo;
+    }
+
+
     public void payDay(int currency)
     {
-        if (GameManager.instance.playerDeadMenu)
-        {
 
-            GameManager.instance.bankTotal *= 0;
-
-        }
-        else
-        {
-
-            GameManager.instance.bankTotal -= currency;
-        }
+        GameManager.instance.bankTotal -= currency;
     }
     public void AddArmor(int armorAmount)
     {
@@ -301,6 +324,7 @@ public class playerController : MonoBehaviour
             playerGrunt.volume = 1;
             playerGrunt.pitch = 1;
             playerGrunt.Play(1);
+            GameManager.instance.bankTotal *= 0;
             GameManager.instance.playerDeadMenu.SetActive(true);
             GameManager.instance.cursorLockPause();
         }
@@ -324,6 +348,8 @@ public class playerController : MonoBehaviour
             shootDmg = stats.shootDamage;
             currentAmmo = stats.ammoCount;
             maxAmmo = stats.maxAmmo;
+            currentAmmoReserved = stats.currentAmmoleft;
+            ammountOfAmmoGunHas = stats.maxAmmoSizeForGun;
             muzzleFlash = stats.muzzleEffect;
             hitEffect = stats.hitEffect;
             gunShot.clip = stats.sound;
@@ -357,6 +383,7 @@ public class playerController : MonoBehaviour
                 changeGun();
             }
         }
+
         GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
     }
     void changeGun()
@@ -367,6 +394,8 @@ public class playerController : MonoBehaviour
         shootDmg = gunstats[selectGun].shootDamage;
         currentAmmo = gunstats[selectGun].ammoCount;
         maxAmmo = gunstats[selectGun].maxAmmo;
+        currentAmmoReserved = gunstats[selectGun].currentAmmoleft;
+        ammountOfAmmoGunHas = gunstats[selectGun].maxAmmoSizeForGun;
         muzzleFlash = gunstats[selectGun].muzzleEffect;
         gunShot.clip = gunstats[selectGun].sound;
         hitEffect = gunstats[selectGun].hitEffect;
@@ -406,17 +435,16 @@ public class playerController : MonoBehaviour
     }
     IEnumerator reloadGun()
     {
-
-        if (Input.GetKey("r") && currentAmmo < maxAmmo)
+        if (currentAmmoReserved != 0)
         {
-            anim.SetTrigger("Reload");
-            Reload();
-            reloadSound.Play(1);
-            Debug.Log("Reload");
-            yield return new WaitForSeconds(reloadTime);
-            currentAmmo = maxAmmo;
-            if (currentAmmo == maxAmmo)
+            if (Input.GetKey("r") && currentAmmo < maxAmmo)
             {
+                anim.SetTrigger("Reload");
+                Reload();
+                reloadSound.Play(1);
+                Debug.Log("Reload");
+                yield return new WaitForSeconds(reloadTime);
+                AmmoReload(swap);
                 StartCoroutine("Wait");
                 anim.SetBool("Idle", true);
                 WeaponIdle();
@@ -482,6 +510,14 @@ public class playerController : MonoBehaviour
             anim.SetBool("Recoil", false);
             anim.Play("Bazooka");
         }
+        if (WeaponDetection() == 7)
+        {
+            anim.Play("BurstShot");
+            anim.SetBool("Recoil", true);
+            StartCoroutine("StartRecoil");
+            anim.SetBool("Recoil", false);
+            anim.Play("AR");
+        }
     }
     void Reload()
     {
@@ -514,29 +550,29 @@ public class playerController : MonoBehaviour
         if (WeaponDetection() == 1)
         {
             anim.Play("Pistol");
-	        AllBoolFalse();
+            AllBoolFalse();
             anim.SetBool("PistolBool", true);
             anim.SetBool("Idle", true);
 
         }
-        else if (WeaponDetection() == 2  || WeaponDetection() == 5 || WeaponDetection() == 6)
+        else if (WeaponDetection() == 2 || WeaponDetection() == 5 || WeaponDetection() == 6 || WeaponDetection() == 7)
         {
             anim.Play("AR");
-	        AllBoolFalse();
+            AllBoolFalse();
             anim.SetBool("ArBool", true);
             anim.SetBool("Idle", true);
         }
         else if (WeaponDetection() == 3)
         {
-	        anim.Play("Sniper");
-	        AllBoolFalse();
+            anim.Play("Sniper");
+            AllBoolFalse();
             anim.SetBool("SniperBool", true);
             anim.SetBool("Idle", true);
         }
         else if (WeaponDetection() == 4)
         {
-	        anim.Play("Bazooka");
-	        AllBoolFalse();
+            anim.Play("Bazooka");
+            AllBoolFalse();
             anim.SetBool("BaBool", true);
             anim.SetBool("Idle", true);
         }
@@ -554,7 +590,7 @@ public class playerController : MonoBehaviour
             mfClone = Instantiate(arMuzzle, rifleSp.transform.position, transform.rotation);
             mfClone.SetActive(true);
             StartCoroutine("muzzleWait");
-        } 
+        }
         else if (WeaponDetection() == 3)
         {
             mfClone = Instantiate(sniperMuzzle, SniperSp.transform.position, transform.rotation);
@@ -615,51 +651,61 @@ public class playerController : MonoBehaviour
         }
         else if (SMG.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("SMG"))
         {
-        	return 6;
+            return 6;
+        }
+        else if (Burst.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("Burst"))
+        {
+            return 7;
         }
 
         return 0;
     }
     void WeaponPickup(gunStats stats)
     {
-        if (gameObject.GetComponent<Collider>().CompareTag("Pistol") || maxAmmo == 20)
+        if (gameObject.GetComponent<Collider>().CompareTag("Pistol") || maxAmmo == 20 || stats.Tag == "Pistol")
         {
             anim.Play("Pistol");
-	        AllFalse();
-            anim.SetBool("PistolBool", true);
+            AllFalse();
             Pistol.SetActive(true);
+            anim.SetBool("PistolBool", true);
             Pistol.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
             Pistol.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
         }
-        else if (gameObject.GetComponent<Collider>().CompareTag("Rifle") || stats.Tag == "Rifle" || stats.Tag == "Shotgun" || stats.Tag == "SMG")
+        else if (gameObject.GetComponent<Collider>().CompareTag("Rifle") || stats.Tag == "Rifle" || stats.Tag == "Shotgun" || stats.Tag == "SMG" || stats.Tag == "Burst")
         {
             anim.Play("AR");
-	        AllFalse();
-	        anim.SetBool("ArBool", true);
-	        if (stats.Tag == "SMG")
-	        {
-	        	SMG.SetActive(true);
-		        SMG.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-		        SMG.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-	        }
-	        else if (stats.Tag == "Shotgun")
-	        {
-	        	Shotgun.SetActive(true);
-	        	Shotgun.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-		        Shotgun.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-	        }
-	        else
-	        {     
-            	AR.SetActive(true);
-	        	AR.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-		        AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-	        }
+            AllFalse();
+            anim.SetBool("ArBool", true);
+            if (stats.Tag == "SMG")
+            {
+                SMG.SetActive(true);
+                SMG.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+                SMG.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+            }
+            else if (stats.Tag == "Shotgun")
+            {
+                Shotgun.SetActive(true);
+                Shotgun.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+                Shotgun.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+            }
+            else if (stats.Tag == "Burst")
+            {
+                Burst.SetActive(true);
+                Burst.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+                Burst.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+            }
+            else
+            {
+                AR.SetActive(true);
+                AR.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+                AR.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+            }
 
         }
         else if (gameObject.GetComponent<Collider>().CompareTag("Sniper") || maxAmmo == 5)
         {
-	        anim.Play("Sniper");
-	        AllFalse();
+            anim.Play("Sniper");
+            AllFalse();
             anim.SetBool("SniperBool", true);
             Sniper.SetActive(true);
             Sniper.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -669,7 +715,7 @@ public class playerController : MonoBehaviour
         else if (gameObject.GetComponent<Collider>().CompareTag("Bazooka") || maxAmmo == 1)
         {
             anim.Play("Bazooka");
-	        AllFalse();
+            AllFalse();
             anim.SetBool("BaBool", true);
             Bazooka.SetActive(true);
             Bazooka.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -680,21 +726,32 @@ public class playerController : MonoBehaviour
     }
     void changeWeapon()
     {
-	    if (gunstats[selectGun].Tag == "Rifle" || gunstats[selectGun].Tag == "Shotgun" || gunstats[selectGun].Tag == "SMG" )
+        if (gunstats[selectGun].Tag == "Rifle" || gunstats[selectGun].Tag == "Shotgun" || gunstats[selectGun].Tag == "SMG" || gunstats[selectGun].Tag == "Burst")
         {
-	        anim.Play("AR");
-	        AllFalse();
+            anim.Play("AR");
+            AllFalse();
             anim.SetBool("ArBool", true);
             AR.SetActive(true);
             if (gunstats[selectGun].Tag == "Shotgun")
             {
+                AR.SetActive(false);
+                Shotgun.SetActive(true);
                 Shotgun.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
                 Shotgun.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
             }
             else if (gunstats[selectGun].Tag == "SMG")
             {
-	            SMG.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-	            SMG.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+                AR.SetActive(false);
+                SMG.SetActive(true);
+                SMG.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+                SMG.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+            }
+            else if (gunstats[selectGun].Tag == "Burst")
+            {
+                AR.SetActive(false);
+                Burst.SetActive(true);
+                Burst.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+                Burst.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
             }
             else
             {
@@ -706,8 +763,8 @@ public class playerController : MonoBehaviour
         }
         else if (gunstats[selectGun].Tag == "Bazooka")
         {
-	        anim.Play("Bazooka");
-	        AllFalse();
+            anim.Play("Bazooka");
+            AllFalse();
             anim.SetBool("BaBool", true);
             Bazooka.SetActive(true);
             Bazooka.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -716,8 +773,8 @@ public class playerController : MonoBehaviour
         }
         else if (gunstats[selectGun].Tag == "Sniper")
         {
-	        anim.Play("Sniper");
-	        AllFalse();
+            anim.Play("Sniper");
+            AllFalse();
             anim.SetBool("SniperBool", true);
             Sniper.SetActive(true);
             Sniper.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -726,7 +783,7 @@ public class playerController : MonoBehaviour
         }
         else if (gunstats[selectGun].Tag == "Pistol")
         {
-        	AllFalse();
+            AllFalse();
             anim.Play("Pistol");
             anim.SetBool("PistolBool", true);
             Pistol.SetActive(true);
@@ -750,34 +807,52 @@ public class playerController : MonoBehaviour
         mousePos.z = 2.0f;
         for (int i = 0; i < 1; i++)
         {
-	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
-	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 2)), transform.rotation);
-	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
-	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 3)), transform.rotation);
-	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 3)), transform.rotation);
-	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(2, 3)), transform.rotation);
-	        Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 2)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 3)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 3)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(2, 3)), transform.rotation);
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
         }
     }
-	void AllFalse()
-	{
-		anim.SetBool("SniperBool", false);
-		anim.SetBool("ArBool", false);
-		anim.SetBool("PistolBool", false);
-		anim.SetBool("BaBool", false);
-		Pistol.SetActive(false);
-		AR.SetActive(false);
-		Sniper.SetActive(false);
-		Bazooka.SetActive(false);
-		SMG.SetActive(false);
-		Shotgun.SetActive(false);
-	}
-	void AllBoolFalse()
-	{
-		anim.SetBool("SniperBool", false);
-		anim.SetBool("ArBool", false);
-		anim.SetBool("PistolBool", false);
-		anim.SetBool("BaBool", false);
-	}
-    
+
+    IEnumerator BurstShot()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 2.0f;
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
+            yield return new WaitForSeconds(.2f);
+            gunShot.Play();
+        }
+    }
+    void AllFalse()
+    {
+        anim.SetBool("SniperBool", false);
+        anim.SetBool("ArBool", false);
+        anim.SetBool("PistolBool", false);
+        anim.SetBool("BaBool", false);
+        Pistol.SetActive(false);
+        AR.SetActive(false);
+        Sniper.SetActive(false);
+        Burst.SetActive(false);
+        Bazooka.SetActive(false);
+        SMG.SetActive(false);
+        Shotgun.SetActive(false);
+    }
+    void AllBoolFalse()
+    {
+        anim.SetBool("SniperBool", false);
+        anim.SetBool("ArBool", false);
+        anim.SetBool("PistolBool", false);
+        anim.SetBool("BaBool", false);
+    }
+
+
+
+
+
+
 }
