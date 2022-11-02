@@ -122,6 +122,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4300228289473784724}
     m_Modifications:
+    - target: {fileID: 1571378259074748441, guid: 03a38d73f458ae146946731709697df2, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1571378259074748442, guid: 03a38d73f458ae146946731709697df2, type: 3}
       propertyPath: m_Name
       value: Weapon Canvas
