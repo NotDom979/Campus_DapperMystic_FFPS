@@ -12,12 +12,14 @@ public class DamageBoost : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			player.damage *= 2;
-			Destroy(gameObject);
 			StartCoroutine(Wait());
+		
+			
 		}
 	}
 	IEnumerator Wait(){
-		yield return new WaitForSeconds(30f);
+		yield return new WaitForSeconds(10f);
 		player.damage /= 2;
+		Destroy(gameObject);
 	}
 }

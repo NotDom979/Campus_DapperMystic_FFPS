@@ -18,7 +18,6 @@ public class ArmorBoost : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			player.Armor *= 2;
-			Destroy(gameObject);
 			StartCoroutine(Wait());
 			
 			
@@ -27,6 +26,7 @@ public class ArmorBoost : MonoBehaviour
 	IEnumerator Wait(){
 		yield return new WaitForSeconds(30f);
 		player.Armor = armor;
+		Destroy(gameObject);
 	}
 	
 }
