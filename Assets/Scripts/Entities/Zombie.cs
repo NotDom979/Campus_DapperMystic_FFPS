@@ -9,29 +9,37 @@ public class Zombie : enemyBase, IDamage
     bool isAttacking;
     //public Animator animator;
 
+    public GameObject lefthand;
+    public GameObject righthand;
+
+
     protected override void Awake()
     {
         base.Awake();
         agent.SetDestination(target.transform.position);
     }
-
-    public GameObject lefthand;
-    public GameObject righthand;
-
     protected override void Update()
     {
-        if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
+        //if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
+        //{
+        //    lefthand.GetComponentInChildren<Collider>().enabled = false;
+        //    righthand.GetComponentInChildren<Collider>().enabled = false;
+        //}
+        //else
+        //{
+        //    lefthand.GetComponentInChildren<Collider>().enabled = true;
+        //    righthand.GetComponentInChildren<Collider>().enabled = true;
+        //}
+
+        if (agent.stoppingDistance > agent.remainingDistance)
         {
-            lefthand.GetComponentInChildren<Collider>().enabled = false;
-            righthand.GetComponentInChildren<Collider>().enabled = false;
-        }
-        else
-        {
-            lefthand.GetComponentInChildren<Collider>().enabled = true;
-            righthand.GetComponentInChildren<Collider>().enabled = true;
+            if (!isAttacking)
+            {
+                StartCoroutine(Attack());
+            }
         }
 
-       
+
         base.Update();
     }
 
@@ -51,26 +59,11 @@ public class Zombie : enemyBase, IDamage
     //}
     protected override void CanSeePlayer()
     {
-        if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
-        {
-
-            if (!isAttacking)
-            {
-
-                StartCoroutine(Attack());
-            }
-        }
         base.CanSeePlayer();
 
-        if (agent.SetDestination(target.transform.position))
+        if (angle > viewAngle)
         {
-            if (agent.stoppingDistance > agent.remainingDistance)
-            {
-                if (!isAttacking)
-                {
-                    StartCoroutine(Attack());
-                }
-            }
+            agent.SetDestination(target.transform.position);
         }
     }
 
