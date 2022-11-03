@@ -248,22 +248,36 @@ public class Ghoul : enemyBase, IDamage
 
     public Animation anim;
     bool isAttacking;
-    
+
     int i;
     // public Animator animator;
 
 
+    public GameObject lefthand;
+    public GameObject righthand;
+
+
     protected override void Awake()
     {
-       
-         agent.SetDestination(target.transform.position);
+
+        agent.SetDestination(target.transform.position);
         anim.Play("Run");
         base.Awake();
     }
 
-
     protected override void Update()
     {
+        if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
+        {
+            lefthand.GetComponentInChildren<Collider>().enabled = false;
+            righthand.GetComponentInChildren<Collider>().enabled = false;
+        }
+        else
+        {
+            lefthand.GetComponentInChildren<Collider>().enabled = true;
+            righthand.GetComponentInChildren<Collider>().enabled = true;
+        }
+
         if (agent.SetDestination(target.transform.position))
         {
             if (agent.stoppingDistance > agent.remainingDistance)
@@ -271,7 +285,7 @@ public class Ghoul : enemyBase, IDamage
                 StartCoroutine(Attack());
             }
 
-          
+
         }
         base.Update();
     }
@@ -287,7 +301,7 @@ public class Ghoul : enemyBase, IDamage
 
             }
         }
-       
+
         base.CanSeePlayer();
     }
 
@@ -327,8 +341,8 @@ public class Ghoul : enemyBase, IDamage
 
     public void payDay(int currency)
     {
-	    GameManager.instance.bankTotal += currency;
-	    //GameManager.instance.bankAccount.text = GameManager.instance.bankTotal.ToString("F0");
+        GameManager.instance.bankTotal += currency;
+        //GameManager.instance.bankAccount.text = GameManager.instance.bankTotal.ToString("F0");
     }
 
 }
