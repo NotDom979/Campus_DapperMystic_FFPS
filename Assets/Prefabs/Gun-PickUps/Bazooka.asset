@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
+  m_Name: Bazooka
+  m_EditorClassIdentifier: 
+  shootRate: 10
+  shootDist: 60
+  shootDamage: 80
+  ammoCount: 1
+  maxAmmo: 1
+  currentAmmoleft: 0
+  maxAmmoSizeForGun: 0
+  Tag: Bazooka
+  weaponCost: 200
+  gunModel: {fileID: 8861492348188936993, guid: a8da46cb49614ab4a89d4496ddfb36d3, type: 3}
+  hitEffect: {fileID: 8714244275622671896, guid: abf8d5b763621654486813c5c8af8234, type: 3}
+  muzzleEffect: {fileID: 8799386810924340885, guid: d38cd5256281cce408cdf2075a4c18da, type: 3}
+  shotPoint: {fileID: 5523758393164634096, guid: eb8ae17be7746244f949e133d5e3be1c, type: 3}
+  bullet: {fileID: 1935405994228880, guid: 13d39d4baa6c4434ab53b65650eef99d, type: 3}
+  purchased: 0
+  sound: {fileID: 8300000, guid: 2e52a7254e98f554490bf9a612cd4bb2, type: 3}

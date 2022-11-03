@@ -68,7 +68,8 @@ public class playerController : MonoBehaviour
     private GameObject mfClone;
     private GameObject spClone;
     private GameObject hitEffClone;
-    AudioClip stored;
+	AudioClip stored;
+	public GameObject testpoint;
 
     public StatusManager statusManager;
 
@@ -206,25 +207,36 @@ public class playerController : MonoBehaviour
                     else
                     {
 	                    Vector3 mousePos = Input.mousePosition;
-                        mousePos.z = 2.0f;
-                        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y - transform.position.y));
-                        Vector3 test = new Vector3(0, 0, 0);
-                        shotPoint.transform.LookAt(mousePos);
-                        Instantiate(bullet, Camera.main.ScreenToWorldPoint(test), transform.rotation);
-	                    //Instantiate(bullet, barrel, transform.rotation);
+	                    Debug.Log("Mousepos " + mousePos);
+	                    Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
+	                    Debug.Log("ShootPos " + shootPos);
+	                    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+	                    Vector3 pos = ray.origin + (ray.direction);       
+                    	RaycastHit rot;
+                    	if(Physics.Raycast(ray, out rot, shootDist))
+                    	{
+                    		Debug.DrawRay(ray.origin, ray.direction, Color.blue, 15);
+	                    	Debug.DrawLine(ray.origin, rot.point, Color.red, 10);
+                    		Debug.Log(rot.transform.name);
+	                    	testpoint.transform.localRotation =  Camera.main.transform.rotation;
+                    	}
+	                    Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+	                    
                     }
-                    Recoil();
+	                Recoil();
                     Muzzle();
                     isShooting = true;
                     gunShot.clip = stored;
                     gunShot.Play();
                     currentAmmo--;
-                    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	                GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+	                
                     RaycastHit hit;
                     if ((Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist)))
                     {
                     	if (hit.collider.CompareTag("enemy"))
                     	{
+                    		Debug.DrawLine(transform.position, hit.point, Color.green, 10);
 	                    	hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
 	                    	hitEffClone.SetActive(true);
 	                    	hitEffect.SetActive(false);
@@ -300,6 +312,8 @@ public class playerController : MonoBehaviour
             }
         }
 	    GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+	    
+	    StartCoroutine(ReloadWait());
         return currentAmmo;
     }
 
@@ -372,7 +386,8 @@ public class playerController : MonoBehaviour
             stored = gunShot.clip;
             GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
             WeaponPickup(stats);
-            shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
+	        shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
+	        bullet = stats.bullet;
             purchased = true;
             payDay(stats.weaponCost);
         }
@@ -413,7 +428,8 @@ public class playerController : MonoBehaviour
         gunShot.clip = gunstats[selectGun].sound;
         hitEffect = gunstats[selectGun].hitEffect;
         hitEffect.SetActive(true);
-        stored = gunShot.clip;
+	    stored = gunShot.clip;
+	    bullet = gunstats[selectGun].bullet;
         changeWeapon();
         shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
         model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -556,6 +572,7 @@ public class playerController : MonoBehaviour
             anim.Play("BaReload");
             anim.SetTrigger("Reload");
         }
+	  
 
 
     }
@@ -630,9 +647,10 @@ public class playerController : MonoBehaviour
     }
     void BazookaShoot()
     {
-        isShooting = true;
+	    isShooting = true;
+	    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
 
-        Instantiate(missile, bazookaSp.transform.position, transform.rotation);
+	    Instantiate(missile, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
 
 
         gunShot.Play();
@@ -816,31 +834,28 @@ public class playerController : MonoBehaviour
     }
 
     void shotgunShoot()
-    {
+	{
+		Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-        for (int i = 0; i < 1; i++)
+		for (int i = 0; i < 8; i++)
         {
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 2)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(2, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
+			Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(rifleSp.transform.forward));
         }
     }
 
     IEnumerator BurstShot()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 2.0f;
+	    mousePos.z = 2.0f;
+	    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
         for (int i = 0; i < 3; i++)
         {
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
+	        Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
             yield return new WaitForSeconds(.2f);
             gunShot.Play();
         }
+	    gunShot.Stop();
     }
     void AllFalse()
     {
@@ -875,6 +890,10 @@ public class playerController : MonoBehaviour
             updatePLayerHud();
         }
     }
+	IEnumerator ReloadWait()
+	{
+		yield return new WaitForSeconds(3f);
+	}
 
 
 }
