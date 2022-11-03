@@ -2191,7 +2191,7 @@ MonoBehaviour:
   sightDistance: 50
   TargetsightDistance: 1000
   roamDist: 45
-  viewAngle: 45
+  viewAngle: 55
   speedChase: 5
   FacePlayerSpeed: 7
   agent: {fileID: 7342219194560569889}
@@ -2229,7 +2229,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 10
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -4085,7 +4085,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Radius
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name

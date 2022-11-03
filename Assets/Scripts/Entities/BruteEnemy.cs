@@ -24,19 +24,7 @@ public class BruteEnemy : enemyBase, IDamage
     }
     protected override void Update()
     {
-        //if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
-        //{
-        //    lefthand.GetComponentInChildren<Collider>().enabled = false;
-        //    righthand.GetComponentInChildren<Collider>().enabled = false;
-        //}
-        //else if (isAttacking)
-        //{
-        //    lefthand.GetComponentInChildren<Collider>().enabled = true;
-        //    righthand.GetComponentInChildren<Collider>().enabled = true;
-        //}
-
-        //if (agent.SetDestination(target.transform.position))
-        //{
+       
             if (agent.stoppingDistance > agent.remainingDistance)
             {
                 if (!isAttacking)
@@ -45,25 +33,11 @@ public class BruteEnemy : enemyBase, IDamage
                 }
             }
 
-
-        //}
         base.Update();
     }
 
     protected override void CanSeePlayer()
     {
-        //if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
-        //{
-        //    //animator.SetBool("fightStance", true);
-        //    if (!isAttacking)
-        //    {
-
-        //        StartCoroutine(Attack());
-        //        lefthand.GetComponentInChildren<Collider>().enabled = false;
-        //        righthand.GetComponentInChildren<Collider>().enabled = false;
-        //    }
-        //}
-
         base.CanSeePlayer();
 
         if (angle > viewAngle)

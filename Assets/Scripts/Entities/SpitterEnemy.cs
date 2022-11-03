@@ -23,8 +23,7 @@ public class SpitterEnemy : enemyBase, IDamage
     protected override void Update()
     {
 
-        if (agent.SetDestination(target.transform.position))
-        {
+    
             if (agent.stoppingDistance > agent.remainingDistance)
             {
                 if (!isAttacking)
@@ -32,22 +31,27 @@ public class SpitterEnemy : enemyBase, IDamage
                     StartCoroutine(Attack());
                 }
             }
-        }
         base.Update();
     }
 
 
     protected override void CanSeePlayer()
     {
-        if (agent.stoppingDistance < agent.remainingDistance)
-        {
-            facePlayer();
-            if (!isAttacking)
-            {
-                StartCoroutine(Attack());
-            }
-        }
+        //if (agent.stoppingDistance < agent.remainingDistance)
+        //{
+        //    facePlayer();
+        //    if (!isAttacking)
+        //    {
+        //        StartCoroutine(Attack());
+        //    }
+        //}
         base.CanSeePlayer();
+
+        if (angle > viewAngle)
+        {
+            faceTarget();
+            agent.SetDestination(target.transform.position);
+        }
 
     }
 

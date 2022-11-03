@@ -262,38 +262,38 @@ public class Ghoul : enemyBase, IDamage
         base.Awake();
 
         agent.SetDestination(target.transform.position);
-        anim.Play("Run");
+       
     }
 
     protected override void Update()
     {
-      
 
-        if (agent.SetDestination(target.transform.position))
+        if (!isAttacking)
         {
-            if (agent.stoppingDistance > agent.remainingDistance)
+            anim.Play("Run");
+        }
+
+        if (agent.stoppingDistance > agent.remainingDistance)
+        {
+            if (!isAttacking)
             {
+
                 StartCoroutine(Attack());
             }
-
-
         }
+
         base.Update();
     }
 
     protected override void CanSeePlayer()
     {
-        if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
-        {
-
-            if (!isAttacking)
-            {
-                StartCoroutine(Attack());
-
-            }
-        }
-
+       
         base.CanSeePlayer();
+
+        if (angle > viewAngle)
+        {
+            agent.SetDestination(target.transform.position);
+        }
     }
 
 
