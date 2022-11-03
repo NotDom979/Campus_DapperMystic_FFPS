@@ -1446,7 +1446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2602151970493248395}
   - component: {fileID: 6835208686501837188}
-  - component: {fileID: 4490351716726976677}
+  - component: {fileID: 4812942441608297968}
   m_Layer: 7
   m_Name: hand.R
   m_TagString: Untagged
@@ -1487,8 +1487,8 @@ MonoBehaviour:
   damage: 10
   statusManager: {fileID: 0}
   targetStats: {fileID: 1358685063641779614, guid: 5b322b764ac628b44bb6aa2e3f4a240c, type: 3}
---- !u!136 &4490351716726976677
-CapsuleCollider:
+--- !u!135 &4812942441608297968
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1497,10 +1497,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.0027720225
-  m_Height: 0.007120431
-  m_Direction: 1
-  m_Center: {x: 0.00049968093, y: 0.0027880846, z: 0.00027763256}
+  serializedVersion: 2
+  m_Radius: 0.001
+  m_Center: {x: 0, y: 0.001, z: 0}
 --- !u!1 &3959803278338383631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,7 +1510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549300990584462004}
   - component: {fileID: 6835208685867205419}
-  - component: {fileID: 474029218657667056}
+  - component: {fileID: 3258523311353356189}
   m_Layer: 7
   m_Name: hand.L
   m_TagString: Untagged
@@ -1552,8 +1551,8 @@ MonoBehaviour:
   damage: 10
   statusManager: {fileID: 0}
   targetStats: {fileID: 1358685063641779614, guid: 5b322b764ac628b44bb6aa2e3f4a240c, type: 3}
---- !u!136 &474029218657667056
-CapsuleCollider:
+--- !u!135 &3258523311353356189
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1562,10 +1561,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.0022343518
-  m_Height: 0.006322762
-  m_Direction: 1
-  m_Center: {x: -0.0007343672, y: 0.002661389, z: -0.0010000019}
+  serializedVersion: 2
+  m_Radius: 0.001
+  m_Center: {x: -0.0005, y: 0.001, z: 0}
 --- !u!1 &4107118042121817765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,7 +2194,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 1.6
+  m_StoppingDistance: 1.4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

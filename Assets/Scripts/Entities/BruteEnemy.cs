@@ -24,6 +24,12 @@ public class BruteEnemy : enemyBase, IDamage
     }
     protected override void Update()
     {
+
+        if (!isAttacking)
+        {
+            lefthand.GetComponentInChildren<Collider>().enabled = false;
+            righthand.GetComponentInChildren<Collider>().enabled = false;
+        }
        
             if (agent.stoppingDistance > agent.remainingDistance)
             {
@@ -53,6 +59,7 @@ public class BruteEnemy : enemyBase, IDamage
         lefthand.GetComponentInChildren<Collider>().enabled = true;
         righthand.GetComponentInChildren<Collider>().enabled = true;
         agent.speed = 0;
+
         if (i == 2)
         {
             i = 0;
@@ -61,7 +68,7 @@ public class BruteEnemy : enemyBase, IDamage
         if (i == 0)
         {
            
-           // animator.Play("Attack");
+         
             animator.SetTrigger("attack1");
             attackSound.Play();
             
@@ -70,11 +77,10 @@ public class BruteEnemy : enemyBase, IDamage
         {
  
             animator.SetTrigger("attack2");
-            //animator.Play("Attack_2");
             attackSound.Play();
             
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         agent.speed = speedPatrol;
         isAttacking = false;
         i++;
