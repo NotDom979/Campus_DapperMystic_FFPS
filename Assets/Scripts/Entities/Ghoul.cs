@@ -259,24 +259,15 @@ public class Ghoul : enemyBase, IDamage
 
     protected override void Awake()
     {
+        base.Awake();
 
         agent.SetDestination(target.transform.position);
         anim.Play("Run");
-        base.Awake();
     }
 
     protected override void Update()
     {
-        if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
-        {
-            lefthand.GetComponentInChildren<Collider>().enabled = false;
-            righthand.GetComponentInChildren<Collider>().enabled = false;
-        }
-        else
-        {
-            lefthand.GetComponentInChildren<Collider>().enabled = true;
-            righthand.GetComponentInChildren<Collider>().enabled = true;
-        }
+      
 
         if (agent.SetDestination(target.transform.position))
         {

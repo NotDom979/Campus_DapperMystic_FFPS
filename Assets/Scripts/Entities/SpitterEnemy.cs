@@ -15,6 +15,7 @@ public class SpitterEnemy : enemyBase, IDamage
     protected override void Awake()
     {
         base.Awake();
+        agent.SetDestination(target.transform.position);
         agent.stoppingDistance = 10;
     }
 

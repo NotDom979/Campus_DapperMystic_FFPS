@@ -11,8 +11,8 @@ public class Zombie : enemyBase, IDamage
 
     protected override void Awake()
     {
-        agent.SetDestination(target.transform.position);
         base.Awake();
+        agent.SetDestination(target.transform.position);
     }
 
     public GameObject lefthand;

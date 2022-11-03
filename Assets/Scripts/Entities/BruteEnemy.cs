@@ -17,9 +17,10 @@ public class BruteEnemy : enemyBase, IDamage
 
     protected override void Awake()
     {
+        base.Awake();
+        agent.SetDestination(target.transform.position);
         lefthand.GetComponentInChildren<Collider>().enabled = false;
         righthand.GetComponentInChildren<Collider>().enabled = false;
-        base.Awake();
     }
     protected override void Update()
     {
@@ -34,8 +35,8 @@ public class BruteEnemy : enemyBase, IDamage
         //    righthand.GetComponentInChildren<Collider>().enabled = true;
         //}
 
-        if (agent.SetDestination(target.transform.position))
-        {
+        //if (agent.SetDestination(target.transform.position))
+        //{
             if (agent.stoppingDistance > agent.remainingDistance)
             {
                 if (!isAttacking)
@@ -45,26 +46,30 @@ public class BruteEnemy : enemyBase, IDamage
             }
 
 
-        }
+        //}
         base.Update();
     }
 
     protected override void CanSeePlayer()
     {
-        if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
-        {
-            //animator.SetBool("fightStance", true);
-            if (!isAttacking)
-            {
-               
-                StartCoroutine(Attack());
-                lefthand.GetComponentInChildren<Collider>().enabled = false;
-                righthand.GetComponentInChildren<Collider>().enabled = false;
-            }
-        }
-      
+        //if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
+        //{
+        //    //animator.SetBool("fightStance", true);
+        //    if (!isAttacking)
+        //    {
+
+        //        StartCoroutine(Attack());
+        //        lefthand.GetComponentInChildren<Collider>().enabled = false;
+        //        righthand.GetComponentInChildren<Collider>().enabled = false;
+        //    }
+        //}
+
         base.CanSeePlayer();
 
+        if (angle > viewAngle)
+        {
+            agent.SetDestination(target.transform.position);
+        }
     }
 
 

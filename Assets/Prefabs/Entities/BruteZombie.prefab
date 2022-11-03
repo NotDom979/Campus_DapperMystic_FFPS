@@ -2222,9 +2222,9 @@ MonoBehaviour:
   target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 3623409633243941740}
   sightDistance: 500
-  TargetsightDistance: 1000
+  TargetsightDistance: 10
   roamDist: 50
-  viewAngle: 75
+  viewAngle: 65
   speedChase: 5
   FacePlayerSpeed: 7
   agent: {fileID: 6835208686159286857}
@@ -3396,7 +3396,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Radius
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name

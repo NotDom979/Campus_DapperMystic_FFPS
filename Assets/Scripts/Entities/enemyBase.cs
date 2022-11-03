@@ -62,7 +62,7 @@ public class enemyBase : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Target");
 
         startPos = transform.position;
-        agent.SetDestination(target.transform.position);
+        //agent.SetDestination(target.transform.position);
         speedPatrol = agent.speed;
         //Roam();
     }
@@ -88,7 +88,7 @@ public class enemyBase : MonoBehaviour
                 }
                 else
                 {
-                    FindTarget();
+                    //FindTarget();
                 }
 
             }
@@ -188,15 +188,12 @@ public class enemyBase : MonoBehaviour
                 {
                     agent.speed = speedChase;
                     agent.stoppingDistance = stoppingDistOrigin;
+                    //facePlayer();
                     agent.SetDestination(GameManager.instance.player.transform.position);
 
                 }
             }
-            else
-            {
-
-                playerSeen = false;
-            }
+           
 
 
         }
@@ -204,31 +201,31 @@ public class enemyBase : MonoBehaviour
 
     }
 
-    virtual protected void FindTarget()
-    {
-        int i = 0;
-        RaycastHit hit;
+    //virtual protected void FindTarget()
+    //{
+    //    int i = 0;
+    //    RaycastHit hit;
 
-        if (Physics.Raycast(HeadPos.transform.position, targetDirection, out hit, TargetsightDistance))
-        {
-            Debug.DrawRay(HeadPos.transform.position, targetDirection);
-            Debug.Log(angle);
-            if (hit.collider.CompareTag("Target"))
-            {
+    //    if (Physics.Raycast(HeadPos.transform.position, targetDirection, out hit, TargetsightDistance))
+    //    {
+    //        Debug.DrawRay(HeadPos.transform.position, targetDirection);
+    //        Debug.Log(angle);
+    //        if (hit.collider.CompareTag("Target"))
+    //        {
                
                 
-                    agent.speed = speedChase;
-                    agent.stoppingDistance = stoppingDistOrigin;
-                    agent.SetDestination(target.transform.position);
+    //                agent.speed = speedChase;
+    //                agent.stoppingDistance = stoppingDistOrigin;
+    //                agent.SetDestination(target.transform.position);
 
                 
-            }
+    //        }
           
 
-        }
+    //    }
 
-        agent.SetDestination(target.transform.position);
-    }
+    //    agent.SetDestination(target.transform.position);
+    //}
 
     public void RandomItem()
     {
