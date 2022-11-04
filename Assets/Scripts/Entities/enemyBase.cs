@@ -139,8 +139,9 @@ public class enemyBase : MonoBehaviour
         }
         else
         {
-            agent.SetDestination(GameManager.instance.player.transform.position);
             StartCoroutine(flashDamage());
+            facePlayer();
+            agent.SetDestination(GameManager.instance.player.transform.position);
         }
     }
     virtual protected IEnumerator death()

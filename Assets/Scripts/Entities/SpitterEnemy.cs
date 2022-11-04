@@ -14,6 +14,7 @@ public class SpitterEnemy : enemyBase, IDamage
 
     protected override void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Target");
         base.Awake();
         agent.SetDestination(target.transform.position);
         agent.stoppingDistance = 10;
@@ -22,7 +23,6 @@ public class SpitterEnemy : enemyBase, IDamage
 
     protected override void Update()
     {
-
     
             if (agent.stoppingDistance > agent.remainingDistance)
             {
@@ -47,10 +47,14 @@ public class SpitterEnemy : enemyBase, IDamage
         //}
         base.CanSeePlayer();
 
-        if (angle > viewAngle)
+        //if (angle > viewAngle)
+        //{
+        //    faceTarget();
+        //    agent.SetDestination(target.transform.position);
+        //}
+        if (angle <= viewAngle)
         {
-            faceTarget();
-            agent.SetDestination(target.transform.position);
+            facePlayer();
         }
 
     }
@@ -58,9 +62,10 @@ public class SpitterEnemy : enemyBase, IDamage
     public IEnumerator Attack()
     {
         isAttacking = true;
+        //faceTarget();
         agent.speed = 0;
-        animator.Play("Attack");
         Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+        animator.Play("Attack");
         attackSound.Play();
         yield return new WaitForSeconds(1.5f);
         agent.speed = speedPatrol;
