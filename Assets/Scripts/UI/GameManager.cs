@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager instance;
     [Header("-----GameGoal------")]
@@ -147,4 +147,13 @@ public class GameManager : MonoBehaviour
         pressFtoInteract.enabled = false;
     }
 
+    public void LoadData(GameData data)
+    {
+        this.bankTotal = data.moneySave;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.moneySave = this.bankTotal;
+    }
 }

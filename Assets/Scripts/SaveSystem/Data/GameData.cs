@@ -6,13 +6,13 @@ using UnityEngine;
 public class GameData
 {
     public int moneySave;
-   
-    
+
+    public Vector3 playerPosSave;
     //values defined in this constructor will be default settings
     //game will start with default settings when no data is being loaded
     public GameData()
     {
-       this.moneySave = 0;
- 
+       this.moneySave = 50;
+         
     }
 }

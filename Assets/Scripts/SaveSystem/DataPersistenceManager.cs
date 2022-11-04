@@ -52,6 +52,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceScript.LoadData(gameData);
         }
         Debug.Log("Loaded money = " + gameData.moneySave);
+       
     }
    public void SaveGame() 
     {
@@ -64,6 +65,7 @@ public class DataPersistenceManager : MonoBehaviour
         //save that data to a file using the data handler
 
         Debug.Log("Saved money = " + gameData.moneySave);
+       
 
     }
     private void OnApplicationQuit()
