@@ -150,8 +150,8 @@ public class enemyBase : MonoBehaviour
         agent.enabled = false;
         deathSound.Play();
         yield return new WaitForSeconds(1);
-        RandomItem();
         Destroy(gameObject);
+        RandomItem();
         GameManager.instance.CheckEnemyTotal();
     }
     //virtual protected void Roam()
@@ -200,6 +200,11 @@ public class enemyBase : MonoBehaviour
         }
 
 
+    }
+
+   public void payDay(int currency)
+    {
+        GameManager.instance.bankTotal += currency;
     }
 
     //virtual protected void FindTarget()

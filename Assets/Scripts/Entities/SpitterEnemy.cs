@@ -73,8 +73,5 @@ public class SpitterEnemy : enemyBase, IDamage
         return base.death();
     }
 
-    public void payDay(int currency)
-    {
-        GameManager.instance.bankTotal += currency;
-    }
+   
 }

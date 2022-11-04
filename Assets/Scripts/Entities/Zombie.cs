@@ -43,20 +43,6 @@ public class Zombie : enemyBase, IDamage
         base.Update();
     }
 
-    //protected override void FindTarget()
-    //{
-    //    base.FindTarget();
-    //    if (agent.SetDestination(target.transform.position))
-    //    {
-    //        if (agent.stoppingDistance > agent.remainingDistance)
-    //        {
-    //            if (!isAttacking)
-    //            {
-    //                StartCoroutine(Attack());
-    //            }
-    //        }
-    //    }
-    //}
     protected override void CanSeePlayer()
     {
         base.CanSeePlayer();
@@ -79,13 +65,12 @@ public class Zombie : enemyBase, IDamage
     }
     protected override IEnumerator death()
     {
+        animator.SetBool("Dead", true);
         animator.Play("Dead");
         payDay(10);
         return base.death();
+        
     }
 
-    public void payDay(int currency)
-    {
-        GameManager.instance.bankTotal += currency;
-    }
+  
 }
