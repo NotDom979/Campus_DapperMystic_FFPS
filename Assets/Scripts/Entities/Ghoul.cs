@@ -289,9 +289,9 @@ public class Ghoul : enemyBase, IDamage
 
         base.CanSeePlayer();
 
-        if (angle > viewAngle)
+        if (angle <= viewAngle)
         {
-            agent.SetDestination(target.transform.position);
+            facePlayer();
         }
     }
 
@@ -330,12 +330,6 @@ public class Ghoul : enemyBase, IDamage
         anim.Play("Death");
         payDay(25);
         return base.death();
-    }
-
-    public void payDay(int currency)
-    {
-        GameManager.instance.bankTotal += currency;
-        //GameManager.instance.bankAccount.text = GameManager.instance.bankTotal.ToString("F0");
     }
 
 }

@@ -30,28 +30,29 @@ public class BruteEnemy : enemyBase, IDamage
             lefthand.GetComponentInChildren<Collider>().enabled = false;
             righthand.GetComponentInChildren<Collider>().enabled = false;
         }
-       
-            if (agent.stoppingDistance > agent.remainingDistance)
+
+        if (agent.stoppingDistance > agent.remainingDistance)
+        {
+            if (!isAttacking)
             {
-                if (!isAttacking)
-                {
-                    StartCoroutine(Attack());
-                }
+                StartCoroutine(Attack());
             }
+        }
 
         base.Update();
     }
 
-    protected override void CanSeePlayer()
-    {
-        base.CanSeePlayer();
+    //protected override void CanSeePlayer()
+    //{
+    //    base.CanSeePlayer();
 
-        if (angle > viewAngle)
-        {
-            agent.SetDestination(target.transform.position);
-        }
-    }
+    //    //if (angle > viewAngle)
+    //    //{
 
+    //    //    agent.SetDestination(target.transform.position);
+    //    //}
+
+    //}
 
     public IEnumerator Attack()
     {
@@ -67,8 +68,8 @@ public class BruteEnemy : enemyBase, IDamage
 
         if (i == 0)
         {
-           
-         
+
+
             animator.SetTrigger("attack1");
             attackSound.Play();
             yield return new WaitForSeconds(.5f);
@@ -76,12 +77,12 @@ public class BruteEnemy : enemyBase, IDamage
         }
         else if (i == 1)
         {
- 
+
             animator.SetTrigger("attack2");
             attackSound.Play();
             yield return new WaitForSeconds(.5f);
             agent.speed = speedChase;
-            
+
         }
         yield return new WaitForSeconds(1);
         agent.speed = speedChase;
@@ -115,5 +116,5 @@ public class BruteEnemy : enemyBase, IDamage
         }
         return base.flashDamage();
     }
-   
+
 }

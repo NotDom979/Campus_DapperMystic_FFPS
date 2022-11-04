@@ -37,21 +37,9 @@ public class SpitterEnemy : enemyBase, IDamage
 
     protected override void CanSeePlayer()
     {
-        //if (agent.stoppingDistance < agent.remainingDistance)
-        //{
-        //    facePlayer();
-        //    if (!isAttacking)
-        //    {
-        //        StartCoroutine(Attack());
-        //    }
-        //}
+        
         base.CanSeePlayer();
 
-        //if (angle > viewAngle)
-        //{
-        //    faceTarget();
-        //    agent.SetDestination(target.transform.position);
-        //}
         if (angle <= viewAngle)
         {
             facePlayer();
