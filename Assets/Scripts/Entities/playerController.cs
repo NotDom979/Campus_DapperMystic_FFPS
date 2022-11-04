@@ -102,11 +102,13 @@ public class playerController : MonoBehaviour
 	{
 		GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
 	    if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
-        {
+	    {
+		    playerFootSteps.Stop();
             StartCoroutine(reloadGun());
             movement();
             StartCoroutine(shoot());
-            gunselect();
+		    gunselect();
+		    GameManager.instance.CheckBankTotal();
             if (GameManager.instance.playerDeadMenu.activeSelf == true)
             {
                 GameManager.instance.damageFlash.SetActive(false);
@@ -210,7 +212,7 @@ public class playerController : MonoBehaviour
 	                    Debug.Log("Mousepos " + mousePos);
 	                    Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
 	                    Debug.Log("ShootPos " + shootPos);
-	                    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+	                    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
 	                    Vector3 pos = ray.origin + (ray.direction);       
                     	RaycastHit rot;
                     	if(Physics.Raycast(ray, out rot, shootDist))
@@ -221,6 +223,12 @@ public class playerController : MonoBehaviour
 	                    	testpoint.transform.localRotation =  Camera.main.transform.rotation;
                     	}
 	                    Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+	                    if (rot.collider.CompareTag("enemy"))
+	                    {
+		                    hitEffClone = Instantiate(hitEffect, rot.point, transform.rotation);
+	                    	hitEffClone.SetActive(true);
+	                    	hitEffect.SetActive(false);
+	                    }
 	                    
                     }
 	                Recoil();
@@ -237,9 +245,9 @@ public class playerController : MonoBehaviour
                     	if (hit.collider.CompareTag("enemy"))
                     	{
                     		Debug.DrawLine(transform.position, hit.point, Color.green, 10);
-	                    	hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
-	                    	hitEffClone.SetActive(true);
-	                    	hitEffect.SetActive(false);
+	                    	//hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
+	                    	//hitEffClone.SetActive(true);
+	                    	//hitEffect.SetActive(false);
                     	}
                     }
                 }
@@ -835,12 +843,12 @@ public class playerController : MonoBehaviour
 
     void shotgunShoot()
 	{
-		Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+		Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
 		for (int i = 0; i < 8; i++)
         {
-			Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(rifleSp.transform.forward));
+			Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(ray.direction));
         }
     }
 
@@ -848,7 +856,7 @@ public class playerController : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
 	    mousePos.z = 2.0f;
-	    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+	    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
         for (int i = 0; i < 3; i++)
         {
 	        Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
