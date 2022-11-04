@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        checkWin();
+	    checkWin();
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
