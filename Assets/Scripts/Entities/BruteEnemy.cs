@@ -71,17 +71,20 @@ public class BruteEnemy : enemyBase, IDamage
          
             animator.SetTrigger("attack1");
             attackSound.Play();
-            
+            yield return new WaitForSeconds(.5f);
+            agent.speed = speedChase;
         }
         else if (i == 1)
         {
  
             animator.SetTrigger("attack2");
             attackSound.Play();
+            yield return new WaitForSeconds(.5f);
+            agent.speed = speedChase;
             
         }
         yield return new WaitForSeconds(1);
-        agent.speed = speedPatrol;
+        agent.speed = speedChase;
         isAttacking = false;
         i++;
 

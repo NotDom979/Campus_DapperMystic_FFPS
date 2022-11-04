@@ -64,6 +64,7 @@ public class enemyBase : MonoBehaviour
         startPos = transform.position;
         //agent.SetDestination(target.transform.position);
         speedPatrol = agent.speed;
+        agent.speed = speedChase;
         //Roam();
     }
 
@@ -186,7 +187,7 @@ public class enemyBase : MonoBehaviour
                 playerSeen = true;
                 if (angle <= viewAngle)
                 {
-                    agent.speed = speedChase;
+                    //agent.speed = speedChase;
                     agent.stoppingDistance = stoppingDistOrigin;
                     //facePlayer();
                     agent.SetDestination(GameManager.instance.player.transform.position);

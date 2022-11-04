@@ -1,8 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
 public class Ghoul : enemyBase, IDamage
 {
     #region //previous code
@@ -262,7 +259,9 @@ public class Ghoul : enemyBase, IDamage
         base.Awake();
 
         agent.SetDestination(target.transform.position);
-       
+        lefthand.GetComponentInChildren<Collider>().enabled = true;
+        righthand.GetComponentInChildren<Collider>().enabled = true;
+
     }
 
     protected override void Update()
@@ -287,7 +286,7 @@ public class Ghoul : enemyBase, IDamage
 
     protected override void CanSeePlayer()
     {
-       
+
         base.CanSeePlayer();
 
         if (angle > viewAngle)
@@ -310,6 +309,7 @@ public class Ghoul : enemyBase, IDamage
         {
             anim.Play("Attack1");
             attackSound.Play();
+
         }
         else if (i == 1)
         {
@@ -317,10 +317,12 @@ public class Ghoul : enemyBase, IDamage
             attackSound.Play();
         }
 
-        yield return new WaitForSeconds(2);
-        i++;
-        agent.speed = speedPatrol;
+        yield return new WaitForSeconds(1.5f);
+        anim.Stop("Attack2");
+        anim.Stop("Attack1");
+        agent.speed = speedChase;
         isAttacking = false;
+        i++;
     }
 
     protected override IEnumerator death()
