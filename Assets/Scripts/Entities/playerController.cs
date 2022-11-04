@@ -183,7 +183,8 @@ public class playerController : MonoBehaviour
     }
     IEnumerator shoot()
     {
-        if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot")) && !isShooting)
+        //need to fix/implament rapid fire - dom
+        if (Input.GetButtonDown("Shoot") && !isShooting)
         {
 
             if (currentAmmo >= 1)
