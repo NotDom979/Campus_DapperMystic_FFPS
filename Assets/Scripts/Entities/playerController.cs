@@ -68,8 +68,8 @@ public class playerController : MonoBehaviour
     private GameObject mfClone;
     private GameObject spClone;
     private GameObject hitEffClone;
-	AudioClip stored;
-	public GameObject testpoint;
+    AudioClip stored;
+    public GameObject testpoint;
 
     public StatusManager statusManager;
 
@@ -94,21 +94,21 @@ public class playerController : MonoBehaviour
         anim.SetBool("ArBool", false);
         anim.SetBool("SniperBool", false);
         anim.SetBool("PistolBool", false);
-	    anim.enabled = true;
-	    GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+        anim.enabled = true;
+        GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
 
     void Update()
-	{
-		GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
-	    if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
-	    {
-		    playerFootSteps.Stop();
+    {
+        GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+        if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
+        {
+            playerFootSteps.Stop();
             StartCoroutine(reloadGun());
             movement();
             StartCoroutine(shoot());
-		    gunselect();
-		    GameManager.instance.CheckBankTotal();
+            gunselect();
+            GameManager.instance.CheckBankTotal();
             if (GameManager.instance.playerDeadMenu.activeSelf == true)
             {
                 GameManager.instance.damageFlash.SetActive(false);
@@ -183,7 +183,7 @@ public class playerController : MonoBehaviour
     }
     IEnumerator shoot()
     {
-        if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot")) && !isShooting)
+	    if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot") && !isShooting))
         {
 
             if (currentAmmo >= 1)
@@ -208,51 +208,30 @@ public class playerController : MonoBehaviour
                     }
                     else
                     {
-	                    Vector3 mousePos = Input.mousePosition;
-	                    Debug.Log("Mousepos " + mousePos);
-	                    Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
-	                    Debug.Log("ShootPos " + shootPos);
-	                    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
-	                    Vector3 pos = ray.origin + (ray.direction);       
-                    	RaycastHit rot;
-                    	if(Physics.Raycast(ray, out rot, shootDist))
-                    	{
-                    		Debug.DrawRay(ray.origin, ray.direction, Color.blue, 15);
-	                    	Debug.DrawLine(ray.origin, rot.point, Color.red, 10);
-                    		Debug.Log(rot.transform.name);
-	                    	testpoint.transform.localRotation =  Camera.main.transform.rotation;
-                    	}
-	                    Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
-	                    if (rot.collider.CompareTag("enemy"))
-	                    {
-		                    hitEffClone = Instantiate(hitEffect, rot.point, transform.rotation);
-	                    	hitEffClone.SetActive(true);
-	                    	hitEffect.SetActive(false);
-	                    }
-	                    
+                        Shoot();
                     }
-	                Recoil();
+                    Recoil();
                     Muzzle();
                     isShooting = true;
                     gunShot.clip = stored;
                     gunShot.Play();
                     currentAmmo--;
-	                GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
-	                
+                    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+
                     RaycastHit hit;
                     if ((Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist)))
                     {
-                    	if (hit.collider.CompareTag("enemy"))
-                    	{
-                    		Debug.DrawLine(transform.position, hit.point, Color.green, 10);
-	                    	//hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
-	                    	//hitEffClone.SetActive(true);
-	                    	//hitEffect.SetActive(false);
-                    	}
+                        if (hit.collider.CompareTag("enemy"))
+                        {
+                            Debug.DrawLine(transform.position, hit.point, Color.green, 10);
+                            //hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
+                            //hitEffClone.SetActive(true);
+                            //hitEffect.SetActive(false);
+                        }
                     }
                 }
                 Debug.Log("ZipBang");
-                if (shootRate <= 1)
+                if (shootRate <= 1 && Input.GetButton("Shoot"))
                 {
                     Recoil();
                     InvokeRepeating("shoot", 0f, shootRate);
@@ -319,9 +298,9 @@ public class playerController : MonoBehaviour
                 currentAmmoReserved = 0;
             }
         }
-	    GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
-	    
-	    StartCoroutine(ReloadWait());
+        GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+
+        StartCoroutine(ReloadWait());
         return currentAmmo;
     }
 
@@ -330,8 +309,8 @@ public class playerController : MonoBehaviour
     {
         if (purchased == true)
         {
-	        GameManager.instance.bankTotal -= currency;
-	        GameManager.instance.CheckBankTotal();
+            GameManager.instance.bankTotal -= currency;
+            GameManager.instance.CheckBankTotal();
         }
     }
     public void AddArmor(int armorAmount)
@@ -394,8 +373,8 @@ public class playerController : MonoBehaviour
             stored = gunShot.clip;
             GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
             WeaponPickup(stats);
-	        shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
-	        bullet = stats.bullet;
+            shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
+            bullet = stats.bullet;
             purchased = true;
             payDay(stats.weaponCost);
         }
@@ -436,8 +415,8 @@ public class playerController : MonoBehaviour
         gunShot.clip = gunstats[selectGun].sound;
         hitEffect = gunstats[selectGun].hitEffect;
         hitEffect.SetActive(true);
-	    stored = gunShot.clip;
-	    bullet = gunstats[selectGun].bullet;
+        stored = gunShot.clip;
+        bullet = gunstats[selectGun].bullet;
         changeWeapon();
         shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
         model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -445,8 +424,8 @@ public class playerController : MonoBehaviour
     }
 
     public void updatePLayerHud()
-	{
-		GameManager.instance.CheckBankTotal();
+    {
+        GameManager.instance.CheckBankTotal();
         GameManager.instance.playerHpBar.fillAmount = (float)HP / (float)HPOrigin;
         GameManager.instance.playerArmorBar.fillAmount = (float)Armor / (float)ArmorOrigin;
     }
@@ -580,7 +559,7 @@ public class playerController : MonoBehaviour
             anim.Play("BaReload");
             anim.SetTrigger("Reload");
         }
-	  
+
 
 
     }
@@ -655,10 +634,10 @@ public class playerController : MonoBehaviour
     }
     void BazookaShoot()
     {
-	    isShooting = true;
-	    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+        isShooting = true;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
 
-	    Instantiate(missile, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+        Instantiate(missile, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
 
 
         gunShot.Play();
@@ -842,28 +821,28 @@ public class playerController : MonoBehaviour
     }
 
     void shotgunShoot()
-	{
-		Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-		for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
-			Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(ray.direction));
+            Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(ray.direction));
         }
     }
 
     IEnumerator BurstShot()
     {
         Vector3 mousePos = Input.mousePosition;
-	    mousePos.z = 2.0f;
-	    Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+        mousePos.z = 2.0f;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
         for (int i = 0; i < 3; i++)
         {
-	        Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+            Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
             yield return new WaitForSeconds(.2f);
             gunShot.Play();
         }
-	    gunShot.Stop();
+        gunShot.Stop();
     }
     void AllFalse()
     {
@@ -898,10 +877,32 @@ public class playerController : MonoBehaviour
             updatePLayerHud();
         }
     }
-	IEnumerator ReloadWait()
-	{
-		yield return new WaitForSeconds(3f);
-	}
+    IEnumerator ReloadWait()
+    {
+        yield return new WaitForSeconds(3f);
+    }
+    void Shoot()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Debug.Log("Mousepos " + mousePos);
+        Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Debug.Log("ShootPos " + shootPos);
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+        Vector3 pos = ray.origin + (ray.direction);
+        RaycastHit rot;
+        if (Physics.Raycast(ray, out rot, shootDist))
+        {
+            Debug.DrawRay(ray.origin, ray.direction, Color.blue, 15);
+            Debug.DrawLine(ray.origin, rot.point, Color.red, 10);
+            Debug.Log(rot.transform.name);
+            testpoint.transform.localRotation = Camera.main.transform.rotation;
+        }
+        Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+
+    }
 
 
 }
+
+
+
