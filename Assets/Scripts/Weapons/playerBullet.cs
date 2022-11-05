@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerBullet : MonoBehaviour
 {
 	[SerializeField] Rigidbody rb;
-	[SerializeField] int damage;
+	[SerializeField] public int damage;
 	[SerializeField] int speed;
 	[SerializeField] int destroyTime;
 	GameObject enemy;
@@ -39,6 +39,6 @@ public class playerBullet : MonoBehaviour
 			other.gameObject.GetComponent<IDamage>().takeDamage(damage);
 			//other.GetComponent<IDamage>().takeDamage(damage);
 		}
-		Destroy(gameObject,destroyTime);
+		Destroy(gameObject);
 	}
 }
