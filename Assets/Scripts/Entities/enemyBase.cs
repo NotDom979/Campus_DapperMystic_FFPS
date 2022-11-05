@@ -238,6 +238,7 @@ public class enemyBase : MonoBehaviour
     {
         randItem = Random.Range(0, 4);
 
+       
 
         if (randItem == 2)
         {
