@@ -12,6 +12,7 @@ public class gunStats : ScriptableObject
 	public int shootDamage;
 	public int ammoCount;
 	public int maxAmmo;
+	public float reloadTime;
 
 	public int currentAmmoleft;
 	public int maxAmmoSizeForGun;
@@ -24,6 +25,7 @@ public class gunStats : ScriptableObject
 	public GameObject hitEffect;
 	public GameObject muzzleEffect;
 	public GameObject shotPoint;
+	public GameObject bullet;
 	
 	//Item was/wasn't picked up
 	public bool purchased;

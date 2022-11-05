@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
+  m_Name: SniperStats
+  m_EditorClassIdentifier: 
+  shootRate: 2
+  shootDist: 1000
+  shootDamage: 15
+  ammoCount: 5
+  maxAmmo: 5
+  reloadTime: 1.8
+  currentAmmoleft: 20
+  maxAmmoSizeForGun: 20
+  Tag: Sniper
+  weaponCost: 75
+  gunModel: {fileID: 919132149155446097, guid: 60d91f925d8c1e442bb6596dfb94ffff, type: 3}
+  hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
+  muzzleEffect: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
+  shotPoint: {fileID: 2431188391930275316, guid: 216b32a65d748c74b97cedda5585bfb3, type: 3}
+  bullet: {fileID: 6894301593597968444, guid: 7d9477947f6e30c4998e9c68189cf5ef, type: 3}
+  purchased: 0
+  sound: {fileID: 8300000, guid: 0652235abefb16a4d93b045b65eae82c, type: 3}

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int flag;
     public int enemyNumber;
     public int bankTotal;
+	public GameObject shop;
+	public Shop shopScript;
     [Header("-----Player Relations------")]
     public GameObject player;
     public playerController playerScript;
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
 	public GameObject playerLoseMenu;
     [Header("-----UI-----")]
     public GameObject damageFlash;
+	public GameObject pressf;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
     public TextMeshProUGUI AmmoCount;
@@ -39,13 +42,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        StartCoroutine(pressF());
+	    // StartCoroutine(pressF());
         bankRupt.enabled = false;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController>();
 	    spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
 	    bankTotal = 50;
+	    shop = GameObject.FindGameObjectWithTag("Shop");
+	    shopScript = shop.GetComponent<Shop>();
+	    shop.SetActive(false);
+	    
 	    
 
     }
@@ -53,7 +60,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkWin();
+	    checkWin();
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;

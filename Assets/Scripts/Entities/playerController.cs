@@ -13,7 +13,11 @@ public class playerController : MonoBehaviour
     [SerializeField] float gravityValue = -9.81f;
     [SerializeField] int jumpsMax;
     [SerializeField] public int HP;
-    [SerializeField] public int Armor;
+	[SerializeField] public int Armor;
+	[SerializeField] public GameObject rifleADS;
+	//[SerializeField] public GameObject Camera;
+	[SerializeField] public GameObject pistolADS;
+	Transform cameraLocation;
     public AudioSource playerGrunt;
     public AudioSource playerJumpNoise;
     public AudioSource playerFootSteps;
@@ -64,11 +68,12 @@ public class playerController : MonoBehaviour
     public int currentAmmoReserved;
     public int ammountOfAmmoGunHas;
     private int swap;
-    public int reloadTime;
+	public float reloadTime;
     private GameObject mfClone;
     private GameObject spClone;
     private GameObject hitEffClone;
     AudioClip stored;
+    public GameObject testpoint;
 
     public StatusManager statusManager;
 
@@ -94,18 +99,22 @@ public class playerController : MonoBehaviour
         anim.SetBool("SniperBool", false);
         anim.SetBool("PistolBool", false);
 	    anim.enabled = true;
-	    GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+	    //cameraLocation.transform.localPosition = new transform(Camera.main.transform.localPosition);
+        GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
 
     void Update()
-	{
-		GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
-	    if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
+    {
+        GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+        if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
         {
+            playerFootSteps.Stop();
             StartCoroutine(reloadGun());
-            movement();
+	        movement();
+	        // StartCoroutine(ADS());
             StartCoroutine(shoot());
             gunselect();
+            GameManager.instance.CheckBankTotal();
             if (GameManager.instance.playerDeadMenu.activeSelf == true)
             {
                 GameManager.instance.damageFlash.SetActive(false);
@@ -180,7 +189,7 @@ public class playerController : MonoBehaviour
     }
     IEnumerator shoot()
     {
-        if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot")) && !isShooting)
+	    if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot") && !isShooting))
         {
 
             if (currentAmmo >= 1)
@@ -205,10 +214,7 @@ public class playerController : MonoBehaviour
                     }
                     else
                     {
-	                    Vector3 mousePos = Input.mousePosition;
-                        mousePos.z = 2.0f;
-	                    Instantiate(bullet, Camera.main.ScreenToWorldPoint(mousePos), transform.rotation);
-	                    //Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+                        Shoot();
                     }
                     Recoil();
                     Muzzle();
@@ -217,19 +223,21 @@ public class playerController : MonoBehaviour
                     gunShot.Play();
                     currentAmmo--;
                     GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+
                     RaycastHit hit;
                     if ((Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist)))
                     {
-                    	if (hit.collider.CompareTag("enemy"))
-                    	{
-	                    	hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
-	                    	hitEffClone.SetActive(true);
-	                    	hitEffect.SetActive(false);
-                    	}
+                        if (hit.collider.CompareTag("enemy"))
+                        {
+                            Debug.DrawLine(transform.position, hit.point, Color.green, 10);
+                            //hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
+                            //hitEffClone.SetActive(true);
+                            //hitEffect.SetActive(false);
+                        }
                     }
                 }
                 Debug.Log("ZipBang");
-                if (shootRate <= 1)
+                if (shootRate <= 1 && Input.GetButton("Shoot"))
                 {
                     Recoil();
                     InvokeRepeating("shoot", 0f, shootRate);
@@ -296,7 +304,9 @@ public class playerController : MonoBehaviour
                 currentAmmoReserved = 0;
             }
         }
-	    GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+        GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
+
+        StartCoroutine(ReloadWait());
         return currentAmmo;
     }
 
@@ -305,8 +315,8 @@ public class playerController : MonoBehaviour
     {
         if (purchased == true)
         {
-	        GameManager.instance.bankTotal -= currency;
-	        GameManager.instance.CheckBankTotal();
+            GameManager.instance.bankTotal -= currency;
+            GameManager.instance.CheckBankTotal();
         }
     }
     public void AddArmor(int armorAmount)
@@ -360,7 +370,8 @@ public class playerController : MonoBehaviour
             currentAmmo = stats.ammoCount;
             maxAmmo = stats.maxAmmo;
             currentAmmoReserved = stats.currentAmmoleft;
-            ammountOfAmmoGunHas = stats.maxAmmoSizeForGun;
+	        ammountOfAmmoGunHas = stats.maxAmmoSizeForGun;
+	        reloadTime = stats.reloadTime;
             muzzleFlash = stats.muzzleEffect;
             hitEffect = stats.hitEffect;
             gunShot.clip = stats.sound;
@@ -370,6 +381,7 @@ public class playerController : MonoBehaviour
             GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
             WeaponPickup(stats);
             shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
+            bullet = stats.bullet;
             purchased = true;
             payDay(stats.weaponCost);
         }
@@ -405,12 +417,14 @@ public class playerController : MonoBehaviour
         currentAmmo = gunstats[selectGun].ammoCount;
         maxAmmo = gunstats[selectGun].maxAmmo;
         currentAmmoReserved = gunstats[selectGun].currentAmmoleft;
-        ammountOfAmmoGunHas = gunstats[selectGun].maxAmmoSizeForGun;
+	    ammountOfAmmoGunHas = gunstats[selectGun].maxAmmoSizeForGun;
+	    reloadTime = gunstats[selectGun].reloadTime;
         muzzleFlash = gunstats[selectGun].muzzleEffect;
         gunShot.clip = gunstats[selectGun].sound;
         hitEffect = gunstats[selectGun].hitEffect;
         hitEffect.SetActive(true);
         stored = gunShot.clip;
+        bullet = gunstats[selectGun].bullet;
         changeWeapon();
         shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
         model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -418,8 +432,8 @@ public class playerController : MonoBehaviour
     }
 
     public void updatePLayerHud()
-	{
-		GameManager.instance.CheckBankTotal();
+    {
+        GameManager.instance.CheckBankTotal();
         GameManager.instance.playerHpBar.fillAmount = (float)HP / (float)HPOrigin;
         GameManager.instance.playerArmorBar.fillAmount = (float)Armor / (float)ArmorOrigin;
     }
@@ -450,11 +464,12 @@ public class playerController : MonoBehaviour
         {
             if (Input.GetKey("r") && currentAmmo < maxAmmo)
             {
-                anim.SetTrigger("Reload");
+	            anim.SetTrigger("Reload");
+	            StartCoroutine(ReloadWait());
                 Reload();
                 reloadSound.Play(1);
                 Debug.Log("Reload");
-                yield return new WaitForSeconds(reloadTime);
+	            yield return new WaitForSeconds(reloadTime);
                 AmmoReload(swap);
                 StartCoroutine("Wait");
                 anim.SetBool("Idle", true);
@@ -545,14 +560,15 @@ public class playerController : MonoBehaviour
 
         else if (WeaponDetection() == 3)
         {
-            anim.Play("SniperReload");
-            anim.SetTrigger("Reload");
+	         anim.Play("SniperReload");
+	         anim.SetTrigger("Reload");
         }
         else if (WeaponDetection() == 4)
         {
             anim.Play("BaReload");
             anim.SetTrigger("Reload");
         }
+
 
 
     }
@@ -628,8 +644,9 @@ public class playerController : MonoBehaviour
     void BazookaShoot()
     {
         isShooting = true;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
 
-        Instantiate(missile, bazookaSp.transform.position, transform.rotation);
+        Instantiate(missile, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
 
 
         gunShot.Play();
@@ -814,17 +831,12 @@ public class playerController : MonoBehaviour
 
     void shotgunShoot()
     {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 8; i++)
         {
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 2)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(2, 3)), transform.rotation);
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(1, 2)), transform.rotation);
+            Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(ray.direction));
         }
     }
 
@@ -832,12 +844,14 @@ public class playerController : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-        for (int i = 0; i < 3; i++)
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+	    for (int i = 0; i < 2; i++)
         {
-            Instantiate(bullet, (Camera.main.ScreenToWorldPoint(mousePos) * Random.Range(0, 1)), transform.rotation);
+            Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
             yield return new WaitForSeconds(.2f);
             gunShot.Play();
         }
+        gunShot.Stop();
     }
     void AllFalse()
     {
@@ -863,7 +877,64 @@ public class playerController : MonoBehaviour
 
 
 
+    public void AddAmmoToReserved(int ammo)
+    {
+        currentAmmoReserved += ammo;
+        if (currentAmmoReserved < maxAmmo)
+        {
 
+            updatePLayerHud();
+        }
+    }
+    IEnumerator ReloadWait()
+    {
+        yield return new WaitForSeconds(3f);
+    }
+    void Shoot()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Debug.Log("Mousepos " + mousePos);
+        Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Debug.Log("ShootPos " + shootPos);
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+        Vector3 pos = ray.origin + (ray.direction);
+        RaycastHit rot;
+        if (Physics.Raycast(ray, out rot, shootDist))
+        {
+            Debug.DrawRay(ray.origin, ray.direction, Color.blue, 15);
+            Debug.DrawLine(ray.origin, rot.point, Color.red, 10);
+            Debug.Log(rot.transform.name);
+            testpoint.transform.localRotation = Camera.main.transform.rotation;
+        }
+        Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+
+    }
+	IEnumerator ADS()
+	{
+		if (Input.GetButton("Aim"))
+		{
+			if (WeaponDetection() == 1)
+			{
+				Camera.main.gameObject.SetActive(false);
+				rifleADS.SetActive(true);
+			}
+			else if (WeaponDetection() == 2 || WeaponDetection() == 5 || WeaponDetection() == 6 || WeaponDetection() == 7)
+			{
+				Camera.main.gameObject.SetActive(false);
+				rifleADS.SetActive(true);
+			}
+		}
+		else if ((Input.GetButtonUp("Aim")))
+		{
+			Camera.main.gameObject.SetActive(true);
+			yield return new WaitForSeconds(2f);
+		}
+		
+	}
+	
 
 
 }
+
+
+

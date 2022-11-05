@@ -37,6 +37,7 @@ public class playerBullet : MonoBehaviour
 		if (other.CompareTag("enemy"))
 		{
 			other.gameObject.GetComponent<IDamage>().takeDamage(damage);
+			Destroy(gameObject);
 			//other.GetComponent<IDamage>().takeDamage(damage);
 		}
 		Destroy(gameObject);
