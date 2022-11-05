@@ -259,8 +259,8 @@ public class Ghoul : enemyBase, IDamage
         base.Awake();
 
         agent.SetDestination(target.transform.position);
-        lefthand.GetComponentInChildren<Collider>().enabled = true;
-        righthand.GetComponentInChildren<Collider>().enabled = true;
+        lefthand.GetComponentInChildren<Collider>().enabled = false;
+        righthand.GetComponentInChildren<Collider>().enabled = false;
 
     }
 
@@ -269,6 +269,8 @@ public class Ghoul : enemyBase, IDamage
 
         if (!isAttacking)
         {
+            lefthand.GetComponentInChildren<Collider>().enabled = false;
+            righthand.GetComponentInChildren<Collider>().enabled = false;
             anim.Play("Run");
         }
 
@@ -299,6 +301,8 @@ public class Ghoul : enemyBase, IDamage
     public IEnumerator Attack()
     {
         isAttacking = true;
+        lefthand.GetComponentInChildren<Collider>().enabled = true;
+        righthand.GetComponentInChildren<Collider>().enabled = true;
         agent.speed = 0;
         if (i == 2)
         {

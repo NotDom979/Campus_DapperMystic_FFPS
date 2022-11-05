@@ -17,19 +17,16 @@ public class Zombie : enemyBase, IDamage
     {
         base.Awake();
         agent.SetDestination(target.transform.position);
+        lefthand.GetComponentInChildren<Collider>().enabled = false;
+        righthand.GetComponentInChildren<Collider>().enabled = false;
     }
     protected override void Update()
     {
-        //if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
-        //{
-        //    lefthand.GetComponentInChildren<Collider>().enabled = false;
-        //    righthand.GetComponentInChildren<Collider>().enabled = false;
-        //}
-        //else
-        //{
-        //    lefthand.GetComponentInChildren<Collider>().enabled = true;
-        //    righthand.GetComponentInChildren<Collider>().enabled = true;
-        //}
+        if (!isAttacking)
+        {
+            lefthand.GetComponentInChildren<Collider>().enabled = false;
+            righthand.GetComponentInChildren<Collider>().enabled = false;
+        }
 
         if (agent.stoppingDistance > agent.remainingDistance)
         {
@@ -56,6 +53,8 @@ public class Zombie : enemyBase, IDamage
     public IEnumerator Attack()
     {
         isAttacking = true;
+        lefthand.GetComponentInChildren<Collider>().enabled = true;
+        righthand.GetComponentInChildren<Collider>().enabled = true;
         agent.speed = 1;
         animator.Play("Attack");
         attackSound.Play();
