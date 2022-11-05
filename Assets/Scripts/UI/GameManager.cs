@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 	public GameObject playerLoseMenu;
     [Header("-----UI-----")]
     public GameObject damageFlash;
+	public GameObject pressf;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
     public TextMeshProUGUI AmmoCount;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        StartCoroutine(pressF());
+	    // StartCoroutine(pressF());
         bankRupt.enabled = false;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");

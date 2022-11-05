@@ -27,20 +27,24 @@ public class gunPickup : MonoBehaviour
 		playerController = other.gameObject.GetComponent<playerController>();
 		if (other.CompareTag("Player") && purchased)
 		{
-			pressF.SetActive(true);
+			GameManager.instance.pressf.SetActive(true);
 			GameManager.instance.playerScript.GunPickup(gunStat);
 			if (playerController != null)
 			{
 				if (playerController.purchased)
 				{
 					Destroy(gameObject);
+					GameManager.instance.pressf.SetActive(false);
 				}
 				playerController.purchased = false;
 			}
-
+			StartCoroutine(Wait());
 		}
-		pressF.SetActive(false);
 	}
-
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds(1f);
+		GameManager.instance.pressf.SetActive(false);
+	}
 }
 

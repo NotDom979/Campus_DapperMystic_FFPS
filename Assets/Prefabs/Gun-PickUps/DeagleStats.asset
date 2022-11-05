@@ -17,8 +17,9 @@ MonoBehaviour:
   shootDamage: 8
   ammoCount: 7
   maxAmmo: 7
-  currentAmmoleft: 10
-  maxAmmoSizeForGun: 10
+  reloadTime: 1.7
+  currentAmmoleft: 14
+  maxAmmoSizeForGun: 14
   Tag: Pistol
   weaponCost: 50
   gunModel: {fileID: 5925977504765217659, guid: ec4bc05d040285a4abefefc927992a37, type: 3}
