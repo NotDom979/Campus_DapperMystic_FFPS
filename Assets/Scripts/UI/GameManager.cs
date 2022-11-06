@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 	public GameObject playerLoseMenu;
     [Header("-----UI-----")]
     public GameObject damageFlash;
+	public GameObject bleedFlash;
+	public GameObject poisonFlash;
 	public GameObject pressf;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
@@ -105,6 +107,24 @@ public class GameManager : MonoBehaviour
         }
 
     }
+	public IEnumerator bleedflash()
+	{
+		if (playerScript.HP >= 2)
+		{
+			bleedFlash.SetActive(true);
+			yield return new WaitForSeconds(0.1f);
+			bleedFlash.SetActive(false);
+		}
+	}
+	public IEnumerator poisonflash()
+	{
+		if (playerScript.HP >= 2)
+		{
+			poisonFlash.SetActive(true);
+			yield return new WaitForSeconds(0.1f);
+			poisonFlash.SetActive(false);
+		}
+	}
 
     public void CheckBankTotal()
     {
@@ -118,13 +138,13 @@ public class GameManager : MonoBehaviour
     }
     public void CheckEnemyTotal()
     {
-        enemyNumber--;
-	    enemyCountText.text = enemyNumber.ToString("F0");
-	    if (enemyNumber < 0)
+	    enemyNumber--;
+	    if (enemyNumber == -1)
 	    {
 	    	enemyNumber = 0;
-		    enemyNumber++;
 	    }
+	    enemyCountText.text = enemyNumber.ToString("F0");
+
     }
     public void WinCondition()
     {

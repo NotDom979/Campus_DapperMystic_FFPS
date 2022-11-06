@@ -45,6 +45,7 @@ public class TargetStats : MonoBehaviour, IDamage
            Destroy(gameObject);
 	        destroyed = true;
 	        GameManager.instance.playerLoseMenu.SetActive(true);
+	        GameManager.instance.cursorLockPause();
         }
     }
 
