@@ -8,6 +8,8 @@ public class playerBullet : MonoBehaviour
 	[SerializeField] public int damage;
 	[SerializeField] int speed;
 	[SerializeField] int destroyTime;
+	public float spread;
+	public float spreadCount;
 	GameObject enemy;
 	public playerController player;
 	int dmg;
@@ -16,19 +18,9 @@ public class playerBullet : MonoBehaviour
 	{
 		rb.velocity = transform.forward * speed;
 		Destroy(gameObject, destroyTime);
-		//	player = gameObject.GetComponent<playerController>();
-		//	dmg = player.damage;
+		StartCoroutine(Spread());
 	}
 	void Update(){
-		//if (player.damage != dmg)
-		//{
-		//damage *= player.damage;
-		//dmg = player.damage;
-		//}
-		//if (player.GetComponent<Collider>().CompareTag("DamageBuff"))
-		//{
-		//damage *= 2;
-		//}
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -38,8 +30,15 @@ public class playerBullet : MonoBehaviour
 		{
 			other.gameObject.GetComponent<IDamage>().takeDamage(damage);
 			Destroy(gameObject);
-			//other.GetComponent<IDamage>().takeDamage(damage);
 		}
 		Destroy(gameObject);
+	}
+	IEnumerator Spread()
+	{
+		for (int i = 0; i < spreadCount; i++) {
+			Vector3 dir = transform.forward + new Vector3(Random.Range(-spread,spread),Random.Range(-spread,spread),Random.Range(-spread,spread));
+			rb.AddForce(dir);
+		}
+		yield return new WaitForSeconds(.1f);
 	}
 }
