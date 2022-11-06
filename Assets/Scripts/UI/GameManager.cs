@@ -59,27 +59,32 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+	{
+		if (damageFlash.activeSelf == false)
+			{
 	    checkWin();
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
             if (isPaused)
-            {
-                cursorLockPause();
-            }
+            	{
+                	cursorLockPause();
+            	}
             else
-            {
-                cursorUnLockUnPause();
-            }
-        }
+        		{
+        	    	cursorUnLockUnPause();
+            	}
+        	}
+		}
     }
     public void cursorLockPause()
-    {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+	{
+
+			Time.timeScale = 0;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;			
+		
 
     }
     public void cursorUnLockUnPause()
