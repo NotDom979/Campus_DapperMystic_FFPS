@@ -14,16 +14,16 @@ public class SpitterEnemy : enemyBase, IDamage
 
     protected override void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Target");
         base.Awake();
+        agent.SetDestination(target.transform.position);
         agent.stoppingDistance = 10;
     }
 
 
     protected override void Update()
     {
-
-        if (agent.SetDestination(target.transform.position))
-        {
+    
             if (agent.stoppingDistance > agent.remainingDistance)
             {
                 if (!isAttacking)
@@ -31,31 +31,29 @@ public class SpitterEnemy : enemyBase, IDamage
                     StartCoroutine(Attack());
                 }
             }
-        }
         base.Update();
     }
 
 
     protected override void CanSeePlayer()
     {
-        if (agent.stoppingDistance < agent.remainingDistance)
+        
+        base.CanSeePlayer();
+
+        if (angle <= viewAngle)
         {
             facePlayer();
-            if (!isAttacking)
-            {
-                StartCoroutine(Attack());
-            }
         }
-        base.CanSeePlayer();
 
     }
 
     public IEnumerator Attack()
     {
         isAttacking = true;
+        //faceTarget();
         agent.speed = 0;
-        animator.Play("Attack");
         Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+        animator.Play("Attack");
         attackSound.Play();
         yield return new WaitForSeconds(1.5f);
         agent.speed = speedPatrol;
@@ -68,8 +66,5 @@ public class SpitterEnemy : enemyBase, IDamage
         return base.death();
     }
 
-    public void payDay(int currency)
-    {
-        GameManager.instance.bankTotal += currency;
-    }
+   
 }

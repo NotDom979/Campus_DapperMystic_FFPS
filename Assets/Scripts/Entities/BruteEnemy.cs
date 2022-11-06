@@ -17,56 +17,42 @@ public class BruteEnemy : enemyBase, IDamage
 
     protected override void Awake()
     {
+        base.Awake();
+        agent.SetDestination(target.transform.position);
         lefthand.GetComponentInChildren<Collider>().enabled = false;
         righthand.GetComponentInChildren<Collider>().enabled = false;
-        base.Awake();
     }
     protected override void Update()
     {
-        //if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
-        //{
-        //    lefthand.GetComponentInChildren<Collider>().enabled = false;
-        //    righthand.GetComponentInChildren<Collider>().enabled = false;
-        //}
-        //else if (isAttacking)
-        //{
-        //    lefthand.GetComponentInChildren<Collider>().enabled = true;
-        //    righthand.GetComponentInChildren<Collider>().enabled = true;
-        //}
 
-        if (agent.SetDestination(target.transform.position))
+        if (!isAttacking)
         {
-            if (agent.stoppingDistance > agent.remainingDistance)
-            {
-                if (!isAttacking)
-                {
-                    StartCoroutine(Attack());
-                }
-            }
-
-
+            lefthand.GetComponentInChildren<Collider>().enabled = false;
+            righthand.GetComponentInChildren<Collider>().enabled = false;
         }
+
+        if (agent.stoppingDistance > agent.remainingDistance)
+        {
+            if (!isAttacking)
+            {
+                StartCoroutine(Attack());
+            }
+        }
+
         base.Update();
     }
 
-    protected override void CanSeePlayer()
-    {
-        if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
-        {
-            //animator.SetBool("fightStance", true);
-            if (!isAttacking)
-            {
-               
-                StartCoroutine(Attack());
-                lefthand.GetComponentInChildren<Collider>().enabled = false;
-                righthand.GetComponentInChildren<Collider>().enabled = false;
-            }
-        }
-      
-        base.CanSeePlayer();
+    //protected override void CanSeePlayer()
+    //{
+    //    base.CanSeePlayer();
 
-    }
+    //    //if (angle > viewAngle)
+    //    //{
 
+    //    //    agent.SetDestination(target.transform.position);
+    //    //}
+
+    //}
 
     public IEnumerator Attack()
     {
@@ -74,6 +60,7 @@ public class BruteEnemy : enemyBase, IDamage
         lefthand.GetComponentInChildren<Collider>().enabled = true;
         righthand.GetComponentInChildren<Collider>().enabled = true;
         agent.speed = 0;
+
         if (i == 2)
         {
             i = 0;
@@ -81,22 +68,24 @@ public class BruteEnemy : enemyBase, IDamage
 
         if (i == 0)
         {
-           
-           // animator.Play("Attack");
+
+
             animator.SetTrigger("attack1");
             attackSound.Play();
-            
+            yield return new WaitForSeconds(.5f);
+            agent.speed = speedChase;
         }
         else if (i == 1)
         {
- 
+
             animator.SetTrigger("attack2");
-            //animator.Play("Attack_2");
             attackSound.Play();
-            
+            yield return new WaitForSeconds(.5f);
+            agent.speed = speedChase;
+
         }
-        yield return new WaitForSeconds(2);
-        agent.speed = speedPatrol;
+        yield return new WaitForSeconds(1);
+        agent.speed = speedChase;
         isAttacking = false;
         i++;
 
@@ -127,8 +116,5 @@ public class BruteEnemy : enemyBase, IDamage
         }
         return base.flashDamage();
     }
-    public void payDay(int currency)
-    {
-        GameManager.instance.bankTotal += currency;
-    }
+
 }

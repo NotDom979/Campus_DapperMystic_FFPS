@@ -9,74 +9,52 @@ public class Zombie : enemyBase, IDamage
     bool isAttacking;
     //public Animator animator;
 
-    protected override void Awake()
-    {
-        agent.SetDestination(target.transform.position);
-        base.Awake();
-    }
-
     public GameObject lefthand;
     public GameObject righthand;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        agent.SetDestination(target.transform.position);
+        lefthand.GetComponentInChildren<Collider>().enabled = false;
+        righthand.GetComponentInChildren<Collider>().enabled = false;
+    }
     protected override void Update()
     {
-        if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
+        if (!isAttacking)
         {
             lefthand.GetComponentInChildren<Collider>().enabled = false;
             righthand.GetComponentInChildren<Collider>().enabled = false;
         }
-        else
+
+        if (agent.stoppingDistance > agent.remainingDistance)
         {
-            lefthand.GetComponentInChildren<Collider>().enabled = true;
-            righthand.GetComponentInChildren<Collider>().enabled = true;
-        }
-
-       
-        base.Update();
-    }
-
-    //protected override void FindTarget()
-    //{
-    //    base.FindTarget();
-    //    if (agent.SetDestination(target.transform.position))
-    //    {
-    //        if (agent.stoppingDistance > agent.remainingDistance)
-    //        {
-    //            if (!isAttacking)
-    //            {
-    //                StartCoroutine(Attack());
-    //            }
-    //        }
-    //    }
-    //}
-    protected override void CanSeePlayer()
-    {
-        if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
-        {
-
             if (!isAttacking)
             {
-
                 StartCoroutine(Attack());
             }
         }
+
+
+        base.Update();
+    }
+
+    protected override void CanSeePlayer()
+    {
         base.CanSeePlayer();
 
-        if (agent.SetDestination(target.transform.position))
+        if (angle > viewAngle)
         {
-            if (agent.stoppingDistance > agent.remainingDistance)
-            {
-                if (!isAttacking)
-                {
-                    StartCoroutine(Attack());
-                }
-            }
+            agent.SetDestination(target.transform.position);
         }
     }
 
     public IEnumerator Attack()
     {
         isAttacking = true;
+        lefthand.GetComponentInChildren<Collider>().enabled = true;
+        righthand.GetComponentInChildren<Collider>().enabled = true;
         agent.speed = 1;
         animator.Play("Attack");
         attackSound.Play();
@@ -86,13 +64,12 @@ public class Zombie : enemyBase, IDamage
     }
     protected override IEnumerator death()
     {
+        animator.SetBool("Dead", true);
         animator.Play("Dead");
         payDay(10);
         return base.death();
+        
     }
 
-    public void payDay(int currency)
-    {
-        GameManager.instance.bankTotal += currency;
-    }
+  
 }

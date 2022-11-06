@@ -62,8 +62,9 @@ public class enemyBase : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Target");
 
         startPos = transform.position;
-        agent.SetDestination(target.transform.position);
+        //agent.SetDestination(target.transform.position);
         speedPatrol = agent.speed;
+        agent.speed = speedChase;
         //Roam();
     }
 
@@ -88,7 +89,7 @@ public class enemyBase : MonoBehaviour
                 }
                 else
                 {
-                    FindTarget();
+                    //FindTarget();
                 }
 
             }
@@ -138,8 +139,9 @@ public class enemyBase : MonoBehaviour
         }
         else
         {
-            agent.SetDestination(GameManager.instance.player.transform.position);
             StartCoroutine(flashDamage());
+            facePlayer();
+            agent.SetDestination(GameManager.instance.player.transform.position);
         }
     }
     virtual protected IEnumerator death()
@@ -149,8 +151,8 @@ public class enemyBase : MonoBehaviour
         agent.enabled = false;
         deathSound.Play();
         yield return new WaitForSeconds(1);
-        RandomItem();
         Destroy(gameObject);
+        RandomItem();
         GameManager.instance.CheckEnemyTotal();
     }
     //virtual protected void Roam()
@@ -186,17 +188,14 @@ public class enemyBase : MonoBehaviour
                 playerSeen = true;
                 if (angle <= viewAngle)
                 {
-                    agent.speed = speedChase;
+                    //agent.speed = speedChase;
                     agent.stoppingDistance = stoppingDistOrigin;
+                    //facePlayer();
                     agent.SetDestination(GameManager.instance.player.transform.position);
 
                 }
             }
-            else
-            {
-
-                playerSeen = false;
-            }
+           
 
 
         }
@@ -204,36 +203,42 @@ public class enemyBase : MonoBehaviour
 
     }
 
-    virtual protected void FindTarget()
+   public void payDay(int currency)
     {
-        int i = 0;
-        RaycastHit hit;
+        GameManager.instance.bankTotal += currency;
+    }
 
-        if (Physics.Raycast(HeadPos.transform.position, targetDirection, out hit, TargetsightDistance))
-        {
-            Debug.DrawRay(HeadPos.transform.position, targetDirection);
-            Debug.Log(angle);
-            if (hit.collider.CompareTag("Target"))
-            {
+    //virtual protected void FindTarget()
+    //{
+    //    int i = 0;
+    //    RaycastHit hit;
+
+    //    if (Physics.Raycast(HeadPos.transform.position, targetDirection, out hit, TargetsightDistance))
+    //    {
+    //        Debug.DrawRay(HeadPos.transform.position, targetDirection);
+    //        Debug.Log(angle);
+    //        if (hit.collider.CompareTag("Target"))
+    //        {
                
                 
-                    agent.speed = speedChase;
-                    agent.stoppingDistance = stoppingDistOrigin;
-                    agent.SetDestination(target.transform.position);
+    //                agent.speed = speedChase;
+    //                agent.stoppingDistance = stoppingDistOrigin;
+    //                agent.SetDestination(target.transform.position);
 
                 
-            }
+    //        }
           
 
-        }
+    //    }
 
-        agent.SetDestination(target.transform.position);
-    }
+    //    agent.SetDestination(target.transform.position);
+    //}
 
     public void RandomItem()
     {
         randItem = Random.Range(0, 4);
 
+       
 
         if (randItem == 2)
         {

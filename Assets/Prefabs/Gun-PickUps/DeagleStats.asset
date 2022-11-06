@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
   m_Name: DeagleStats
   m_EditorClassIdentifier: 
-  shootRate: 2
+  shootRate: 3
   shootDist: 30
   shootDamage: 8
   ammoCount: 7
   maxAmmo: 7
-  currentAmmoleft: 10
-  maxAmmoSizeForGun: 10
+  reloadTime: 1.7
+  currentAmmoleft: 14
+  maxAmmoSizeForGun: 14
   Tag: Pistol
   weaponCost: 50
   gunModel: {fileID: 5925977504765217659, guid: ec4bc05d040285a4abefefc927992a37, type: 3}

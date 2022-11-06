@@ -2132,7 +2132,6 @@ Transform:
   - {fileID: 5697143099140636330}
   - {fileID: 965599612582582603}
   - {fileID: 4219448966939080931}
-  - {fileID: 7342219194403545999}
   - {fileID: 4131586718601990386}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2167,10 +2166,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 4
+  m_Radius: 0.411918
+  m_Height: 1.737373
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.67335874, z: 0}
 --- !u!114 &7342219194560569888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,7 +2190,7 @@ MonoBehaviour:
   sightDistance: 50
   TargetsightDistance: 1000
   roamDist: 45
-  viewAngle: 45
+  viewAngle: 55
   speedChase: 5
   FacePlayerSpeed: 7
   agent: {fileID: 7342219194560569889}
@@ -2229,7 +2228,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 10
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -2335,7 +2334,7 @@ Transform:
   - {fileID: 7342219192797331764}
   - {fileID: 7342219192812844597}
   m_Father: {fileID: 7917894549608498705}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7185349320203896264
 GameObject:
@@ -2988,13 +2987,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7342219194403545998}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.594, z: 0.407}
+  m_LocalRotation: {x: -0.49999994, y: 0.50000006, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.035, y: 0.348, z: -0.014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7917894549608498705}
-  m_RootOrder: 3
+  m_Father: {fileID: 1466150515937856296}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7342219194405117192
 GameObject:
@@ -3666,6 +3665,7 @@ Transform:
   - {fileID: 4557969893695668190}
   - {fileID: 6041884628946470443}
   - {fileID: 4275166316422555187}
+  - {fileID: 7342219194403545999}
   m_Father: {fileID: 2290677638681286998}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4085,7 +4085,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7530778131590464385, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Radius
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7530778131590464446, guid: cb37acc22826340449c4cb14299e7b67, type: 3}
       propertyPath: m_Name

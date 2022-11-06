@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 	public GameObject playerLoseMenu;
     [Header("-----UI-----")]
     public GameObject damageFlash;
+	public GameObject pressf;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
     public TextMeshProUGUI AmmoCount;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     // Start is called before the first frame update
     void Awake()
     {
-        StartCoroutine(pressF());
+	    // StartCoroutine(pressF());
         bankRupt.enabled = false;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -58,27 +59,32 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     // Update is called once per frame
     void Update()
-    {
+	{
+		if (damageFlash.activeSelf == false)
+			{
 	    checkWin();
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
             if (isPaused)
-            {
-                cursorLockPause();
-            }
+            	{
+                	cursorLockPause();
+            	}
             else
-            {
-                cursorUnLockUnPause();
-            }
-        }
+        		{
+        	    	cursorUnLockUnPause();
+            	}
+        	}
+		}
     }
     public void cursorLockPause()
-    {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+	{
+
+			Time.timeScale = 0;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;			
+		
 
     }
     public void cursorUnLockUnPause()

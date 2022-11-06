@@ -1497,7 +1497,7 @@ Animation:
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
-  m_CullingType: 1
+  m_CullingType: 0
 --- !u!136 &3066865265597874585
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2050,8 +2050,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.35
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.2
+  m_Center: {x: -0.2, y: -0.2, z: 0}
 --- !u!114 &3066865265854305544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2534,8 +2534,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.35
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.2
+  m_Center: {x: -0.2, y: -0.2, z: 0}
 --- !u!114 &3066865266495318925
 MonoBehaviour:
   m_ObjectHideFlags: 0

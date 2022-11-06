@@ -1,8 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
 public class Ghoul : enemyBase, IDamage
 {
     #region //previous code
@@ -259,56 +256,53 @@ public class Ghoul : enemyBase, IDamage
 
     protected override void Awake()
     {
+        base.Awake();
 
         agent.SetDestination(target.transform.position);
-        anim.Play("Run");
-        base.Awake();
+        lefthand.GetComponentInChildren<Collider>().enabled = false;
+        righthand.GetComponentInChildren<Collider>().enabled = false;
+
     }
 
     protected override void Update()
     {
-        if (lefthand.GetComponentInChildren<Collider>().enabled == true && righthand.GetComponentInChildren<Collider>().enabled == true && !isAttacking)
+
+        if (!isAttacking)
         {
             lefthand.GetComponentInChildren<Collider>().enabled = false;
             righthand.GetComponentInChildren<Collider>().enabled = false;
-        }
-        else
-        {
-            lefthand.GetComponentInChildren<Collider>().enabled = true;
-            righthand.GetComponentInChildren<Collider>().enabled = true;
+            anim.Play("Run");
         }
 
-        if (agent.SetDestination(target.transform.position))
+        if (agent.stoppingDistance > agent.remainingDistance)
         {
-            if (agent.stoppingDistance > agent.remainingDistance)
+            if (!isAttacking)
             {
+
                 StartCoroutine(Attack());
             }
-
-
         }
+
         base.Update();
     }
 
     protected override void CanSeePlayer()
     {
-        if (agent.stoppingDistance > agent.remainingDistance && angle <= viewAngle)
-        {
-
-            if (!isAttacking)
-            {
-                StartCoroutine(Attack());
-
-            }
-        }
 
         base.CanSeePlayer();
+
+        if (angle <= viewAngle)
+        {
+            facePlayer();
+        }
     }
 
 
     public IEnumerator Attack()
     {
         isAttacking = true;
+        lefthand.GetComponentInChildren<Collider>().enabled = true;
+        righthand.GetComponentInChildren<Collider>().enabled = true;
         agent.speed = 0;
         if (i == 2)
         {
@@ -319,6 +313,7 @@ public class Ghoul : enemyBase, IDamage
         {
             anim.Play("Attack1");
             attackSound.Play();
+
         }
         else if (i == 1)
         {
@@ -326,10 +321,12 @@ public class Ghoul : enemyBase, IDamage
             attackSound.Play();
         }
 
-        yield return new WaitForSeconds(2);
-        i++;
-        agent.speed = speedPatrol;
+        yield return new WaitForSeconds(1.5f);
+        anim.Stop("Attack2");
+        anim.Stop("Attack1");
+        agent.speed = speedChase;
         isAttacking = false;
+        i++;
     }
 
     protected override IEnumerator death()
@@ -337,12 +334,6 @@ public class Ghoul : enemyBase, IDamage
         anim.Play("Death");
         payDay(25);
         return base.death();
-    }
-
-    public void payDay(int currency)
-    {
-        GameManager.instance.bankTotal += currency;
-        //GameManager.instance.bankAccount.text = GameManager.instance.bankTotal.ToString("F0");
     }
 
 }

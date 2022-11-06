@@ -26,7 +26,7 @@ public class enemyAi : MonoBehaviour, IDamage
     [SerializeField] int speedChase;
     [SerializeField] int FacePlayerSpeed;
     [SerializeField] public GameObject muzzleFlash;
-    [SerializeField] public ParticleSystem muzzle;
+    [SerializeField] public ParticleSystem muzzle; 
     ParticleSystem mf;
 
     [Header("-----Enemy Gun Stats-----")]

@@ -52,7 +52,7 @@ MonoBehaviour:
   gunStat: {fileID: 11400000, guid: add06e9f3790ecc4495071088f3f5139, type: 2}
   playerController: {fileID: 0}
   weaponPrice: {fileID: 1571378257090521663}
-  pressF: {fileID: 6167913538511964330, guid: d448defc2be685d40b8cf30d73bec92f, type: 3}
+  pressF: {fileID: 1268714439924290324, guid: a61c302c7e8c2c74fa0ce55a1359967f, type: 3}
 --- !u!33 &4300228289473784730
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
   m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1001 &1097917026
 PrefabInstance:

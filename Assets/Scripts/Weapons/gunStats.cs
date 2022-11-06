@@ -12,6 +12,7 @@ public class gunStats : ScriptableObject
 	public int shootDamage;
 	public int ammoCount;
 	public int maxAmmo;
+	public float reloadTime;
 
 	public int currentAmmoleft;
 	public int maxAmmoSizeForGun;
