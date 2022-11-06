@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
     public void CheckEnemyTotal()
     {
 	    enemyNumber--;
-	    if (enemyNumber < 0)
+	    if (enemyNumber == -1)
 	    {
 	    	enemyNumber = 0;
 	    }

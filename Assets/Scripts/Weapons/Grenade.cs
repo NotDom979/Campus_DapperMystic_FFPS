@@ -49,7 +49,7 @@ public class Grenade : MonoBehaviour
 		Collider[] objectsInRange = Physics.OverlapSphere(location, radiusofEntity);
 		foreach (Collider nearbyEntities in objectsInRange)
 		{
-			enemyAi enemyHit = nearbyEntities.GetComponent<enemyAi>();
+			enemyBase enemyHit = nearbyEntities.GetComponent<enemyBase>();
 			playerController playerHit = nearbyEntities.GetComponent<playerController>();
 
 			if (enemyHit != null)

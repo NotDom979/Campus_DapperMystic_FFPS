@@ -48,7 +48,8 @@ public class ThrowingObjects : MonoBehaviour
 		readyTothrow = false;
 		
 		// We are instantiate object throw
-		GameObject projectile = Instantiate(objectToThrow, attackPoint.position,transform.rotation);
+		Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+		GameObject projectile = Instantiate(objectToThrow, attackPoint.position,Quaternion.LookRotation(ray.direction));
 		
 		//we get rigidbody
 		Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
