@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 1571378259074748446}
   - component: {fileID: 1571378259074748441}
   - component: {fileID: 1571378259074748440}
-  - component: {fileID: 1808482966}
+  - component: {fileID: 4938532309498953711}
   m_Layer: 5
   m_Name: Weapon Canvas
   m_TagString: Untagged
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1808482966
+--- !u!114 &4938532309498953711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571378259074748442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b67c56d38f0c343a25cbf8994a3638, type: 3}
+  m_Script: {fileID: 11500000, guid: 045b721f0f2cb3646a02f451c6af92ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FacePlayerSpeed: 100

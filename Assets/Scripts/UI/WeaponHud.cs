@@ -5,7 +5,7 @@ using UnityEngine;
 
 	
 	
-public class EnemyHUd : MonoBehaviour
+public class WeaponHud: MonoBehaviour
 {
 	[SerializeField] int FacePlayerSpeed;
 	Vector3 playerDirection;
@@ -18,7 +18,7 @@ public class EnemyHUd : MonoBehaviour
     // Update is called once per frame
     void Update()
 	{
-		playerDirection = GameManager.instance.player.transform.position- transform.position;
+		playerDirection = transform.position - GameManager.instance.player.transform.position;
 	    playerDirection.y = 0;
 	    Quaternion rotation = Quaternion.LookRotation(playerDirection);
 	    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * FacePlayerSpeed);
