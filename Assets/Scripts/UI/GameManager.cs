@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 	public GameObject bleedFlash;
 	public GameObject poisonFlash;
 	public GameObject pressf;
+	public GameObject PoisonAlert;
+	public GameObject BleedAlert;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
     public TextMeshProUGUI AmmoCount;
