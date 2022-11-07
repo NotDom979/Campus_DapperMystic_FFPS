@@ -48,7 +48,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         //load any save data
-        this.gameData = fileDataHandler.Load(gameData);
+        this.gameData = fileDataHandler.Load();
         // if no load data, initialize new game
         if (this.gameData == null)
         {

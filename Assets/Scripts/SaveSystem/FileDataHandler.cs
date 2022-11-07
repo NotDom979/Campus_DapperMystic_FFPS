@@ -20,40 +20,13 @@ public class FileDataHandler
 
         PlayerPrefs.SetInt("moneySave", data.moneySave);
 
-
-        ////use Path.combine to account for different OS's different paths
-        //string fullP = Path.Combine(dataDirectoryPath, dataFileName);
-        //try
-        //{
-        //    //create the directory the file will be written to if not existing already 
-
-        //    Directory.CreateDirectory(fullP);
-                
-        //    //changin the c# game data into text/computer files 
-        //    string dataBeingStored = JsonUtility.ToJson(data,true); 
-               
-        //    using(FileStream stream = new FileStream(fullP, FileMode.Create))
-        //    {
-        //        using(StreamWriter writer = new StreamWriter(stream))
-        //        {
-        //            writer.Write(dataBeingStored);
-                    
-        //        }
-        //    }
-
-        //}
-        //catch (Exception error)
-        //{
-
-        //    Debug.LogError(" Error occured when trying to save file data: " + fullP + "\n" + error);
-        //}
     }
-    public GameData Load(GameData loadData)
+    public GameData Load()
     {
 
 
         //    string fullP = Path.Combine(dataDirectoryPath, dataFileName);
-         loadData = null;
+       GameData  loadData = null;
 
         if (PlayerPrefs.HasKey("moneySave"))
          loadData.moneySave = PlayerPrefs.GetInt("moneySave");
@@ -61,6 +34,7 @@ public class FileDataHandler
            return loadData; 
 
 
+    }
     }
         //    if (File.Exists(fullP))
         //    {
@@ -88,4 +62,30 @@ public class FileDataHandler
         //    return loadData;   
         //}
 
-    }
+
+        ////use Path.combine to account for different OS's different paths
+        //string fullP = Path.Combine(dataDirectoryPath, dataFileName);
+        //try
+        //{
+        //    //create the directory the file will be written to if not existing already 
+
+        //    Directory.CreateDirectory(fullP);
+                
+        //    //changin the c# game data into text/computer files 
+        //    string dataBeingStored = JsonUtility.ToJson(data,true); 
+               
+        //    using(FileStream stream = new FileStream(fullP, FileMode.Create))
+        //    {
+        //        using(StreamWriter writer = new StreamWriter(stream))
+        //        {
+        //            writer.Write(dataBeingStored);
+                    
+        //        }
+        //    }
+
+        //}
+        //catch (Exception error)
+        //{
+
+        //    Debug.LogError(" Error occured when trying to save file data: " + fullP + "\n" + error);
+        //}
