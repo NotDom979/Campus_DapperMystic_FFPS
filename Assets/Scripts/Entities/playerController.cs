@@ -896,7 +896,7 @@ public class playerController : MonoBehaviour
         Debug.Log("Mousepos " + mousePos);
         Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
         Debug.Log("ShootPos " + shootPos);
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
         Vector3 pos = ray.origin + (ray.direction);
         RaycastHit rot;
         if (Physics.Raycast(ray, out rot, shootDist))

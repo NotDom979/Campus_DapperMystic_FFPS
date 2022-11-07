@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -163,11 +163,14 @@ public class StatusManager : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 GameManager.instance.playerScript.HP -= damage;
-                GameManager.instance.playerScript.updatePLayerHud();
+	            GameManager.instance.playerScript.updatePLayerHud();
+	            StartCoroutine(GameManager.instance.bleedflash());
+	            GameManager.instance.BleedAlert.SetActive(true);
                 bleedTicks.RemoveAll(i => i == 0);
                 yield return new WaitForSeconds(.1f);
             }
                 yield return new WaitForSeconds(1);
+	    		GameManager.instance.BleedAlert.SetActive(false);
         }
     }
     #endregion
@@ -199,12 +202,15 @@ public class StatusManager : MonoBehaviour
             {
 
                 GameManager.instance.playerScript.HP -= damage;
-                GameManager.instance.playerScript.updatePLayerHud();
+	            GameManager.instance.playerScript.updatePLayerHud();
+	            StartCoroutine(GameManager.instance.poisonflash());
+	            GameManager.instance.PoisonAlert.SetActive(true);
                 poisonTicks.RemoveAll(i => i == 0);
                 yield return new WaitForSeconds(1);
             }
             else
             {
+	            GameManager.instance.PoisonAlert.SetActive(false);
                 poisonTicks.Clear();
             }
         }
@@ -241,4 +247,5 @@ public class StatusManager : MonoBehaviour
         }
     }
     #endregion
+
 }
