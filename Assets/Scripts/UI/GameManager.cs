@@ -84,10 +84,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
     }
     public void cursorLockPause()
 	{
-
-			Time.timeScale = 0;
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.Confined;			
+		damageFlash.SetActive(false);
+		bleedFlash.SetActive(false);
+		poisonFlash.SetActive(false);
+		Time.timeScale = 0;
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.Confined;			
 		
 
     }

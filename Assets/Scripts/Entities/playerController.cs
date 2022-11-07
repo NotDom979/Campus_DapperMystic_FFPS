@@ -111,7 +111,7 @@ public class playerController : MonoBehaviour
             playerFootSteps.Stop();
             StartCoroutine(reloadGun());
 	        movement();
-	        // StartCoroutine(ADS());
+	        //StartCoroutine(ADS());
             StartCoroutine(shoot());
             gunselect();
             GameManager.instance.CheckBankTotal();
@@ -896,7 +896,7 @@ public class playerController : MonoBehaviour
         Debug.Log("Mousepos " + mousePos);
         Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
         Debug.Log("ShootPos " + shootPos);
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
         Vector3 pos = ray.origin + (ray.direction);
         RaycastHit rot;
         if (Physics.Raycast(ray, out rot, shootDist))
@@ -904,14 +904,18 @@ public class playerController : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction, Color.blue, 15);
             Debug.DrawLine(ray.origin, rot.point, Color.red, 10);
             Debug.Log(rot.transform.name);
-            testpoint.transform.localRotation = Camera.main.transform.rotation;
+	        testpoint.transform.localRotation = Camera.main.transform.rotation;
+	         if (rot.collider.CompareTag("enemy"))
+	        {
+		        hitEffClone = Instantiate(hitEffect, rot.point, transform.rotation);
+		      }
         }
         Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
 
     }
 	IEnumerator ADS()
 	{
-		if (Input.GetButton("Aim"))
+		while (Input.GetButton("Aim"))
 		{
 			if (WeaponDetection() == 1)
 			{
@@ -924,7 +928,7 @@ public class playerController : MonoBehaviour
 				rifleADS.SetActive(true);
 			}
 		}
-		else if ((Input.GetButtonUp("Aim")))
+		while ((Input.GetButtonUp("Aim")))
 		{
 			Camera.main.gameObject.SetActive(true);
 			yield return new WaitForSeconds(2f);
