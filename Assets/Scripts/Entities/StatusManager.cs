@@ -181,7 +181,8 @@ public class StatusManager : MonoBehaviour
         if (poisonTicks.Count <= 0)
         {
             poisonTicks.Add(ticks);
-            StartCoroutine(Poison());
+	        StartCoroutine(Poison());
+	        GameManager.instance.PoisonAlert.SetActive(false);
         }
         else
         {
@@ -210,7 +211,6 @@ public class StatusManager : MonoBehaviour
             }
             else
             {
-	            GameManager.instance.PoisonAlert.SetActive(false);
                 poisonTicks.Clear();
             }
         }

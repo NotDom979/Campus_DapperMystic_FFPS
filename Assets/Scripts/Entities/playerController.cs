@@ -249,7 +249,7 @@ public class playerController : MonoBehaviour
                 isShooting = false;
                 gunShot.Stop();
                 mfClone.SetActive(false);
-                Destroy(mfClone);
+	            // Destroy(mfClone);
                 Destroy(hitEffClone);
 
             }
@@ -923,7 +923,7 @@ public class playerController : MonoBehaviour
 			if (WeaponDetection() == 3)
 			{
 				GameManager.instance.SniperScope.SetActive(true);
-				Camera.main.transform.localPosition += sniperADS.transform.localPosition;
+				Camera.main.transform.localPosition = sniperADS.transform.localPosition;
 				yield return new WaitForSeconds(.5f);
 			}
 		}
