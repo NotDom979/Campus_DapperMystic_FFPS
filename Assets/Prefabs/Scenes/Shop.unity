@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7dc121a225465e0419e040a191d2bd66, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.36033368, g: 0.40589085, b: 0.40533176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 87f8c2a571d16f6458ec4c98a181198f, type: 2}
+--- !u!1 &25989900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1268714440526371513, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+  m_PrefabInstance: {fileID: 335899657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &178272277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -384,13 +389,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 825838703}
     - target: {fileID: 859239550891506152, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
-      propertyPath: bleedFlash
+      propertyPath: BleedAlert
       value: 
-      objectReference: {fileID: 1041760973}
+      objectReference: {fileID: 1476994165}
     - target: {fileID: 859239550891506152, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
-      propertyPath: poisonFlash
+      propertyPath: PoisonAlert
       value: 
-      objectReference: {fileID: 1615862348}
+      objectReference: {fileID: 25989900}
+    - target: {fileID: 859239550891506152, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+      propertyPath: SniperScope
+      value: 
+      objectReference: {fileID: 892879875}
     - target: {fileID: 1461329582799393251, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
       propertyPath: m_Name
       value: UI Variant 1
@@ -1123,9 +1132,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b4143c3d060c414f90cb8f70c7b201e, type: 3}
---- !u!1 &1041760973 stripped
+--- !u!1 &892879875 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 9104994111181887730, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1294777785443884323, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
   m_PrefabInstance: {fileID: 335899657}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1048053403
@@ -1374,6 +1383,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d00786917c5877428a3fc1d63a2c475, type: 3}
+--- !u!1 &1476994165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1268714440919714687, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+  m_PrefabInstance: {fileID: 335899657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1552008281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1431,11 +1445,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 552769d6ccac6ba4b907d159730804d9, type: 3}
---- !u!1 &1615862348 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3046777399415358950, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
-  m_PrefabInstance: {fileID: 335899657}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1699639191
 GameObject:
   m_ObjectHideFlags: 0

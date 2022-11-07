@@ -12,7 +12,7 @@ public class Missile : MonoBehaviour
     public GameObject explosionEffect;
     // Start is called before the first frame update
 
-    enemyAi enemy;
+	enemyBase enemy;
     Vector3 pos;
     void Start()
     {
@@ -49,7 +49,7 @@ public class Missile : MonoBehaviour
         Collider[] objectsInRange = Physics.OverlapSphere(location, radiusofEntity);
         foreach (Collider nearbyEntities in objectsInRange)
         {
-            enemyAi enemyHit = nearbyEntities.GetComponent<enemyAi>();
+	        enemyBase enemyHit = nearbyEntities.GetComponent<enemyBase>();
             playerController playerHit = nearbyEntities.GetComponent<playerController>();
 
             if (enemyHit != null)
