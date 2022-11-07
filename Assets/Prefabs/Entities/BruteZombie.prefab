@@ -863,6 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8616146445908047111}
   - component: {fileID: 8906854584364256512}
+  - component: {fileID: 8865917342757346278}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
@@ -984,6 +985,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00047789235, y: 0.00026076846, z: -0.009550706}
     m_Extent: {x: 0.008964996, y: 0.008416867, z: 0.011064008}
   m_DirtyAABB: 0
+--- !u!136 &8865917342757346278
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508971211395751609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0.0112537015, y: -0.1513051, z: 0.2848051}
 --- !u!1 &2571038844772327861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2191,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.85
+  m_Radius: 1
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0.0055476427, y: 0.705575, z: 0}
@@ -2228,7 +2243,7 @@ MonoBehaviour:
   agent: {fileID: 6835208686159286857}
   model: {fileID: 8906854584364256512}
   itemsDrops:
-  - {fileID: 0}
+  - {fileID: 8691872994179398970, guid: 22646e7908004284880d9602742f615a, type: 3}
   - {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
   - {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
   - {fileID: 897574624969445326, guid: 40ec123080f5ffd44ada3afefed402a1, type: 3}

@@ -55,7 +55,7 @@ public class enemyBase : MonoBehaviour
     {
         // EnemyCanvas = GameObject.FindGameObjectWithTag("EnemyCanvas");
         GameManager.instance.enemyNumber++;
-        GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");		
+        GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");
         currentHealth = maxHealth;
         playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
@@ -139,9 +139,11 @@ public class enemyBase : MonoBehaviour
         }
         else
         {
+           
             StartCoroutine(flashDamage());
             facePlayer();
             agent.SetDestination(GameManager.instance.player.transform.position);
+            
         }
     }
     virtual protected IEnumerator death()
@@ -195,7 +197,7 @@ public class enemyBase : MonoBehaviour
 
                 }
             }
-           
+
 
 
         }
@@ -203,7 +205,7 @@ public class enemyBase : MonoBehaviour
 
     }
 
-   public void payDay(int currency)
+    public void payDay(int currency)
     {
         GameManager.instance.bankTotal += currency;
     }
@@ -219,15 +221,15 @@ public class enemyBase : MonoBehaviour
     //        Debug.Log(angle);
     //        if (hit.collider.CompareTag("Target"))
     //        {
-               
-                
+
+
     //                agent.speed = speedChase;
     //                agent.stoppingDistance = stoppingDistOrigin;
     //                agent.SetDestination(target.transform.position);
 
-                
+
     //        }
-          
+
 
     //    }
 
@@ -238,25 +240,29 @@ public class enemyBase : MonoBehaviour
     {
         randItem = Random.Range(0, 4);
 
-       
+
 
         if (randItem == 2)
         {
 
-            Instantiate(itemsDrops[2], transform.position, Quaternion.identity);
+            Instantiate(itemsDrops[2], transform.position + (transform.up * 1.3f), Quaternion.identity);
         }
         else if (randItem == 1)
         {
-            Instantiate(itemsDrops[1], transform.position, Quaternion.identity);
+            Instantiate(itemsDrops[1], transform.position + (transform.up * 1.3f), Quaternion.identity);
 
 
         }
         else if (randItem == 3)
         {
 
-            Instantiate(itemsDrops[3], transform.position, Quaternion.identity);
+            Instantiate(itemsDrops[3], transform.position + (transform.up * 1.3f), Quaternion.identity);
 
 
+        }
+        else if (randItem == 0)
+        {
+            Instantiate(itemsDrops[0], transform.position + (transform.up * 1.3f), Quaternion.identity);
         }
         Debug.Log(itemsDrops);
     }

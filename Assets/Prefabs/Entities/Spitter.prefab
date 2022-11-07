@@ -143,6 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7075861401138498386}
   - component: {fileID: 2499734420245309425}
+  - component: {fileID: 4281183620997511267}
   m_Layer: 7
   m_Name: Z_Body
   m_TagString: Untagged
@@ -222,6 +223,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.2738102, y: 0.04886008, z: 0.000000022351742}
     m_Extent: {x: 0.19489695, y: 0.16547251, z: 0.15937948}
   m_DirtyAABB: 0
+--- !u!136 &4281183620997511267
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704789795519806498}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 2
+  m_Center: {x: 0.000000008647813, y: 0.002113387, z: 0.9}
 --- !u!1 &706861875265309020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,8 +1050,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2958777114356923301}
   m_LocalRotation: {x: 0.01670785, y: -0.002160177, z: 0.104880005, w: 0.9943422}
-  m_LocalPosition: {x: -0.3929395, y: -0.0000016975403, z: -0.0000003814697}
-  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+  m_LocalPosition: {x: -0.3929395, y: -0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5077881391186347003}
@@ -2166,7 +2181,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.67335874, z: 0}
@@ -2196,7 +2211,7 @@ MonoBehaviour:
   agent: {fileID: 7342219194560569889}
   model: {fileID: 2499734420245309425}
   itemsDrops:
-  - {fileID: 0}
+  - {fileID: 8691872994179398970, guid: 22646e7908004284880d9602742f615a, type: 3}
   - {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
   - {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
   - {fileID: 0}

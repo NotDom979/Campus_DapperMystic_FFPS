@@ -71,5 +71,11 @@ public class Zombie : enemyBase, IDamage
         
     }
 
-  
+    protected override IEnumerator flashDamage()
+    {
+
+        animator.Play("hit");
+        return base.flashDamage();
+    }
+
 }

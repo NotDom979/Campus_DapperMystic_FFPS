@@ -1516,6 +1516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4106753120879232}
   - component: {fileID: 137391866070344752}
+  - component: {fileID: 7552416200323285048}
   m_Layer: 7
   m_Name: Ghoul:Tube1
   m_TagString: Untagged
@@ -1657,6 +1658,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.32449257, y: 0.23113441, z: 0.1844635}
     m_Extent: {x: 2.0365267, y: 2.334509, z: 1.9305992}
   m_DirtyAABB: 0
+--- !u!136 &7552416200323285048
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274439885832978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 7.1009274
+  m_Direction: 1
+  m_Center: {x: 0.10854636, y: -40.220222, z: 1.621735}
 --- !u!1 &1286057451588418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1797,7 @@ Animation:
   - {fileID: 7400008, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   - {fileID: 7400010, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   - {fileID: 7400012, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+  - {fileID: 7400000, guid: 4a8c4ee06f0c2c942b970ffc15726000, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1796,10 +1812,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 3
+  m_Radius: 1.7
+  m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 2, z: 0.5}
 --- !u!195 &647254899
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1840,6 +1856,7 @@ MonoBehaviour:
   target: {fileID: 1358685063455072086, guid: 09015b42326a79e468db872c3a4ec899, type: 3}
   animator: {fileID: 357306572}
   sightDistance: 70
+  TargetsightDistance: 0
   roamDist: 50
   viewAngle: 75
   speedChase: 7
@@ -1864,6 +1881,8 @@ MonoBehaviour:
   speedPatrol: 3
   InRadius: 0
   anim: {fileID: 111670102475343736}
+  lefthand: {fileID: 0}
+  righthand: {fileID: 0}
 --- !u!95 &357306572
 Animator:
   serializedVersion: 4

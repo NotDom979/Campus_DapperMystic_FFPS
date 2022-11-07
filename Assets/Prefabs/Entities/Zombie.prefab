@@ -2532,6 +2532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7590287073056450337}
   - component: {fileID: 2760288498555224766}
+  - component: {fileID: 3325455992860002399}
   m_Layer: 7
   m_Name: Zombie1
   m_TagString: Untagged
@@ -2662,6 +2663,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.005478114, y: 0.026793845, z: 0.0000002682209}
     m_Extent: {x: 0.9206203, y: 0.20534852, z: 0.71729696}
   m_DirtyAABB: 0
+--- !u!136 &3325455992860002399
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243043593163915500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 2
+  m_Direction: 2
+  m_Center: {x: -0.00000022947603, y: 0.023204228, z: 0.8744683}
 --- !u!1 &8304318661823790617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,7 +2818,7 @@ MonoBehaviour:
   agent: {fileID: 3939533101959521989}
   model: {fileID: 2760288498555224766}
   itemsDrops:
-  - {fileID: 0}
+  - {fileID: 8691872994179398970, guid: 22646e7908004284880d9602742f615a, type: 3}
   - {fileID: 7667289368638109781, guid: 6f443cb5a9425d6489ac18e32cfa6391, type: 3}
   - {fileID: 897574624969445326, guid: dc474752f81bda54ea874b2e397fea27, type: 3}
   - {fileID: 0}
@@ -2831,8 +2846,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 4
+  m_Radius: 0.6
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8535099301264646314

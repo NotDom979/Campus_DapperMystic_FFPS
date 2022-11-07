@@ -66,5 +66,10 @@ public class SpitterEnemy : enemyBase, IDamage
         return base.death();
     }
 
-   
+    protected override IEnumerator flashDamage()
+    {
+
+        animator.Play("hit");
+        return base.flashDamage();
+    }
 }

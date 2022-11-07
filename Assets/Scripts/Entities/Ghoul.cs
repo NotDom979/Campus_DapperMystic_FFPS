@@ -336,4 +336,11 @@ public class Ghoul : enemyBase, IDamage
         return base.death();
     }
 
+    protected override IEnumerator flashDamage()
+    {
+
+        anim.Play("Unarmed-GetHit-R1");
+        return base.flashDamage();
+    }
+
 }
