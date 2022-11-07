@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 	public GameObject pressf;
 	public GameObject PoisonAlert;
 	public GameObject BleedAlert;
+	public GameObject SniperScope;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
     public TextMeshProUGUI AmmoCount;
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 		if (damageFlash.activeSelf == false)
 			{
 	    checkWin();
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
+			if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !optionMenu.activeSelf && !playerLoseMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
@@ -79,14 +80,21 @@ public class GameManager : MonoBehaviour, IDataPersistence
         		{
         	    	cursorUnLockUnPause();
             	}
-        	}
-		}
+        }
+			else if(Input.GetButtonDown("Cancel"))
+			{
+				optionMenu.SetActive(false);
+				cursorUnLockUnPause();
+			}
+			}
+		
     }
     public void cursorLockPause()
 	{
 		damageFlash.SetActive(false);
 		bleedFlash.SetActive(false);
 		poisonFlash.SetActive(false);
+		SniperScope.SetActive(false);
 		Time.timeScale = 0;
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.Confined;			
