@@ -12,7 +12,9 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string filename;
 
     private GameData gameData;
+
     private List<IDataPersistence> dataPersistencesSaves;
+
     private FileDataHandler fileDataHandler;
     public static DataPersistenceManager instance { get; private set; }
 
@@ -46,7 +48,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         //load any save data
-        this.gameData = fileDataHandler.Load();
+        this.gameData = fileDataHandler.Load(gameData);
         // if no load data, initialize new game
         if (this.gameData == null)
         {
@@ -67,7 +69,7 @@ public class DataPersistenceManager : MonoBehaviour
         //pass the data to other scripts so they can update it 
         foreach (IDataPersistence dataPersistenceScript in dataPersistencesSaves)
         {
-            dataPersistenceScript.SaveData(ref gameData);
+            dataPersistenceScript.SaveData(gameData);
         }
         //save that data to a file using the data handler
         fileDataHandler.Save(gameData);

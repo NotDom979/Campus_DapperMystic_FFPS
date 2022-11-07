@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameData
 {
     public int moneySave;
+    public int Zombiewave;
+    public int health;
+    public int armor;
 
     public Vector3 playerPosSave;
     //values defined in this constructor will be default settings

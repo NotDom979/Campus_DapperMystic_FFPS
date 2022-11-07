@@ -15,62 +15,77 @@ public class FileDataHandler
 
 
     }
-    public GameData Load() {
-        string fullP = Path.Combine(dataDirectoryPath, dataFileName);
-        GameData loadData = null;
-
-        if (File.Exists(fullP))
-        {
-            try
-            {
-                //loads the data from Json File
-                string dataBeingTransferBack = " ";
-                using (FileStream stream = new FileStream(fullP, FileMode.Open))
-                {
-                    using (StreamReader readIt = new StreamReader(stream))
-                    {
-                       dataBeingTransferBack = readIt.ReadToEnd(); 
-                    }
-                }
-
-                //turning it back into C# code or Object
-                loadData = JsonUtility.FromJson<GameData>(dataBeingTransferBack);
-            }
-            catch (Exception error)
-            {
-
-                Debug.LogError(" Error occured when trying to save file data: " + fullP + "\n" + error); ;
-            }
-        }
-        return loadData;   
-    }
-
     public void Save(GameData data)
     {
-        //use Path.combine to account for different OS's different paths
-        string fullP = Path.Combine(dataDirectoryPath, dataFileName);
-        try
-        {
-            //create the directory the file will be written to if not existing already 
 
-            Directory.CreateDirectory(fullP);
+        PlayerPrefs.SetInt("moneySave", data.moneySave);
+
+
+        ////use Path.combine to account for different OS's different paths
+        //string fullP = Path.Combine(dataDirectoryPath, dataFileName);
+        //try
+        //{
+        //    //create the directory the file will be written to if not existing already 
+
+        //    Directory.CreateDirectory(fullP);
                 
-            //changin the c# game data into text/computer files 
-            string dataBeingStored = JsonUtility.ToJson(data,true); 
+        //    //changin the c# game data into text/computer files 
+        //    string dataBeingStored = JsonUtility.ToJson(data,true); 
                
-            using(FileStream stream = new FileStream(fullP, FileMode.Create))
-            {
-                using(StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.Write(dataBeingStored);
-                }
-            }
+        //    using(FileStream stream = new FileStream(fullP, FileMode.Create))
+        //    {
+        //        using(StreamWriter writer = new StreamWriter(stream))
+        //        {
+        //            writer.Write(dataBeingStored);
+                    
+        //        }
+        //    }
 
-        }
-        catch (Exception error)
-        {
+        //}
+        //catch (Exception error)
+        //{
 
-            Debug.LogError(" Error occured when trying to save file data: " + fullP + "\n" + error);
-        }
+        //    Debug.LogError(" Error occured when trying to save file data: " + fullP + "\n" + error);
+        //}
     }
-}
+    public GameData Load(GameData loadData)
+    {
+
+
+        //    string fullP = Path.Combine(dataDirectoryPath, dataFileName);
+         loadData = null;
+
+        if (PlayerPrefs.HasKey("moneySave"))
+         loadData.moneySave = PlayerPrefs.GetInt("moneySave");
+        
+           return loadData; 
+
+
+    }
+        //    if (File.Exists(fullP))
+        //    {
+        //        try
+        //        {
+        //            //loads the data from Json File
+        //            string dataBeingTransferBack = " ";
+        //            using (FileStream stream = new FileStream(fullP, FileMode.Open))
+        //            {
+        //                using (StreamReader readIt = new StreamReader(stream))
+        //                {
+        //                   dataBeingTransferBack = readIt.ReadToEnd(); 
+        //                }
+        //            }
+
+        //            //turning it back into C# code or Object
+        //            loadData = JsonUtility.FromJson<GameData>(dataBeingTransferBack);
+        //        }
+        //        catch (Exception error)
+        //        {
+
+        //            Debug.LogError(" Error occured when trying to save file data: " + fullP + "\n" + error); ;
+        //        }
+        //    }
+        //    return loadData;   
+        //}
+
+    }

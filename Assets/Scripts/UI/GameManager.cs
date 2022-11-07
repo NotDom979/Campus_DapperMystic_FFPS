@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.bankTotal = data.moneySave;
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.moneySave = this.bankTotal;
     }
