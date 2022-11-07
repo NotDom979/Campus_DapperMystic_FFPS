@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 		if (damageFlash.activeSelf == false)
 			{
 	    checkWin();
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
+			if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !optionMenu.activeSelf && !playerLoseMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
@@ -80,8 +80,14 @@ public class GameManager : MonoBehaviour
         		{
         	    	cursorUnLockUnPause();
             	}
-        	}
-		}
+        }
+			else if(Input.GetButtonDown("Cancel"))
+			{
+				optionMenu.SetActive(false);
+				cursorUnLockUnPause();
+			}
+			}
+		
     }
     public void cursorLockPause()
 	{
