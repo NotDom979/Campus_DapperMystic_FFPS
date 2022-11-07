@@ -12,24 +12,45 @@ public class Volume: MonoBehaviour
 	float txt;
 	public void MasterVolume(float volume)
 	{
+		//txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
+		if (slider.value == 0)
+		{
+			volume = -80;
+		}
+		else
+			txt = Mathf.Log10(slider.value) * 20;
+
+			
 		audioMixer.SetFloat("MasterVol",volume);
-		txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
-		Text.text = txt.ToString("F0");
+		Text.text = (slider.value * 100).ToString("F0");
 		
 	}
 	public void SFXVolume(float volume)
 	{
+		//txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
+		if (slider.value == 0)
+		{
+			volume = -80;
+		}
+		else
+			txt = Mathf.Log10(volume) * 20;
+			
+		Text.text = (slider.value * 100).ToString("F0");
 		audioMixer.SetFloat("SFXVol",volume);
-		txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
-		Text.text = txt.ToString("F0");
 		
 	}
 	public void MusicVolume(float volume)
 	{
+		//txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
+		if (slider.value == 0)
+		{
+			volume = -80;
+		}
+		else
+			txt = Mathf.Log10(volume) * 20;
+
 		audioMixer.SetFloat("MusicVol",volume);
-		txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
-		
-		Text.text = txt.ToString("F0");
+		Text.text = (slider.value * 100).ToString("F0");
 		
 	}
 }
