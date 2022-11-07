@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 87f8c2a571d16f6458ec4c98a181198f, type: 2}
+--- !u!1 &25989900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1268714440526371513, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+  m_PrefabInstance: {fileID: 335899657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &178272277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -383,6 +388,18 @@ PrefabInstance:
       propertyPath: shop
       value: 
       objectReference: {fileID: 825838703}
+    - target: {fileID: 859239550891506152, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+      propertyPath: BleedAlert
+      value: 
+      objectReference: {fileID: 1476994165}
+    - target: {fileID: 859239550891506152, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+      propertyPath: PoisonAlert
+      value: 
+      objectReference: {fileID: 25989900}
+    - target: {fileID: 859239550891506152, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+      propertyPath: SniperScope
+      value: 
+      objectReference: {fileID: 892879875}
     - target: {fileID: 1461329582799393251, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
       propertyPath: m_Name
       value: UI Variant 1
@@ -1115,6 +1132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b4143c3d060c414f90cb8f70c7b201e, type: 3}
+--- !u!1 &892879875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1294777785443884323, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+  m_PrefabInstance: {fileID: 335899657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1048053403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1361,6 +1383,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d00786917c5877428a3fc1d63a2c475, type: 3}
+--- !u!1 &1476994165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1268714440919714687, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
+  m_PrefabInstance: {fileID: 335899657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1552008281
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,8 +15,9 @@ public class playerController : MonoBehaviour
     [SerializeField] public int HP;
 	[SerializeField] public int Armor;
 	[SerializeField] public GameObject rifleADS;
-	//[SerializeField] public GameObject Camera;
+	[SerializeField] public GameObject CameraPos;
 	[SerializeField] public GameObject pistolADS;
+	[SerializeField] public GameObject sniperADS;
 	Transform cameraLocation;
     public AudioSource playerGrunt;
     public AudioSource playerJumpNoise;
@@ -99,7 +100,9 @@ public class playerController : MonoBehaviour
         anim.SetBool("SniperBool", false);
         anim.SetBool("PistolBool", false);
 	    anim.enabled = true;
-	    //cameraLocation.transform.localPosition = new transform(Camera.main.transform.localPosition);
+	    CameraPos.transform.localPosition = Camera.main.transform.localPosition;
+	    CameraPos.transform.rotation = Camera.main.transform.rotation;
+	    // cameraLocation  = new Transform(Camera.main.transform.position);
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
 
@@ -111,7 +114,7 @@ public class playerController : MonoBehaviour
             playerFootSteps.Stop();
             StartCoroutine(reloadGun());
 	        movement();
-	        //StartCoroutine(ADS());
+	        StartCoroutine(ADS());
             StartCoroutine(shoot());
             gunselect();
             GameManager.instance.CheckBankTotal();
@@ -915,23 +918,21 @@ public class playerController : MonoBehaviour
     }
 	IEnumerator ADS()
 	{
-		while (Input.GetButton("Aim"))
+		if (Input.GetButton("Aim"))
 		{
-			if (WeaponDetection() == 1)
+			if (WeaponDetection() == 3)
 			{
-				Camera.main.gameObject.SetActive(false);
-				rifleADS.SetActive(true);
-			}
-			else if (WeaponDetection() == 2 || WeaponDetection() == 5 || WeaponDetection() == 6 || WeaponDetection() == 7)
-			{
-				Camera.main.gameObject.SetActive(false);
-				rifleADS.SetActive(true);
+				GameManager.instance.SniperScope.SetActive(true);
+				Camera.main.transform.localPosition += sniperADS.transform.localPosition;
+				yield return new WaitForSeconds(.5f);
 			}
 		}
-		while ((Input.GetButtonUp("Aim")))
+		else if ((Input.GetButtonUp("Aim")))
 		{
-			Camera.main.gameObject.SetActive(true);
-			yield return new WaitForSeconds(2f);
+			
+			GameManager.instance.SniperScope.SetActive(false);
+			Camera.main.transform.localPosition = CameraPos.transform.localPosition;
+			yield return new WaitForSeconds(.5f);
 		}
 		
 	}

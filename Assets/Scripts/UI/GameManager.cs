@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 	public GameObject pressf;
 	public GameObject PoisonAlert;
 	public GameObject BleedAlert;
+	public GameObject SniperScope;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI flagCountText;
     public TextMeshProUGUI AmmoCount;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
 		damageFlash.SetActive(false);
 		bleedFlash.SetActive(false);
 		poisonFlash.SetActive(false);
+		SniperScope.SetActive(false);
 		Time.timeScale = 0;
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.Confined;			
