@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     public Image playerArmorBar;
 	public bool isPaused;
 	public int WaveCounter;
+	
     // Start is called before the first frame update
     void Awake()
     {
@@ -67,7 +69,12 @@ public class GameManager : MonoBehaviour
 	{
 		if (damageFlash.activeSelf == false)
 			{
-	    checkWin();
+			checkWin();
+			if (winMenu.activeSelf == true && Input.GetButtonDown("Cancel"))
+			{
+				cursorUnLockUnPause();
+				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			}
 			if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !optionMenu.activeSelf && !playerLoseMenu.activeSelf)
         {
             isPaused = !isPaused;
@@ -84,6 +91,7 @@ public class GameManager : MonoBehaviour
 			else if(Input.GetButtonDown("Cancel"))
 			{
 				optionMenu.SetActive(false);
+				
 				cursorUnLockUnPause();
 			}
 			}
@@ -151,7 +159,7 @@ public class GameManager : MonoBehaviour
     public void CheckEnemyTotal()
     {
 	    enemyNumber--;
-	    if (enemyNumber == -1)
+	    if (enemyNumber <= -1)
 	    {
 	    	enemyNumber = 0;
 	    }

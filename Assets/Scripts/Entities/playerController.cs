@@ -241,13 +241,13 @@ public class playerController : MonoBehaviour
                         }
                     }
                 }
+	            yield return new WaitForSeconds(shootRate);
                 Debug.Log("ZipBang");
                 if (shootRate <= 1 && Input.GetButton("Shoot"))
                 {
                     Recoil();
                     InvokeRepeating("shoot", 0f, shootRate);
                 }
-                yield return new WaitForSeconds(shootRate);
                 isShooting = false;
                 gunShot.Stop();
                 mfClone.SetActive(false);
@@ -949,6 +949,8 @@ public class playerController : MonoBehaviour
 			{
 				GameManager.instance.SniperScope.SetActive(true);
 				Camera.main.transform.localPosition = sniperADS.transform.localPosition;
+				Sniper.GetComponent<Renderer>().enabled = false;
+				LaserRifle.GetComponent<Renderer>().enabled = false;
 				yield return new WaitForSeconds(.5f);
 			}
 		}
@@ -957,6 +959,8 @@ public class playerController : MonoBehaviour
 			
 			GameManager.instance.SniperScope.SetActive(false);
 			Camera.main.transform.localPosition = CameraPos.transform.localPosition;
+			Sniper.GetComponent<Renderer>().enabled = true;
+			LaserRifle.GetComponent<Renderer>().enabled = true;
 			yield return new WaitForSeconds(.5f);
 		}
 		

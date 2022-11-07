@@ -182,7 +182,7 @@ public class StatusManager : MonoBehaviour
         {
             poisonTicks.Add(ticks);
 	        StartCoroutine(Poison());
-	        GameManager.instance.PoisonAlert.SetActive(false);
+	      
         }
         else
         {
@@ -211,9 +211,10 @@ public class StatusManager : MonoBehaviour
             }
             else
             {
-                poisonTicks.Clear();
+	            poisonTicks.Clear();
             }
         }
+	    GameManager.instance.PoisonAlert.SetActive(false);
     }
     #endregion
 
