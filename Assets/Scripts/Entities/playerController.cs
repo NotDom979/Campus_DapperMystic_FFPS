@@ -21,7 +21,8 @@ public class playerController : MonoBehaviour
 	Transform cameraLocation;
     public AudioSource playerGrunt;
     public AudioSource playerJumpNoise;
-    public AudioSource playerFootSteps;
+	public AudioSource playerFootSteps;
+	public cameraShake CameraShaker;
     public GameObject arMuzzle;
     public GameObject sniperMuzzle;
     public GameObject bazookaMuzzle;
@@ -46,6 +47,7 @@ public class playerController : MonoBehaviour
     [SerializeField] GameObject Shotgun;
     [SerializeField] GameObject SMG;
     [SerializeField] GameObject Burst;
+	[SerializeField] GameObject LaserRifle;
     public GameObject hitEffect;
     public GameObject muzzleFlash;
     public AudioSource gunShot;
@@ -219,7 +221,7 @@ public class playerController : MonoBehaviour
                     {
                         Shoot();
                     }
-                    Recoil();
+	                Recoil();
                     Muzzle();
                     isShooting = true;
                     gunShot.clip = stored;
@@ -515,7 +517,7 @@ public class playerController : MonoBehaviour
             anim.SetBool("Recoil", false);
             anim.Play("Pistol");
         }
-        if (WeaponDetection() == 2 || WeaponDetection() == 5)
+	    if (WeaponDetection() == 2 || WeaponDetection() == 5 || WeaponDetection() == 6)
         {
             anim.Play("ARShot");
             anim.SetBool("Recoil", true);
@@ -547,6 +549,8 @@ public class playerController : MonoBehaviour
             anim.SetBool("Recoil", false);
             anim.Play("AR");
         }
+	    
+	    
     }
     void Reload()
     {
@@ -668,7 +672,7 @@ public class playerController : MonoBehaviour
         {
             return 2;
         }
-        else if (Sniper.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("Sniper"))
+        else if (Sniper.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("Sniper") || LaserRifle.activeSelf == true)
         {
             return 3;
         }
@@ -743,6 +747,16 @@ public class playerController : MonoBehaviour
             Sniper.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         }
+        else if (gameObject.GetComponent<Collider>().CompareTag("Laser") || maxAmmo == 12)
+        {
+            anim.Play("Sniper");
+            AllFalse();
+            anim.SetBool("SniperBool", true);
+	        LaserRifle.SetActive(true);
+	        LaserRifle.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+	        LaserRifle.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        }
         else if (gameObject.GetComponent<Collider>().CompareTag("Bazooka") || maxAmmo == 1)
         {
             anim.Play("Bazooka");
@@ -812,6 +826,16 @@ public class playerController : MonoBehaviour
             Sniper.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         }
+        else if (gunstats[selectGun].Tag == "Laser")
+        {
+            anim.Play("Sniper");
+            AllFalse();
+            anim.SetBool("SniperBool", true);
+	        LaserRifle.SetActive(true);
+	        LaserRifle.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+	        LaserRifle.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        }
         else if (gunstats[selectGun].Tag == "Pistol")
         {
             AllFalse();
@@ -834,7 +858,7 @@ public class playerController : MonoBehaviour
 
     void shotgunShoot()
     {
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
         for (int i = 0; i < 8; i++)
@@ -847,7 +871,7 @@ public class playerController : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
 	    for (int i = 0; i < 2; i++)
         {
             Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
@@ -861,7 +885,8 @@ public class playerController : MonoBehaviour
         anim.SetBool("SniperBool", false);
         anim.SetBool("ArBool", false);
         anim.SetBool("PistolBool", false);
-        anim.SetBool("BaBool", false);
+	    anim.SetBool("BaBool", false);
+	    LaserRifle.SetActive(false);
         Pistol.SetActive(false);
         AR.SetActive(false);
         Sniper.SetActive(false);
@@ -899,7 +924,7 @@ public class playerController : MonoBehaviour
         Debug.Log("Mousepos " + mousePos);
         Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
         Debug.Log("ShootPos " + shootPos);
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
         Vector3 pos = ray.origin + (ray.direction);
         RaycastHit rot;
         if (Physics.Raycast(ray, out rot, shootDist))

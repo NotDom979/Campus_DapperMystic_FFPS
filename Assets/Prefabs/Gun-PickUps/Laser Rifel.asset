@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
+  m_Name: Laser Rifel
+  m_EditorClassIdentifier: 
+  shootRate: 3
+  shootDist: 15
+  shootDamage: 10
+  ammoCount: 5
+  maxAmmo: 12
+  reloadTime: 1.7
+  currentAmmoleft: 25
+  maxAmmoSizeForGun: 25
+  Tag: Laser
+  weaponCost: 500
+  gunModel: {fileID: 100000, guid: b5742c35cad19b945bc129c719875b2d, type: 3}
+  hitEffect: {fileID: 1237532278979468375, guid: e0f1f4fb5a40a164cbede567cf490759, type: 3}
+  muzzleEffect: {fileID: 8839359020489531121, guid: 7c815f64f8217564b8ba709929f671ea, type: 3}
+  shotPoint: {fileID: 2431188391930275316, guid: 216b32a65d748c74b97cedda5585bfb3, type: 3}
+  bullet: {fileID: 6894301593597968444, guid: 70948e84d1baa4a4ca3b264c1636db76, type: 3}
+  purchased: 0
+  sound: {fileID: 8300000, guid: 24f197fa1ec629342a2b66f1e9628e96, type: 3}
