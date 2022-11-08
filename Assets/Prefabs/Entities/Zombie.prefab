@@ -329,7 +329,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7024225010264252868
 MonoBehaviour:
@@ -2437,7 +2437,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7024225010997858824
 MonoBehaviour:
@@ -2674,7 +2674,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.8
-  m_Height: 2
+  m_Height: 3
   m_Direction: 2
   m_Center: {x: -0.00000022947603, y: 0.023204228, z: 0.8744683}
 --- !u!1 &8304318661823790617
