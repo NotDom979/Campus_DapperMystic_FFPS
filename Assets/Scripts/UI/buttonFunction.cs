@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class buttonFunction : MonoBehaviour, IDataPersistence
+public class buttonFunction : MonoBehaviour
 {
 	public void resume()
 	{
@@ -28,13 +28,6 @@ public class buttonFunction : MonoBehaviour, IDataPersistence
 		GameManager.instance.cursorUnLockUnPause();
 	}
 
-	public void LoadData(GameData data)
-	{
-		
-	}
 
-	public void SaveData(GameData data)
-	{
-		
-	}
+	
 }

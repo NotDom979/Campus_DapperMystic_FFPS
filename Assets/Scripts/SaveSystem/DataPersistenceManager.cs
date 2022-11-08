@@ -73,7 +73,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
         //save that data to a file using the data handler
         fileDataHandler.Save(gameData);
-        Debug.Log("Saved money = " + gameData.moneySave);
+        Debug.Log("Saved money =  " + gameData.moneySave);
 
 
     }
