@@ -261,6 +261,7 @@ public class playerController : MonoBehaviour
                 gunShot.Play();
             }
         }
+	    
 
     }
     public void AddHealth(int amount)
@@ -881,7 +882,7 @@ public class playerController : MonoBehaviour
         gunShot.Stop();
     }
     void AllFalse()
-    {
+	{
         anim.SetBool("SniperBool", false);
         anim.SetBool("ArBool", false);
         anim.SetBool("PistolBool", false);
@@ -938,9 +939,14 @@ public class playerController : MonoBehaviour
 		        hitEffClone = Instantiate(hitEffect, rot.point, transform.rotation);
 		      }
         }
-        Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+	    Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+	    StartCoroutine(shootSlow());
 
     }
+	IEnumerator shootSlow()
+	{
+		yield return new WaitForSeconds(shootRate);
+	}
 	IEnumerator ADS()
 	{
 		if (Input.GetButton("Aim"))

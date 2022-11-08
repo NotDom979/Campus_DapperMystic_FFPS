@@ -18,7 +18,7 @@ public class Volume: MonoBehaviour
 			volume = -80;
 		}
 		else
-			txt = Mathf.Log10(slider.value) * 20;
+			volume = 20.0f * Mathf.Log10(slider.value);
 
 			
 		audioMixer.SetFloat("MasterVol",volume);
@@ -33,7 +33,7 @@ public class Volume: MonoBehaviour
 			volume = -80;
 		}
 		else
-			txt = Mathf.Log10(volume) * 20;
+			volume = 20.0f * Mathf.Log10(slider.value);
 			
 		Text.text = (slider.value * 100).ToString("F0");
 		audioMixer.SetFloat("SFXVol",volume);
@@ -47,7 +47,7 @@ public class Volume: MonoBehaviour
 			volume = -80;
 		}
 		else
-			txt = Mathf.Log10(volume) * 20;
+			volume = 20.0f * Mathf.Log10(slider.value);
 
 		audioMixer.SetFloat("MusicVol",volume);
 		Text.text = (slider.value * 100).ToString("F0");
