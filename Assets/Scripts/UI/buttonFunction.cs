@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class buttonFunction : MonoBehaviour
+public class buttonFunction : MonoBehaviour, IDataPersistence
 {
 	public void resume()
 	{
@@ -20,11 +20,21 @@ public class buttonFunction : MonoBehaviour
 	public void quit()
 	{
 		Application.Quit();
+		 
 	}
 	public void respawn()
 	{
 		GameManager.instance.playerScript.respawn();
 		GameManager.instance.cursorUnLockUnPause();
 	}
-	
+
+	public void LoadData(GameData data)
+	{
+		
+	}
+
+	public void SaveData(GameData data)
+	{
+		
+	}
 }
