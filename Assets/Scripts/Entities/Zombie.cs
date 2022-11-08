@@ -44,9 +44,9 @@ public class Zombie : enemyBase, IDamage
     {
         base.CanSeePlayer();
 
-        if (angle > viewAngle)
+        if (angle <= viewAngle)
         {
-            agent.SetDestination(target.transform.position);
+            facePlayer();
         }
     }
 
