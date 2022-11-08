@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDataPersistence
 {
     [Header("-----PlayerStats-----")]
     [SerializeField] public CharacterController controller;
@@ -971,9 +971,18 @@ public class playerController : MonoBehaviour
 		}
 		
 	}
-	
 
+    public void LoadData(GameData data)
+    {
+        this.HP = data.health;
+        this.Armor = data.armor;
+    }
 
+    public void SaveData(GameData data)
+    {
+       data.health = this.HP;
+        data.armor = this.Armor;    
+    }
 }
 
 

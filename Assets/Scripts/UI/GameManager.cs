@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager instance;
     [Header("-----GameGoal------")]
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour
     public Image playerArmorBar;
 	public bool isPaused;
 	public int WaveCounter;
-	
     // Start is called before the first frame update
     void Awake()
     {
@@ -69,12 +67,7 @@ public class GameManager : MonoBehaviour
 	{
 		if (damageFlash.activeSelf == false)
 			{
-			checkWin();
-			if (winMenu.activeSelf == true && Input.GetButtonDown("Cancel"))
-			{
-				cursorUnLockUnPause();
-				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-			}
+	    checkWin();
 			if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !optionMenu.activeSelf && !playerLoseMenu.activeSelf)
         {
             isPaused = !isPaused;
@@ -91,7 +84,6 @@ public class GameManager : MonoBehaviour
 			else if(Input.GetButtonDown("Cancel"))
 			{
 				optionMenu.SetActive(false);
-				
 				cursorUnLockUnPause();
 			}
 			}
@@ -159,7 +151,7 @@ public class GameManager : MonoBehaviour
     public void CheckEnemyTotal()
     {
 	    enemyNumber--;
-	    if (enemyNumber <= -1)
+	    if (enemyNumber == -1)
 	    {
 	    	enemyNumber = 0;
 	    }
@@ -193,4 +185,14 @@ public class GameManager : MonoBehaviour
         pressFtoInteract.enabled = false;
     }
 
+    public void LoadData(GameData data)
+    {
+        this.bankTotal = data.moneySave;
+       
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.moneySave = this.bankTotal;
+    }
 }

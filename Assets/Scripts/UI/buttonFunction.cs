@@ -20,11 +20,14 @@ public class buttonFunction : MonoBehaviour
 	public void quit()
 	{
 		Application.Quit();
+		 
 	}
 	public void respawn()
 	{
 		GameManager.instance.playerScript.respawn();
 		GameManager.instance.cursorUnLockUnPause();
 	}
+
+
 	
 }
