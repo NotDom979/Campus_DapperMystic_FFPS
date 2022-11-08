@@ -77,7 +77,9 @@ public class playerController : MonoBehaviour, IDataPersistence
     private GameObject hitEffClone;
     AudioClip stored;
     public GameObject testpoint;
-
+	bool CoolDown;
+	float shootCoolDown;
+	bool firstShot;
     public StatusManager statusManager;
 
     private void Start()
@@ -104,6 +106,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 	    anim.enabled = true;
 	    CameraPos.transform.localPosition = Camera.main.transform.localPosition;
 	    CameraPos.transform.rotation = Camera.main.transform.rotation;
+	    shootCoolDown = shootRate;
 	    // cameraLocation  = new Transform(Camera.main.transform.position);
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
@@ -113,11 +116,20 @@ public class playerController : MonoBehaviour, IDataPersistence
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
         if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
         {
-            playerFootSteps.Stop();
+        	if (shootCoolDown > 0)
+        	{
+        		shootCoolDown -= Time.deltaTime;
+        		CoolDown = true;
+        	}
+        	else if (shootCoolDown <= 0 || firstShot == true)
+        	{
+	        	CoolDown = false;
+	        	StartCoroutine(shoot());
+	        	firstShot = false;
+        	}
             StartCoroutine(reloadGun());
 	        movement();
 	        StartCoroutine(ADS());
-            StartCoroutine(shoot());
             gunselect();
             GameManager.instance.CheckBankTotal();
             if (GameManager.instance.playerDeadMenu.activeSelf == true)
@@ -125,6 +137,8 @@ public class playerController : MonoBehaviour, IDataPersistence
                 GameManager.instance.damageFlash.SetActive(false);
             }
         }
+	    else
+			playerFootSteps.Stop();
 
     }
     void movement()
@@ -193,75 +207,68 @@ public class playerController : MonoBehaviour, IDataPersistence
 
     }
     IEnumerator shoot()
-    {
-	    if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot") && !isShooting))
-        {
+	{
+		if (CoolDown == false)
+		{
+			
+			if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot") && !isShooting))
+			{
+				CoolDown = true;
 
-            if (currentAmmo >= 1)
-            {
-                if (maxAmmo == 1)
-                {
+				if (currentAmmo >= 1)
+				{
+					if (maxAmmo == 1)
+					{
 
-                    currentAmmo--;
-                    BazookaShoot();
+						currentAmmo--;
+						BazookaShoot();
 
 
-                }
-                else
-                {
-                    if (WeaponDetection() == 5)
-                    {
-                        shotgunShoot();
-                    }
-                    else if (WeaponDetection() == 7)
-                    {
-                        StartCoroutine(BurstShot());
-                    }
-                    else
-                    {
-                        Shoot();
-                    }
-	                Recoil();
-                    Muzzle();
-                    isShooting = true;
-                    gunShot.clip = stored;
-                    gunShot.Play();
-                    currentAmmo--;
-                    GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+					}
+					else
+					{
+						if (WeaponDetection() == 5)
+						{
+							shotgunShoot();
+						}
+						else if (WeaponDetection() == 7)
+						{
+							StartCoroutine(BurstShot());
+						}
+						else
+						{
+							Shoot();
+						}
+						Recoil();
+						Muzzle();
+						isShooting = true;
+						gunShot.clip = stored;
+						gunShot.Play();
+						currentAmmo--;
+						GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+					}
+					yield return new WaitForSeconds(1.5f);
+					Debug.Log("ZipBang");
+					if (shootRate <= 1 && Input.GetButton("Shoot"))
+					{
+						Recoil();
+						InvokeRepeating("shoot", 0f, shootRate);
+					}
+					isShooting = false;
+					gunShot.Stop();
+					mfClone.SetActive(false);
+					//Destroy(mfClone);
+					Destroy(hitEffClone);
 
-                    RaycastHit hit;
-                    if ((Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist)))
-                    {
-                        if (hit.collider.CompareTag("enemy"))
-                        {
-                            Debug.DrawLine(transform.position, hit.point, Color.green, 10);
-                            //hitEffClone = Instantiate(hitEffect, hit.point, transform.rotation);
-                            //hitEffClone.SetActive(true);
-                            //hitEffect.SetActive(false);
-                        }
-                    }
-                }
-	            yield return new WaitForSeconds(shootRate);
-                Debug.Log("ZipBang");
-                if (shootRate <= 1 && Input.GetButton("Shoot"))
-                {
-                    Recoil();
-                    InvokeRepeating("shoot", 0f, shootRate);
-                }
-                isShooting = false;
-                gunShot.Stop();
-                mfClone.SetActive(false);
-	            // Destroy(mfClone);
-                Destroy(hitEffClone);
-
-            }
-            else
-            {
-                gunShot.clip = emptyMag;
-                gunShot.Play();
-            }
-        }
+				}
+				else
+				{
+					gunShot.clip = emptyMag;
+					gunShot.Play();
+				}
+			}
 	    
+		}
 
     }
     public void AddHealth(int amount)
@@ -385,10 +392,12 @@ public class playerController : MonoBehaviour, IDataPersistence
             gunstats.Add(stats);
             stored = gunShot.clip;
             GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
-            WeaponPickup(stats);
+	        WeaponPickup(stats);
+	        shootCoolDown = shootRate;
             shotPoint.transform.localPosition = stats.shotPoint.transform.localPosition;
             bullet = stats.bullet;
-            purchased = true;
+	        purchased = true;
+	        firstShot = true;
             payDay(stats.weaponCost);
         }
         else if (GameManager.instance.bankTotal < stats.weaponCost)
@@ -430,8 +439,10 @@ public class playerController : MonoBehaviour, IDataPersistence
         hitEffect = gunstats[selectGun].hitEffect;
         hitEffect.SetActive(true);
         stored = gunShot.clip;
-        bullet = gunstats[selectGun].bullet;
-        changeWeapon();
+	    bullet = gunstats[selectGun].bullet;
+	    shootCoolDown = shootRate;
+	    changeWeapon();
+	    firstShot = true;
         shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
         model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
         model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -518,7 +529,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             anim.SetBool("Recoil", false);
             anim.Play("Pistol");
         }
-	    if (WeaponDetection() == 2 || WeaponDetection() == 5 || WeaponDetection() == 6)
+	   else if (WeaponDetection() == 2 || WeaponDetection() == 5 || WeaponDetection() == 6)
         {
             anim.Play("ARShot");
             anim.SetBool("Recoil", true);
@@ -526,7 +537,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             anim.SetBool("Recoil", false);
             anim.Play("AR");
         }
-        if (WeaponDetection() == 3)
+      else  if (WeaponDetection() == 3)
         {
             anim.Play("RifleShot");
             anim.SetBool("Recoil", true);
@@ -534,7 +545,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             anim.SetBool("Recoil", false);
             anim.Play("Sniper");
         }
-        if (WeaponDetection() == 4)
+        else if (WeaponDetection() == 4)
         {
             anim.Play("BaShoot");
             anim.SetBool("Recoil", true);
@@ -542,7 +553,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             anim.SetBool("Recoil", false);
             anim.Play("Bazooka");
         }
-        if (WeaponDetection() == 7)
+       else if (WeaponDetection() == 7)
         {
             anim.Play("BurstShot");
             anim.SetBool("Recoil", true);
@@ -866,6 +877,7 @@ public class playerController : MonoBehaviour, IDataPersistence
         {
             Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(ray.direction));
         }
+	    shootCoolDown = shootRate;
     }
 
     IEnumerator BurstShot()
@@ -879,7 +891,8 @@ public class playerController : MonoBehaviour, IDataPersistence
             yield return new WaitForSeconds(.2f);
             gunShot.Play();
         }
-        gunShot.Stop();
+	    gunShot.Stop();
+	    shootCoolDown = shootRate;
     }
     void AllFalse()
 	{
@@ -940,12 +953,13 @@ public class playerController : MonoBehaviour, IDataPersistence
 		      }
         }
 	    Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
-	    StartCoroutine(shootSlow());
+	    shootCoolDown = shootRate;
 
     }
 	IEnumerator shootSlow()
 	{
 		yield return new WaitForSeconds(shootRate);
+		CoolDown = false;
 	}
 	IEnumerator ADS()
 	{
