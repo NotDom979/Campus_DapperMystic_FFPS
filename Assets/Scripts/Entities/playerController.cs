@@ -233,7 +233,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 				{
 					RapidFire();
 					Recoil();
-					Muzzle();
+					//	Muzzle();
 					isShooting = true;
 					gunShot.clip = stored;
 					gunShot.Play();
@@ -249,7 +249,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 					isShooting = false;
 					gunShot.Stop();
 					mfClone.SetActive(false);
-					//Destroy(mfClone);
+					Destroy(mfClone);
 					Destroy(hitEffClone);
 				}
 				else
@@ -291,7 +291,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 							Shoot();
 						}
 						Recoil();
-						Muzzle();
+						//Muzzle();
 						isShooting = true;
 						gunShot.clip = stored;
 						gunShot.Play();
