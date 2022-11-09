@@ -57,6 +57,8 @@ public class WaveSpawner : MonoBehaviour
 				if (!EnemyIsAlive())
 				{
 					WaveCounter++;
+					GameManager.instance.enemyNumber = 0;
+					GameManager.instance.enemyCountText.text = GameManager.instance.enemyNumber.ToString("F0");
 					WaveComplete();
 					StartCoroutine(checkWin());
 					
@@ -90,7 +92,6 @@ public class WaveSpawner : MonoBehaviour
 			enemyCheck = 1f;
 			if (GameObject.FindGameObjectWithTag("enemy") == null)
 			{
-				GameManager.instance.enemyNumber = 0;
 				return false;
 			}
 		}

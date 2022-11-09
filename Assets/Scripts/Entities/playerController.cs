@@ -114,6 +114,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 	    CameraPos.transform.rotation = Camera.main.transform.rotation;
 	    shootCoolDown = shootRate;
 	    firstShot = true;
+        CoolDown = false;
 	    // cameraLocation  = new Transform(Camera.main.transform.position);
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
@@ -123,6 +124,15 @@ public class playerController : MonoBehaviour, IDataPersistence
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
         if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
         {
+	        if (shootCoolDown <= 0 || firstShot == true)
+	        {
+		        if (maxAmmo != 0)
+		        {
+			        CoolDown = false;
+			        StartCoroutine(shoot());
+		        }
+	        	
+	        }
         	if (shootCoolDown > 0)
         	{
         		shootCoolDown -= Time.deltaTime;
@@ -131,12 +141,6 @@ public class playerController : MonoBehaviour, IDataPersistence
         	else if (WeaponDetection() == 2 || WeaponDetection() == 6)
         	{
         		StartCoroutine(shoot());
-        	}
-        	else if (shootCoolDown <= 0 || firstShot == true)
-        	{
-	        	CoolDown = false;
-	        	StartCoroutine(shoot());
-	        	firstShot = false;
         	}
         	StartCoroutine(checkReload());
             StartCoroutine(reloadGun());
@@ -313,8 +317,8 @@ public class playerController : MonoBehaviour, IDataPersistence
 					gunShot.clip = emptyMag;
 					gunShot.Play();
 				}
+			    firstShot = false;
 			}
-	    
 		}
 
     }
@@ -710,7 +714,7 @@ public class playerController : MonoBehaviour, IDataPersistence
     void BazookaShoot()
     {
         isShooting = true;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
 
         Instantiate(missile, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
 
@@ -1029,7 +1033,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 		Debug.Log("Mousepos " + mousePos);
 		Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
 		Debug.Log("ShootPos " + shootPos);
-		Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.34f));
+		Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
 		Vector3 pos = ray.origin + (ray.direction);
 		RaycastHit rot;
 		if (Physics.Raycast(ray, out rot, shootDist))
@@ -1061,7 +1065,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 	{
 		if (Input.GetButton("Aim"))
 		{
-			if (WeaponDetection() == 3)
+			if (WeaponDetection() == 3 || WeaponDetection() == 8)
 			{
 				GameManager.instance.SniperScope.SetActive(true);
 				Camera.main.transform.localPosition = sniperADS.transform.localPosition;
