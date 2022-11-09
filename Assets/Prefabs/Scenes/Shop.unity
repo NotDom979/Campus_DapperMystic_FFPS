@@ -901,6 +901,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5757486466036500054, guid: 1da3293c0c5ba71458392b2535ecf374, type: 3}
+      propertyPath: Guns.Array.data[8]
+      value: 
+      objectReference: {fileID: 828313300}
     - target: {fileID: 7428252141703801939, guid: 1da3293c0c5ba71458392b2535ecf374, type: 3}
       propertyPath: m_Name
       value: Shop
@@ -967,6 +971,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &828313300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6463395474156054035, guid: b95fd7e6ff2d9bf45a0d119bc5c2a783, type: 3}
+  m_PrefabInstance: {fileID: 833125063160008354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &848652216
 GameObject:
   m_ObjectHideFlags: 0

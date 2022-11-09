@@ -56,7 +56,13 @@ public class playerController : MonoBehaviour, IDataPersistence
     public GameObject pistolSp;
     public GameObject rifleSp;
     public GameObject SniperSp;
+	public GameObject huntinRifleSp;
     public GameObject bazookaSp;
+	public GameObject deagleSp;
+	public GameObject SMGSp;
+	public GameObject SGSP;
+	public GameObject laserSp;
+	public GameObject burstSp;
     public AudioClip emptyMag;
     public GameObject shotPoint;
     public GameObject katana;
@@ -107,6 +113,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 	    CameraPos.transform.localPosition = Camera.main.transform.localPosition;
 	    CameraPos.transform.rotation = Camera.main.transform.rotation;
 	    shootCoolDown = shootRate;
+	    firstShot = true;
 	    // cameraLocation  = new Transform(Camera.main.transform.position);
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
@@ -120,6 +127,10 @@ public class playerController : MonoBehaviour, IDataPersistence
         	{
         		shootCoolDown -= Time.deltaTime;
         		CoolDown = true;
+        	}
+        	else if (WeaponDetection() == 2 || WeaponDetection() == 6)
+        	{
+        		StartCoroutine(shoot());
         	}
         	else if (shootCoolDown <= 0 || firstShot == true)
         	{
@@ -208,13 +219,48 @@ public class playerController : MonoBehaviour, IDataPersistence
     }
     IEnumerator shoot()
 	{
-		if (CoolDown == false)
+		if (WeaponDetection() == 2 || WeaponDetection() == 6)
 		{
+			if (Input.GetButtonDown("Shoot") || Input.GetButton("Shoot") && !isShooting)
+			{
+				
+				if (currentAmmo >= 1)
+				{
+					RapidFire();
+					Recoil();
+					Muzzle();
+					isShooting = true;
+					gunShot.clip = stored;
+					gunShot.Play();
+					currentAmmo--;
+					GameManager.instance.AmmoCount.text = currentAmmo.ToString("F0");
+					Debug.Log("ZipBang");
+					//if (shootRate <= 1 && Input.GetButton("Shoot"))
+				//	{
+				//		Recoil();
+					//	InvokeRepeating("shoot", 0f, shootRate);
+					//}
+					yield return new WaitForSeconds(shootRate);
+					isShooting = false;
+					gunShot.Stop();
+					mfClone.SetActive(false);
+					//Destroy(mfClone);
+					Destroy(hitEffClone);
+				}
+				else
+				{
+					gunShot.clip = emptyMag;
+					gunShot.Play();
+				}
 			
+			}
+		}
+		else if (CoolDown == false || firstShot == true)
+		{		
 			if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot") && !isShooting))
 			{
 				CoolDown = true;
-
+				
 				if (currentAmmo >= 1)
 				{
 					if (maxAmmo == 1)
@@ -537,7 +583,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             anim.SetBool("Recoil", false);
             anim.Play("AR");
         }
-      else  if (WeaponDetection() == 3)
+	   else  if (WeaponDetection() == 3 || WeaponDetection() == 8)
         {
             anim.Play("RifleShot");
             anim.SetBool("Recoil", true);
@@ -577,7 +623,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             anim.SetTrigger("Reload");
         }
 
-        else if (WeaponDetection() == 3)
+        else if (WeaponDetection() == 3 || WeaponDetection() == 8)
         {
 	         anim.Play("SniperReload");
 	         anim.SetTrigger("Reload");
@@ -608,7 +654,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             anim.SetBool("ArBool", true);
             anim.SetBool("Idle", true);
         }
-        else if (WeaponDetection() == 3)
+        else if (WeaponDetection() == 3 || WeaponDetection() == 8)
         {
             anim.Play("Sniper");
             AllBoolFalse();
@@ -684,7 +730,7 @@ public class playerController : MonoBehaviour, IDataPersistence
         {
             return 2;
         }
-        else if (Sniper.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("Sniper") || LaserRifle.activeSelf == true)
+        else if (Sniper.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("Sniper"))
         {
             return 3;
         }
@@ -703,6 +749,10 @@ public class playerController : MonoBehaviour, IDataPersistence
         else if (Burst.activeSelf == true || gameObject.GetComponent<Collider>().CompareTag("Burst"))
         {
             return 7;
+        }
+        else if (LaserRifle.activeSelf == true)
+        {
+	        return 8;
         }
 
         return 0;
@@ -870,12 +920,12 @@ public class playerController : MonoBehaviour, IDataPersistence
 
     void shotgunShoot()
     {
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.34f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
         for (int i = 0; i < 8; i++)
         {
-            Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(ray.direction));
+	        Instantiate(bullet, SGSP.transform.position, Quaternion.LookRotation(ray.direction));
         }
 	    shootCoolDown = shootRate;
     }
@@ -884,10 +934,10 @@ public class playerController : MonoBehaviour, IDataPersistence
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.34f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
 	    for (int i = 0; i < 2; i++)
         {
-            Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+		    Instantiate(bullet, burstSp.transform.position, Quaternion.LookRotation(ray.direction));
             yield return new WaitForSeconds(.2f);
             gunShot.Play();
         }
@@ -938,10 +988,10 @@ public class playerController : MonoBehaviour, IDataPersistence
         Debug.Log("Mousepos " + mousePos);
         Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
         Debug.Log("ShootPos " + shootPos);
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.34f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
         Vector3 pos = ray.origin + (ray.direction);
         RaycastHit rot;
-        if (Physics.Raycast(ray, out rot, shootDist))
+	    if (Physics.Raycast(ray, out rot, 100))
         {
             Debug.DrawRay(ray.origin, ray.direction, Color.blue, 15);
             Debug.DrawLine(ray.origin, rot.point, Color.red, 10);
@@ -952,10 +1002,55 @@ public class playerController : MonoBehaviour, IDataPersistence
 		        hitEffClone = Instantiate(hitEffect, rot.point, transform.rotation);
 		      }
         }
-	    Instantiate(bullet, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
+	    if (WeaponDetection() == 1)
+	    {
+		    Instantiate(bullet, pistolSp.transform.position, Quaternion.LookRotation(ray.direction));
+	    }
+	    else if (WeaponDetection() == 3)
+	    {
+		    Instantiate(bullet, SniperSp.transform.position, Quaternion.LookRotation(ray.direction));
+	    }
+	    else if (WeaponDetection() == 4)
+	    {
+		    Instantiate(bullet, bazookaSp.transform.position, Quaternion.LookRotation(ray.direction));
+	    }
+	    else if (WeaponDetection() == 8)
+	    {
+		    Instantiate(bullet, laserSp.transform.position, Quaternion.LookRotation(ray.direction));
+	    }
 	    shootCoolDown = shootRate;
 
     }
+	void RapidFire()
+	{
+        CoolDown = false;
+		Vector3 mousePos = Input.mousePosition;
+		Debug.Log("Mousepos " + mousePos);
+		Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
+		Debug.Log("ShootPos " + shootPos);
+		Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.34f));
+		Vector3 pos = ray.origin + (ray.direction);
+		RaycastHit rot;
+		if (Physics.Raycast(ray, out rot, shootDist))
+		{
+			Debug.DrawRay(ray.origin, ray.direction, Color.blue, 15);
+			Debug.DrawLine(ray.origin, rot.point, Color.red, 10);
+			Debug.Log(rot.transform.name);
+			testpoint.transform.localRotation = Camera.main.transform.rotation;
+			if (rot.collider.CompareTag("enemy"))
+			{
+				hitEffClone = Instantiate(hitEffect, rot.point, transform.rotation);
+			}
+		}
+		if (WeaponDetection() == 2)
+		{
+			Instantiate(bullet, rifleSp.transform.position, Quaternion.LookRotation(ray.direction));
+		}
+		else if (WeaponDetection() == 6)
+		{
+			Instantiate(bullet, SMGSp.transform.position, Quaternion.LookRotation(ray.direction));
+		}
+	}
 	IEnumerator shootSlow()
 	{
 		yield return new WaitForSeconds(shootRate);
