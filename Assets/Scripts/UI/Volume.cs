@@ -38,8 +38,6 @@ public class Volume: MonoBehaviour
 			
 		Text.text = (slider.value * 100).ToString("F0");
 		audioMixer.SetFloat("SFXVol",volume);
-		//	gunShot.PlayOneShot();
-		
 	}
 	public void MusicVolume(float volume)
 	{
