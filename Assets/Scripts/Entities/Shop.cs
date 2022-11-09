@@ -29,6 +29,18 @@ public class Shop : MonoBehaviour
 					gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
 					gun2 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i + 1].transform.position, spawners[i + 1].transform.rotation);
 					gun3 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i + 2].transform.position, spawners[i + 2].transform.rotation);
+					if (gun1 == gun2)
+					{
+						gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
+					}
+					else if (gun1 == gun3)
+					{
+						gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
+					}
+					else if (gun2 == gun3)
+					{
+						gun2 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i + 1].transform.position, spawners[i + 1].transform.rotation);
+					}
 				}
 				gun1.SetActive(true);
 				gun2.SetActive(true);
