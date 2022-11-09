@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
 	[SerializeField] int timer;
 	[SerializeField] int maxEnemies;
 	[SerializeField] GameObject enemy;
+	[SerializeField] GameObject rubble;
 
 	int enemiesSpawned;
 	bool isSpawning;
