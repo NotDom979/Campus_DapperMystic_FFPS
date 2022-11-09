@@ -6,12 +6,14 @@ public class GraveShake : MonoBehaviour
 {
 
     [SerializeField] WaveSpawner wavespawn;
+    [SerializeField] AudioSource crumbs;
+    
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         wavespawn = GetComponent<WaveSpawner>();
-
+        crumbs.Play();
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class GraveShake : MonoBehaviour
     public IEnumerator rubble()
     {
         yield return new WaitForSeconds(4);
+        crumbs.Stop();
         Destroy(gameObject);
     }
 }
