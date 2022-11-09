@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8400592835561974082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.464124, y: 3.367, z: -5.644295}
-  m_LocalScale: {x: 1.45, y: 1.45, z: 1.45}
+  m_LocalScale: {x: 1.5700002, y: 1.5700002, z: 1.5700002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8394845531160209958}
@@ -45,7 +45,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.06
+  m_Radius: 0.1
   m_Height: 0.27
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.13}
@@ -62,10 +62,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5129169386042896578}
-  damage: 80
+  damage: 40
   speed: 20
   destroyTime: 3
-  blastRadius: 20
+  blastRadius: 10
   explosionEffect: {fileID: 2312591318274358134, guid: 77da29788f3010e4396994ea52057980, type: 3}
 --- !u!54 &5129169386042896578
 Rigidbody:
