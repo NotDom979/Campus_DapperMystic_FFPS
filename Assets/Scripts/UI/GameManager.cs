@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager instance;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 	public GameObject poisonFlash;
 	public GameObject pressf;
 	public GameObject PoisonAlert;
+	public GameObject reloadAlert;
 	public GameObject BleedAlert;
 	public GameObject SniperScope;
     public TextMeshProUGUI enemyCountText;
@@ -83,8 +85,19 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
 			else if(Input.GetButtonDown("Cancel"))
 			{
-				optionMenu.SetActive(false);
-				cursorUnLockUnPause();
+				if (optionMenu.activeSelf)
+				{
+					optionMenu.SetActive(false);
+					cursorUnLockUnPause();
+				}
+				else if (playerDeadMenu.activeSelf == true || winMenu.activeSelf == true || playerLoseMenu.activeSelf == true)
+				{
+					GameManager.instance.cursorUnLockUnPause();
+					SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+					playerDeadMenu.SetActive(false);
+					playerLoseMenu.SetActive(false);
+					winMenu.SetActive(false);
+				}
 			}
 			}
 		

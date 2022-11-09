@@ -138,6 +138,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 	        	StartCoroutine(shoot());
 	        	firstShot = false;
         	}
+        	StartCoroutine(checkReload());
             StartCoroutine(reloadGun());
 	        movement();
 	        StartCoroutine(ADS());
@@ -1092,6 +1093,17 @@ public class playerController : MonoBehaviour, IDataPersistence
        data.health = this.HP;
         data.armor = this.Armor;    
     }
+	IEnumerator checkReload()
+	{
+		if (maxAmmo != 0 && currentAmmo == 0)
+		{
+			GameManager.instance.reloadAlert.SetActive(true);
+		}
+		else
+			GameManager.instance.reloadAlert.SetActive(false);
+		yield return new WaitForSeconds(.1f);
+	}
+	
 }
 
 

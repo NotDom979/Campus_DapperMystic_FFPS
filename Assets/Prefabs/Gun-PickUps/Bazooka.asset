@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff765a48581184a4cb0b79d289a29de9, type: 3}
   m_Name: Bazooka
   m_EditorClassIdentifier: 
-  shootRate: 5
+  shootRate: 1
   shootDist: 60
   shootDamage: 80
   ammoCount: 1
   maxAmmo: 1
-  reloadTime: 1.7
+  reloadTime: 1.5
   currentAmmoleft: 3
   maxAmmoSizeForGun: 3
   Tag: Bazooka
