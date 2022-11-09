@@ -9,6 +9,7 @@ public class Volume: MonoBehaviour
 	public AudioMixer audioMixer;
 	public TextMeshProUGUI Text;
 	public Slider slider;
+	public AudioSource gunShot;
 	float txt;
 	public void MasterVolume(float volume)
 	{
@@ -37,6 +38,7 @@ public class Volume: MonoBehaviour
 			
 		Text.text = (slider.value * 100).ToString("F0");
 		audioMixer.SetFloat("SFXVol",volume);
+		//	gunShot.PlayOneShot();
 		
 	}
 	public void MusicVolume(float volume)

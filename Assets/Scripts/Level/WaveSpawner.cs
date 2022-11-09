@@ -90,6 +90,7 @@ public class WaveSpawner : MonoBehaviour
 			enemyCheck = 1f;
 			if (GameObject.FindGameObjectWithTag("enemy") == null)
 			{
+				GameManager.instance.enemyNumber = 0;
 				return false;
 			}
 		}
