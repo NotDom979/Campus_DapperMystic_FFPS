@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class enemyBase : MonoBehaviour
 {
     [SerializeField] public GameObject EnemyCanvas;
+    [SerializeField] public GameObject rubbleParticle;
     [SerializeField] public GameObject Detector;
     [SerializeField] GameObject HeadPos;
     [SerializeField] public GameObject target;
@@ -20,8 +21,7 @@ public class enemyBase : MonoBehaviour
 
     [SerializeField] public NavMeshAgent agent;
     [SerializeField] Renderer model;
-
-
+    
     [Header("-----Item Drop-----")]
     [SerializeField] GameObject[] itemsDrops;
     [SerializeField] public int randItem;
@@ -60,7 +60,7 @@ public class enemyBase : MonoBehaviour
         playerSeen = false;
         stoppingDistOrigin = agent.stoppingDistance;
         target = GameObject.FindGameObjectWithTag("Target");
-
+        Instantiate(rubbleParticle, gameObject.transform.position, transform.rotation);
         startPos = transform.position;
         //agent.SetDestination(target.transform.position);
         speedPatrol = agent.speed;
@@ -276,4 +276,6 @@ public class enemyBase : MonoBehaviour
         agent.speed = speedPatrol;
         agent.stoppingDistance = 0;
     }
+
+   
 }
