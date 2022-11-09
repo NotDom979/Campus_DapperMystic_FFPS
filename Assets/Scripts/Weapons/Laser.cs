@@ -30,7 +30,6 @@ public class Laser : MonoBehaviour
 		{
 			other.gameObject.GetComponent<IDamage>().takeDamage(damage);
 		}
-		Destroy(gameObject);
 	}
 	IEnumerator Spread()
 	{
