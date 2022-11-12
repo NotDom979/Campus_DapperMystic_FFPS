@@ -108,6 +108,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 		bleedFlash.SetActive(false);
 		poisonFlash.SetActive(false);
 		SniperScope.SetActive(false);
+        reloadAlert.SetActive(false);
+        pressf.SetActive(false);
 		Time.timeScale = 0;
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.Confined;			
