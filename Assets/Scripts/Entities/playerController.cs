@@ -925,7 +925,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 
     void shotgunShoot()
     {
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
         for (int i = 0; i < 8; i++)
@@ -939,7 +939,7 @@ public class playerController : MonoBehaviour, IDataPersistence
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 2.0f;
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.35f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 	    for (int i = 0; i < 2; i++)
         {
 		    Instantiate(bullet, burstSp.transform.position, Quaternion.LookRotation(ray.direction));
@@ -993,7 +993,7 @@ public class playerController : MonoBehaviour, IDataPersistence
         Debug.Log("Mousepos " + mousePos);
         Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
         Debug.Log("ShootPos " + shootPos);
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
         Vector3 pos = ray.origin + (ray.direction);
         RaycastHit rot;
 	    if (Physics.Raycast(ray, out rot, 100))
