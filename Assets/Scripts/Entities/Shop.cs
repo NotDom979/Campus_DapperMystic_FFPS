@@ -10,6 +10,7 @@ public class Shop : MonoBehaviour
 	public GameObject gun2;
 	public GameObject gun3;
 	public bool isSpawned;
+	public GameObject spot;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,4 +61,11 @@ public class Shop : MonoBehaviour
 		gun3.SetActive(false);
 		isSpawned = false;
     }
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			other.gameObject.transform.position = spot.transform.position;
+		}
+	}
 }

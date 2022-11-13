@@ -1028,7 +1028,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -2991,7 +2991,6 @@ GameObject:
   - component: {fileID: 6800510960174373813}
   - component: {fileID: 9175178120058207370}
   - component: {fileID: 7578780242187867278}
-  - component: {fileID: 7578780242187867279}
   m_Layer: 0
   m_Name: Soldier_arms
   m_TagString: Untagged
@@ -3007,7 +3006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6137161767667122447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.008, y: -1.526, z: 0.032}
+  m_LocalPosition: {x: -0.025, y: -1.692, z: 0.127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3054,25 +3053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52d5362de3d3034ea7c5e3eed9de7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7578780242187867279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6137161767667122447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56366d0e687ab604fb1dd4430a7b7278, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensHort: 500
-  sensVert: 500
-  lockVertMin: -50
-  lockVertMax: 50
-  lockHortMin: -75
-  lockHortMax: 75
-  invert: 0
 --- !u!1 &6358910543925917878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,7 +3650,6 @@ GameObject:
   - component: {fileID: 9175178120765040347}
   - component: {fileID: 9175178120765040346}
   - component: {fileID: 9175178119810022826}
-  - component: {fileID: 1009835753843597822}
   - component: {fileID: 9175178119303330599}
   - component: {fileID: 9175178119588982930}
   - component: {fileID: 9175178120752854625}
@@ -3866,22 +3845,6 @@ MonoBehaviour:
   throwForce: 25
   throwupwardForce: 5
   throwKey: 103
---- !u!114 &1009835753843597822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7435114115908274486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8804e716f08b93b4baa94d4d121636b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerHeight: {fileID: 9175178120765040347}
-  normalHeight: 2
-  crouchHeight: 0.5
-  _speed: 0
 --- !u!95 &9175178119303330599
 Animator:
   serializedVersion: 4

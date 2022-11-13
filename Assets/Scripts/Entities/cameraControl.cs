@@ -34,13 +34,13 @@ public class cameraControl : MonoBehaviour
 			xRotation -= mousey;
 		//clamp camera rotation
 		xRotation = Mathf.Clamp(xRotation,lockVertMin,lockVertMax);
-		yRotation = Mathf.Clamp(yRotation,lockHortMin,lockHortMax);
+		//	yRotation = Mathf.Clamp(yRotation,lockHortMin,lockHortMax);
 	    
 		//rotate camera on x axis
 		transform.localRotation = Quaternion.Euler(xRotation,yRotation,0);
 	    
 		//rotate the player
-		transform.parent.Rotate(Vector3.up * mousex);
+			transform.parent.Rotate(Vector3.up * mousex);
 		//	Vector3 rotArms = playerArms.transform.rotation.eulerAngles;
 		//rotArms.x -= rotArms.y;
 		//rotArms.z = 0;
