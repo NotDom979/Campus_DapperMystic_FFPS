@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Image playerArmorBar;
 	public bool isPaused;
 	public int WaveCounter;
+	public Slider musicVol;
+	public Slider masterVol;
+	public Slider SFXVol;
     // Start is called before the first frame update
     void Awake()
     {

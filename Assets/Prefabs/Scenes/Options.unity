@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13831449, g: 0.07323783, b: 0.17538455, a: 1}
+  m_IndirectSpecularColor: {r: 0.32107174, g: 0.21133253, b: 0.40438062, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1421,6 +1421,9 @@ MonoBehaviour:
   Text: {fileID: 2109207594}
   slider: {fileID: 2141298576}
   gunShot: {fileID: 1729816515}
+  masterVol: 0
+  SFXVol: 0
+  musicVol: 0
 --- !u!1 &729155909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,6 +2815,9 @@ MonoBehaviour:
   Text: {fileID: 1321046482}
   slider: {fileID: 776539883}
   gunShot: {fileID: 1729816515}
+  masterVol: 0
+  SFXVol: 0
+  musicVol: 0
 --- !u!1 &1479590628
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,6 +3467,9 @@ MonoBehaviour:
   Text: {fileID: 1783430202}
   slider: {fileID: 1315952498}
   gunShot: {fileID: 1729816515}
+  masterVol: 0
+  SFXVol: 0
+  musicVol: 0
 --- !u!1 &1729816514
 GameObject:
   m_ObjectHideFlags: 0
