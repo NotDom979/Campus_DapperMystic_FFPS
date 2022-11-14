@@ -100,9 +100,12 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave(Wave _wave)
 	{
 		StartCoroutine(WaveA());
+		Destroy(gameObject.GetComponent<gunPickup>());
 		WaveTracker.text = (WaveCounter).ToString("F0");
 		state = SpawnState.SPAWNING;
-		
+		Destroy(GameManager.instance.shopScript.gun1);
+		Destroy(GameManager.instance.shopScript.gun2);
+		Destroy(GameManager.instance.shopScript.gun3);
 		for (int i = 0; i < _wave.count; i++) {
 			for (int j = 0; j < spawners.Length; j++) {
 				Instantiate(_wave.enemies[Random.Range(0,_wave.enemies.Length)], spawners[j].transform.position, spawners[j].transform.rotation);

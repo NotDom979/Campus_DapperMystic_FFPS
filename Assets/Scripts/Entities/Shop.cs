@@ -30,17 +30,20 @@ public class Shop : MonoBehaviour
 					gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
 					gun2 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i + 1].transform.position, spawners[i + 1].transform.rotation);
 					gun3 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i + 2].transform.position, spawners[i + 2].transform.rotation);
-					if (gun1 == gun2)
-					{
-						gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
-					}
-					else if (gun1 == gun3)
-					{
-						gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
-					}
-					else if (gun2 == gun3)
-					{
-						gun2 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i + 1].transform.position, spawners[i + 1].transform.rotation);
+					for (int j = 0; j < 6; j++) {
+						
+						if (gun1 == gun2)
+						{
+							gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
+						}
+						else if (gun1 == gun3)
+						{
+							gun1 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i].transform.position, spawners[i].transform.rotation);
+						}
+						else if (gun2 == gun3)
+						{
+							gun2 = Instantiate(Guns[(int)Random.Range(0, Guns.Count)], spawners[i + 1].transform.position, spawners[i + 1].transform.rotation);
+						}
 					}
 				}
 				gun1.SetActive(true);
@@ -56,12 +59,18 @@ public class Shop : MonoBehaviour
 	IEnumerator Despawn()
     {
 	    yield return new WaitForSeconds(15f);
-		gun1.SetActive(false);
-		gun2.SetActive(false);
-		gun3.SetActive(false);
-		isSpawned = false;
+	    //gun2.SetActive(false);
+	    //gun3.SetActive(false);
+	    //isSpawned = false;
     }
 	void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			other.gameObject.transform.position = spot.transform.position;
+		}
+	}
+	void OnTriggerStay(Collider other)
 	{
 		if (other.CompareTag("Player"))
 		{

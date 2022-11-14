@@ -264,6 +264,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 		{		
 			if ((Input.GetButtonDown("Shoot") || Input.GetButton("Shoot") && !isShooting))
 			{
+				firstShot = false;
 				CoolDown = true;
 				
 				if (currentAmmo >= 1)
