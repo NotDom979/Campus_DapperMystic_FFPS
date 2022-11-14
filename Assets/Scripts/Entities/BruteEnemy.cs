@@ -42,17 +42,20 @@ public class BruteEnemy : enemyBase, IDamage
         base.Update();
     }
 
-    //protected override void CanSeePlayer()
-    //{
-    //    base.CanSeePlayer();
+    protected override void CanSeePlayer()
+    {
 
-    //    //if (angle > viewAngle)
-    //    //{
-
-    //    //    agent.SetDestination(target.transform.position);
-    //    //}
-
-    //}
+        base.CanSeePlayer();
+        RaycastHit hit;
+        if (Physics.Raycast(HeadPos.transform.position, playerDirection, out hit, sightDistance))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+               
+                agent.SetDestination(GameManager.instance.player.transform.position);
+            }
+        }
+    }
 
     public IEnumerator Attack()
     {
