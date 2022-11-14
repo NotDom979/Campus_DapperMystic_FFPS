@@ -65,7 +65,15 @@ public class playerController : MonoBehaviour, IDataPersistence
 	public GameObject burstSp;
     public AudioClip emptyMag;
     public GameObject shotPoint;
-    public GameObject katana;
+	public GameObject katana;
+	int pAmmo;
+	int sAmmo;
+	int lAmmo;
+	int BAmmo;
+	int smAmmo;
+	int bAmmo;
+	int SAmmo;
+	int rAmmo;
 
     bool isShooting;
     public bool purchased;
@@ -370,7 +378,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             }
         }
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
-
+	    AmmoTracker();
         StartCoroutine(ReloadWait());
         return currentAmmo;
     }
@@ -428,6 +436,7 @@ public class playerController : MonoBehaviour, IDataPersistence
             {
                 gunstats.RemoveAt(selectGun);
             }
+	        int testAmmo;
             weaponPickupSound.Play(1);
             shootRate = stats.shootRate;
             shootDist = stats.shootDist;
@@ -497,7 +506,8 @@ public class playerController : MonoBehaviour, IDataPersistence
 	    firstShot = true;
         shotPoint.transform.localPosition = gunstats[selectGun].shotPoint.transform.localPosition;
         model.GetComponent<MeshRenderer>().sharedMaterial = gunstats[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-        model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+	    model.GetComponent<MeshFilter>().sharedMesh = gunstats[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+	    AmmoChange();
     }
 
     public void updatePLayerHud()
@@ -1108,7 +1118,76 @@ public class playerController : MonoBehaviour, IDataPersistence
 			GameManager.instance.reloadAlert.SetActive(false);
 		yield return new WaitForSeconds(.1f);
 	}
-	
+	public void AmmoTracker()
+	{
+		if (WeaponDetection() == 1)
+		{
+			pAmmo = currentAmmoReserved;
+		}
+		else if (WeaponDetection() == 2)
+		{
+			 rAmmo = currentAmmoReserved;
+		}
+		else if (WeaponDetection() == 3)
+		{
+			 sAmmo = currentAmmoReserved;
+		}
+		else if (WeaponDetection() == 4)
+		{
+			 bAmmo = currentAmmoReserved;
+		}
+		else if (WeaponDetection() == 5)
+		{
+			SAmmo = currentAmmoReserved;
+		}
+		else if (WeaponDetection() == 6)
+		{
+			 smAmmo = currentAmmoReserved;
+		}
+		else if (WeaponDetection() == 7)
+		{
+			BAmmo = currentAmmoReserved;
+		}
+		else if (WeaponDetection() == 8)
+		{
+			lAmmo = currentAmmoReserved;
+		}
+	}
+	public void AmmoChange()
+	{
+		if (WeaponDetection() == 1)
+		{
+			currentAmmoReserved = pAmmo;
+		}
+		else if (WeaponDetection() == 2)
+		{
+			currentAmmoReserved = rAmmo;
+		}
+		else if (WeaponDetection() == 3)
+		{
+			currentAmmoReserved = sAmmo;
+		}
+		else if (WeaponDetection() == 4)
+		{
+			currentAmmoReserved = bAmmo;
+		}
+		else if (WeaponDetection() == 5)
+		{
+			currentAmmoReserved = SAmmo;
+		}
+		else if (WeaponDetection() == 6)
+		{
+			currentAmmoReserved = smAmmo;
+		}
+		else if (WeaponDetection() == 7)
+		{
+			currentAmmoReserved = BAmmo;
+		}
+		else if (WeaponDetection() == 8)
+		{
+			currentAmmoReserved = lAmmo;
+		}
+	}
 }
 
 
