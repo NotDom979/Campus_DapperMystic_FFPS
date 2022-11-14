@@ -290,10 +290,14 @@ public class Ghoul : enemyBase, IDamage
     {
 
         base.CanSeePlayer();
-
-        if (angle <= viewAngle)
+        RaycastHit hit;
+        if (Physics.Raycast(HeadPos.transform.position, playerDirection, out hit, sightDistance))
         {
-            facePlayer();
+            if (hit.collider.CompareTag("Player"))
+            {
+                facePlayer();
+                agent.SetDestination(GameManager.instance.player.transform.position);
+            }
         }
     }
 

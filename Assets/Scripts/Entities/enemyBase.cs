@@ -9,10 +9,10 @@ public class enemyBase : MonoBehaviour
     [SerializeField] public GameObject EnemyCanvas;
     [SerializeField] public GameObject rubbleParticle;
     [SerializeField] public GameObject Detector;
-    [SerializeField] GameObject HeadPos;
+    [SerializeField] public GameObject HeadPos;
     [SerializeField] public GameObject target;
     [SerializeField] public Animator animator;
-    [SerializeField] int sightDistance;
+    [SerializeField] public int sightDistance;
     [SerializeField] int TargetsightDistance;
     [SerializeField] int roamDist;
     [SerializeField] public int viewAngle;
@@ -42,7 +42,7 @@ public class enemyBase : MonoBehaviour
 
     Vector3 startPos;
     Vector3 targetDirection;
-    Vector3 playerDirection;
+    public Vector3  playerDirection;
 
     float stoppingDistOrigin;
     public float angle;
