@@ -24,29 +24,33 @@ public class cameraControl : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate()
 	{
-		//get input 
-		float mousex = Input.GetAxis("Mouse X") * Time.deltaTime * sensHort;
-		float mousey = Input.GetAxis("Mouse Y") * Time.deltaTime * sensVert;
+		if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
+		{
+			
+			//get input 
+			float mousex = Input.GetAxis("Mouse X") * Time.deltaTime * sensHort;
+			float mousey = Input.GetAxis("Mouse Y") * Time.deltaTime * sensVert;
 	    
-		if(invert)
-			xRotation += mousey;
-		else
-			xRotation -= mousey;
-		//clamp camera rotation
-		xRotation = Mathf.Clamp(xRotation,lockVertMin,lockVertMax);
-		yRotation = Mathf.Clamp(yRotation,lockHortMin,lockHortMax);
+			if(invert)
+				xRotation += mousey;
+			else
+				xRotation -= mousey;
+			//clamp camera rotation
+			xRotation = Mathf.Clamp(xRotation,lockVertMin,lockVertMax);
+			//	yRotation = Mathf.Clamp(yRotation,lockHortMin,lockHortMax);
 	    
-		//rotate camera on x axis
-		transform.localRotation = Quaternion.Euler(xRotation,yRotation,0);
+			//rotate camera on x axis
+			transform.localRotation = Quaternion.Euler(xRotation,yRotation,0);
 	    
-		//rotate the player
-		transform.parent.Rotate(Vector3.up * mousex);
-		//	Vector3 rotArms = playerArms.transform.rotation.eulerAngles;
-		//rotArms.x -= rotArms.y;
-		//rotArms.z = 0;
-		//rotArms.y += xRotation;
+			//rotate the player
+			transform.parent.Rotate(Vector3.up * mousex);
+			//	Vector3 rotArms = playerArms.transform.rotation.eulerAngles;
+			//rotArms.x -= rotArms.y;
+			//rotArms.z = 0;
+			//rotArms.y += xRotation;
 		
-		//playerArms.rotation = Quaternion.Euler(rotArms);
+			//playerArms.rotation = Quaternion.Euler(rotArms);
+		}
 		
 		
 	    
