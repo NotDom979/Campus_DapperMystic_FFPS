@@ -598,6 +598,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &140657686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1358685063455072086, guid: 5b322b764ac628b44bb6aa2e3f4a240c, type: 3}
+  m_PrefabInstance: {fileID: 1282364753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &140657693
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140657686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 6
+  m_Direction: 2
+  m_Center: {x: -0.0012839735, y: 0.25, z: 3.096735}
+--- !u!136 &140657694
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140657686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 5
+  m_Direction: 2
+  m_Center: {x: -0.0012839735, y: -1.3, z: 3.096735}
 --- !u!114 &156296599 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8781641590044692943, guid: 7b97e5b942a63ae47a9fe0dc229e7db0, type: 3}
