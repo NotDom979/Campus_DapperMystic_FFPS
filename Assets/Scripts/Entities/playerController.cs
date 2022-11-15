@@ -94,6 +94,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 	bool CoolDown;
 	float shootCoolDown;
 	bool firstShot;
+	float reloadTimer;
     public StatusManager statusManager;
 
     private void Start()
@@ -122,7 +123,8 @@ public class playerController : MonoBehaviour, IDataPersistence
 	    CameraPos.transform.rotation = Camera.main.transform.rotation;
 	    shootCoolDown = shootRate;
 	    firstShot = true;
-        CoolDown = false;
+	    CoolDown = false;
+	    reloadTimer = 2f;
 	    // cameraLocation  = new Transform(Camera.main.transform.position);
         GameManager.instance.AmmoClip.text = currentAmmoReserved.ToString("F0");
     }
@@ -149,6 +151,10 @@ public class playerController : MonoBehaviour, IDataPersistence
         	else if (WeaponDetection() == 2 || WeaponDetection() == 6)
         	{
         		StartCoroutine(shoot());
+        	}
+        	if (reloadTimer > 0)
+        	{
+        		reloadTimer -= Time.deltaTime;
         	}
         	StartCoroutine(checkReload());
             StartCoroutine(reloadGun());
@@ -541,8 +547,9 @@ public class playerController : MonoBehaviour, IDataPersistence
     {
         if (currentAmmoReserved != 0)
         {
-            if (Input.GetKey("r") && currentAmmo < maxAmmo)
-            {
+	        if (Input.GetKey("r") && currentAmmo < maxAmmo && reloadTimer <= 0)
+	        {
+		        reloadTimer = 2f;
 	            anim.SetTrigger("Reload");
 	            StartCoroutine(ReloadWait());
                 Reload();
@@ -550,7 +557,7 @@ public class playerController : MonoBehaviour, IDataPersistence
                 Debug.Log("Reload");
 	            yield return new WaitForSeconds(reloadTime);
                 AmmoReload(swap);
-                StartCoroutine("Wait");
+	            StartCoroutine(Wait());
                 anim.SetBool("Idle", true);
                 WeaponIdle();
             }
@@ -642,7 +649,8 @@ public class playerController : MonoBehaviour, IDataPersistence
         else if (WeaponDetection() == 3 || WeaponDetection() == 8)
         {
 	         anim.Play("SniperReload");
-	         anim.SetTrigger("Reload");
+	        anim.SetTrigger("Reload");
+	        anim.ResetTrigger("Reload");
         }
         else if (WeaponDetection() == 4)
         {
@@ -725,7 +733,7 @@ public class playerController : MonoBehaviour, IDataPersistence
     void BazookaShoot()
     {
         isShooting = true;
-	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+	    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
         Instantiate(missile, shotPoint.transform.position, Quaternion.LookRotation(ray.direction));
 
@@ -1044,7 +1052,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 		Debug.Log("Mousepos " + mousePos);
 		Vector3 shootPos = Camera.main.ScreenToWorldPoint(mousePos);
 		Debug.Log("ShootPos " + shootPos);
-		Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.36f));
+		Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 		Vector3 pos = ray.origin + (ray.direction);
 		RaycastHit rot;
 		if (Physics.Raycast(ray, out rot, shootDist))

@@ -14,7 +14,10 @@ public class Volume: MonoBehaviour
 	public float SFXVol;
 	public float musicVol;
 	float txt;
+	
 
+
+	
 	public void MasterVolume(float volume)
 	{
 		//txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);

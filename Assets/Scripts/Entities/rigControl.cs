@@ -12,7 +12,11 @@ public class rigControl : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		Vector3 mousePos = Input.mousePosition;
-		transform.LookAt(Camera.main.ScreenToWorldPoint( new Vector3(mousePos.x, mousePos.y, 10)));
+		if (GameManager.instance.playerDeadMenu.activeSelf == false && GameManager.instance.winMenu.activeSelf == false && GameManager.instance.optionMenu.activeSelf == false && GameManager.instance.pauseMenu.activeSelf == false && GameManager.instance.playerLoseMenu.activeSelf == false)
+		{
+			
+			Vector3 mousePos = Input.mousePosition;
+			transform.LookAt(Camera.main.ScreenToWorldPoint( new Vector3(mousePos.x, mousePos.y, 10)));
+		}
 	}
 }

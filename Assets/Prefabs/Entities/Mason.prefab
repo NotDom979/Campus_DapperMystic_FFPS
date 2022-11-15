@@ -2990,7 +2990,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6800510960174373813}
   - component: {fileID: 9175178120058207370}
-  - component: {fileID: 7578780242187867278}
   m_Layer: 0
   m_Name: Soldier_arms
   m_TagString: Untagged
@@ -3041,18 +3040,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7578780242187867278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6137161767667122447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52d5362de3d3034ea7c5e3eed9de7ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6358910543925917878
 GameObject:
   m_ObjectHideFlags: 0

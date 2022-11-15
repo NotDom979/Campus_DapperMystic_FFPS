@@ -40,6 +40,10 @@ public class gunPickup : MonoBehaviour
 			}
 			StartCoroutine(Wait());
 		}
+		else
+			GameManager.instance.pressf.SetActive(false);
+			
+		
 	}
 	IEnumerator Wait()
 	{
