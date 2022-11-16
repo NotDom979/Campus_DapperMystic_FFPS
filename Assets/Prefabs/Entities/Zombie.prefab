@@ -2534,7 +2534,7 @@ GameObject:
   - component: {fileID: 2760288498555224766}
   m_Layer: 7
   m_Name: Zombie1
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2817,6 +2817,7 @@ MonoBehaviour:
   enemyHpBar: {fileID: 2532513335126763641}
   maxHealth: 20
   currentHealth: 0
+  playerDirection: {x: 0, y: 0, z: 0}
   angle: 0
   speedPatrol: 10
   InRadius: 0
