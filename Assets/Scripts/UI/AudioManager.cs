@@ -20,59 +20,35 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
 	void Awake()
     {
-	    masterVol = masterSlide.value;
-	    musicVol = musicSlide.value;
-	    SFXVol = SFXSlide.value;
     }
 	void FixedUpdate()
 	{
-		MasterVolume();
-		SFXVolume();
-		MusicVolume();
+		if (PlayerPrefs.HasKey("MasterVolume"))
+		{
+			masterSlide.value = PlayerPrefs.GetFloat("MasterVolume");
+			masText.text = PlayerPrefs.GetFloat("MasterVolume").ToString();
+		}
+		if (PlayerPrefs.HasKey("MusicVolume"))
+		{
+			musicSlide.value = PlayerPrefs.GetFloat("MusicVolume");
+			musText.text = PlayerPrefs.GetFloat("MusicVolume").ToString();
+			
+		}
+		if (PlayerPrefs.HasKey("SFXVolume"))
+		{
+			SFXSlide.value = PlayerPrefs.GetFloat("SFXVolume");
+			sfxText.text = PlayerPrefs.GetFloat("SFXVolume").ToString();
+		}
+		else
+		{
+			masterSlide.value = 1;
+			musicSlide.value = 1;
+			SFXSlide.value = 1;
+			sfxText.text = (SFXSlide.value * 100).ToString();
+			masText.text = (masterSlide.value * 100).ToString();
+			musText.text = (musicSlide.value * 100).ToString();
+		}
+		
 	}
 	
-	public void MasterVolume()
-	{
-		//txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
-		if (masterSlide.value == 0)
-		{
-			masterVol = -80;
-		}
-		else
-			masterVol = 20.0f * Mathf.Log10(masterSlide.value);
-
-		audioMixer.SetFloat("MasterVol",masterVol);
-		masText.text = (masterSlide.value * 100).ToString("F0");
-		
-	}
-	public void SFXVolume()
-	{
-		//txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
-
-		if (SFXSlide.value == 0)
-		{
-			SFXVol = -80;
-		}
-		else
-			SFXVol = 20.0f * Mathf.Log10(SFXSlide.value);
-			
-		
-
-		sfxText.text = (SFXSlide.value * 100).ToString("F0");
-		audioMixer.SetFloat("SFXVol",SFXVol);
-	}
-	public void MusicVolume()
-	{
-		//txt = (Mathf.Pow(10.0f, volume / 20.0f) * 100);
-		if (musicSlide.value == 0)
-		{
-			musicVol = -80;
-		}
-		else
-			musicVol = 20.0f * Mathf.Log10(musicSlide.value);
-
-		audioMixer.SetFloat("MusicVol",musicVol);
-		musText.text = (musicSlide.value * 100).ToString("F0");
-		
-	}
 }

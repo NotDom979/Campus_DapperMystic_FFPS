@@ -28,7 +28,8 @@ public class Volume: MonoBehaviour
 		else
 			volume = 20.0f * Mathf.Log10(slider.value);
 
-		audioMixer.SetFloat("MasterVol",volume);
+		PlayerPrefs.SetFloat("MasterVolume", volume);         
+		audioMixer.SetFloat("MasterVol",PlayerPrefs.GetFloat("MasterVolume"));
 		Text.text = (slider.value * 100).ToString("F0");
 		
 	}
@@ -44,9 +45,9 @@ public class Volume: MonoBehaviour
 			volume = 20.0f * Mathf.Log10(slider.value);
 			
 		
-
+		PlayerPrefs.SetFloat("SFXVolume", volume);   
 		Text.text = (slider.value * 100).ToString("F0");
-		audioMixer.SetFloat("SFXVol",volume);
+		audioMixer.SetFloat("SFXVol",PlayerPrefs.GetFloat("SFXVolume"));
 	}
 	public void MusicVolume(float volume)
 	{
@@ -58,7 +59,8 @@ public class Volume: MonoBehaviour
 		else
 			volume = 20.0f * Mathf.Log10(slider.value);
 
-		audioMixer.SetFloat("MusicVol",volume);
+		PlayerPrefs.SetFloat("MusicVolume", volume);   
+		audioMixer.SetFloat("MusicVol",PlayerPrefs.GetFloat("MusicVolume"));
 		Text.text = (slider.value * 100).ToString("F0");
 		
 	}

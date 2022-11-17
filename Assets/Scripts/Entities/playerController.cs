@@ -376,6 +376,7 @@ public class playerController : MonoBehaviour, IDataPersistence
                 currentAmmo = maxAmmo;
             }
 
+	         AmmoTracker();
             if (currentAmmo - reload >= 0)
                 return reload;
             if (reload > currentAmmoReserved || currentAmmoReserved < 0)
