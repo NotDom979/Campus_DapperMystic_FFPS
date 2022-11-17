@@ -791,7 +791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3065262998408612031}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1574,6 +1574,7 @@ MonoBehaviour:
   enemyHpBar: {fileID: 5581410035654568916}
   maxHealth: 20
   currentHealth: 0
+  playerDirection: {x: 0, y: 0, z: 0}
   angle: 0
   speedPatrol: 3
   InRadius: 0
@@ -1737,7 +1738,7 @@ GameObject:
   - component: {fileID: 3127658241295709919}
   m_Layer: 7
   m_Name: Ghoul:Tube1
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
