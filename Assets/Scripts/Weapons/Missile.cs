@@ -22,7 +22,7 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("enemy"))
+        if (other.CompareTag("enemy") || other.CompareTag("Ground"))
         {
             Explode();
             Destroy(gameObject, destroyTime);
