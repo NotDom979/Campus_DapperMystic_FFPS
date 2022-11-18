@@ -467,6 +467,7 @@ public class playerController : MonoBehaviour, IDataPersistence
 	        purchased = true;
 	        firstShot = true;
             payDay(stats.weaponCost);
+            AmmoTracker();
         }
         else if (GameManager.instance.bankTotal < stats.weaponCost)
         {
