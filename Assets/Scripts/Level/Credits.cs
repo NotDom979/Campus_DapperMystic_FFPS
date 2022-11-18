@@ -9,7 +9,7 @@ public class Credits : MonoBehaviour
     void Start()
     {
 	    creditSlide.enabled = false;
-	    creditSlide.enabled = true;
+	    
     }
 	void Update()
 	{
